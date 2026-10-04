@@ -18,11 +18,17 @@
   },
   "devDependencies": {
     "@babel/preset-react": "^7.26.3",
-    "sass": "^1.85.0"
+    "sass": "^1.85.0",
+    "sass-embedded": "^1.105.1"
   },
   "backpack-react-scripts": {
+    "cssModules": false,
     "babelIncludePrefixes": [
-      "@skyscanner/backpack-web/bpk-"
+      "./node_modules/@skyscanner/backpack-web/bpk-component-calendar",
+      "./node_modules/@skyscanner/backpack-web/bpk-react-utils",
+      "./node_modules/@skyscanner/backpack-web/bpk-component-icon",
+      "./node_modules/@skyscanner/backpack-web/bpk-component-select",
+      "./node_modules/@skyscanner/backpack-web/bpk-component-aria-live"
     ]
   },
   "overrides": {

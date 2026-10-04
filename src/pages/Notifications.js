@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { INITIAL_NOTIFICATIONS } from '../data/travelData';
 import { useToast } from '../context/ToastContext';
-import '../styles/Notifications.scss';
 
 const Notifications = ({ onNavigate }) => {
   const { showSuccess, showInfo } = useToast();

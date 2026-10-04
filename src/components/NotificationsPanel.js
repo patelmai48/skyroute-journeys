@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { INITIAL_NOTIFICATIONS } from '../data/travelData';
-import '../styles/Notifications.scss';
 
 const NotificationsPanel = ({ isOpen, onClose, onNavigate }) => {
   const [notifications, setNotifications] = useState(() => {

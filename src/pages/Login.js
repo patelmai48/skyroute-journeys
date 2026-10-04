@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { triggerGoogleAuth } from '../services/googleAuth';
-import '../styles/Login.scss';
 
 const STORAGE_KEYS = {
   REMEMBERED_EMAIL: 'skyroute_remembered_email',

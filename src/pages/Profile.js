@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useToast } from '../context/ToastContext';
-import '../styles/Profile.scss';
 
 const Profile = ({ onNavigate }) => {
   const { showSuccess, showInfo } = useToast();

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import FlightSidebarSummary from '../components/FlightSidebarSummary';
 import { OFFERS_DATA } from '../data/travelData';
 import { useToast } from '../context/ToastContext';
-import '../styles/BookingFlow.scss';
 
 const formatINR = (num) => {
   return new Intl.NumberFormat('en-IN', {
