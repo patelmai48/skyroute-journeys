@@ -1,0 +1,662 @@
+/* ==========================================================================
+   SkyRoute Hotels & Stays Styles (Brand Theme Preserved)
+   ========================================================================== */
+
+.SkyRoute-hotels-page {
+  padding: 2.25rem 0 5rem;
+  background-color: var(--SkyRoute-bg);
+  min-height: calc(100vh - 72px - 200px);
+}
+
+.SkyRoute-hotels-nav-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.SkyRoute-hotels-filter-card {
+  padding: 1.75rem 2rem;
+  margin-bottom: 2.5rem;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(74, 52, 42, 0.08);
+  box-sizing: border-box;
+}
+
+.SkyRoute-hotels-filter-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 1.25rem;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Confirmed Banner with Full Reservation Metadata */
+.SkyRoute-hotel-confirmed-banner {
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: 20px;
+  padding: 2.25rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 10px 32px rgba(74, 52, 42, 0.08);
+  box-sizing: border-box;
+}
+
+.SkyRoute-hotel-confirmed-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1.5px solid #B2967D;
+}
+
+.SkyRoute-hotel-confirmed-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.SkyRoute-hotel-confirmed-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  background-color: #D7C9B8 !important;
+  padding: 1.5rem;
+  border-radius: var(--SkyRoute-radius-sm);
+  border: 1.5px solid #B2967D !important;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 540px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.SkyRoute-hotel-confirmed-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.SkyRoute-hotel-confirmed-policy-box {
+  font-size: 0.88rem;
+  color: #4A342A !important;
+  background-color: #D7C9B8 !important;
+  border: 1px solid #B2967D;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--SkyRoute-radius-sm);
+}
+
+.SkyRoute-hotel-confirmed-actions-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+/* Hotels Grid - Big Roomy Cards */
+.SkyRoute-hotels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.SkyRoute-hotel-card {
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: 20px;
+  box-shadow: 0 10px 32px rgba(74, 52, 42, 0.08);
+  overflow: hidden !important;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--SkyRoute-transition-normal);
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(74, 52, 42, 0.14);
+    border-color: #7D5A44 !important;
+
+    .SkyRoute-hotel-card__img {
+      transform: scale(1.05);
+    }
+  }
+
+  &__img-box {
+    position: relative;
+    height: 250px;
+    overflow: hidden !important;
+    background-color: #D7C9B8;
+    box-sizing: border-box;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  &__city-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: #4A342A;
+    color: #F5F1EA;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--SkyRoute-radius-full);
+    backdrop-filter: blur(4px);
+  }
+
+  &__body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
+    justify-content: space-between;
+  }
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  &__type {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #7D5A44;
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  &__title {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: var(--SkyRoute-text-main, #4A342A);
+    margin-bottom: 0.25rem;
+  }
+
+  &__loc {
+    font-size: 0.92rem;
+    color: var(--SkyRoute-text-secondary, #7D5A44);
+    font-weight: 600;
+  }
+
+  &__rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    background-color: var(--SkyRoute-card-secondary, #D7C9B8);
+    color: var(--SkyRoute-text-main, #4A342A);
+    font-size: 0.92rem;
+    font-weight: 800;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--SkyRoute-radius-xs);
+    border: 1.5px solid var(--SkyRoute-border, #B2967D);
+    white-space: nowrap;
+
+    span {
+      color: var(--SkyRoute-teal, #7D5A44);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1.5px solid var(--SkyRoute-border, #B2967D);
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+}
+
+.SkyRoute-hotel-reviews-count {
+  font-size: 0.85rem;
+  color: var(--SkyRoute-text-muted, #B2967D);
+  font-weight: 700;
+}
+
+.SkyRoute-hotel-amenities-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.SkyRoute-hotel-amenity-tag {
+  font-size: 0.82rem;
+  background-color: var(--SkyRoute-card-secondary, #D7C9B8);
+  color: var(--SkyRoute-text-main, #4A342A);
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--SkyRoute-radius-full);
+  border: 1.5px solid var(--SkyRoute-border, #B2967D);
+  font-weight: 700;
+}
+
+.SkyRoute-hotel-price-label {
+  font-size: 0.78rem;
+  color: var(--SkyRoute-text-secondary, #7D5A44);
+  font-weight: 800;
+  text-transform: uppercase;
+  display: block;
+}
+
+.SkyRoute-hotel-price-val {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.7rem;
+  font-weight: 900;
+  color: var(--SkyRoute-text-main, #4A342A);
+}
+
+.SkyRoute-hotel-tax-note {
+  font-size: 0.78rem;
+  color: #B2967D;
+  font-weight: 600;
+  margin-left: 0.35rem;
+}
+
+/* Saved Reservations List */
+.SkyRoute-hotels-saved-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.SkyRoute-hotel-res-item-card {
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  box-shadow: 0 4px 16px rgba(74, 52, 42, 0.08);
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  overflow: hidden;
+  transition: all var(--SkyRoute-transition-fast);
+
+  &:hover {
+    border-color: #7D5A44;
+    box-shadow: 0 6px 20px rgba(74, 52, 42, 0.12);
+  }
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+
+  &__img-box {
+    position: relative;
+    height: 100%;
+    min-height: 220px;
+    background-color: #D7C9B8;
+
+    @media (max-width: 860px) {
+      height: 220px;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__body {
+    padding: 1.75rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.35rem;
+
+    @media (max-width: 600px) {
+      padding: 1.25rem;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    padding-bottom: 1.15rem;
+    border-bottom: 1.5px solid #B2967D;
+  }
+}
+
+.SkyRoute-hotel-res-pnr-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.45rem;
+}
+
+.SkyRoute-hotel-res-status-badge {
+  background-color: #D7C9B8;
+  color: #4A342A;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  border: 1px solid #B2967D;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.SkyRoute-hotel-res-id-tag {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #7D5A44;
+  letter-spacing: 0.5px;
+}
+
+.SkyRoute-hotel-res-title {
+  font-family: var(--SkyRoute-font-serif, 'Playfair Display', serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #4A342A;
+  margin: 0.35rem 0 0.25rem;
+  line-height: 1.3;
+}
+
+.SkyRoute-hotel-res-loc {
+  font-size: 0.88rem;
+  color: #7D5A44;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.SkyRoute-hotel-res-price-col {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.2rem;
+
+  @media (max-width: 600px) {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+.SkyRoute-hotel-res-price-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #7D5A44;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 0.15rem;
+}
+
+.SkyRoute-hotel-res-price-val {
+  font-family: var(--SkyRoute-font-sans, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #4A342A;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  display: block;
+}
+
+.SkyRoute-hotel-res-tax-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4A342A;
+  background-color: #D7C9B8;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  border: 1px solid #B2967D;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.2rem;
+}
+
+.SkyRoute-hotel-res-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  background-color: #D7C9B8;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--SkyRoute-radius-sm);
+  border: 1.5px solid #B2967D;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
+.SkyRoute-hotel-res-meta-col {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.4rem !important;
+}
+
+.SkyRoute-hotel-res-label {
+  display: block !important;
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.6px !important;
+  color: #7D5A44 !important;
+  margin: 0 !important;
+}
+
+.SkyRoute-hotel-res-val {
+  display: block !important;
+  font-size: 0.95rem !important;
+  font-weight: 600 !important;
+  color: #4A342A !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
+}
+
+.SkyRoute-hotel-res-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 0.35rem;
+}
+
+.SkyRoute-hotel-btn-voucher {
+  background-color: #4A342A;
+  color: #F5F1EA;
+  border: 1px solid #4A342A;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: var(--SkyRoute-radius-xs);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--SkyRoute-transition-fast);
+  box-shadow: 0 2px 4px rgba(74, 52, 42, 0.12);
+
+  &:hover {
+    background-color: #7D5A44;
+    border-color: #7D5A44;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(74, 52, 42, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.SkyRoute-hotel-btn-receipt {
+  background-color: #F5F1EA;
+  color: #4A342A;
+  border: 1.5px solid #B2967D;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: var(--SkyRoute-radius-xs);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--SkyRoute-transition-fast);
+
+  &:hover {
+    background-color: #D7C9B8;
+    border-color: #7D5A44;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Hotel Modal Details */
+.SkyRoute-hotel-modal {
+  max-width: 680px;
+}
+
+.SkyRoute-hotel-modal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.SkyRoute-hotel-modal-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+  }
+
+  &__label {
+    color: #7D5A44;
+  }
+
+  &__val {
+    color: #4A342A;
+  }
+}
+
+.SkyRoute-hotel-modal-pricing {
+  padding: 1.5rem;
+  background-color: #D7C9B8;
+  border: 1.5px solid #B2967D;
+  border-radius: var(--SkyRoute-radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.SkyRoute-breakdown-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.92rem;
+
+  &--total {
+    border-top: 1px solid #B2967D;
+    padding-top: 0.85rem;
+    margin-top: 0.25rem;
+  }
+}
+
+.SkyRoute-breakdown-label {
+  color: #7D5A44;
+}
+
+.SkyRoute-breakdown-val {
+  color: #4A342A;
+  font-weight: 600;
+}
+
+.SkyRoute-breakdown-total-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #4A342A;
+}
+
+.SkyRoute-breakdown-total-val {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #4A342A;
+}
+
+.SkyRoute-hotel-modal-perk {
+  font-size: 0.88rem;
+  color: #7D5A44;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Voucher Details */
+.SkyRoute-hotel-voucher-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.SkyRoute-voucher-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid var(--SkyRoute-border-light);
+  font-size: 0.92rem;
+
+  span:first-child {
+    color: var(--SkyRoute-text-secondary);
+  }
+
+  strong {
+    color: var(--SkyRoute-text-main);
+  }
+}

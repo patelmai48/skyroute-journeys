@@ -1,0 +1,258 @@
+/* ==========================================================================
+   SkyRoute Travel Insurance Styles (Warm 5-Color System)
+   ========================================================================== */
+
+.SkyRoute-insurance-page {
+  padding-bottom: 5rem;
+  background-color: var(--SkyRoute-bg, #F5F1EA);
+  min-height: calc(100vh - 72px - 200px);
+  padding-top: 2rem;
+}
+
+/* 3-Column Plan Grid */
+.SkyRoute-insurance-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  align-items: stretch;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.SkyRoute-ins-plan-card {
+  padding: 2.5rem 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.75rem;
+  position: relative;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-lg);
+  box-shadow: 0 6px 24px rgba(74, 52, 42, 0.08);
+  transition: all var(--SkyRoute-transition-fast);
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: #7D5A44 !important;
+    box-shadow: 0 12px 32px rgba(74, 52, 42, 0.14);
+  }
+
+  &--popular {
+    border: 2px solid #4A342A !important;
+    background-color: #F5F1EA !important;
+    box-shadow: 0 10px 36px rgba(74, 52, 42, 0.15);
+    transform: scale(1.03);
+
+    @media (max-width: 992px) {
+      transform: none;
+    }
+
+    &:hover {
+      transform: scale(1.05) translateY(-4px);
+
+      @media (max-width: 992px) {
+        transform: translateY(-4px);
+      }
+    }
+  }
+
+  &--selected {
+    border-color: #4A342A !important;
+    box-shadow: 0 0 0 3px rgba(74, 52, 42, 0.2);
+  }
+}
+
+.SkyRoute-ins-popular-tag {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4A342A;
+  color: #F5F1EA;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0.35rem 1.15rem;
+  border-radius: var(--SkyRoute-radius-full);
+  box-shadow: 0 3px 10px rgba(74, 52, 42, 0.3);
+  white-space: nowrap;
+}
+
+.SkyRoute-ins-card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.SkyRoute-ins-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.SkyRoute-ins-plan-name {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #4A342A !important;
+  margin: 0;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.SkyRoute-ins-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+  width: 100%;
+}
+
+.SkyRoute-ins-price-amount {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #4A342A !important;
+  line-height: 1;
+}
+
+.SkyRoute-ins-price-sub {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #7D5A44 !important;
+}
+
+.SkyRoute-ins-coverage-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background-color: #D7C9B8;
+  border: 1px solid #B2967D;
+  padding: 0.45rem 1rem;
+  border-radius: var(--SkyRoute-radius-sm);
+  font-size: 0.84rem;
+  color: #4A342A;
+  margin: 0 auto;
+
+  strong {
+    font-weight: 800;
+  }
+}
+
+.SkyRoute-ins-features-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 0;
+  border-top: 1px solid #B2967D;
+  border-bottom: 1px solid #B2967D;
+  flex: 1;
+  text-align: center;
+  width: 100%;
+}
+
+.SkyRoute-ins-feature-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  text-align: center;
+}
+
+.SkyRoute-ins-check {
+  color: #4A342A;
+  font-weight: 900;
+  font-size: 0.95rem;
+  line-height: 1.3;
+}
+
+.SkyRoute-ins-feature-text {
+  font-size: 0.9rem;
+  color: #4A342A !important;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.SkyRoute-ins-card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Feature Matrix Card */
+.SkyRoute-ins-matrix-card {
+  padding: 2.5rem;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-lg);
+  box-shadow: 0 6px 24px rgba(74, 52, 42, 0.08);
+}
+
+.SkyRoute-ins-matrix-title {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #4A342A !important;
+  margin: 0 0 1.5rem;
+}
+
+.SkyRoute-comparison-table-wrapper {
+  overflow-x: auto;
+  border: 1.5px solid #B2967D;
+  border-radius: var(--SkyRoute-radius-md);
+  background-color: #F5F1EA;
+}
+
+.SkyRoute-comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: var(--SkyRoute-font-sans);
+
+  th, td {
+    padding: 1rem 1.35rem;
+    border-bottom: 1px solid #B2967D;
+    border-right: 1px solid #B2967D;
+    font-size: 0.92rem;
+    color: #4A342A;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  th {
+    background-color: #D7C9B8;
+    font-weight: 800;
+    color: #4A342A;
+    font-size: 0.95rem;
+    border-bottom: 2px solid #B2967D;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:nth-child(even) td {
+    background-color: rgba(215, 201, 184, 0.25);
+  }
+}

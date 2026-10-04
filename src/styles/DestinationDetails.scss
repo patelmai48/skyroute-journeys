@@ -1,0 +1,599 @@
+/* ==========================================================================
+   SkyRoute Warm Nude Destination Details Page Styles
+   ========================================================================== */
+
+.SkyRoute-dest-detail-page {
+  padding-bottom: 5rem;
+}
+
+.SkyRoute-dest-hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem 0 2.5rem;
+  overflow: hidden;
+
+  &__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(47, 45, 43, 0.35) 0%, rgba(47, 45, 43, 0.88) 100%);
+    z-index: 2;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    color: #F5F1EA;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  &__badges {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  &__weather-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: var(--SkyRoute-radius-full);
+  }
+
+  &__title {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 3.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: #F5F1EA;
+
+    @media (max-width: 640px) {
+      font-size: 2.2rem;
+    }
+  }
+
+  &__code {
+    color: var(--SkyRoute-rose-light);
+    font-size: 2rem;
+  }
+
+  &__tagline {
+    font-size: 1.15rem;
+    color: #F5F1EA;
+    max-width: 700px;
+  }
+}
+
+.SkyRoute-dest-back-btn {
+  background: none;
+  border: none;
+  color: #F5F1EA;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  align-self: flex-start;
+  padding: 0.25rem 0;
+
+  &:hover {
+    color: #F5F1EA;
+    text-decoration: underline;
+  }
+}
+
+.SkyRoute-dest-metrics-strip {
+  margin-top: 1.5rem;
+  padding: 1.5rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 1.5rem;
+  align-items: center;
+  background-color: #D7C9B8 !important;
+  color: #4A342A !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-sizing: border-box;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.SkyRoute-dest-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  &__label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #7D5A44 !important;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+
+  &__value {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #4A342A !important;
+  }
+}
+
+.SkyRoute-dest-main-container {
+  margin-top: 2.5rem;
+}
+
+.SkyRoute-dest-grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 2rem;
+  align-items: start;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.SkyRoute-dest-tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid #B2967D;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.SkyRoute-dest-tab {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  padding: 0.85rem 1.35rem;
+  font-family: var(--SkyRoute-font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #B2967D !important;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--SkyRoute-transition-fast);
+
+  &:hover {
+    color: #4A342A !important;
+  }
+
+  &--active {
+    color: #4A342A !important;
+    border-bottom-color: #7D5A44 !important;
+    font-weight: 800;
+  }
+}
+
+.SkyRoute-dest-section-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.SkyRoute-dest-card-box {
+  padding: 2.25rem;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-sizing: border-box;
+}
+
+.SkyRoute-dest-box-title {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #4A342A !important;
+  margin-bottom: 1.25rem;
+}
+
+.SkyRoute-dest-attractions-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 0;
+  margin: 0;
+}
+
+.SkyRoute-dest-attraction-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4A342A !important;
+}
+
+.SkyRoute-dest-item-bullet {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #7D5A44 !important;
+  color: #F5F1EA !important;
+  font-size: 0.82rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.SkyRoute-dest-experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.SkyRoute-dest-exp-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  background-color: #D7C9B8 !important;
+  padding: 1.25rem;
+  border-radius: var(--SkyRoute-radius-sm);
+  border: 1.5px solid #B2967D !important;
+  box-sizing: border-box;
+}
+
+.SkyRoute-dest-exp-icon {
+  font-size: 1.35rem;
+}
+
+.SkyRoute-dest-exp-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #4A342A !important;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.SkyRoute-dest-tips-box {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.35rem 1.6rem;
+  background-color: #D7C9B8 !important;
+  border-left: 5px solid #7D5A44 !important;
+  border-radius: 0 var(--SkyRoute-radius-sm) var(--SkyRoute-radius-sm) 0;
+  border-top: 1.5px solid #B2967D !important;
+  border-right: 1.5px solid #B2967D !important;
+  border-bottom: 1.5px solid #B2967D !important;
+  box-sizing: border-box;
+}
+
+.SkyRoute-dest-tips-icon {
+  font-size: 1.6rem;
+}
+
+.SkyRoute-dest-tips-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #4A342A !important;
+  margin-bottom: 0.35rem;
+}
+
+.SkyRoute-dest-tips-text {
+  font-size: 0.92rem;
+  color: #4A342A !important;
+  font-weight: 500;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Destination Hotels & Flights */
+.SkyRoute-dest-hotels-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.SkyRoute-dest-hotel-card {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.25rem;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.95rem;
+    border-top: 1px solid #B2967D !important;
+  }
+}
+
+.SkyRoute-dest-hotel-type {
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #7D5A44 !important;
+  letter-spacing: 0.5px;
+}
+
+.SkyRoute-dest-hotel-name {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #4A342A !important;
+  margin: 0;
+}
+
+.SkyRoute-dest-hotel-rating {
+  font-size: 0.88rem;
+  color: #7D5A44 !important;
+  font-weight: 800;
+}
+
+.SkyRoute-dest-hotel-price-label {
+  display: block;
+  font-size: 0.76rem;
+  color: #B2967D !important;
+  font-weight: 700;
+}
+
+.SkyRoute-dest-hotel-price {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #4A342A !important;
+}
+
+/* Flight Item List */
+.SkyRoute-dest-flight-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.SkyRoute-dest-flight-item {
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.75rem;
+  flex-wrap: wrap;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  transition: all var(--SkyRoute-transition-fast);
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &:hover {
+    border-color: #7D5A44 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(74, 52, 42, 0.12);
+  }
+
+  &__airline {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    min-width: 140px;
+  }
+
+  &__times {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    flex: 1;
+    justify-content: center;
+
+    @media (max-width: 640px) {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  &__price-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+}
+
+.SkyRoute-airline-logo-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--SkyRoute-radius-sm);
+  color: #4A342A !important;
+  font-weight: 900;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #D7C9B8 !important;
+  border: 1.5px solid #B2967D !important;
+}
+
+.SkyRoute-dest-flight-airline-name {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #4A342A !important;
+}
+
+.SkyRoute-dest-flight-num {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #7D5A44 !important;
+}
+
+.SkyRoute-dest-flight-price {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.55rem;
+  font-weight: 900;
+  color: #4A342A !important;
+}
+
+.SkyRoute-flight-time-point {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 80px;
+
+  .SkyRoute-flight-time {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #4A342A !important;
+    line-height: 1.1;
+  }
+
+  .SkyRoute-flight-city {
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: #7D5A44 !important;
+    letter-spacing: 0.5px;
+  }
+}
+
+.SkyRoute-flight-duration-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 130px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #4A342A !important;
+
+  .SkyRoute-flight-arrow-bar {
+    width: 100%;
+    height: 2px;
+    background-color: #B2967D !important;
+    position: relative;
+    margin: 0.2rem 0;
+
+    &::after {
+      content: '✈';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #F5F1EA !important;
+      padding: 0 4px;
+      font-size: 0.85rem;
+      color: #4A342A !important;
+    }
+  }
+
+  .SkyRoute-flight-stops {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #4A342A !important;
+    background-color: #D7C9B8 !important;
+    border: 1px solid #B2967D !important;
+    padding: 0.15rem 0.55rem;
+    border-radius: var(--SkyRoute-radius-full);
+  }
+}
+
+/* Sidebar Widget */
+.SkyRoute-dest-booking-card {
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: sticky;
+  top: 90px;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.SkyRoute-dest-sidebar-title {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #4A342A !important;
+}
+
+.SkyRoute-dest-sidebar-sub {
+  font-size: 0.92rem;
+  color: #7D5A44 !important;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.SkyRoute-dest-sidebar-price-banner {
+  background-color: #D7C9B8 !important;
+  padding: 1.15rem 1.35rem;
+  border-radius: var(--SkyRoute-radius-sm);
+  border: 1.5px solid #B2967D !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  span {
+    font-size: 0.78rem;
+    color: #7D5A44 !important;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+  }
+}
+
+.SkyRoute-dest-sidebar-fare {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #4A342A !important;
+}
+
+.SkyRoute-dest-sidebar-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.SkyRoute-dest-perk {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4A342A !important;
+}

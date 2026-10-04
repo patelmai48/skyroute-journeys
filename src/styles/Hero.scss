@@ -1,0 +1,106 @@
+/* ==========================================================================
+   SkyRoute Warm Editorial Hero Section Styles
+   ========================================================================== */
+
+.SkyRoute-hero {
+  background: linear-gradient(180deg, var(--SkyRoute-bg, #F5F1EA) 0%, var(--SkyRoute-card-secondary, #D7C9B8) 100%);
+  border-bottom: 1px solid var(--SkyRoute-border, #B2967D);
+  color: var(--SkyRoute-text-main, #4A342A);
+  padding: 5rem 1.5rem 9rem;
+  position: relative;
+  overflow: visible;
+
+  /* Subtle warm travel atmospheric background */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 15% 25%, rgba(178, 150, 125, 0.2) 0%, transparent 50%),
+      radial-gradient(circle at 85% 55%, rgba(215, 201, 184, 0.35) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  &__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: #4A342A;
+    border: 1.5px solid #7D5A44;
+    color: #F5F1EA;
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 0.45rem 1.25rem;
+    border-radius: var(--SkyRoute-radius-full);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 12px rgba(74, 52, 42, 0.2);
+  }
+
+  &__tag-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #B2967D;
+    border-radius: 50%;
+  }
+
+  &__tag-text {
+    font-family: var(--SkyRoute-font-sans);
+  }
+
+  &__title {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 3.6rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+    line-height: 1.12;
+    color: var(--SkyRoute-text-main, #4A342A) !important;
+
+    @media (max-width: 768px) {
+      font-size: 2.5rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 2rem;
+    }
+  }
+
+  &__subtitle {
+    font-family: var(--SkyRoute-font-sans);
+    font-size: 1.15rem;
+    color: var(--SkyRoute-text-secondary, #7D5A44) !important;
+    margin: 0 auto 3rem;
+    max-width: 580px;
+    line-height: 1.6;
+    font-weight: 600;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      margin-bottom: 2.25rem;
+    }
+  }
+
+  &__search-container {
+    position: relative;
+    z-index: 500;
+    margin-bottom: -7rem;
+    overflow: visible !important;
+
+    @media (max-width: 768px) {
+      margin-bottom: -5.5rem;
+    }
+  }
+}

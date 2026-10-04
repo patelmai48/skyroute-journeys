@@ -1,0 +1,487 @@
+/* ==========================================================================
+   SkyRoute Aircraft Seat Selection Styles (Warm 5-Color System)
+   ========================================================================== */
+
+.SkyRoute-seat-selection-container {
+  padding: 2.5rem;
+  background-color: #F5F1EA !important;
+  border-radius: var(--SkyRoute-radius-xl);
+  border: 1.5px solid #B2967D !important;
+  box-shadow: 0 8px 32px rgba(74, 52, 42, 0.08);
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem 1rem;
+  }
+}
+
+.SkyRoute-seat-selection-header {
+  margin-bottom: 1.5rem;
+}
+
+.SkyRoute-seat-selection-title {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #4A342A !important;
+  margin: 0.5rem 0 0.25rem;
+  line-height: 1.2;
+
+  @media (max-width: 768px) {
+    font-size: 1.7rem;
+  }
+}
+
+.SkyRoute-seat-selection-subtitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #7D5A44 !important;
+  margin: 0;
+}
+
+/* Legend Bar */
+.SkyRoute-seat-legend-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding: 1.25rem 1rem;
+  background-color: #D7C9B8;
+  border-radius: var(--SkyRoute-radius-md);
+  border: 1px solid #B2967D;
+  margin-bottom: 2.5rem;
+}
+
+.SkyRoute-seat-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #4A342A !important;
+}
+
+.SkyRoute-seat-sample {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  border: 1.5px solid #B2967D;
+  display: inline-block;
+
+  &--available {
+    background-color: #F5F1EA !important;
+    border-color: #B2967D !important;
+  }
+
+  &--selected {
+    background-color: #4A342A !important;
+    border-color: #4A342A !important;
+  }
+
+  &--occupied {
+    background-color: #B2967D !important;
+    opacity: 0.5;
+  }
+
+  &--legroom {
+    background-color: #D7C9B8 !important;
+    border-color: #7D5A44 !important;
+  }
+
+  &--free {
+    background-color: #F5F1EA !important;
+  }
+}
+
+/* Main Layout Grid */
+.SkyRoute-seat-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 2.5rem;
+  align-items: start;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Aircraft Fuselage */
+.SkyRoute-fuselage-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #D7C9B8 !important;
+  border: 2px solid #B2967D !important;
+  border-radius: 64px 64px 28px 28px;
+  padding: 2.5rem 1.5rem 2.25rem;
+  position: relative;
+  box-shadow: 0 8px 30px rgba(74, 52, 42, 0.1);
+  box-sizing: border-box;
+
+  @media (max-width: 480px) {
+    padding: 1.75rem 0.75rem 1.75rem;
+    border-radius: 44px 44px 20px 20px;
+  }
+}
+
+.SkyRoute-aircraft-nose {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #4A342A !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SkyRoute-cockpit-icon {
+  background-color: #4A342A;
+  color: #F5F1EA;
+  padding: 0.4rem 1.25rem;
+  border-radius: var(--SkyRoute-radius-full);
+  font-size: 0.78rem;
+  letter-spacing: 1.2px;
+}
+
+/* 7-Column Synchronized Layout for Headers and Rows */
+.SkyRoute-cabin-col-headers {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  padding-bottom: 0.85rem;
+  border-bottom: 1.5px solid #B2967D;
+  margin-bottom: 1.25rem;
+  width: 100%;
+
+  @media (max-width: 480px) {
+    gap: 5px !important;
+  }
+}
+
+.SkyRoute-col-letter {
+  width: 44px;
+  min-width: 44px;
+  font-family: var(--SkyRoute-font-sans);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #4A342A !important;
+  text-align: center;
+  flex-shrink: 0;
+
+  @media (max-width: 480px) {
+    width: 36px;
+    min-width: 36px;
+    font-size: 0.85rem;
+  }
+}
+
+.SkyRoute-aisle-label {
+  width: 42px;
+  min-width: 42px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #7D5A44 !important;
+  text-align: center;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+
+  @media (max-width: 480px) {
+    width: 34px;
+    min-width: 34px;
+    font-size: 0.65rem;
+  }
+}
+
+/* Cabin Rows Container */
+.SkyRoute-cabin-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.SkyRoute-cabin-row-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  width: 100%;
+}
+
+.SkyRoute-exit-row-banner {
+  background-color: #4A342A;
+  color: #F5F1EA;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-align: center;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0.25rem 0;
+}
+
+/* Exact 7-Item Row */
+.SkyRoute-cabin-row {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  width: 100%;
+
+  @media (max-width: 480px) {
+    gap: 5px !important;
+  }
+}
+
+.SkyRoute-aisle-row-number {
+  width: 42px;
+  min-width: 42px;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #7D5A44 !important;
+  text-align: center;
+  user-select: none;
+  font-family: var(--SkyRoute-font-sans);
+  flex-shrink: 0;
+
+  @media (max-width: 480px) {
+    width: 34px;
+    min-width: 34px;
+    font-size: 0.78rem;
+  }
+}
+
+/* Seat Button */
+.SkyRoute-seat-btn {
+  width: 44px !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  border-radius: 8px;
+  border: 1.5px solid #B2967D !important;
+  background-color: #F5F1EA !important;
+  color: #4A342A !important;
+  font-family: var(--SkyRoute-font-sans);
+  font-size: 0.82rem !important;
+  font-weight: 800;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0;
+  flex-shrink: 0 !important;
+  transition: transform 0.16s ease, background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+
+  @media (max-width: 480px) {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+  }
+
+  &:hover:not(:disabled) {
+    border-color: #4A342A !important;
+    background-color: #D7C9B8 !important;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(74, 52, 42, 0.18);
+    z-index: 2;
+  }
+
+  &--selected {
+    background-color: #4A342A !important;
+    border-color: #4A342A !important;
+    color: #F5F1EA !important;
+    transform: scale(1.1);
+    box-shadow: 0 4px 16px rgba(74, 52, 42, 0.35);
+    z-index: 3;
+  }
+
+  &--occupied {
+    background-color: #B2967D !important;
+    color: #7D5A44 !important;
+    border-color: #B2967D !important;
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  &--legroom {
+    background-color: #D7C9B8 !important;
+    border-color: #7D5A44 !important;
+    color: #4A342A !important;
+  }
+
+  &--free {
+    background-color: #F5F1EA !important;
+    border-color: #B2967D !important;
+  }
+}
+
+.SkyRoute-seat-num {
+  line-height: 1;
+}
+
+.SkyRoute-aircraft-tail {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1.5px dashed #B2967D;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #7D5A44;
+}
+
+/* ==========================================================================
+   Right Sidebar: Selected Seat Summary Box (Sticky Top Right)
+   ========================================================================== */
+
+.SkyRoute-seat-summary-sidebar {
+  position: sticky;
+  top: 100px;
+  width: 100%;
+}
+
+.SkyRoute-seat-selection-card {
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-lg);
+  padding: 2rem 2.25rem;
+  box-shadow: 0 8px 30px rgba(74, 52, 42, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  box-sizing: border-box;
+
+  &__title {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #4A342A !important;
+    margin: 0;
+    padding-bottom: 0.85rem;
+    border-bottom: 1.5px solid #B2967D;
+  }
+}
+
+.SkyRoute-seat-details-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.SkyRoute-seat-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.SkyRoute-seat-badge-large {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background-color: #4A342A;
+  color: #F5F1EA;
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.9rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(74, 52, 42, 0.25);
+}
+
+.SkyRoute-seat-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.SkyRoute-seat-type {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #4A342A !important;
+  line-height: 1.2;
+}
+
+.SkyRoute-seat-category {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #7D5A44 !important;
+  line-height: 1.3;
+}
+
+.SkyRoute-seat-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid #B2967D;
+}
+
+.SkyRoute-seat-price-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #7D5A44 !important;
+}
+
+.SkyRoute-seat-price-val {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #4A342A !important;
+}
+
+.SkyRoute-seat-empty-hint {
+  padding: 1.5rem 1rem;
+  background-color: #D7C9B8;
+  border-radius: var(--SkyRoute-radius-sm);
+  color: #7D5A44;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.SkyRoute-seat-perks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  background-color: #D7C9B8;
+  border: 1px solid #B2967D;
+  border-radius: var(--SkyRoute-radius-sm);
+  padding: 1.15rem 1.25rem;
+}
+
+.SkyRoute-seat-perk-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #4A342A !important;
+}
+
+.SkyRoute-seat-perk-icon {
+  font-size: 1.05rem;
+}
+
+.SkyRoute-seat-perk-text {
+  line-height: 1.4;
+}
+
+.SkyRoute-seat-sidebar-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 0.35rem;
+}

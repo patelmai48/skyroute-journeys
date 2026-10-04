@@ -1,0 +1,511 @@
+/* ==========================================================================
+   SkyRoute Explore & Destination Discovery Styles
+   ========================================================================== */
+
+.SkyRoute-explore-page {
+  padding-bottom: 5rem;
+}
+
+.SkyRoute-explore-hero {
+  background: linear-gradient(180deg, #F5F1EA 0%, rgba(215, 201, 184, 0.45) 100%);
+  border-bottom: 1.5px solid #B2967D;
+  padding: 3.5rem 0 2.5rem;
+  color: #4A342A;
+  margin-bottom: 2.5rem;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto;
+    gap: 0.75rem;
+  }
+
+  &__title {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #4A342A;
+    line-height: 1.15;
+
+    @media (max-width: 640px) {
+      font-size: 2rem;
+    }
+  }
+
+  &__subtitle {
+    font-family: var(--SkyRoute-font-sans);
+    font-size: 1.05rem;
+    color: #7D5A44;
+    max-width: 600px;
+    margin-bottom: 1rem;
+  }
+}
+
+.SkyRoute-explore-filter-card {
+  width: 100%;
+  background-color: #F5F1EA !important;
+  color: #4A342A;
+  padding: 1.5rem 1.75rem;
+  border-radius: var(--SkyRoute-radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  box-shadow: 0 4px 16px rgba(74, 52, 42, 0.08);
+  border: 1.5px solid #B2967D !important;
+  box-sizing: border-box;
+}
+
+.SkyRoute-explore-search-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-sm);
+  padding: 0.85rem 1.25rem;
+  transition: all var(--SkyRoute-transition-fast);
+
+  &:focus-within {
+    border-color: #7D5A44 !important;
+    box-shadow: 0 0 0 2px rgba(125, 90, 68, 0.2);
+  }
+}
+
+.SkyRoute-explore-search-icon {
+  font-size: 1.15rem;
+  color: #7D5A44;
+}
+
+.SkyRoute-explore-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: #4A342A !important;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: var(--SkyRoute-font-sans);
+  outline: none;
+
+  &::placeholder {
+    color: #7D5A44 !important;
+    font-weight: 600;
+    opacity: 1 !important;
+  }
+}
+
+.SkyRoute-explore-clear-btn {
+  background: none;
+  border: none;
+  color: #7D5A44;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 0.25rem;
+
+  &:hover {
+    color: #4A342A;
+  }
+}
+
+.SkyRoute-explore-budget-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.SkyRoute-budget-slider-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 250px;
+}
+
+.SkyRoute-budget-label {
+  font-size: 0.88rem;
+  color: #7D5A44;
+  white-space: nowrap;
+
+  strong {
+    color: #4A342A;
+  }
+}
+
+.SkyRoute-budget-range {
+  flex: 1;
+  accent-color: #4A342A;
+  cursor: pointer;
+}
+
+.SkyRoute-explore-count-tag {
+  font-size: 0.88rem;
+  color: #4A342A;
+  background-color: #D7C9B8;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--SkyRoute-radius-full);
+  border: 1.5px solid #B2967D;
+
+  strong {
+    color: #4A342A;
+  }
+}
+
+/* Category Filter Tabs */
+.SkyRoute-explore-categories-section {
+  margin-bottom: 2rem;
+}
+
+.SkyRoute-category-tabs-row {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding: 0.5rem 0 1rem;
+  scrollbar-width: none;
+  flex-wrap: wrap;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.SkyRoute-cat-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: var(--SkyRoute-radius-full);
+  border: 1.5px solid #B2967D !important;
+  background-color: #F5F1EA !important;
+  color: #4A342A !important;
+  font-family: var(--SkyRoute-font-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--SkyRoute-transition-fast);
+  box-shadow: 0 2px 8px rgba(74, 52, 42, 0.08);
+
+  &:hover {
+    border-color: #7D5A44 !important;
+    background-color: #D7C9B8 !important;
+    transform: translateY(-1px);
+  }
+
+  &--active {
+    background-color: #7D5A44 !important;
+    color: #F5F1EA !important;
+    border-color: #7D5A44 !important;
+    font-weight: 800;
+    box-shadow: 0 4px 14px rgba(125, 90, 68, 0.35);
+  }
+
+  &__icon {
+    font-size: 1.1rem;
+  }
+}
+
+/* Results Header */
+.SkyRoute-explore-results-header {
+  margin-bottom: 1.75rem;
+}
+
+.SkyRoute-explore-results-title {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #4A342A;
+  margin-bottom: 0.35rem;
+}
+
+.SkyRoute-explore-count {
+  font-family: var(--SkyRoute-font-sans);
+  color: #7D5A44;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.SkyRoute-explore-results-sub {
+  font-size: 0.95rem;
+  color: #B2967D;
+}
+
+/* Destination Discovery Cards Grid - Big, Roomy, No Overflow */
+.SkyRoute-explore-dest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.SkyRoute-destination-explorer-card {
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: 20px;
+  overflow: hidden !important;
+  box-shadow: 0 10px 32px rgba(74, 52, 42, 0.08);
+  transition: transform var(--SkyRoute-transition-normal), box-shadow var(--SkyRoute-transition-normal), border-color var(--SkyRoute-transition-normal);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 38px rgba(74, 52, 42, 0.14);
+    border-color: #7D5A44 !important;
+
+    .SkyRoute-destination-explorer-card__image {
+      transform: scale(1.04);
+    }
+  }
+
+  &__image-wrap {
+    position: relative;
+    height: 250px;
+    overflow: hidden !important;
+    background-color: #D7C9B8;
+    box-sizing: border-box;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  &__flag-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 38px;
+    height: 38px;
+    border-radius: var(--SkyRoute-radius-full);
+    background-color: #F5F1EA;
+    border: 1.5px solid #B2967D;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  }
+
+  &__flag-emoji {
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+
+  &__cat-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-color: #4A342A;
+    color: #F5F1EA;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--SkyRoute-radius-full);
+    border: 1px solid #B2967D;
+    letter-spacing: 0.05em;
+  }
+
+  &__body {
+    padding: 1.75rem 1.85rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1rem;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  &__title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    min-width: 0;
+  }
+
+  &__city {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--SkyRoute-text-main, #4A342A);
+    line-height: 1.2;
+    margin: 0;
+    min-width: 0;
+    word-break: break-word;
+  }
+
+  &__country {
+    font-size: 0.95rem;
+    color: var(--SkyRoute-text-secondary, #7D5A44);
+    font-weight: 700;
+  }
+
+  &__code-badge {
+    background-color: var(--SkyRoute-card-secondary, #D7C9B8);
+    color: var(--SkyRoute-text-main, #4A342A);
+    font-family: var(--SkyRoute-font-mono, monospace);
+    font-weight: 800;
+    font-size: 0.92rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--SkyRoute-radius-sm);
+    border: 1.5px solid var(--SkyRoute-border, #B2967D);
+  }
+
+  &__description {
+    font-size: 0.94rem;
+    color: var(--SkyRoute-text-main, #4A342A);
+    line-height: 1.55;
+    font-weight: 500;
+    margin: 0;
+    word-break: break-word;
+  }
+
+  &__stats-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    background-color: var(--SkyRoute-card-secondary, #D7C9B8) !important;
+    padding: 1rem 1.25rem;
+    border-radius: var(--SkyRoute-radius-sm);
+    border: 1.5px solid var(--SkyRoute-border, #B2967D) !important;
+
+    @media (max-width: 480px) {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+  }
+
+  &__attractions-box {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding-top: 0.25rem;
+  }
+
+  &__attractions-title {
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--SkyRoute-text-secondary, #7D5A44) !important;
+  }
+
+  &__attractions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  &__attraction-bullet {
+    font-size: 0.9rem;
+    color: var(--SkyRoute-text-main, #4A342A);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: auto;
+    padding-top: 0.85rem;
+    border-top: 1.5px solid #B2967D;
+
+    .SkyRoute-btn {
+      width: 100%;
+      justify-content: center;
+      background-color: #4A342A !important;
+      color: #F5F1EA !important;
+      border: 1.5px solid #4A342A !important;
+      border-radius: 12px;
+      transition: background-color var(--SkyRoute-transition-fast);
+
+      &:hover {
+        background-color: #7D5A44 !important;
+        border-color: #7D5A44 !important;
+      }
+    }
+  }
+}
+
+.SkyRoute-bullet-dot {
+  color: #7D5A44;
+  font-weight: 900;
+}
+
+.SkyRoute-destination-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  &__label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #7D5A44 !important;
+  }
+
+  &__value {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #4A342A !important;
+    white-space: nowrap;
+  }
+
+  &__price {
+    color: #4A342A !important;
+    font-size: 1.35rem;
+    font-weight: 900;
+  }
+}
+
+.SkyRoute-explore-empty {
+  padding: 3rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: #F5F1EA !important;
+  border-radius: var(--SkyRoute-radius-md);
+  border: 1.5px solid #B2967D !important;
+
+  &__icon {
+    font-size: 3rem;
+    color: #7D5A44;
+  }
+
+  h3 {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 1.5rem;
+    color: #4A342A !important;
+    margin: 0;
+  }
+
+  p {
+    color: #7D5A44 !important;
+    max-width: 500px;
+    margin: 0;
+  }
+}

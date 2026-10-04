@@ -1,0 +1,603 @@
+/* ==========================================================================
+   SkyRoute Modern Header & Navigation Styles
+   ========================================================================== */
+
+.SkyRoute-header {
+  background-color: var(--SkyRoute-header-bg, #F5F1EA);
+  border-bottom: 1.5px solid var(--SkyRoute-border, #B2967D);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 16px rgba(74, 52, 42, 0.08);
+  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+
+  &__container {
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      padding: 0.65rem 1rem;
+    }
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    outline: none;
+    flex-shrink: 0;
+
+    &:hover .SkyRoute-header__logo-icon {
+      transform: scale(1.05);
+    }
+  }
+
+  &__logo-icon {
+    width: 38px;
+    height: 38px;
+    background: #4A342A;
+    color: #F5F1EA;
+    border-radius: var(--SkyRoute-radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(74, 52, 42, 0.25);
+    transition: transform 0.2s ease;
+  }
+
+  &__brand-name {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #4A342A;
+    letter-spacing: -0.5px;
+    font-family: var(--SkyRoute-font-sans);
+  }
+
+  &__brand-accent {
+    color: #7D5A44;
+  }
+
+  /* Center Nav Items */
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media (max-width: 1100px) {
+      display: none;
+    }
+  }
+
+  &__nav-item {
+    background: transparent;
+    border: none;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #4A342A;
+    padding: 0.5rem 0.85rem;
+    border-radius: var(--SkyRoute-radius-full);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+
+    &:hover {
+      background-color: rgba(178, 150, 125, 0.2);
+      color: #B2967D;
+    }
+
+    &--active {
+      background-color: #7D5A44 !important;
+      color: #F5F1EA !important;
+      font-weight: 700;
+    }
+  }
+
+  &__item-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    background-color: #D7C9B8;
+    color: #4A342A;
+    padding: 0.12rem 0.45rem;
+    border-radius: 9999px;
+  }
+
+  /* Right Actions */
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  &__notif-wrapper {
+    position: relative;
+  }
+
+  &__icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--SkyRoute-radius-sm);
+    background-color: #D7C9B8;
+    border: 1.5px solid #B2967D;
+    color: #4A342A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &--active {
+      background-color: #7D5A44 !important;
+      border-color: #7D5A44 !important;
+      color: #F5F1EA !important;
+    }
+  }
+
+  &__notif-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background-color: #B2967D;
+    color: #4A342A;
+    font-size: 0.68rem;
+    font-weight: 800;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #F5F1EA;
+  }
+
+  /* Profile Menu */
+  &__profile-container {
+    position: relative;
+
+    @media (max-width: 640px) {
+      display: none;
+    }
+  }
+
+  &__profile-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.75rem 0.35rem 0.45rem;
+    border-radius: var(--SkyRoute-radius-full);
+    border: 1px solid var(--SkyRoute-border, #B2967D);
+    background-color: var(--SkyRoute-card-secondary, #D7C9B8);
+    color: var(--SkyRoute-text-main, #4A342A);
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &--active {
+      border-color: #7D5A44;
+      background-color: #B2967D;
+      color: #4A342A;
+    }
+  }
+
+  &__avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #4A342A;
+    color: #F5F1EA;
+    font-size: 0.78rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  &__profile-name {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__profile-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 240px;
+    background-color: var(--SkyRoute-card-bg, #F5F1EA);
+    border: 1px solid var(--SkyRoute-border, #B2967D);
+    border-radius: var(--SkyRoute-radius-md);
+    box-shadow: var(--SkyRoute-shadow-lg);
+    padding: 0.5rem;
+    z-index: 200;
+    animation: fadeIn 0.18s ease-out;
+  }
+
+  &__dropdown-user-info {
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+
+    strong {
+      font-size: 0.92rem;
+      color: var(--SkyRoute-text-main, #4A342A);
+    }
+
+    span {
+      font-size: 0.78rem;
+      color: var(--SkyRoute-text-secondary, #7D5A44);
+      word-break: break-all;
+    }
+  }
+
+  &__dropdown-divider {
+    height: 1px;
+    background-color: var(--SkyRoute-border, #B2967D);
+    margin: 0.35rem 0;
+  }
+
+  &__dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border-radius: var(--SkyRoute-radius-sm);
+    border: none;
+    background: transparent;
+    color: var(--SkyRoute-text-main, #4A342A);
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover {
+      background-color: var(--SkyRoute-hover, #D7C9B8);
+      color: var(--SkyRoute-text-main, #4A342A);
+    }
+
+    &--logout {
+      color: #7D5A44;
+
+      &:hover {
+        background-color: #B2967D;
+        color: #4A342A;
+      }
+    }
+  }
+
+  &__hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--SkyRoute-text-main, #4A342A);
+    padding: 0.35rem;
+    border-radius: var(--SkyRoute-radius-xs);
+    cursor: pointer;
+
+    @media (max-width: 1100px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  /* Mobile Drawer */
+  &__mobile-drawer {
+    display: none;
+
+    @media (max-width: 1100px) {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: var(--SkyRoute-card-bg, #F5F1EA);
+      border-bottom: 1px solid var(--SkyRoute-border, #B2967D);
+      box-shadow: var(--SkyRoute-shadow-lg);
+      padding: 1rem 1.25rem 1.5rem;
+      max-height: 80vh;
+      overflow-y: auto;
+      animation: fadeIn 0.2s ease-out;
+    }
+  }
+
+  &__mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
+  }
+
+  &__mobile-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: var(--SkyRoute-radius-sm);
+    border: none;
+    background: transparent;
+    color: var(--SkyRoute-text-main, #4A342A);
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--SkyRoute-hover, #D7C9B8);
+      color: var(--SkyRoute-text-main, #4A342A);
+    }
+
+    &--active {
+      background-color: #7D5A44;
+      color: #F5F1EA;
+      font-weight: 700;
+    }
+  }
+
+  &__mobile-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--SkyRoute-border, #B2967D);
+  }
+
+  &__mobile-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Notification Panel Dropdown */
+.SkyRoute-notif-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 380px;
+  background-color: var(--SkyRoute-card-bg, #F5F1EA);
+  border: 1px solid var(--SkyRoute-border, #B2967D);
+  border-radius: var(--SkyRoute-radius-md);
+  box-shadow: var(--SkyRoute-shadow-lg);
+  display: flex;
+  flex-direction: column;
+  z-index: 250;
+  animation: fadeIn 0.18s ease-out;
+  overflow: hidden;
+
+  @media (max-width: 480px) {
+    width: calc(100vw - 32px);
+    right: -60px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background-color: var(--SkyRoute-card-bg, #F5F1EA);
+    border-bottom: 1px solid var(--SkyRoute-border, #B2967D);
+  }
+
+  &__title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  &__title {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--SkyRoute-text-main, #4A342A);
+    margin: 0;
+  }
+
+  &__badge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    background-color: #4A342A;
+    color: #F5F1EA;
+    padding: 0.15rem 0.5rem;
+    border-radius: var(--SkyRoute-radius-full);
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  &__action-btn {
+    background: transparent;
+    border: none;
+    font-family: var(--SkyRoute-font-sans);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--SkyRoute-text-secondary, #7D5A44);
+    cursor: pointer;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+
+    &:hover {
+      color: var(--SkyRoute-text-main, #4A342A);
+      background-color: var(--SkyRoute-hover, #D7C9B8);
+    }
+
+    &--clear {
+      color: var(--SkyRoute-text-secondary, #7D5A44);
+
+      &:hover {
+        color: #4A342A;
+      }
+    }
+  }
+
+  &__list {
+    max-height: 380px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__empty {
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.35rem;
+  }
+
+  &__empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__empty-text {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--SkyRoute-text-main, #4A342A);
+    margin: 0;
+  }
+
+  &__empty-sub {
+    font-size: 0.82rem;
+    color: var(--SkyRoute-text-secondary, #7D5A44);
+  }
+
+  &__footer {
+    padding: 0.75rem 1rem;
+    background-color: var(--SkyRoute-card-secondary, #D7C9B8);
+    border-top: 1px solid var(--SkyRoute-border, #B2967D);
+    text-align: center;
+  }
+
+  &__view-all-btn {
+    background: transparent;
+    border: none;
+    font-family: var(--SkyRoute-font-sans);
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--SkyRoute-text-main, #4A342A);
+    cursor: pointer;
+    width: 100%;
+    padding: 0.35rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.SkyRoute-notif-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.95rem 1.25rem;
+  border-bottom: 1px solid var(--SkyRoute-border, #B2967D);
+  cursor: pointer;
+  transition: all var(--SkyRoute-transition-fast);
+  position: relative;
+  background-color: var(--SkyRoute-card-bg, #F5F1EA);
+
+  &:hover {
+    background-color: var(--SkyRoute-card-secondary, #D7C9B8);
+  }
+
+  &--unread {
+    background-color: rgba(178, 150, 125, 0.15);
+    border-left: 3.5px solid #4A342A;
+  }
+
+  &__icon-box {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--SkyRoute-radius-sm);
+    background-color: var(--SkyRoute-card-secondary, #D7C9B8);
+    border: 1px solid var(--SkyRoute-border, #B2967D);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  &__title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--SkyRoute-text-main, #4A342A);
+  }
+
+  &__time {
+    font-size: 0.72rem;
+    color: var(--SkyRoute-text-secondary, #7D5A44);
+    white-space: nowrap;
+  }
+
+  &__message {
+    font-size: 0.8rem;
+    color: var(--SkyRoute-text-secondary, #7D5A44);
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  &__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #7D5A44;
+    position: absolute;
+    top: 1rem;
+    right: 0.75rem;
+  }
+}

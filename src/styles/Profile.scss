@@ -1,0 +1,478 @@
+/* ==========================================================================
+   SkyRoute User Profile & Settings Styles (Brand Theme Preserved)
+   ========================================================================== */
+
+.SkyRoute-profile-page {
+  padding: 2.25rem 0 5rem;
+  background-color: var(--SkyRoute-bg);
+  min-height: calc(100vh - 72px - 200px);
+}
+
+/* Hero Header Card */
+.SkyRoute-profile-hero-card {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  padding: 2.25rem 2.5rem;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  box-shadow: 0 4px 20px rgba(74, 52, 42, 0.08);
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+}
+
+.SkyRoute-profile-avatar-box {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: #7D5A44 !important;
+  color: #F5F1EA !important;
+  font-size: 1.65rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 14px rgba(74, 52, 42, 0.15);
+}
+
+.SkyRoute-profile-hero-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.SkyRoute-profile-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.SkyRoute-profile-name {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #4A342A !important;
+  margin: 0;
+}
+
+.SkyRoute-profile-sub {
+  font-size: 0.9rem;
+  color: #7D5A44 !important;
+  margin: 0;
+}
+
+.SkyRoute-profile-points-box {
+  background-color: #D7C9B8 !important;
+  border: 1px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  padding: 1rem 1.5rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.SkyRoute-points-label {
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #7D5A44 !important;
+}
+
+.SkyRoute-points-value {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #4A342A !important;
+}
+
+/* 2-Column Profile Layout */
+.SkyRoute-profile-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.SkyRoute-profile-nav-col {
+  position: sticky;
+  top: 90px;
+}
+
+.SkyRoute-profile-nav-menu {
+  padding: 0.75rem;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  box-shadow: 0 4px 20px rgba(74, 52, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  box-sizing: border-box;
+}
+
+.SkyRoute-profile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: var(--SkyRoute-radius-sm);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--SkyRoute-transition-fast);
+  font-family: var(--SkyRoute-font-sans);
+  color: #7D5A44 !important;
+
+  &:hover {
+    background-color: #D7C9B8 !important;
+    color: #4A342A !important;
+  }
+
+  &--active {
+    background-color: #7D5A44 !important;
+    color: #F5F1EA !important;
+    box-shadow: 0 4px 12px rgba(125, 90, 68, 0.3);
+
+    .SkyRoute-profile-tab-text strong {
+      color: #F5F1EA !important;
+    }
+
+    .SkyRoute-profile-tab-text span {
+      color: #F5F1EA !important;
+    }
+
+    &:hover {
+      background-color: #4A342A !important;
+    }
+  }
+}
+
+.SkyRoute-profile-tab-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.SkyRoute-profile-tab-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+
+  strong {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #4A342A !important;
+  }
+
+  span {
+    font-size: 0.78rem;
+    color: #7D5A44 !important;
+  }
+}
+
+/* Main Content Panel */
+.SkyRoute-profile-content-card {
+  padding: 2.5rem;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  box-shadow: 0 4px 20px rgba(74, 52, 42, 0.08);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.SkyRoute-profile-content-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #B2967D !important;
+  margin-bottom: 1.75rem;
+}
+
+.SkyRoute-profile-section-title {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4A342A !important;
+  margin: 0 0 0.35rem;
+}
+
+.SkyRoute-profile-section-desc {
+  font-size: 0.88rem;
+  color: #7D5A44 !important;
+  margin: 0;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.SkyRoute-profile-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.35rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.SkyRoute-profile-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #B2967D !important;
+}
+
+/* Co-Traveller Cards Grid */
+.SkyRoute-travellers-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.SkyRoute-traveller-card {
+  padding: 1.75rem;
+  background-color: #D7C9B8 !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  transition: all var(--SkyRoute-transition-fast);
+  box-sizing: border-box;
+
+  &:hover {
+    border-color: #7D5A44 !important;
+    background-color: #F5F1EA !important;
+    box-shadow: 0 4px 14px rgba(74, 52, 42, 0.12);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  &__avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #7D5A44 !important;
+    color: #F5F1EA !important;
+    font-weight: 800;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #4A342A !important;
+    display: block;
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    font-size: 0.85rem;
+    color: #7D5A44 !important;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.65rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #B2967D !important;
+  }
+}
+
+.SkyRoute-tr-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  span {
+    color: #7D5A44 !important;
+  }
+
+  strong {
+    color: #4A342A !important;
+  }
+}
+
+/* Preferences Switches */
+.SkyRoute-pref-divider {
+  height: 1px;
+  background-color: #B2967D !important;
+  margin: 1.75rem 0;
+}
+
+.SkyRoute-pref-subtitle {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #4A342A !important;
+  margin: 0 0 1.25rem;
+}
+
+.SkyRoute-notification-toggles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.SkyRoute-toggle-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.15rem 1.35rem;
+  background-color: #D7C9B8 !important;
+  border: 1px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-sm);
+  cursor: pointer;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+    strong {
+      font-size: 0.95rem;
+      color: #4A342A !important;
+    }
+
+    span {
+      font-size: 0.82rem;
+      color: #7D5A44 !important;
+    }
+  }
+
+  input[type="checkbox"] {
+    accent-color: #7D5A44;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+}
+
+/* Realistic Payment Cards Grid */
+.SkyRoute-saved-cards-visual-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.SkyRoute-realistic-card {
+  border-radius: var(--SkyRoute-radius-md);
+  padding: 1.75rem;
+  color: #F5F1EA;
+  box-shadow: var(--SkyRoute-shadow-md);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__chip {
+    width: 40px;
+    height: 30px;
+    background: linear-gradient(135deg, #B2967D 0%, #B2967D 100%);
+    border-radius: 4px;
+    margin: 0.5rem 0;
+  }
+
+  &__number {
+    font-family: monospace;
+    font-size: 1.3rem;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__footer-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+.SkyRoute-card-bank-name {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.SkyRoute-card-network-badge {
+  font-weight: 800;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.SkyRoute-card-sub-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 1px;
+  opacity: 0.75;
+}
+
+.SkyRoute-card-val {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.SkyRoute-card-remove-btn {
+  background: transparent;
+  border: none;
+  color: #D7C9B8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 4px 8px;
+
+  &:hover {
+    color: #7D5A44;
+    text-decoration: underline;
+  }
+}

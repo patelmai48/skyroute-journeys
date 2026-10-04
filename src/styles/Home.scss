@@ -1,0 +1,482 @@
+/* ==========================================================================
+   SkyRoute Home Page Styles
+   ========================================================================== */
+
+.SkyRoute-home {
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+  padding-bottom: 5rem;
+}
+
+/* 2. Categories Bar */
+.SkyRoute-home-categories {
+  margin-top: -1.5rem;
+  position: relative;
+  z-index: 5;
+}
+
+.SkyRoute-categories-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background-color: #F5F1EA;
+  border: 1.5px solid #B2967D;
+  border-radius: var(--SkyRoute-radius-full);
+  padding: 0.85rem 1.5rem;
+  box-shadow: 0 8px 24px rgba(74, 52, 42, 0.08);
+  overflow-x: auto;
+
+  @media (max-width: 768px) {
+    border-radius: var(--SkyRoute-radius-md);
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.SkyRoute-categories-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #7D5A44;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.SkyRoute-categories-list {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.SkyRoute-category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1rem;
+  background-color: #D7C9B8;
+  color: #4A342A;
+  border: 1px solid #B2967D;
+  border-radius: var(--SkyRoute-radius-full);
+  font-family: var(--SkyRoute-font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--SkyRoute-transition-fast);
+
+  &__icon {
+    font-size: 1rem;
+  }
+
+  &:hover {
+    background-color: #7D5A44;
+    border-color: #4A342A;
+    color: #F5F1EA;
+    transform: translateY(-1px);
+  }
+}
+
+/* 3. Popular Destinations Grid - Big Roomy Cards */
+.SkyRoute-dest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.SkyRoute-dest-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden !important;
+  border-radius: 20px;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  box-shadow: 0 10px 30px rgba(74, 52, 42, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 38px rgba(74, 52, 42, 0.12);
+    border-color: #7D5A44 !important;
+
+    .SkyRoute-dest-card__image {
+      transform: scale(1.06);
+    }
+
+    .SkyRoute-dest-card__circle-arrow {
+      background-color: #4A342A;
+      transform: scale(1.1);
+    }
+  }
+
+  &__image-box {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden !important;
+    background-color: #D7C9B8;
+    box-sizing: border-box;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  &__category-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background-color: #4A342A;
+    color: #F5F1EA;
+    font-size: 0.76rem;
+    font-weight: 800;
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--SkyRoute-radius-full);
+    border: 1px solid #7D5A44;
+    letter-spacing: 0.6px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    max-width: calc(100% - 28px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__overlay-price {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    background-color: rgba(74, 52, 42, 0.94);
+    color: #F5F1EA;
+    padding: 0.45rem 0.95rem;
+    border-radius: var(--SkyRoute-radius-sm);
+    border: 1px solid #7D5A44;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    max-width: calc(100% - 28px);
+  }
+
+  &__from {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #D7C9B8;
+  }
+
+  &__price {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #F5F1EA;
+    line-height: 1.1;
+  }
+
+  /* Card Body - Spacious and zero overflow */
+  &__body,
+  &__info-body {
+    padding: 1.75rem 1.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.95rem;
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  &__header-row,
+  &__name-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    min-width: 0;
+  }
+
+  &__title,
+  &__name {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: #4A342A !important;
+    margin: 0 0 0.35rem;
+    line-height: 1.2;
+    min-width: 0;
+    word-break: break-word;
+  }
+
+  &__country {
+    font-size: 0.95rem;
+    color: #7D5A44;
+    font-weight: 700;
+    display: block;
+  }
+
+  &__circle-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #7D5A44;
+    border: 1px solid #B2967D;
+    color: #F5F1EA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    font-weight: 800;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all var(--SkyRoute-transition-fast);
+  }
+
+  &__tagline {
+    font-size: 0.95rem;
+    color: #7D5A44;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 500;
+    word-break: break-word;
+  }
+
+  &__meta-pills {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 0.6rem;
+  }
+}
+
+.SkyRoute-dest-meta-pill {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #4A342A;
+  background-color: #D7C9B8;
+  border: 1.5px solid #B2967D;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--SkyRoute-radius-full);
+}
+
+/* 4. Special Offers Promotional Banner */
+.SkyRoute-home-offers {
+  width: 100%;
+}
+
+.SkyRoute-offers-banner-card {
+  background: linear-gradient(135deg, #4A342A 0%, #7D5A44 100%);
+  color: #F5F1EA;
+  border: 1.5px solid #B2967D;
+  border-radius: var(--SkyRoute-radius-lg);
+  padding: 2.75rem 3.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  box-shadow: 0 10px 30px rgba(74, 52, 42, 0.15);
+
+  @media (max-width: 860px) {
+    flex-direction: column;
+    text-align: center;
+    padding: 2.25rem 1.5rem;
+  }
+
+  &__title {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #F5F1EA;
+    margin: 0.5rem 0 0.35rem;
+  }
+
+  &__desc {
+    font-size: 1.05rem;
+    color: #F5F1EA;
+    max-width: 620px;
+    line-height: 1.55;
+    margin: 0;
+
+    .SkyRoute-code-highlight {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 1rem;
+      color: #F5F1EA;
+      font-weight: 800;
+      border: 1px dashed rgba(255, 255, 255, 0.4);
+    }
+  }
+}
+
+/* 5. Plan Your Journey Better Grid */
+.SkyRoute-plan-better-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.SkyRoute-plan-better-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.SkyRoute-plan-card {
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  padding: 1.75rem 2rem;
+  box-shadow: 0 8px 24px rgba(74, 52, 42, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 1.35rem;
+  cursor: pointer;
+  transition: all var(--SkyRoute-transition-fast);
+
+  &:hover {
+    border-color: #7D5A44 !important;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(74, 52, 42, 0.12);
+
+    .SkyRoute-plan-card__arrow {
+      color: #4A342A;
+      transform: translateX(5px);
+    }
+  }
+
+  &__icon-wrap {
+    width: 54px;
+    height: 54px;
+    border-radius: var(--SkyRoute-radius-sm);
+    background-color: #D7C9B8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #B2967D;
+    flex-shrink: 0;
+  }
+
+  &__icon {
+    font-size: 1.6rem;
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  &__title {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #4A342A !important;
+    margin: 0;
+  }
+
+  &__desc {
+    font-size: 0.9rem;
+    color: #7D5A44 !important;
+    line-height: 1.45;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  &__arrow {
+    font-size: 1.35rem;
+    font-weight: 900;
+    color: #7D5A44;
+    transition: all var(--SkyRoute-transition-fast);
+  }
+}
+
+/* Features Grid */
+.SkyRoute-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 860px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.SkyRoute-feature-card {
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-md);
+  padding: 2.25rem 2rem;
+  box-shadow: 0 8px 24px rgba(74, 52, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all var(--SkyRoute-transition-fast);
+
+  &:hover {
+    border-color: #7D5A44 !important;
+    transform: translateY(-3px);
+  }
+
+  &__icon {
+    width: 52px;
+    height: 52px;
+    border-radius: var(--SkyRoute-radius-sm);
+    background-color: #D7C9B8;
+    color: #4A342A;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #B2967D;
+  }
+
+  &__title {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #4A342A !important;
+  }
+
+  &__desc {
+    font-size: 0.94rem;
+    color: #7D5A44 !important;
+    line-height: 1.55;
+    font-weight: 500;
+  }
+}

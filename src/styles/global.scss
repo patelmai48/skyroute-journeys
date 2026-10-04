@@ -1,0 +1,720 @@
+/* ==========================================================================
+   SkyRoute Core Brand Design System Tokens & Global Styles
+   Exact 5-Color Warm Neutral Palette:
+   1. LINEN    #F5F1EA - Main light page background & light card surfaces
+   2. KHAKI    #D7C9B8 - Secondary background, form cards, soft surfaces
+   3. CAMEL    #B2967D - Accent / highlight, active badges, borders
+   4. COCOA    #7D5A44 - Secondary brand action, secondary buttons, active nav
+   5. ESPRESSO #4A342A - Primary dark brand, headings, primary buttons, night background
+   ========================================================================== */
+
+:root {
+  /* 5-Color Palette Tokens */
+  --color-linen: #F5F1EA;
+  --color-khaki: #D7C9B8;
+  --color-camel: #B2967D;
+  --color-cocoa: #7D5A44;
+  --color-espresso: #4A342A;
+
+  /* Global Design System Tokens (Day Mode Defaults) */
+  --color-primary: #4A342A;
+  --color-secondary: #7D5A44;
+  --color-tertiary: #B2967D;
+
+  --color-bg-deep: #D7C9B8;
+  --color-bg-accent: #D7C9B8;
+  --color-bg-light: #F5F1EA;
+
+  /* Aliases for backwards compatibility */
+  --color-dark: #4A342A;
+  --color-teal: #7D5A44;
+  --color-blue-gray: #B2967D;
+  --color-lavender-gray: #D7C9B8;
+  --color-mauve: #D7C9B8;
+  --color-light-gray: #F5F1EA;
+
+  /* Website Background (Day Mode) */
+  --SkyRoute-bg: #F5F1EA;
+  --SkyRoute-bg-subtle: #D7C9B8;
+  --SkyRoute-bg-deep: #B2967D;
+
+  /* Cards & Surfaces (Day Mode) */
+  --SkyRoute-surface: #F5F1EA;
+  --SkyRoute-card-bg: #F5F1EA;
+  --SkyRoute-card-secondary: #D7C9B8;
+  --SkyRoute-card-deep: #B2967D;
+  --SkyRoute-card-elevated: #F5F1EA;
+  --SkyRoute-sidebar-bg: #D7C9B8;
+  --SkyRoute-sidebar-bottom-bg: #D7C9B8;
+
+  /* Navbar / Header */
+  --SkyRoute-header-bg: #F5F1EA;
+
+  /* UI / Component Colors */
+  --SkyRoute-navy: #4A342A;
+  --SkyRoute-navy-hover: #7D5A44;
+  --SkyRoute-teal: #7D5A44;
+  --SkyRoute-teal-hover: #4A342A;
+  --SkyRoute-teal-light: #D7C9B8;
+  --SkyRoute-sky-blue: #B2967D;
+  --SkyRoute-sky-blue-hover: #7D5A44;
+  --SkyRoute-beige: #D7C9B8;
+  --SkyRoute-white: #F5F1EA;
+  --SkyRoute-rose: #7D5A44;
+  --SkyRoute-rose-hover: #4A342A;
+  --SkyRoute-rose-light: #D7C9B8;
+  --SkyRoute-lavender: #B2967D;
+  --SkyRoute-mauve: #D7C9B8;
+  --SkyRoute-charcoal: #4A342A;
+  --SkyRoute-stone: #B2967D;
+  --SkyRoute-latte: #7D5A44;
+  --SkyRoute-dark-brown: #4A342A;
+
+  /* Buttons */
+  --SkyRoute-primary: #4A342A;
+  --SkyRoute-primary-hover: #7D5A44;
+  --SkyRoute-primary-light: #D7C9B8;
+  --SkyRoute-primary-text: #F5F1EA;
+
+  --SkyRoute-secondary: #7D5A44;
+  --SkyRoute-secondary-hover: #4A342A;
+  --SkyRoute-secondary-light: #B2967D;
+  --SkyRoute-secondary-text: #F5F1EA;
+
+  --SkyRoute-accent: #B2967D;
+  --SkyRoute-accent-hover: #7D5A44;
+  --SkyRoute-accent-light: #D7C9B8;
+
+  /* Typography */
+  --SkyRoute-text-main: #4A342A;
+  --SkyRoute-text: #4A342A;
+  --SkyRoute-text-secondary: #7D5A44;
+  --SkyRoute-text-muted: #B2967D;
+  --SkyRoute-card-text-main: #4A342A;
+  --SkyRoute-card-text: #4A342A;
+  --SkyRoute-card-text-secondary: #7D5A44;
+  --SkyRoute-card-text-muted: #B2967D;
+
+  /* Borders & Dividers */
+  --SkyRoute-border: #B2967D;
+  --SkyRoute-border-light: #D7C9B8;
+  --SkyRoute-border-focus: #7D5A44;
+
+  /* Inputs & Forms */
+  --SkyRoute-input-bg: #F5F1EA;
+  --SkyRoute-input-border: #B2967D;
+  --SkyRoute-input-text: #4A342A;
+  --SkyRoute-input-placeholder: #7D5A44;
+  --SkyRoute-hover: rgba(125, 90, 68, 0.1);
+
+  /* Chips & Navigation */
+  --SkyRoute-chip-bg: #D7C9B8;
+  --SkyRoute-chip-text: #4A342A;
+  --SkyRoute-chip-active-bg: #7D5A44;
+  --SkyRoute-chip-active-text: #F5F1EA;
+
+  --SkyRoute-nav-active-bg: #7D5A44;
+  --SkyRoute-nav-active-text: #F5F1EA;
+  --SkyRoute-nav-hover-bg: rgba(178, 150, 125, 0.2);
+
+  /* Status Colors (Muted / Harmonious) */
+  --SkyRoute-success: #7D5A44;
+  --SkyRoute-success-bg: rgba(93, 122, 88, 0.15);
+  --SkyRoute-success-border: #7D5A44;
+  --SkyRoute-info: #7D5A44;
+  --SkyRoute-info-bg: rgba(125, 90, 68, 0.15);
+  --SkyRoute-info-border: #B2967D;
+  --SkyRoute-warning: #B2967D;
+  --SkyRoute-warning-bg: rgba(178, 131, 68, 0.15);
+  --SkyRoute-warning-border: #B2967D;
+  --SkyRoute-danger: #7D5A44;
+  --SkyRoute-danger-bg: rgba(158, 75, 62, 0.15);
+  --SkyRoute-danger-border: #7D5A44;
+
+  /* Shadows */
+  --SkyRoute-shadow-xs: 0 1px 3px rgba(74, 52, 42, 0.05);
+  --SkyRoute-shadow-sm: 0 2px 8px rgba(74, 52, 42, 0.07);
+  --SkyRoute-shadow-card: 0 4px 18px rgba(74, 52, 42, 0.08);
+  --SkyRoute-shadow-md: 0 8px 24px rgba(74, 52, 42, 0.1);
+  --SkyRoute-shadow-lg: 0 16px 36px rgba(74, 52, 42, 0.14);
+
+  color-scheme: light;
+}
+
+:root {
+  /* Typography */
+  --SkyRoute-font-serif: "Playfair Display", "DM Serif Display", Georgia, serif;
+  --SkyRoute-font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --SkyRoute-font-family: var(--SkyRoute-font-sans);
+  --sky-font-family: var(--SkyRoute-font-sans);
+
+  /* Radii */
+  --SkyRoute-radius-xs: 6px;
+  --SkyRoute-radius-sm: 10px;
+  --SkyRoute-radius-md: 14px;
+  --SkyRoute-radius-lg: 18px;
+  --SkyRoute-radius-xl: 24px;
+  --SkyRoute-radius-full: 9999px;
+
+  /* Transitions */
+  --SkyRoute-transition-fast: 0.15s ease;
+  --SkyRoute-transition-normal: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: #F5F1EA;
+  background-image: linear-gradient(180deg, #F5F1EA 0%, rgba(215, 201, 184, 0.45) 45%, rgba(178, 150, 125, 0.2) 100%);
+  background-attachment: fixed;
+  color: #4A342A;
+  font-family: var(--SkyRoute-font-sans);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.28s ease, color 0.28s ease;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+input,
+select,
+textarea {
+  font-family: var(--SkyRoute-font-sans);
+  color: var(--SkyRoute-input-text, #4A342A);
+
+  &::placeholder {
+    color: var(--SkyRoute-input-placeholder, #7D5A44) !important;
+    font-weight: 600;
+    opacity: 1 !important;
+  }
+}
+
+/* Serif Headings */
+h1, h2, h3, .SkyRoute-serif {
+  font-family: var(--SkyRoute-font-serif);
+  color: #4A342A;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Base App Shell */
+.SkyRoute-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #F5F1EA;
+  background-image: linear-gradient(180deg, #F5F1EA 0%, rgba(215, 201, 184, 0.45) 45%, rgba(178, 150, 125, 0.2) 100%);
+  background-attachment: fixed;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.SkyRoute-main {
+  flex: 1;
+  width: 100%;
+}
+
+.SkyRoute-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+}
+
+/* Universal Button Styles */
+.SkyRoute-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--SkyRoute-font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.65rem 1.45rem;
+  border-radius: var(--SkyRoute-radius-full);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all var(--SkyRoute-transition-fast);
+  text-decoration: none;
+  outline: none;
+  white-space: nowrap;
+  user-select: none;
+  box-sizing: border-box;
+
+  &:focus-visible {
+    box-shadow: 0 0 0 3px rgba(125, 90, 68, 0.35);
+  }
+
+  /* Primary Button - #4A342A (Espresso) */
+  &--primary {
+    background-color: #4A342A;
+    color: #F5F1EA;
+    border-color: #4A342A;
+    box-shadow: 0 3px 12px rgba(74, 52, 42, 0.2);
+
+    &:hover {
+      background-color: #7D5A44;
+      border-color: #7D5A44;
+      transform: translateY(-1px);
+      box-shadow: 0 5px 16px rgba(74, 52, 42, 0.28);
+    }
+
+    &:active {
+      transform: translateY(0);
+      background-color: #4A342A;
+    }
+  }
+
+  /* Secondary Button - #7D5A44 (Cocoa) */
+  &--secondary,
+  &--teal,
+  &--latte {
+    background-color: #7D5A44;
+    color: #F5F1EA;
+    border-color: #7D5A44;
+    box-shadow: 0 3px 12px rgba(125, 90, 68, 0.25);
+
+    &:hover {
+      background-color: #4A342A;
+      border-color: #4A342A;
+      transform: translateY(-1px);
+      box-shadow: 0 5px 16px rgba(74, 52, 42, 0.28);
+    }
+
+    &:active {
+      transform: translateY(0);
+      background-color: #7D5A44;
+    }
+  }
+
+  /* Outline / Subtle Button - #7D5A44 / #B2967D */
+  &--outline,
+  &--subtle {
+    background-color: transparent;
+    border-color: #7D5A44;
+    color: #4A342A;
+    font-weight: 700;
+
+    &:hover {
+      background-color: #D7C9B8;
+      border-color: #4A342A;
+      color: #4A342A;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+      background-color: #F5F1EA;
+    }
+  }
+
+  /* Ghost Button */
+  &--ghost {
+    background-color: transparent;
+    border-color: transparent;
+    color: #7D5A44;
+    font-weight: 700;
+
+    &:hover {
+      background-color: rgba(215, 201, 184, 0.4);
+      color: #4A342A;
+    }
+  }
+
+  &--sm {
+    font-size: 0.84rem;
+    padding: 0.45rem 1rem;
+    border-radius: var(--SkyRoute-radius-full);
+  }
+
+  &--lg {
+    font-size: 1.05rem;
+    padding: 0.95rem 2rem;
+    border-radius: var(--SkyRoute-radius-full);
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Card Foundation - Sits on Warm Linen & Khaki Palette */
+.SkyRoute-card,
+.SkyRoute-summary-card,
+.SkyRoute-flight-card,
+.SkyRoute-itinerary-card,
+.SkyRoute-info-card,
+.SkyRoute-baggage-card,
+.SkyRoute-fare-summary-card,
+.SkyRoute-dest-card,
+.SkyRoute-destination-explorer-card,
+.SkyRoute-sidebar-summary,
+.SkyRoute-hotel-card,
+.SkyRoute-traveller-card,
+.SkyRoute-boarding-pass-card,
+.SkyRoute-payment-methods-card,
+.SkyRoute-coupon-card,
+.SkyRoute-ai-form-card,
+.SkyRoute-ai-day-card,
+.SkyRoute-about-overview-card,
+.SkyRoute-about-step-card,
+.SkyRoute-about-feature-card,
+.SkyRoute-about-tech-card,
+.SkyRoute-about-purpose-card,
+.SkyRoute-about-cta-card,
+.SkyRoute-dashboard-stat-card,
+.SkyRoute-dashboard-action-card,
+.SkyRoute-filters-card,
+.SkyRoute-popular-card,
+.SkyRoute-feature-card,
+.SkyRoute-plan-card,
+.SkyRoute-dest-card-box,
+.SkyRoute-trip-card,
+.SkyRoute-packing-block,
+.SkyRoute-group-block,
+.SkyRoute-budget-block,
+.SkyRoute-seat-selection-container,
+.SkyRoute-seat-summary-box,
+.SkyRoute-insurance-plan-card,
+.SkyRoute-offer-card,
+.SkyRoute-status-search-card,
+.SkyRoute-status-result-card,
+.SkyRoute-pnr-form-card,
+.SkyRoute-manage-result-card,
+.SkyRoute-create-alert-card,
+.SkyRoute-alert-item-card,
+.SkyRoute-profile-hero-card,
+.SkyRoute-profile-content-card,
+.SkyRoute-notif-card,
+.SkyRoute-login-card,
+.SkyRoute-exp-card,
+.SkyRoute-hotel-mini-card,
+.SkyRoute-flight-box {
+  background-color: #F5F1EA !important;
+  color: #4A342A;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-lg);
+  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  transition: all var(--SkyRoute-transition-normal);
+  box-sizing: border-box !important;
+  position: relative;
+  min-width: 0;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #4A342A !important;
+  }
+
+  p {
+    color: #4A342A;
+  }
+
+  img {
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Highlighted card surface (#D7C9B8 - Khaki) */
+  &--accent,
+  &--highlighted {
+    background-color: #D7C9B8 !important;
+    border-color: #B2967D !important;
+  }
+
+  /* Deeper card section (#B2967D - Camel) */
+  &--secondary,
+  &--deep {
+    background-color: #B2967D !important;
+    border-color: #7D5A44 !important;
+    color: #F5F1EA;
+  }
+
+  &--interactive {
+    cursor: pointer;
+
+    &:hover {
+      border-color: #7D5A44 !important;
+      box-shadow: 0 8px 26px rgba(74, 52, 42, 0.12);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+
+
+/* Badges & Tags */
+.SkyRoute-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.22rem 0.65rem;
+  border-radius: var(--SkyRoute-radius-full);
+  background-color: var(--SkyRoute-card-secondary, #D7C9B8);
+  color: var(--SkyRoute-text-main, #4A342A);
+  border: 1px solid var(--SkyRoute-border, #B2967D);
+
+  &--rose,
+  &--accent {
+    background-color: var(--color-camel, #B2967D);
+    color: var(--color-espresso, #4A342A);
+    border-color: var(--color-cocoa, #7D5A44);
+  }
+
+  &--teal,
+  &--latte {
+    background-color: var(--color-khaki, #D7C9B8);
+    color: var(--color-espresso, #4A342A);
+    border-color: var(--color-camel, #B2967D);
+  }
+
+  &--sky,
+  &--blue {
+    background-color: var(--color-cocoa, #7D5A44);
+    color: var(--color-linen, #F5F1EA);
+    border-color: var(--color-espresso, #4A342A);
+  }
+
+  &--success {
+    background-color: var(--color-khaki, #D7C9B8);
+    color: var(--color-espresso, #4A342A);
+    border-color: var(--color-camel, #B2967D);
+  }
+
+  &--warning {
+    background-color: var(--color-camel, #B2967D);
+    color: var(--color-espresso, #4A342A);
+    border-color: var(--color-cocoa, #7D5A44);
+  }
+
+  &--danger {
+    background-color: var(--color-cocoa, #7D5A44);
+    color: var(--color-linen, #F5F1EA);
+    border-color: var(--color-espresso, #4A342A);
+  }
+}
+
+/* Section Header */
+.SkyRoute-section-header {
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  &__left {
+    max-width: 650px;
+  }
+
+  &__tag {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--SkyRoute-text-secondary, #7D5A44);
+    margin-bottom: 0.35rem;
+  }
+
+  &__title {
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: var(--SkyRoute-text-main, #4A342A);
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+
+    @media (max-width: 768px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1rem;
+    color: var(--SkyRoute-text-secondary, #7D5A44);
+    font-weight: 600;
+    font-family: var(--SkyRoute-font-sans);
+  }
+}
+
+/* Modal Overlay Base */
+.SkyRoute-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(74, 52, 42, 0.65);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.2s ease-out;
+
+  @media (max-width: 640px) {
+    padding: 0.75rem;
+  }
+}
+
+.SkyRoute-modal {
+  background-color: var(--SkyRoute-card-bg, #F5F1EA);
+  border: 1px solid var(--SkyRoute-border, #B2967D);
+  border-radius: var(--SkyRoute-radius-lg);
+  box-shadow: var(--SkyRoute-shadow-lg);
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalScale 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &__header {
+    padding: 1.25rem 1.75rem;
+    border-bottom: 1px solid var(--SkyRoute-border, #B2967D);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--SkyRoute-text-main, #4A342A);
+    font-family: var(--SkyRoute-font-serif);
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--SkyRoute-text-secondary, #7D5A44);
+    cursor: pointer;
+    line-height: 1;
+    padding: 0.25rem;
+    border-radius: 6px;
+
+    &:hover {
+      color: var(--SkyRoute-text-main, #4A342A);
+      background-color: var(--SkyRoute-hover, #D7C9B8);
+    }
+  }
+
+  &__body {
+    padding: 1.75rem;
+    overflow-y: auto;
+    flex: 1;
+    color: var(--SkyRoute-text-main, #4A342A);
+  }
+
+  &__footer {
+    padding: 1.25rem 1.75rem;
+    border-top: 1px solid var(--SkyRoute-border, #B2967D);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    background-color: var(--SkyRoute-card-secondary, #D7C9B8);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalScale {
+  from { opacity: 0; transform: scale(0.97) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Toast Notifications Container */
+.SkyRoute-toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+  max-width: 420px;
+  width: calc(100% - 32px);
+}
+
+.SkyRoute-toast-item {
+  pointer-events: auto;
+  background-color: #4A342A;
+  color: #F5F1EA;
+  border: 1px solid #7D5A44;
+  border-radius: var(--SkyRoute-radius-sm);
+  padding: 0.85rem 1.15rem;
+  box-shadow: var(--SkyRoute-shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+
+  &--error {
+    background-color: #7D5A44;
+    border-color: #B2967D;
+    color: #F5F1EA;
+  }
+
+  &--info {
+    background-color: #4A342A;
+    border-color: #B2967D;
+    color: #F5F1EA;
+  }
+}
+
+.SkyRoute-toast-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.SkyRoute-toast-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  flex: 1;
+}
+
+.SkyRoute-toast-close {
+  background: none;
+  border: none;
+  color: rgba(245, 241, 234, 0.75);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0.25rem;
+
+  &:hover {
+    color: #F5F1EA;
+  }
+}
+
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

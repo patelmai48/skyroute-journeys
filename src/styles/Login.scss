@@ -1,0 +1,233 @@
+/* ==========================================================================
+   SkyRoute Authentication & Login/Signup Styles
+   ========================================================================== */
+
+.SkyRoute-login-page {
+  background-color: var(--SkyRoute-bg);
+  min-height: calc(100vh - 72px - 200px);
+  padding: 3rem 1.5rem 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SkyRoute-login-container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.SkyRoute-login-card {
+  padding: 2.75rem 2.25rem;
+  background-color: #F5F1EA !important;
+  border: 1.5px solid #B2967D !important;
+  border-radius: var(--SkyRoute-radius-lg);
+  box-shadow: 0 8px 30px rgba(74, 52, 42, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+.SkyRoute-login-brand-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.SkyRoute-login-logo-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--SkyRoute-radius-sm);
+  background-color: #4A342A !important;
+  color: #F5F1EA !important;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(74, 52, 42, 0.15);
+}
+
+.SkyRoute-login-card-title {
+  font-family: var(--SkyRoute-font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #4A342A !important;
+  margin: 0.25rem 0 0;
+}
+
+.SkyRoute-login-card-sub {
+  font-size: 0.88rem;
+  color: #7D5A44 !important;
+  line-height: 1.45;
+}
+
+/* Auth Tabs */
+.SkyRoute-auth-tab-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  background-color: #D7C9B8 !important;
+  padding: 4px;
+  border-radius: var(--SkyRoute-radius-sm);
+  border: 1px solid #B2967D !important;
+}
+
+.SkyRoute-auth-tab-btn {
+  padding: 0.6rem;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  font-family: var(--SkyRoute-font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #7D5A44 !important;
+  cursor: pointer;
+  transition: all var(--SkyRoute-transition-fast);
+
+  &:hover {
+    color: #4A342A !important;
+  }
+
+  &--active {
+    background-color: #7D5A44 !important;
+    color: #F5F1EA !important;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(74, 52, 42, 0.2);
+  }
+}
+
+/* Google Sign-in Button */
+.SkyRoute-google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: var(--SkyRoute-radius-sm);
+  border: 1.5px solid #B2967D !important;
+  background-color: #F5F1EA !important;
+  color: #4A342A !important;
+  font-family: var(--SkyRoute-font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--SkyRoute-transition-fast);
+
+  &:hover {
+    border-color: #7D5A44 !important;
+    background-color: #D7C9B8 !important;
+  }
+}
+
+.SkyRoute-auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #7D5A44 !important;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #B2967D;
+  }
+
+  span {
+    padding: 0 0.75rem;
+  }
+}
+
+.SkyRoute-auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.SkyRoute-field-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.SkyRoute-forgot-link {
+  background: none;
+  border: none;
+  color: #7D5A44 !important;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    color: #4A342A !important;
+    text-decoration: underline;
+  }
+}
+
+.SkyRoute-error-msg {
+  font-size: 0.75rem;
+  color: var(--SkyRoute-danger);
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.SkyRoute-remember-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #4A342A !important;
+
+  input[type="checkbox"] {
+    accent-color: #7D5A44;
+  }
+}
+
+.SkyRoute-auth-footer {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid #B2967D !important;
+  font-size: 0.88rem;
+  color: #7D5A44 !important;
+}
+
+.SkyRoute-switch-mode-btn {
+  background: none;
+  border: none;
+  color: #4A342A !important;
+  font-weight: 700;
+  cursor: pointer;
+
+  &:hover {
+    color: #7D5A44 !important;
+    text-decoration: underline;
+  }
+}
+
+.SkyRoute-alert-banner {
+  padding: 0.75rem 1rem;
+  border-radius: var(--SkyRoute-radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &--success {
+    background-color: var(--SkyRoute-success-bg);
+    color: var(--SkyRoute-success);
+    border: 1px solid var(--SkyRoute-success-border);
+  }
+
+  &--error {
+    background-color: var(--SkyRoute-danger-bg);
+    color: var(--SkyRoute-danger);
+    border: 1px solid var(--SkyRoute-danger-border);
+  }
+}
