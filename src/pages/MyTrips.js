@@ -44,7 +44,24 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
     }
   });
   const [newItemText, setNewItemText] = useState('');
-  const [newItemCat, setNewItemCat] = useState('Essentials');
+
+  // Auto-detect category from item text (e.g. "cloths" -> "Clothing")
+  const detectCategory = (text) => {
+    const lower = text.toLowerCase();
+    if (/cloth|shirt|pant|dress|t-shirt|tshirt|short|jacket|swim|hoodie|sock|shoe|jeans|skirt|sari|kurta|towel|hat|cap|sandal|trouser/i.test(lower)) {
+      return 'Clothing';
+    }
+    if (/passport|id|visa|ticket|pass|license|licence|doc|insurance|card|aadhar|voter|pan|paper|voucher/i.test(lower)) {
+      return 'Documents';
+    }
+    if (/phone|laptop|charger|power|battery|camera|headphone|earphone|airpod|ipad|tablet|cable|adapter|plug|gadget|kindle/i.test(lower)) {
+      return 'Electronics';
+    }
+    if (/medicine|sunscreen|sanitizer|first aid|tablet|pill|ointment|cream|mask|bandaid|bandage|brush|paste|soap|shampoo|lotion|spray/i.test(lower)) {
+      return 'Health';
+    }
+    return 'Essentials';
+  };
 
   // Group Trip Expenses State
   const [groupExpenses, setGroupExpenses] = useState(() => {
@@ -141,39 +158,21 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
     if (e && e.preventDefault) e.preventDefault();
     const trimmed = newItemText.trim();
     if (!trimmed) {
-      showToast('Please type an item name (e.g. Sunglasses, Power Bank) first.', 'error');
+      showToast('Please type an item name (e.g. Clothes, Sunglasses, Charger) first.', 'error');
       return;
     }
+    const detectedCategory = detectCategory(trimmed);
     setPackingList((prev) => [
       ...prev,
       {
         id: `p-${Date.now()}`,
         label: trimmed,
-        category: newItemCat || 'Essentials',
+        category: detectedCategory,
         completed: false
       }
     ]);
     setNewItemText('');
-    showToast(`"${trimmed}" added to packing checklist.`, 'success');
-  };
-
-  const handleQuickAdd = (label, category = 'Essentials') => {
-    setPackingList((prev) => {
-      if (prev.some((p) => p.label.toLowerCase() === label.toLowerCase())) {
-        showToast(`"${label}" is already in your packing list.`, 'info');
-        return prev;
-      }
-      showToast(`"${label}" added to packing checklist.`, 'success');
-      return [
-        ...prev,
-        {
-          id: `p-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
-          label,
-          category,
-          completed: false
-        }
-      ];
-    });
+    showToast(`"${trimmed}" added to ${detectedCategory} list.`, 'success');
   };
 
   const handleDeletePackingItem = (id) => {
@@ -482,52 +481,22 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
               </div>
             </div>
 
-            {/* Add New Item Form */}
+            {/* Add New Item Form - Single Search Input & Add Item Button */}
             <form className="SkyRoute-packing-add-form" onSubmit={handleAddPackingItem}>
-              <input
-                type="text"
-                className="SkyRoute-text-input"
-                placeholder="Add new packing item (e.g. Waterproof Camera Case)..."
-                value={newItemText}
-                onChange={(e) => setNewItemText(e.target.value)}
-              />
-              <select
-                className="SkyRoute-select-input"
-                value={newItemCat}
-                onChange={(e) => setNewItemCat(e.target.value)}
-              >
-                <option value="Essentials">Essentials</option>
-                <option value="Documents">Documents</option>
-                <option value="Clothing">Clothing</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Health">Health</option>
-              </select>
-              <button type="submit" className="SkyRoute-btn SkyRoute-btn--primary">
+              <div className="SkyRoute-packing-input-wrap">
+                <span className="SkyRoute-packing-input-icon">🔍</span>
+                <input
+                  type="text"
+                  className="SkyRoute-text-input SkyRoute-packing-search-input"
+                  placeholder="Type packing item (e.g. Clothes, Sunglasses, Passport)..."
+                  value={newItemText}
+                  onChange={(e) => setNewItemText(e.target.value)}
+                />
+              </div>
+              <button type="submit" className="SkyRoute-btn SkyRoute-btn--primary SkyRoute-packing-submit-btn">
                 + Add Item
               </button>
             </form>
-
-            {/* Quick 1-Tap Suggestion Chips */}
-            <div className="SkyRoute-packing-quick-chips">
-              <span className="SkyRoute-packing-quick-label">⚡ Quick Add:</span>
-              {[
-                { name: 'Sunscreen SPF 50', cat: 'Health' },
-                { name: 'Power Bank', cat: 'Electronics' },
-                { name: 'Sunglasses', cat: 'Essentials' },
-                { name: 'Swimwear', cat: 'Clothing' },
-                { name: 'First Aid Kit', cat: 'Health' },
-                { name: 'Earphones / AirPods', cat: 'Electronics' },
-              ].map((s) => (
-                <button
-                  key={s.name}
-                  type="button"
-                  className="SkyRoute-chip SkyRoute-chip--sm"
-                  onClick={() => handleQuickAdd(s.name, s.cat)}
-                >
-                  + {s.name}
-                </button>
-              ))}
-            </div>
 
             {/* 3-Column Checklist Grid */}
             <div className="SkyRoute-packing-items-grid">
