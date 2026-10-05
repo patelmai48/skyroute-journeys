@@ -435,16 +435,11 @@
     box-shadow: 0 16px 48px rgba(74, 52, 42, 0.28) !important;
     border: 2px solid #7D5A44 !important;
     border-radius: 16px !important;
-    top: calc(100% + 6px) !important;
 
     @media (max-width: 640px) {
-      left: 50% !important;
-      right: auto !important;
-      transform: translateX(-50%) !important;
       width: min(350px, 94vw) !important;
       min-width: 290px !important;
       max-width: 360px !important;
-      top: calc(100% + 6px) !important;
     }
   }
 
