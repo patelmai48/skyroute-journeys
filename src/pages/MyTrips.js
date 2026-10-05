@@ -138,20 +138,42 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
   };
 
   const handleAddPackingItem = (e) => {
-    e.preventDefault();
-    if (newItemText.trim()) {
-      setPackingList([
-        ...packingList,
+    if (e && e.preventDefault) e.preventDefault();
+    const trimmed = newItemText.trim();
+    if (!trimmed) {
+      showToast('Please type an item name (e.g. Sunglasses, Power Bank) first.', 'error');
+      return;
+    }
+    setPackingList((prev) => [
+      ...prev,
+      {
+        id: `p-${Date.now()}`,
+        label: trimmed,
+        category: newItemCat || 'Essentials',
+        completed: false
+      }
+    ]);
+    setNewItemText('');
+    showToast(`"${trimmed}" added to packing checklist.`, 'success');
+  };
+
+  const handleQuickAdd = (label, category = 'Essentials') => {
+    setPackingList((prev) => {
+      if (prev.some((p) => p.label.toLowerCase() === label.toLowerCase())) {
+        showToast(`"${label}" is already in your packing list.`, 'info');
+        return prev;
+      }
+      showToast(`"${label}" added to packing checklist.`, 'success');
+      return [
+        ...prev,
         {
-          id: `p-${Date.now()}`,
-          label: newItemText.trim(),
-          category: newItemCat,
+          id: `p-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
+          label,
+          category,
           completed: false
         }
-      ]);
-      setNewItemText('');
-      showToast('Packing item added successfully.', 'success');
-    }
+      ];
+    });
   };
 
   const handleDeletePackingItem = (id) => {
@@ -164,22 +186,30 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
   const perPersonSplit = Math.round(groupTotalExpense / groupMembers.length);
 
   const handleAddGroupExpense = (e) => {
-    e.preventDefault();
-    if (newExpTitle.trim() && Number(newExpAmount) > 0) {
-      setGroupExpenses([
-        ...groupExpenses,
-        {
-          id: `exp-${Date.now()}`,
-          title: newExpTitle.trim(),
-          amount: Number(newExpAmount),
-          paidBy: newExpPaidBy,
-          category: 'General'
-        }
-      ]);
-      setNewExpTitle('');
-      setNewExpAmount('');
-      showToast('Expense added successfully.', 'success');
+    if (e && e.preventDefault) e.preventDefault();
+    const trimmedTitle = newExpTitle.trim();
+    if (!trimmedTitle) {
+      showToast('Please enter an expense description.', 'error');
+      return;
     }
+    const numAmount = Number(newExpAmount);
+    if (!numAmount || numAmount <= 0) {
+      showToast('Please enter a valid expense amount in ₹.', 'error');
+      return;
+    }
+    setGroupExpenses((prev) => [
+      ...prev,
+      {
+        id: `exp-${Date.now()}`,
+        title: trimmedTitle,
+        amount: numAmount,
+        paidBy: newExpPaidBy || 'You',
+        category: 'General'
+      }
+    ]);
+    setNewExpTitle('');
+    setNewExpAmount('');
+    showToast(`Expense "${trimmedTitle}" (₹${numAmount.toLocaleString('en-IN')}) added.`, 'success');
   };
 
   const handleDeleteGroupExpense = (id) => {
@@ -476,6 +506,28 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
                 + Add Item
               </button>
             </form>
+
+            {/* Quick 1-Tap Suggestion Chips */}
+            <div className="SkyRoute-packing-quick-chips">
+              <span className="SkyRoute-packing-quick-label">⚡ Quick Add:</span>
+              {[
+                { name: 'Sunscreen SPF 50', cat: 'Health' },
+                { name: 'Power Bank', cat: 'Electronics' },
+                { name: 'Sunglasses', cat: 'Essentials' },
+                { name: 'Swimwear', cat: 'Clothing' },
+                { name: 'First Aid Kit', cat: 'Health' },
+                { name: 'Earphones / AirPods', cat: 'Electronics' },
+              ].map((s) => (
+                <button
+                  key={s.name}
+                  type="button"
+                  className="SkyRoute-chip SkyRoute-chip--sm"
+                  onClick={() => handleQuickAdd(s.name, s.cat)}
+                >
+                  + {s.name}
+                </button>
+              ))}
+            </div>
 
             {/* 3-Column Checklist Grid */}
             <div className="SkyRoute-packing-items-grid">
