@@ -416,12 +416,13 @@
 .SkyRoute-packing-add-form {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 2rem;
+  gap: 1rem;
+  margin-bottom: 2.25rem;
 
   @media (max-width: 640px) {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.85rem;
   }
 }
 
@@ -430,37 +431,112 @@
   flex: 1;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .SkyRoute-packing-input-icon {
   position: absolute;
-  left: 1rem;
-  font-size: 1rem;
+  left: 1.25rem;
+  font-size: 1.25rem;
   line-height: 1;
   pointer-events: none;
-  opacity: 0.75;
+  color: var(--SkyRoute-text-secondary, #7D5A44);
+  z-index: 2;
 }
 
 .SkyRoute-packing-search-input {
   width: 100%;
-  padding-left: 2.75rem !important;
-  font-size: 1rem !important;
-  font-weight: 600 !important;
-  height: 48px !important;
-  border-radius: var(--SkyRoute-radius-md) !important;
+  padding-left: 3.25rem !important;
+  padding-right: 3rem !important;
+  font-family: var(--SkyRoute-font-sans) !important;
+  font-size: 1.15rem !important;
+  font-weight: 700 !important;
+  height: 58px !important;
+  border-radius: var(--SkyRoute-radius-full) !important;
+  border: 2px solid var(--SkyRoute-border, #B2967D) !important;
+  background-color: #F5F1EA !important;
+  color: var(--SkyRoute-text-main, #4A342A) !important;
+  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08) !important;
+  transition: all var(--SkyRoute-transition-fast) !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+
+  &::placeholder {
+    color: var(--SkyRoute-text-secondary, #7D5A44) !important;
+    font-weight: 600 !important;
+    opacity: 0.85 !important;
+    font-size: 1.05rem !important;
+  }
+
+  &:hover {
+    border-color: #7D5A44 !important;
+    box-shadow: 0 6px 22px rgba(74, 52, 42, 0.12) !important;
+  }
+
+  &:focus {
+    border-color: #4A342A !important;
+    background-color: #F5F1EA !important;
+    box-shadow: 0 0 0 3px rgba(125, 90, 68, 0.25) !important;
+  }
+
+  @media (max-width: 640px) {
+    height: 52px !important;
+    font-size: 1rem !important;
+    padding-left: 3rem !important;
+    border-radius: var(--SkyRoute-radius-md) !important;
+
+    &::placeholder {
+      font-size: 0.92rem !important;
+    }
+  }
+}
+
+.SkyRoute-packing-clear-btn {
+  position: absolute;
+  right: 1.15rem;
+  background: transparent;
+  border: none;
+  color: var(--SkyRoute-text-secondary, #7D5A44);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--SkyRoute-transition-fast);
+  z-index: 2;
+
+  &:hover {
+    color: var(--SkyRoute-danger, #7D5A44);
+  }
 }
 
 .SkyRoute-packing-submit-btn {
-  height: 48px !important;
-  padding: 0 1.75rem !important;
-  font-size: 1rem !important;
+  height: 58px !important;
+  padding: 0 2.25rem !important;
+  font-size: 1.08rem !important;
   font-weight: 800 !important;
   white-space: nowrap;
   flex-shrink: 0;
-  border-radius: var(--SkyRoute-radius-md) !important;
+  border-radius: var(--SkyRoute-radius-full) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  box-shadow: 0 4px 16px rgba(74, 52, 42, 0.22) !important;
+  transition: all var(--SkyRoute-transition-fast) !important;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(74, 52, 42, 0.32) !important;
+  }
 
   @media (max-width: 640px) {
+    height: 50px !important;
     width: 100%;
+    border-radius: var(--SkyRoute-radius-md) !important;
   }
 }
 

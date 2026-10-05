@@ -481,20 +481,32 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
               </div>
             </div>
 
-            {/* Add New Item Form - Single Search Input & Add Item Button */}
+            {/* Add New Item Form - Big Prominent Search Bar & Add Item Button */}
             <form className="SkyRoute-packing-add-form" onSubmit={handleAddPackingItem}>
               <div className="SkyRoute-packing-input-wrap">
                 <span className="SkyRoute-packing-input-icon">🔍</span>
                 <input
                   type="text"
-                  className="SkyRoute-text-input SkyRoute-packing-search-input"
-                  placeholder="Type packing item (e.g. Clothes, Sunglasses, Passport)..."
+                  className="SkyRoute-packing-search-input"
+                  placeholder="Type any packing item (e.g. Clothes, Shoes, Passport, Charger)..."
                   value={newItemText}
                   onChange={(e) => setNewItemText(e.target.value)}
+                  autoComplete="off"
                 />
+                {newItemText && (
+                  <button
+                    type="button"
+                    className="SkyRoute-packing-clear-btn"
+                    onClick={() => setNewItemText('')}
+                    title="Clear"
+                  >
+                    &times;
+                  </button>
+                )}
               </div>
               <button type="submit" className="SkyRoute-btn SkyRoute-btn--primary SkyRoute-packing-submit-btn">
-                + Add Item
+                <span>+ Add Item</span>
+                <span>→</span>
               </button>
             </form>
 
