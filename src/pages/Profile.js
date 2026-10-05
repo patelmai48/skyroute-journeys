@@ -119,7 +119,7 @@ const Profile = ({ onNavigate }) => {
               expiry: '08/28',
               holder: 'MAHI PATEL',
               isDefault: true,
-              color: 'linear-gradient(135deg, #4A342A 0%, #7D5A44 100%)'
+              color: 'linear-gradient(135deg, #173F3A 0%, #4F7C73 100%)'
             },
             {
               id: 'card-2',
@@ -130,7 +130,7 @@ const Profile = ({ onNavigate }) => {
               expiry: '11/29',
               holder: 'MAHI PATEL',
               isDefault: false,
-              color: 'linear-gradient(135deg, #7D5A44 0%, #B2967D 100%)'
+              color: 'linear-gradient(135deg, #4F7C73 0%, #8FAFA6 100%)'
             }
           ];
     } catch (e) {
@@ -294,7 +294,7 @@ const Profile = ({ onNavigate }) => {
       expiry: cardForm.expiry || '12/28',
       holder: (cardForm.holder || userInfo.fullName).toUpperCase(),
       isDefault: paymentCards.length === 0,
-      color: 'linear-gradient(135deg, #4A342A 0%, #7D5A44 100%)'
+      color: 'linear-gradient(135deg, #173F3A 0%, #4F7C73 100%)'
     };
 
     setPaymentCards((prev) => [...prev, newCard]);
@@ -561,7 +561,7 @@ const Profile = ({ onNavigate }) => {
                           <button
                             type="button"
                             className="SkyRoute-btn SkyRoute-btn--outline SkyRoute-btn--sm"
-                            style={{ borderColor: '#7D5A44', color: '#7D5A44' }}
+                            style={{ borderColor: '#4F7C73', color: '#4F7C73' }}
                             onClick={() => handleDeleteTraveller(tr.id)}
                           >
                             Remove
@@ -748,7 +748,7 @@ const Profile = ({ onNavigate }) => {
                             <button
                               type="button"
                               className="SkyRoute-btn SkyRoute-btn--outline SkyRoute-btn--xs"
-                              style={{ color: '#F5F1EA', borderColor: 'rgba(255,255,255,0.4)', background: 'transparent' }}
+                              style={{ color: '#F5F7F2', borderColor: 'rgba(255,255,255,0.4)', background: 'transparent' }}
                               onClick={() => handleSetDefaultCard(card.id)}
                             >
                               Set as Default

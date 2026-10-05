@@ -24,10 +24,10 @@
 /* Left Column: Create Alert Card */
 .SkyRoute-create-alert-card {
   padding: 2.5rem;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 20px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 20px rgba(23, 63, 58, 0.08);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -48,13 +48,13 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.5rem;
   font-weight: 700;
-  color: #4A342A !important;
+  color: #173F3A !important;
   margin: 0.25rem 0 0;
 }
 
 .SkyRoute-create-alert-sub {
   font-size: 0.9rem;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
   line-height: 1.45;
   margin: 0;
 }
@@ -67,7 +67,7 @@
 
 .SkyRoute-field-helper {
   font-size: 0.76rem;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
   margin-top: 0.15rem;
 }
 
@@ -76,12 +76,12 @@
   align-items: center;
   gap: 0.65rem;
   font-size: 0.88rem;
-  color: #4A342A !important;
+  color: #173F3A !important;
   cursor: pointer;
   user-select: none;
 
   input[type="checkbox"] {
-    accent-color: #7D5A44;
+    accent-color: #4F7C73;
     width: 17px;
     height: 17px;
   }
@@ -96,13 +96,13 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.45rem;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #173F3A !important;
   margin: 0;
 }
 
 .SkyRoute-alerts-count {
   font-family: var(--SkyRoute-font-sans);
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
   font-size: 1.15rem;
   font-weight: 700;
 }
@@ -115,10 +115,10 @@
 
 .SkyRoute-alert-item-card {
   padding: 2rem;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 20px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 20px rgba(23, 63, 58, 0.08);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -127,9 +127,9 @@
   overflow: hidden;
 
   &:hover {
-    border-color: #7D5A44 !important;
+    border-color: #4F7C73 !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(74, 52, 42, 0.12);
+    box-shadow: 0 8px 30px rgba(23, 63, 58, 0.12);
   }
 
   &__header {
@@ -138,7 +138,7 @@
     justify-content: space-between;
     gap: 1rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid #B2967D !important;
+    border-bottom: 1px solid #8FAFA6 !important;
     flex-wrap: wrap;
   }
 
@@ -152,10 +152,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
-    background-color: #D7C9B8 !important;
+    background-color: #DDE8E3 !important;
     padding: 1rem 1.25rem;
     border-radius: var(--SkyRoute-radius-sm);
-    border: 1px solid #B2967D !important;
+    border: 1px solid #8FAFA6 !important;
 
     @media (max-width: 540px) {
       grid-template-columns: 1fr;
@@ -174,20 +174,20 @@
 
 .SkyRoute-alert-route-icon {
   font-size: 1.4rem;
-  color: #4A342A !important;
+  color: #173F3A !important;
 }
 
 .SkyRoute-alert-route-title {
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.25rem;
   font-weight: 700;
-  color: #4A342A !important;
+  color: #173F3A !important;
   margin: 0;
 }
 
 .SkyRoute-alert-date-sub {
   font-size: 0.8rem;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
   display: block;
 }
 
@@ -201,19 +201,19 @@
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
 }
 
 .SkyRoute-alert-curr-val {
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.35rem;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #173F3A !important;
 }
 
 .SkyRoute-alert-target-val {
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.35rem;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #173F3A !important;
 }

@@ -9,8 +9,8 @@ import subMonths from 'date-fns/subMonths';
 import setMonth from 'date-fns/setMonth';
 import setYear from 'date-fns/setYear';
 
-const formatDisplay = (date) => (date ? format(date, 'EEE, d MMM yyyy') : '');
-const formatDayOfWeek = (date) => (date ? format(date, 'EEEE') : '');
+const formatDisplay = (date) => (date ? format(date, 'EEE, d MMM') : '');
+const formatDayOfWeek = (date) => (date ? format(date, 'EEEE, yyyy') : '');
 
 const WEEKDAYS = [
   { key: 'mon', label: 'Mon' },

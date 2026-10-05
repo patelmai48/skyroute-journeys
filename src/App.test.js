@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import { THEME_TOKENS } from './context/ThemeContext';
 import * as googleAuthService from './services/googleAuth';
 
-const APPROVED_PALETTE = ['#F5F1EA', '#D7C9B8', '#B2967D', '#7D5A44', '#4A342A'];
+const APPROVED_PALETTE = ['#F5F7F2', '#DDE8E3', '#8FAFA6', '#4F7C73', '#285C54', '#173F3A', '#FFFFFF'];
 
 describe('App & SkyRoute Permanent Light/Day Theme System', () => {
   let container;
@@ -40,11 +40,11 @@ describe('App & SkyRoute Permanent Light/Day Theme System', () => {
 
     expect(document.documentElement.getAttribute('data-theme')).toBe('light');
     expect(document.documentElement.getAttribute('data-mode')).toBe('day');
-    expect(document.documentElement.style.getPropertyValue('--SkyRoute-bg')).toBe('#F5F1EA');
-    expect(document.documentElement.style.getPropertyValue('--SkyRoute-primary')).toBe('#4A342A');
-    expect(document.documentElement.style.getPropertyValue('--SkyRoute-card-secondary')).toBe('#D7C9B8');
-    expect(document.documentElement.style.getPropertyValue('--SkyRoute-border')).toBe('#B2967D');
-    expect(document.documentElement.style.getPropertyValue('--SkyRoute-secondary')).toBe('#7D5A44');
+    expect(document.documentElement.style.getPropertyValue('--SkyRoute-bg')).toBe('#F5F7F2');
+    expect(document.documentElement.style.getPropertyValue('--SkyRoute-primary')).toBe('#173F3A');
+    expect(document.documentElement.style.getPropertyValue('--SkyRoute-card-secondary')).toBe('#DDE8E3');
+    expect(document.documentElement.style.getPropertyValue('--SkyRoute-border')).toBe('#8FAFA6');
+    expect(document.documentElement.style.getPropertyValue('--SkyRoute-secondary')).toBe('#4F7C73');
   });
 
   it('verifies all theme tokens strictly match the 5-color palette or valid transparencies', () => {
@@ -52,7 +52,7 @@ describe('App & SkyRoute Permanent Light/Day Theme System', () => {
       if (val.startsWith('#')) {
         expect(APPROVED_PALETTE).toContain(val.toUpperCase());
       } else if (val.startsWith('rgba(')) {
-        expect(val).toMatch(/rgba\((?:74,\s*52,\s*42|125,\s*90,\s*68|178,\s*150,\s*125|215,\s*201,\s*184|245,\s*241,\s*234)/);
+        expect(val).toMatch(/rgba\((?:23,\s*63,\s*58|40,\s*92,\s*84|79,\s*124,\s*115|143,\s*175,\s*166|221,\s*232,\s*227|245,\s*247,\s*242|255,\s*255,\s*255)/);
       }
     });
   });
@@ -97,7 +97,7 @@ describe('App & SkyRoute Permanent Light/Day Theme System', () => {
 
     // Still light theme
     expect(document.documentElement.getAttribute('data-theme')).toBe('light');
-    expect(document.documentElement.style.getPropertyValue('--SkyRoute-bg')).toBe('#F5F1EA');
+    expect(document.documentElement.style.getPropertyValue('--SkyRoute-bg')).toBe('#F5F7F2');
   });
 });
 

@@ -298,17 +298,17 @@ const ReviewBooking = ({
                     <div className="SkyRoute-upi-right-qr">
                       <div className="SkyRoute-qr-box">
                         <svg viewBox="0 0 120 120" width="110" height="110">
-                          <rect width="120" height="120" fill="#F5F1EA" rx="8" />
-                          <rect x="10" y="10" width="30" height="30" fill="#4A342A" />
-                          <rect x="15" y="15" width="20" height="20" fill="#F5F1EA" />
-                          <rect x="80" y="10" width="30" height="30" fill="#4A342A" />
-                          <rect x="85" y="15" width="20" height="20" fill="#F5F1EA" />
-                          <rect x="10" y="80" width="30" height="30" fill="#4A342A" />
-                          <rect x="15" y="85" width="20" height="20" fill="#F5F1EA" />
-                          <rect x="50" y="50" width="20" height="20" fill="#7D5A44" />
-                          <rect x="45" y="20" width="10" height="10" fill="#4A342A" />
-                          <rect x="65" y="80" width="15" height="15" fill="#4A342A" />
-                          <rect x="90" y="55" width="15" height="15" fill="#4A342A" />
+                          <rect width="120" height="120" fill="#F5F7F2" rx="8" />
+                          <rect x="10" y="10" width="30" height="30" fill="#173F3A" />
+                          <rect x="15" y="15" width="20" height="20" fill="#F5F7F2" />
+                          <rect x="80" y="10" width="30" height="30" fill="#173F3A" />
+                          <rect x="85" y="15" width="20" height="20" fill="#F5F7F2" />
+                          <rect x="10" y="80" width="30" height="30" fill="#173F3A" />
+                          <rect x="15" y="85" width="20" height="20" fill="#F5F7F2" />
+                          <rect x="50" y="50" width="20" height="20" fill="#4F7C73" />
+                          <rect x="45" y="20" width="10" height="10" fill="#173F3A" />
+                          <rect x="65" y="80" width="15" height="15" fill="#173F3A" />
+                          <rect x="90" y="55" width="15" height="15" fill="#173F3A" />
                         </svg>
                         <span className="SkyRoute-qr-caption">Scan QR with any UPI App</span>
                         <span className="SkyRoute-badge SkyRoute-badge--teal">Instant Approval</span>

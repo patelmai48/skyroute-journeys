@@ -36,7 +36,7 @@ const BookingConfirmation = ({
     flight: {
       airline: 'IndiGo',
       airlineCode: '6E',
-      airlineColor: '#4A342A',
+      airlineColor: '#173F3A',
       flightNumber: '6E-214',
       aircraft: 'Airbus A320neo',
       originCity: 'Ahmedabad',
@@ -169,7 +169,7 @@ const BookingConfirmation = ({
                 </div>
                 <div className="SkyRoute-bp-gate-item">
                   <span className="SkyRoute-bp-gate-label">BOARDING TIME</span>
-                  <strong className="SkyRoute-bp-gate-val" style={{ color: '#7D5A44' }}>
+                  <strong className="SkyRoute-bp-gate-val" style={{ color: '#4F7C73' }}>
                     45m BEFORE DEPARTURE
                   </strong>
                 </div>

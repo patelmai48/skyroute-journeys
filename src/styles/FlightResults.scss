@@ -3,7 +3,7 @@
    ========================================================================== */
 
 .SkyRoute-results-page {
-  background-color: var(--SkyRoute-bg, #F5F1EA);
+  background-color: var(--SkyRoute-bg, #F5F7F2);
   min-height: calc(100vh - 72px - 200px);
   padding: 1.5rem 0 5rem;
 }
@@ -14,11 +14,11 @@
 }
 
 .SkyRoute-summary-card {
-  background-color: var(--SkyRoute-card-secondary, #D7C9B8) !important;
-  border: 1.5px solid var(--SkyRoute-border, #B2967D) !important;
+  background-color: var(--SkyRoute-card-secondary, #DDE8E3) !important;
+  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
   border-radius: 20px;
   padding: 2.25rem 2.5rem;
-  box-shadow: 0 4px 20px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 20px rgba(23, 63, 58, 0.08);
   box-sizing: border-box;
   overflow: visible !important;
 
@@ -52,7 +52,7 @@
     font-family: var(--SkyRoute-font-serif);
     font-size: 2.25rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -81,24 +81,24 @@
 }
 
 .SkyRoute-summary-route-arrow {
-  color: var(--color-camel, #B2967D);
+  color: var(--color-camel, #8FAFA6);
   font-size: 1.75rem;
   font-weight: 900;
 }
 
 .SkyRoute-summary-route-city {
   font-weight: 800;
-  color: var(--SkyRoute-text-main, #4A342A);
+  color: var(--SkyRoute-text-main, #173F3A);
 }
 
 .SkyRoute-summary-meta-item {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  background-color: var(--SkyRoute-card-bg, #F5F1EA) !important;
+  background-color: var(--SkyRoute-card-bg, #F5F7F2) !important;
   padding: 0.85rem 1.35rem;
   border-radius: var(--SkyRoute-radius-sm);
-  border: 1.5px solid var(--SkyRoute-border, #B2967D) !important;
+  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
 
   &__icon {
     font-size: 1.35rem;
@@ -114,14 +114,14 @@
     font-size: 0.8rem;
     font-weight: 800;
     text-transform: uppercase;
-    color: var(--SkyRoute-text-secondary, #7D5A44) !important;
+    color: var(--SkyRoute-text-secondary, #4F7C73) !important;
     letter-spacing: 0.75px;
   }
 
   &__val {
     font-size: 1.05rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #4A342A) !important;
+    color: var(--SkyRoute-text-main, #173F3A) !important;
     white-space: nowrap;
   }
 }
@@ -140,20 +140,20 @@
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.65rem !important;
-  background-color: #4A342A !important;
-  color: #F5F1EA !important;
-  border: 1.5px solid #4A342A !important;
-  box-shadow: 0 4px 14px rgba(74, 52, 42, 0.22) !important;
+  background-color: #173F3A !important;
+  color: #F5F7F2 !important;
+  border: 1.5px solid #173F3A !important;
+  box-shadow: 0 4px 14px rgba(23, 63, 58, 0.22) !important;
   cursor: pointer;
   white-space: nowrap;
   transition: all var(--SkyRoute-transition-fast) !important;
 
   &:hover {
-    background-color: #7D5A44 !important;
-    border-color: #7D5A44 !important;
-    color: #F5F1EA !important;
+    background-color: #4F7C73 !important;
+    border-color: #4F7C73 !important;
+    color: #F5F7F2 !important;
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(74, 52, 42, 0.32) !important;
+    box-shadow: 0 6px 18px rgba(23, 63, 58, 0.32) !important;
   }
 
   .SkyRoute-modify-icon {
@@ -164,12 +164,12 @@
 
 /* 2. Flexible Dates Ribbon */
 .SkyRoute-flexible-dates-bar {
-  background-color: var(--SkyRoute-card-secondary, #D7C9B8) !important;
-  border: 1.5px solid var(--SkyRoute-border, #B2967D) !important;
+  background-color: var(--SkyRoute-card-secondary, #DDE8E3) !important;
+  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
   border-radius: var(--SkyRoute-radius-md);
   padding: 1.35rem 1.85rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -186,14 +186,14 @@
 .SkyRoute-flex-dates-title {
   font-size: 0.92rem;
   font-weight: 700;
-  color: var(--SkyRoute-text-main, #4A342A);
+  color: var(--SkyRoute-text-main, #173F3A);
   letter-spacing: 0.3px;
 }
 
 .SkyRoute-cheapest-month-btn {
   background: none;
   border: none;
-  color: var(--SkyRoute-text-secondary, #7D5A44);
+  color: var(--SkyRoute-text-secondary, #4F7C73);
   font-size: 0.88rem;
   font-weight: 700;
   cursor: pointer;
@@ -202,7 +202,7 @@
   gap: 0.35rem;
 
   &:hover {
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     text-decoration: underline;
   }
 }
@@ -219,12 +219,12 @@
   }
 
   &::-webkit-scrollbar-track {
-    background: #D7C9B8;
+    background: #DDE8E3;
     border-radius: 9999px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #B2967D;
+    background: #8FAFA6;
     border-radius: 9999px;
   }
 }
@@ -235,8 +235,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  background-color: var(--SkyRoute-card-bg, #F5F1EA) !important;
-  border: 1.5px solid var(--SkyRoute-border, #B2967D) !important;
+  background-color: var(--SkyRoute-card-bg, #F5F7F2) !important;
+  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
   border-radius: var(--SkyRoute-radius-sm);
   padding: 0.95rem 1.35rem;
   min-width: 140px;
@@ -246,23 +246,23 @@
   flex-shrink: 0;
 
   &:hover {
-    border-color: #7D5A44 !important;
+    border-color: #4F7C73 !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(74, 52, 42, 0.12);
+    box-shadow: 0 4px 14px rgba(23, 63, 58, 0.12);
   }
 
   &--current {
-    border-color: #4A342A !important;
-    background-color: #D7C9B8 !important;
-    box-shadow: 0 0 0 1.5px #4A342A;
+    border-color: #173F3A !important;
+    background-color: #DDE8E3 !important;
+    box-shadow: 0 0 0 1.5px #173F3A;
   }
 
   &--cheapest {
-    border-color: #7D5A44 !important;
-    background-color: #D7C9B8 !important;
+    border-color: #4F7C73 !important;
+    background-color: #DDE8E3 !important;
 
     .SkyRoute-flex-date-price {
-      color: var(--SkyRoute-text-main, #4A342A) !important;
+      color: var(--SkyRoute-text-main, #173F3A) !important;
     }
   }
 }
@@ -273,21 +273,21 @@
   font-size: 0.65rem;
   font-weight: 800;
   text-transform: uppercase;
-  background-color: #7D5A44;
-  color: #F5F1EA;
+  background-color: #4F7C73;
+  color: #F5F7F2;
   padding: 0.15rem 0.5rem;
   border-radius: var(--SkyRoute-radius-full);
 }
 
 .SkyRoute-flex-date-str {
   font-size: 0.82rem;
-  color: var(--SkyRoute-text-secondary, #7D5A44);
+  color: var(--SkyRoute-text-secondary, #4F7C73);
   font-weight: 600;
 }
 
 .SkyRoute-flex-date-price {
   font-size: 1.15rem;
-  color: var(--SkyRoute-text-main, #4A342A);
+  color: var(--SkyRoute-text-main, #173F3A);
   font-weight: 800;
 }
 
@@ -306,11 +306,11 @@
 
 /* Filter Sidebar Card */
 .SkyRoute-filters-card {
-  background-color: var(--SkyRoute-card-secondary, #D7C9B8) !important;
-  border: 1.5px solid var(--SkyRoute-border, #B2967D) !important;
+  background-color: var(--SkyRoute-card-secondary, #DDE8E3) !important;
+  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
   border-radius: 18px;
   padding: 1.75rem;
-  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
   position: sticky;
   top: 90px;
   box-sizing: border-box;
@@ -321,14 +321,14 @@
     justify-content: space-between;
     padding-bottom: 1rem;
     margin-bottom: 1.25rem;
-    border-bottom: 1px solid var(--SkyRoute-border, #B2967D);
+    border-bottom: 1px solid var(--SkyRoute-border, #8FAFA6);
   }
 
   &__title {
     font-family: var(--SkyRoute-font-serif);
     font-size: 1.2rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     margin: 0;
   }
 
@@ -338,13 +338,13 @@
     font-family: var(--SkyRoute-font-sans);
     font-size: 0.8rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-secondary, #7D5A44);
+    color: var(--SkyRoute-text-secondary, #4F7C73);
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 
     &:hover {
-      color: var(--SkyRoute-text-main, #4A342A);
+      color: var(--SkyRoute-text-main, #173F3A);
       text-decoration: underline;
     }
   }
@@ -364,7 +364,7 @@
   &__title {
     font-size: 0.82rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     text-transform: uppercase;
     letter-spacing: 0.75px;
   }
@@ -381,7 +381,7 @@
   align-items: center;
   gap: 0.65rem;
   font-size: 0.88rem;
-  color: var(--SkyRoute-text-main, #4A342A);
+  color: var(--SkyRoute-text-main, #173F3A);
   cursor: pointer;
   user-select: none;
 
@@ -389,13 +389,13 @@
   input[type="checkbox"] {
     width: 16px;
     height: 16px;
-    accent-color: #4A342A;
+    accent-color: #173F3A;
     cursor: pointer;
     margin: 0;
   }
 
   &:hover {
-    color: var(--color-camel, #B2967D);
+    color: var(--color-camel, #8FAFA6);
   }
 
   &__text {
@@ -417,9 +417,9 @@
   gap: 0.2rem;
   padding: 0.6rem 0.4rem;
   border-radius: var(--SkyRoute-radius-sm);
-  border: 1px solid var(--SkyRoute-border, #B2967D);
-  background-color: var(--SkyRoute-card-bg, #F5F1EA);
-  color: var(--SkyRoute-text-main, #4A342A);
+  border: 1px solid var(--SkyRoute-border, #8FAFA6);
+  background-color: var(--SkyRoute-card-bg, #F5F7F2);
+  color: var(--SkyRoute-text-main, #173F3A);
   font-family: var(--SkyRoute-font-sans);
   font-size: 0.75rem;
   font-weight: 600;
@@ -427,20 +427,20 @@
   transition: all var(--SkyRoute-transition-fast);
 
   &:hover {
-    border-color: #7D5A44;
+    border-color: #4F7C73;
   }
 
   &--active {
-    background-color: #4A342A;
-    border-color: #4A342A;
-    color: #F5F1EA;
+    background-color: #173F3A;
+    border-color: #173F3A;
+    color: #F5F7F2;
   }
 }
 
 /* Header summary / Sort Controls */
 .SkyRoute-results-header-card {
-  background-color: var(--SkyRoute-card-secondary, #D7C9B8) !important;
-  border: 1.5px solid var(--SkyRoute-border, #B2967D) !important;
+  background-color: var(--SkyRoute-card-secondary, #DDE8E3) !important;
+  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
   border-radius: var(--SkyRoute-radius-md);
   padding: 1.15rem 1.75rem;
   margin-bottom: 1.5rem;
@@ -449,7 +449,7 @@
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  box-shadow: 0 4px 16px rgba(74, 52, 42, 0.07);
+  box-shadow: 0 4px 16px rgba(23, 63, 58, 0.07);
 
   &__info {
     display: flex;
@@ -462,7 +462,7 @@
     font-family: var(--SkyRoute-font-serif);
     font-size: 1.35rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     margin: 0;
   }
 
@@ -476,13 +476,13 @@
 .SkyRoute-sort-label {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--SkyRoute-text-secondary, #7D5A44);
+  color: var(--SkyRoute-text-secondary, #4F7C73);
 }
 
 .SkyRoute-sort-buttons {
   display: flex;
-  background-color: var(--SkyRoute-card-bg, #F5F1EA);
-  border: 1px solid var(--SkyRoute-border, #B2967D);
+  background-color: var(--SkyRoute-card-bg, #F5F7F2);
+  border: 1px solid var(--SkyRoute-border, #8FAFA6);
   border-radius: var(--SkyRoute-radius-sm);
   padding: 3px;
   gap: 2px;
@@ -494,19 +494,19 @@
   font-family: var(--SkyRoute-font-sans);
   font-size: 0.84rem;
   font-weight: 600;
-  color: var(--SkyRoute-text-secondary, #7D5A44);
+  color: var(--SkyRoute-text-secondary, #4F7C73);
   padding: 0.4rem 0.85rem;
   border-radius: 6px;
   cursor: pointer;
   transition: all var(--SkyRoute-transition-fast);
 
   &:hover {
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
   }
 
   &--active {
-    background-color: #4A342A;
-    color: #F5F1EA;
+    background-color: #173F3A;
+    color: #F5F7F2;
     font-weight: 700;
   }
 }
@@ -520,23 +520,23 @@
 }
 
 .SkyRoute-flight-card {
-  background-color: var(--SkyRoute-card-bg, #F5F1EA) !important;
-  border: 1.5px solid var(--SkyRoute-border, #B2967D) !important;
+  background-color: var(--SkyRoute-card-bg, #F5F7F2) !important;
+  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
   border-radius: 20px;
-  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
   transition: all var(--SkyRoute-transition-fast);
   overflow: hidden !important;
   box-sizing: border-box;
 
   &:hover {
-    border-color: #7D5A44 !important;
+    border-color: #4F7C73 !important;
     transform: translateY(-3px);
-    box-shadow: 0 8px 26px rgba(74, 52, 42, 0.12);
+    box-shadow: 0 8px 26px rgba(23, 63, 58, 0.12);
   }
 
   &--compared {
-    border-color: var(--color-camel, #B2967D);
-    box-shadow: 0 0 0 2px var(--color-camel, #B2967D);
+    border-color: var(--color-camel, #8FAFA6);
+    box-shadow: 0 0 0 2px var(--color-camel, #8FAFA6);
   }
 
   &__tag-bar {
@@ -558,7 +558,7 @@
     align-items: center;
     justify-content: space-between;
     padding-bottom: 0.95rem;
-    border-bottom: 1.5px solid var(--SkyRoute-border, #B2967D);
+    border-bottom: 1.5px solid var(--SkyRoute-border, #8FAFA6);
   }
 
   &__airline-info {
@@ -572,14 +572,14 @@
     height: 44px;
     padding: 0 0.55rem;
     border-radius: var(--SkyRoute-radius-sm);
-    color: #F5F1EA;
+    color: #F5F7F2;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
-    background-color: #4A342A;
-    border: 1.5px solid #7D5A44;
-    box-shadow: 0 2px 8px rgba(74, 52, 42, 0.15);
+    background-color: #173F3A;
+    border: 1.5px solid #4F7C73;
+    box-shadow: 0 2px 8px rgba(23, 63, 58, 0.15);
   }
 
   &__logo-icon {
@@ -604,13 +604,13 @@
   &__airline-name {
     font-size: 1.15rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
   }
 
   &__flight-number {
     font-size: 0.88rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-secondary, #7D5A44);
+    color: var(--SkyRoute-text-secondary, #4F7C73);
   }
 
   &__compare-toggle {
@@ -619,13 +619,13 @@
     gap: 0.5rem;
     font-size: 0.88rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     cursor: pointer;
 
     input[type="checkbox"] {
       width: 17px;
       height: 17px;
-      accent-color: #4A342A;
+      accent-color: #173F3A;
     }
 
     &--disabled {
@@ -668,21 +668,21 @@
   &__time {
     font-size: 2.2rem;
     font-weight: 900;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     line-height: 1.1;
   }
 
   &__city-code {
     font-size: 1.25rem;
     font-weight: 900;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     letter-spacing: 0.5px;
   }
 
   &__city-name {
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-secondary, #7D5A44);
+    color: var(--SkyRoute-text-secondary, #4F7C73);
   }
 
   &__route-graphic {
@@ -695,7 +695,7 @@
   &__duration-text {
     font-size: 0.92rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
   }
 
   &__flight-line {
@@ -711,23 +711,23 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #7D5A44;
+    background-color: #4F7C73;
   }
 
   &__line-track {
     flex: 1;
     height: 2px;
-    background-color: #B2967D;
+    background-color: #8FAFA6;
   }
 
   &__plane-icon {
     font-size: 1rem;
-    color: #4A342A;
+    color: #173F3A;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
     top: 50%;
-    background-color: var(--SkyRoute-card-bg, #F5F1EA);
+    background-color: var(--SkyRoute-card-bg, #F5F7F2);
     padding: 0 6px;
     font-weight: 900;
   }
@@ -735,14 +735,14 @@
   &__stops-badge {
     font-size: 0.82rem;
     font-weight: 800;
-    color: #4A342A;
-    background-color: #D7C9B8;
+    color: #173F3A;
+    background-color: #DDE8E3;
     padding: 0.2rem 0.65rem;
     border-radius: 100px;
 
     &--nonstop {
-      color: #4A342A;
-      background-color: #D7C9B8;
+      color: #173F3A;
+      background-color: #DDE8E3;
     }
   }
 
@@ -759,7 +759,7 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 1.15rem;
-    border-top: 1.5px solid var(--SkyRoute-border, #B2967D);
+    border-top: 1.5px solid var(--SkyRoute-border, #8FAFA6);
     gap: 1rem;
     flex-wrap: wrap;
   }
@@ -774,27 +774,27 @@
     font-family: var(--SkyRoute-font-serif);
     font-size: 2.1rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
   }
 
   &__price-label {
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-secondary, #7D5A44);
+    color: var(--SkyRoute-text-secondary, #4F7C73);
   }
 
   &__select-btn {
     min-width: 150px;
     font-size: 1rem;
     font-weight: 800;
-    background-color: #4A342A !important;
-    color: #F5F1EA !important;
-    border: 1.5px solid #4A342A !important;
+    background-color: #173F3A !important;
+    color: #F5F7F2 !important;
+    border: 1.5px solid #173F3A !important;
     border-radius: var(--SkyRoute-radius-full);
 
     &:hover {
-      background-color: #7D5A44 !important;
-      border-color: #7D5A44 !important;
+      background-color: #4F7C73 !important;
+      border-color: #4F7C73 !important;
     }
   }
 }
@@ -802,11 +802,11 @@
 .SkyRoute-flight-perk-item {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--SkyRoute-text-main, #4A342A) !important;
-  background-color: var(--SkyRoute-card-secondary, #D7C9B8) !important;
+  color: var(--SkyRoute-text-main, #173F3A) !important;
+  background-color: var(--SkyRoute-card-secondary, #DDE8E3) !important;
   padding: 0.4rem 0.85rem;
   border-radius: var(--SkyRoute-radius-sm);
-  border: 1px solid var(--SkyRoute-border, #B2967D) !important;
+  border: 1px solid var(--SkyRoute-border, #8FAFA6) !important;
 }
 
 /* Cheapest Month / Fare Calendar Modal */
@@ -831,7 +831,7 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.35rem;
   font-weight: 700;
-  color: var(--SkyRoute-text-main, #4A342A);
+  color: var(--SkyRoute-text-main, #173F3A);
   margin: 0;
   text-align: center;
 }
@@ -844,7 +844,7 @@
   margin-bottom: 1.25rem;
   flex-wrap: wrap;
   padding: 0.5rem;
-  background-color: var(--SkyRoute-card-secondary, #D7C9B8);
+  background-color: var(--SkyRoute-card-secondary, #DDE8E3);
   border-radius: var(--SkyRoute-radius-sm);
 }
 
@@ -854,7 +854,7 @@
   gap: 0.45rem;
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--SkyRoute-text-main, #4A342A);
+  color: var(--SkyRoute-text-main, #173F3A);
 }
 
 .SkyRoute-legend-dot {
@@ -864,31 +864,31 @@
   flex-shrink: 0;
 
   &--low {
-    background-color: #7D5A44;
+    background-color: #4F7C73;
   }
 
   &--med {
-    background-color: #B2967D;
+    background-color: #8FAFA6;
   }
 
   &--high {
-    background-color: #4A342A;
+    background-color: #173F3A;
   }
 }
 
 .SkyRoute-calendar-wrapper {
-  border: 1px solid var(--SkyRoute-border, #B2967D);
+  border: 1px solid var(--SkyRoute-border, #8FAFA6);
   border-radius: var(--SkyRoute-radius-md);
   overflow: hidden;
-  background-color: var(--SkyRoute-card-bg, #F5F1EA);
+  background-color: var(--SkyRoute-card-bg, #F5F7F2);
   box-shadow: var(--SkyRoute-shadow-sm);
 }
 
 .SkyRoute-calendar-weekdays-row {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  background-color: var(--SkyRoute-card-secondary, #D7C9B8);
-  border-bottom: 1px solid var(--SkyRoute-border, #B2967D);
+  background-color: var(--SkyRoute-card-secondary, #DDE8E3);
+  border-bottom: 1px solid var(--SkyRoute-border, #8FAFA6);
 }
 
 .SkyRoute-calendar-weekday-header {
@@ -896,7 +896,7 @@
   padding: 0.75rem 0.25rem;
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--SkyRoute-text-main, #4A342A);
+  color: var(--SkyRoute-text-main, #173F3A);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -905,11 +905,11 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 1px;
-  background-color: var(--SkyRoute-border, #B2967D);
+  background-color: var(--SkyRoute-border, #8FAFA6);
 }
 
 .SkyRoute-month-day-cell {
-  background-color: var(--SkyRoute-card-bg, #F5F1EA);
+  background-color: var(--SkyRoute-card-bg, #F5F7F2);
   padding: 0.75rem 0.35rem;
   min-height: 65px;
   display: flex;
@@ -927,35 +927,35 @@
   }
 
   &--empty {
-    background-color: var(--SkyRoute-card-secondary, #D7C9B8);
+    background-color: var(--SkyRoute-card-secondary, #DDE8E3);
     cursor: default;
     pointer-events: none;
     opacity: 0.5;
   }
 
   &--low {
-    background-color: #F5F1EA;
+    background-color: #F5F7F2;
 
     .SkyRoute-month-day-price {
-      color: #7D5A44;
+      color: #4F7C73;
       font-weight: 800;
     }
   }
 
   &--med {
-    background-color: #D7C9B8;
+    background-color: #DDE8E3;
 
     .SkyRoute-month-day-price {
-      color: #4A342A;
+      color: #173F3A;
       font-weight: 800;
     }
   }
 
   &--high {
-    background-color: #B2967D;
+    background-color: #8FAFA6;
 
     .SkyRoute-month-day-price {
-      color: #F5F1EA;
+      color: #F5F7F2;
       font-weight: 800;
     }
   }
@@ -964,7 +964,7 @@
 .SkyRoute-month-day-number {
   font-size: 0.88rem;
   font-weight: 700;
-  color: var(--SkyRoute-text-main, #4A342A);
+  color: var(--SkyRoute-text-main, #173F3A);
 }
 
 .SkyRoute-month-day-price {
@@ -974,7 +974,7 @@
 
 .SkyRoute-calendar-note {
   font-size: 0.85rem;
-  color: var(--SkyRoute-text-secondary, #7D5A44);
+  color: var(--SkyRoute-text-secondary, #4F7C73);
   margin: 0;
   flex: 1;
 }
@@ -996,8 +996,8 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    background-color: var(--SkyRoute-card-bg, #F5F1EA);
-    border: 1px solid var(--SkyRoute-border, #B2967D);
+    background-color: var(--SkyRoute-card-bg, #F5F7F2);
+    border: 1px solid var(--SkyRoute-border, #8FAFA6);
     border-radius: var(--SkyRoute-radius-full);
     box-shadow: var(--SkyRoute-shadow-lg);
   }
@@ -1024,13 +1024,13 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  color: #F5F1EA;
+  color: #F5F7F2;
   font-size: 0.65rem;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #4A342A;
+  background-color: #173F3A;
 }
 
 /* ==========================================================================
@@ -1039,10 +1039,10 @@
 .SkyRoute-comparison-modal {
   max-width: 880px !important;
   width: 95vw !important;
-  background-color: #F5F1EA !important;
-  border: 2px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 2px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-lg, 12px) !important;
-  box-shadow: 0 16px 48px rgba(74, 52, 42, 0.22) !important;
+  box-shadow: 0 16px 48px rgba(23, 63, 58, 0.22) !important;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1056,10 +1056,10 @@
 
 .SkyRoute-comparison-table-wrapper {
   overflow-x: auto;
-  border: 1.5px solid #B2967D;
+  border: 1.5px solid #8FAFA6;
   border-radius: var(--SkyRoute-radius-md, 8px);
-  background-color: #F5F1EA;
-  box-shadow: 0 2px 10px rgba(74, 52, 42, 0.05);
+  background-color: #F5F7F2;
+  box-shadow: 0 2px 10px rgba(23, 63, 58, 0.05);
 }
 
 .SkyRoute-comparison-table {
@@ -1070,10 +1070,10 @@
 
   th, td {
     padding: 1rem 1.25rem;
-    border-bottom: 1px solid #D7C9B8;
-    border-right: 1px solid #D7C9B8;
+    border-bottom: 1px solid #DDE8E3;
+    border-right: 1px solid #DDE8E3;
     vertical-align: middle;
-    color: #4A342A;
+    color: #173F3A;
 
     &:last-child {
       border-right: none;
@@ -1081,8 +1081,8 @@
   }
 
   thead th {
-    background-color: #D7C9B8;
-    border-bottom: 2px solid #B2967D;
+    background-color: #DDE8E3;
+    border-bottom: 2px solid #8FAFA6;
     padding: 1.1rem 1rem;
   }
 
@@ -1091,11 +1091,11 @@
   }
 
   tbody tr:nth-child(even) td {
-    background-color: rgba(215, 201, 184, 0.22);
+    background-color: rgba(221, 232, 227, 0.22);
   }
 
   tbody tr:hover td {
-    background-color: rgba(215, 201, 184, 0.42);
+    background-color: rgba(221, 232, 227, 0.42);
   }
 }
 
@@ -1104,19 +1104,19 @@
   min-width: 130px;
   font-weight: 800;
   font-size: 0.92rem;
-  color: #4A342A !important;
-  background-color: #D7C9B8 !important;
-  border-right: 1.5px solid #B2967D !important;
+  color: #173F3A !important;
+  background-color: #DDE8E3 !important;
+  border-right: 1.5px solid #8FAFA6 !important;
 }
 
 .SkyRoute-comparison-label {
   font-weight: 800;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
   font-size: 0.84rem;
   text-transform: uppercase;
   letter-spacing: 0.4px;
-  background-color: #D7C9B8 !important;
-  border-right: 1.5px solid #B2967D !important;
+  background-color: #DDE8E3 !important;
+  border-right: 1.5px solid #8FAFA6 !important;
   width: 150px;
 }
 
@@ -1124,7 +1124,7 @@
   min-width: 190px;
   text-align: center;
   vertical-align: top;
-  background-color: #F5F1EA !important;
+  background-color: #F5F7F2 !important;
   padding: 1.25rem 1rem !important;
 }
 
@@ -1144,9 +1144,9 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: #D7C9B8;
-  border: 1px solid #B2967D;
-  color: #4A342A;
+  background-color: #DDE8E3;
+  border: 1px solid #8FAFA6;
+  color: #173F3A;
   font-size: 1.1rem;
   line-height: 1;
   display: flex;
@@ -1156,9 +1156,9 @@
   transition: all var(--SkyRoute-transition-fast, 0.2s);
 
   &:hover {
-    background-color: #4A342A;
-    color: #F5F1EA;
-    border-color: #4A342A;
+    background-color: #173F3A;
+    color: #F5F7F2;
+    border-color: #173F3A;
     transform: scale(1.1);
   }
 }
@@ -1173,30 +1173,30 @@
 .SkyRoute-comparison-airline-name {
   font-size: 1.05rem;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #173F3A !important;
   font-family: var(--SkyRoute-font-serif, Georgia, serif);
 }
 
 .SkyRoute-comparison-flight-num {
   font-size: 0.76rem;
   font-weight: 800;
-  color: #7D5A44 !important;
-  background-color: #D7C9B8;
+  color: #4F7C73 !important;
+  background-color: #DDE8E3;
   padding: 2px 7px;
   border-radius: var(--SkyRoute-radius-xs, 4px);
-  border: 1px solid rgba(178, 150, 125, 0.4);
+  border: 1px solid rgba(143, 175, 166, 0.4);
 }
 
 .SkyRoute-comparison-flight-price {
   font-size: 1.35rem;
   font-weight: 900;
-  color: #4A342A !important;
+  color: #173F3A !important;
   margin-top: 0.25rem;
 }
 
 .SkyRoute-comparison-sub {
   font-size: 0.78rem;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
   font-weight: 600;
   margin-top: 0.25rem;
 }

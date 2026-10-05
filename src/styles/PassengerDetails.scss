@@ -28,9 +28,9 @@
 }
 
 .SkyRoute-form-alert-banner {
-  background-color: #F5F1EA;
-  border: 1px solid #D7C9B8;
-  color: #7D5A44;
+  background-color: #F5F7F2;
+  border: 1px solid #DDE8E3;
+  color: #4F7C73;
   padding: 0.85rem 1.25rem;
   border-radius: var(--SkyRoute-radius-sm);
   font-size: 0.9rem;
@@ -62,11 +62,11 @@
 }
 
 .SkyRoute-traveller-card {
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: 20px;
   padding: 2.25rem;
-  box-shadow: 0 10px 32px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 10px 32px rgba(23, 63, 58, 0.08);
   box-sizing: border-box;
 
   @media (max-width: 640px) {
@@ -74,8 +74,8 @@
   }
 
   &--primary {
-    border-color: #7D5A44 !important;
-    box-shadow: 0 14px 38px rgba(74, 52, 42, 0.12);
+    border-color: #4F7C73 !important;
+    box-shadow: 0 14px 38px rgba(23, 63, 58, 0.12);
   }
 
   &__header {
@@ -84,7 +84,7 @@
     justify-content: space-between;
     padding-bottom: 1.25rem;
     margin-bottom: 1.5rem;
-    border-bottom: 1.5px solid #B2967D;
+    border-bottom: 1.5px solid #8FAFA6;
     gap: 1rem;
     flex-wrap: wrap;
   }
@@ -106,26 +106,26 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: #D7C9B8;
-  border: 1.5px solid #B2967D;
+  background-color: #DDE8E3;
+  border: 1.5px solid #8FAFA6;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.35rem;
-  color: #4A342A;
+  color: #173F3A;
 }
 
 .SkyRoute-traveller-title {
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.45rem;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #173F3A !important;
   margin: 0;
 }
 
 .SkyRoute-traveller-sub {
   font-size: 0.88rem;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
 }
 
 /* Form Grids */
@@ -148,12 +148,12 @@
 .SkyRoute-field-label {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #4A342A !important;
+  color: #173F3A !important;
   letter-spacing: 0.2px;
 }
 
 .SkyRoute-req-star {
-  color: #7D5A44;
+  color: #4F7C73;
   font-weight: 800;
 }
 
@@ -163,22 +163,22 @@
   height: 46px;
   padding: 0 1rem;
   border-radius: var(--SkyRoute-radius-sm);
-  border: 1.5px solid #B2967D;
-  background-color: #F5F1EA;
-  color: #4A342A;
+  border: 1.5px solid #8FAFA6;
+  background-color: #F5F7F2;
+  color: #173F3A;
   font-family: var(--SkyRoute-font-sans);
   font-size: 0.95rem;
   outline: none;
   transition: border-color var(--SkyRoute-transition-fast), box-shadow var(--SkyRoute-transition-fast);
 
   &:focus {
-    border-color: #7D5A44;
-    box-shadow: 0 0 0 3px rgba(125, 90, 68, 0.2);
+    border-color: #4F7C73;
+    box-shadow: 0 0 0 3px rgba(40, 92, 84, 0.2);
   }
 
   &--error {
-    border-color: #7D5A44 !important;
-    background-color: #F5F1EA !important;
+    border-color: #4F7C73 !important;
+    background-color: #F5F7F2 !important;
 
     &:focus {
       box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15) !important;
@@ -193,14 +193,14 @@
 .SkyRoute-field-error {
   font-size: 0.78rem;
   font-weight: 600;
-  color: #7D5A44;
+  color: #4F7C73;
   margin-top: 0.15rem;
 }
 
 /* Primary Contact Box */
 .SkyRoute-contact-details-box {
-  background-color: #D7C9B8;
-  border: 1.5px solid #B2967D;
+  background-color: #DDE8E3;
+  border: 1.5px solid #8FAFA6;
   border-radius: var(--SkyRoute-radius-sm);
   padding: 1.5rem;
   display: flex;
@@ -216,30 +216,30 @@
 
 .SkyRoute-contact-icon {
   font-size: 1.4rem;
-  color: #7D5A44;
+  color: #4F7C73;
 }
 
 .SkyRoute-contact-details-title {
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.1rem;
   font-weight: 700;
-  color: #4A342A;
+  color: #173F3A;
   margin: 0;
 }
 
 .SkyRoute-contact-details-sub {
   font-size: 0.88rem;
-  color: #7D5A44;
+  color: #4F7C73;
   font-weight: 600;
 }
 
 /* Travel Insurance Selector Section */
 .SkyRoute-insurance-selector-card {
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: 20px;
   padding: 2.25rem;
-  box-shadow: 0 10px 32px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 10px 32px rgba(23, 63, 58, 0.08);
   margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
@@ -257,13 +257,13 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.6rem;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #173F3A !important;
   margin: 0.25rem 0 0;
 }
 
 .SkyRoute-insurance-selector-sub {
   font-size: 0.95rem;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
   font-weight: 600;
   margin: 0;
 }
@@ -279,8 +279,8 @@
 }
 
 .SkyRoute-insurance-plan-box {
-  background-color: #D7C9B8 !important;
-  border: 2px solid #B2967D !important;
+  background-color: #DDE8E3 !important;
+  border: 2px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-md);
   padding: 1.5rem;
   cursor: pointer;
@@ -290,15 +290,15 @@
   gap: 1rem;
 
   &:hover {
-    border-color: #7D5A44 !important;
+    border-color: #4F7C73 !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(74, 52, 42, 0.12);
+    box-shadow: 0 4px 16px rgba(23, 63, 58, 0.12);
   }
 
   &--selected {
-    border-color: #4A342A !important;
-    background-color: #F5F1EA !important;
-    box-shadow: 0 0 0 2px #7D5A44;
+    border-color: #173F3A !important;
+    background-color: #F5F7F2 !important;
+    box-shadow: 0 0 0 2px #4F7C73;
   }
 
   &__top {
@@ -316,7 +316,7 @@
     input[type="radio"] {
       width: 18px;
       height: 18px;
-      accent-color: #4A342A;
+      accent-color: #173F3A;
       margin-top: 2px;
       cursor: pointer;
     }
@@ -327,7 +327,7 @@
   display: block;
   font-size: 1.05rem;
   font-weight: 800;
-  color: #4A342A;
+  color: #173F3A;
   margin-bottom: 0.25rem;
 }
 
@@ -341,20 +341,20 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.35rem;
   font-weight: 900;
-  color: #4A342A;
+  color: #173F3A;
   white-space: nowrap;
 }
 
 .SkyRoute-insurance-coverage-line {
   font-size: 0.9rem;
-  color: #7D5A44;
+  color: #4F7C73;
   font-weight: 600;
   padding: 0.5rem 0;
-  border-top: 1px solid #B2967D;
-  border-bottom: 1px solid #B2967D;
+  border-top: 1px solid #8FAFA6;
+  border-bottom: 1px solid #8FAFA6;
 
   strong {
-    color: #4A342A;
+    color: #173F3A;
     font-weight: 800;
   }
 }
@@ -372,7 +372,7 @@
 .SkyRoute-insurance-feature-item {
   font-size: 0.88rem;
   font-weight: 600;
-  color: #4A342A;
+  color: #173F3A;
   display: flex;
   align-items: baseline;
   gap: 0.45rem;
@@ -380,7 +380,7 @@
 }
 
 .SkyRoute-check-icon {
-  color: #7D5A44;
+  color: #4F7C73;
   font-weight: 900;
 }
 
@@ -393,17 +393,17 @@
   text-align: center;
   font-size: 0.88rem;
   font-weight: 800;
-  color: #4A342A;
+  color: #173F3A;
   padding: 0.5rem;
-  background-color: #F5F1EA;
-  border: 1.5px solid #B2967D;
+  background-color: #F5F7F2;
+  border: 1.5px solid #8FAFA6;
   border-radius: var(--SkyRoute-radius-sm);
 }
 
 /* Opt Out Card */
 .SkyRoute-insurance-opt-out-card {
-  background-color: #D7C9B8;
-  border: 2px solid #B2967D;
+  background-color: #DDE8E3;
+  border: 2px solid #8FAFA6;
   border-radius: var(--SkyRoute-radius-md);
   padding: 1.25rem 1.5rem;
   cursor: pointer;
@@ -414,12 +414,12 @@
   transition: all var(--SkyRoute-transition-fast);
 
   &:hover {
-    border-color: #7D5A44;
+    border-color: #4F7C73;
   }
 
   &--selected {
-    border-color: #7D5A44 !important;
-    background-color: #F5F1EA !important;
+    border-color: #4F7C73 !important;
+    background-color: #F5F7F2 !important;
   }
 }
 
@@ -431,7 +431,7 @@
   input[type="radio"] {
     width: 18px;
     height: 18px;
-    accent-color: #7D5A44;
+    accent-color: #4F7C73;
     margin-top: 3px;
     cursor: pointer;
   }
@@ -440,14 +440,14 @@
 .SkyRoute-opt-out-title {
   font-size: 0.95rem;
   font-weight: 800;
-  color: #4A342A;
+  color: #173F3A;
   display: block;
   margin-bottom: 0.2rem;
 }
 
 .SkyRoute-opt-out-sub {
   font-size: 0.88rem;
-  color: #7D5A44;
+  color: #4F7C73;
   font-weight: 600;
   margin: 0;
   line-height: 1.4;
@@ -457,7 +457,7 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.25rem;
   font-weight: 800;
-  color: #4A342A;
+  color: #173F3A;
 }
 
 /* Action Buttons */

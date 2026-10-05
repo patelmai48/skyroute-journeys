@@ -83,8 +83,8 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
     { name: 'Flights', amount: 8400, icon: '✈️', color: 'var(--SkyRoute-navy)' },
     { name: 'Hotels & Stay', amount: 6500, icon: '🏨', color: 'var(--SkyRoute-teal)' },
     { name: 'Food & Dining', amount: 3000, icon: '🍜', color: 'var(--SkyRoute-rose)' },
-    { name: 'Local Transport', amount: 2000, icon: '🚕', color: '#7D5A44' },
-    { name: 'Sightseeing & Activities', amount: 2500, icon: '🏖️', color: '#B2967D' }
+    { name: 'Local Transport', amount: 2000, icon: '🚕', color: '#4F7C73' },
+    { name: 'Sightseeing & Activities', amount: 2500, icon: '🏖️', color: '#8FAFA6' }
   ]);
 
   // Load bookings from localStorage
@@ -573,7 +573,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
             <div className="SkyRoute-group-owe-strip">
               <div className="SkyRoute-group-owe-card">
                 <span>You Owe</span>
-                <strong style={{ color: '#7D5A44' }}>₹0</strong>
+                <strong style={{ color: '#4F7C73' }}>₹0</strong>
               </div>
               <div className="SkyRoute-group-owe-card">
                 <span>You Are Owed</span>
@@ -669,7 +669,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
                 </div>
                 <div className="SkyRoute-budget-overview-item">
                   <span>Remaining</span>
-                  <strong style={{ color: budgetRemaining >= 0 ? '#7D5A44' : '#7D5A44' }}>
+                  <strong style={{ color: budgetRemaining >= 0 ? '#4F7C73' : '#4F7C73' }}>
                     {formatINR(budgetRemaining)}
                   </strong>
                 </div>
@@ -687,7 +687,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
                   className="SkyRoute-budget-meter-fill"
                   style={{
                     width: `${budgetSpentPercent}%`,
-                    backgroundColor: budgetSpentPercent > 90 ? '#7D5A44' : 'var(--SkyRoute-navy)'
+                    backgroundColor: budgetSpentPercent > 90 ? '#4F7C73' : 'var(--SkyRoute-navy)'
                   }}
                 ></div>
               </div>

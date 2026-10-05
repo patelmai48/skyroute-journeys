@@ -5,7 +5,7 @@
 /* Popular Routes Section */
 .SkyRoute-popular-routes {
   padding: 5rem 0 3.5rem;
-  background-color: var(--SkyRoute-bg, #F5F1EA);
+  background-color: var(--SkyRoute-bg, #F5F7F2);
 
   @media (max-width: 768px) {
     padding: 3.5rem 0 2.5rem;
@@ -27,13 +27,13 @@
 }
 
 .SkyRoute-popular-card {
-  background: var(--SkyRoute-card-bg, #F5F1EA) !important;
-  border: 1.5px solid var(--SkyRoute-border, #B2967D) !important;
+  background: var(--SkyRoute-card-bg, #F5F7F2) !important;
+  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
   border-radius: var(--SkyRoute-radius-md);
   padding: 1.45rem 1.35rem;
   cursor: pointer;
   transition: all var(--SkyRoute-transition-fast);
-  box-shadow: 0 8px 24px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 8px 24px rgba(23, 63, 58, 0.08);
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -41,12 +41,12 @@
 
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(74, 52, 42, 0.12);
-    border-color: #7D5A44 !important;
+    box-shadow: 0 12px 30px rgba(23, 63, 58, 0.12);
+    border-color: #4F7C73 !important;
   }
 
   &:focus-visible {
-    box-shadow: 0 0 0 3px rgba(178, 150, 125, 0.35);
+    box-shadow: 0 0 0 3px rgba(143, 175, 166, 0.35);
   }
 
   &__route {
@@ -55,24 +55,24 @@
     gap: 0.5rem;
     font-size: 1.05rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #4A342A) !important;
+    color: var(--SkyRoute-text-main, #173F3A) !important;
   }
 
   &__arrow {
-    color: var(--color-camel, #B2967D) !important;
+    color: var(--color-camel, #8FAFA6) !important;
   }
 
   &__price {
     font-size: 0.92rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #4A342A) !important;
+    color: var(--SkyRoute-text-main, #173F3A) !important;
   }
 }
 
 /* Features / Trust Badges Section */
 .SkyRoute-features {
   padding: 3rem 0 5rem;
-  background-color: var(--SkyRoute-bg, #F5F1EA);
+  background-color: var(--SkyRoute-bg, #F5F7F2);
 }
 
 .SkyRoute-features-grid {
@@ -87,37 +87,37 @@
 }
 
 .SkyRoute-feature-card {
-  background: var(--SkyRoute-card-bg, #F5F1EA) !important;
-  border: 1.5px solid var(--SkyRoute-border, #B2967D) !important;
+  background: var(--SkyRoute-card-bg, #F5F7F2) !important;
+  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
   border-radius: var(--SkyRoute-radius-md);
   padding: 2.25rem 2rem;
-  box-shadow: 0 8px 24px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 8px 24px rgba(23, 63, 58, 0.08);
   transition: all var(--SkyRoute-transition-fast);
 
   &:hover {
-    box-shadow: 0 12px 30px rgba(74, 52, 42, 0.12);
-    border-color: #7D5A44 !important;
+    box-shadow: 0 12px 30px rgba(23, 63, 58, 0.12);
+    border-color: #4F7C73 !important;
   }
 
   &__icon {
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    background-color: var(--SkyRoute-card-secondary, #D7C9B8) !important;
-    border: 1.5px solid var(--SkyRoute-border, #B2967D) !important;
+    background-color: var(--SkyRoute-card-secondary, #DDE8E3) !important;
+    border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     margin-bottom: 1.25rem;
-    color: var(--SkyRoute-text-main, #4A342A) !important;
+    color: var(--SkyRoute-text-main, #173F3A) !important;
   }
 
   h3 {
     font-family: var(--SkyRoute-font-serif);
     font-size: 1.35rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-main, #4A342A) !important;
+    color: var(--SkyRoute-text-main, #173F3A) !important;
     letter-spacing: -0.3px;
     margin: 0 0 0.6rem;
   }
@@ -125,18 +125,18 @@
   p {
     font-size: 0.95rem;
     line-height: 1.6;
-    color: var(--SkyRoute-text-secondary, #7D5A44) !important;
+    color: var(--SkyRoute-text-secondary, #4F7C73) !important;
     margin: 0;
   }
 }
 
 /* Footer Component */
 .SkyRoute-footer {
-  background: #4A342A;
-  border-top: 1.5px solid #7D5A44;
+  background: #173F3A;
+  border-top: 1.5px solid #4F7C73;
   padding: 3.5rem 0 2.5rem;
   margin-top: auto;
-  color: #F5F1EA;
+  color: #F5F7F2;
 
   &__container {
     display: flex;
@@ -174,14 +174,14 @@
     font-family: var(--SkyRoute-font-sans);
     font-size: 1.4rem;
     font-weight: 800;
-    color: #F5F1EA;
+    color: #F5F7F2;
     cursor: pointer;
     text-decoration: none;
   }
 
   &__tagline {
     font-size: 0.9rem;
-    color: #D7C9B8;
+    color: #DDE8E3;
   }
 
   &__nav {
@@ -197,24 +197,24 @@
     font-family: inherit;
     font-size: 0.92rem;
     font-weight: 600;
-    color: #D7C9B8;
+    color: #DDE8E3;
     cursor: pointer;
     padding: 0;
     transition: color 0.15s ease;
 
     &:hover {
-      color: #F5F1EA;
+      color: #F5F7F2;
     }
   }
 
   &__bottom {
     padding-top: 1.5rem;
-    border-top: 1px solid #7D5A44;
+    border-top: 1px solid #4F7C73;
     display: flex;
     align-items: center;
     justify-content: space-between;
     font-size: 0.85rem;
-    color: #D7C9B8;
+    color: #DDE8E3;
 
     @media (max-width: 640px) {
       flex-direction: column;

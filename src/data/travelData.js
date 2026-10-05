@@ -878,7 +878,7 @@ export const MOCK_FLIGHT_STATUSES = [
   {
     flightNumber: '6E 201',
     airline: 'IndiGo',
-    airlineColor: '#4A342A',
+    airlineColor: '#173F3A',
     origin: 'Ahmedabad (AMD)',
     destination: 'Delhi (DEL)',
     scheduledDeparture: '08:00 AM',
@@ -894,7 +894,7 @@ export const MOCK_FLIGHT_STATUSES = [
   {
     flightNumber: 'AI 805',
     airline: 'Air India',
-    airlineColor: '#7D5A44',
+    airlineColor: '#4F7C73',
     origin: 'Ahmedabad (AMD)',
     destination: 'Mumbai (BOM)',
     scheduledDeparture: '07:45 AM',
@@ -910,7 +910,7 @@ export const MOCK_FLIGHT_STATUSES = [
   {
     flightNumber: 'UK 952',
     airline: 'Vistara',
-    airlineColor: '#4A342A',
+    airlineColor: '#173F3A',
     origin: 'Mumbai (BOM)',
     destination: 'Bengaluru (BLR)',
     scheduledDeparture: '11:30 AM',
@@ -926,7 +926,7 @@ export const MOCK_FLIGHT_STATUSES = [
   {
     flightNumber: 'EK 501',
     airline: 'Emirates',
-    airlineColor: '#7D5A44',
+    airlineColor: '#4F7C73',
     origin: 'Ahmedabad (AMD)',
     destination: 'Dubai (DXB)',
     scheduledDeparture: '04:30 PM',

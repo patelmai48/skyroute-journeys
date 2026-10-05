@@ -1,142 +1,142 @@
 /* ==========================================================================
    SkyRoute Core Brand Design System Tokens & Global Styles
    Exact 5-Color Warm Neutral Palette:
-   1. LINEN    #F5F1EA - Main light page background & light card surfaces
-   2. KHAKI    #D7C9B8 - Secondary background, form cards, soft surfaces
-   3. CAMEL    #B2967D - Accent / highlight, active badges, borders
-   4. COCOA    #7D5A44 - Secondary brand action, secondary buttons, active nav
-   5. ESPRESSO #4A342A - Primary dark brand, headings, primary buttons, night background
+   1. LINEN    #F5F7F2 - Main light page background & light card surfaces
+   2. KHAKI    #DDE8E3 - Secondary background, form cards, soft surfaces
+   3. CAMEL    #8FAFA6 - Accent / highlight, active badges, borders
+   4. COCOA    #4F7C73 - Secondary brand action, secondary buttons, active nav
+   5. ESPRESSO #173F3A - Primary dark brand, headings, primary buttons, night background
    ========================================================================== */
 
 :root {
   /* 5-Color Palette Tokens */
-  --color-linen: #F5F1EA;
-  --color-khaki: #D7C9B8;
-  --color-camel: #B2967D;
-  --color-cocoa: #7D5A44;
-  --color-espresso: #4A342A;
+  --color-linen: #F5F7F2;
+  --color-khaki: #DDE8E3;
+  --color-camel: #8FAFA6;
+  --color-cocoa: #4F7C73;
+  --color-espresso: #173F3A;
 
   /* Global Design System Tokens (Day Mode Defaults) */
-  --color-primary: #4A342A;
-  --color-secondary: #7D5A44;
-  --color-tertiary: #B2967D;
+  --color-primary: #173F3A;
+  --color-secondary: #4F7C73;
+  --color-tertiary: #8FAFA6;
 
-  --color-bg-deep: #D7C9B8;
-  --color-bg-accent: #D7C9B8;
-  --color-bg-light: #F5F1EA;
+  --color-bg-deep: #DDE8E3;
+  --color-bg-accent: #DDE8E3;
+  --color-bg-light: #F5F7F2;
 
   /* Aliases for backwards compatibility */
-  --color-dark: #4A342A;
-  --color-teal: #7D5A44;
-  --color-blue-gray: #B2967D;
-  --color-lavender-gray: #D7C9B8;
-  --color-mauve: #D7C9B8;
-  --color-light-gray: #F5F1EA;
+  --color-dark: #173F3A;
+  --color-teal: #4F7C73;
+  --color-blue-gray: #8FAFA6;
+  --color-lavender-gray: #DDE8E3;
+  --color-mauve: #DDE8E3;
+  --color-light-gray: #F5F7F2;
 
   /* Website Background (Day Mode) */
-  --SkyRoute-bg: #F5F1EA;
-  --SkyRoute-bg-subtle: #D7C9B8;
-  --SkyRoute-bg-deep: #B2967D;
+  --SkyRoute-bg: #F5F7F2;
+  --SkyRoute-bg-subtle: #DDE8E3;
+  --SkyRoute-bg-deep: #8FAFA6;
 
   /* Cards & Surfaces (Day Mode) */
-  --SkyRoute-surface: #F5F1EA;
-  --SkyRoute-card-bg: #F5F1EA;
-  --SkyRoute-card-secondary: #D7C9B8;
-  --SkyRoute-card-deep: #B2967D;
-  --SkyRoute-card-elevated: #F5F1EA;
-  --SkyRoute-sidebar-bg: #D7C9B8;
-  --SkyRoute-sidebar-bottom-bg: #D7C9B8;
+  --SkyRoute-surface: #F5F7F2;
+  --SkyRoute-card-bg: #F5F7F2;
+  --SkyRoute-card-secondary: #DDE8E3;
+  --SkyRoute-card-deep: #8FAFA6;
+  --SkyRoute-card-elevated: #F5F7F2;
+  --SkyRoute-sidebar-bg: #DDE8E3;
+  --SkyRoute-sidebar-bottom-bg: #DDE8E3;
 
   /* Navbar / Header */
-  --SkyRoute-header-bg: #F5F1EA;
+  --SkyRoute-header-bg: #F5F7F2;
 
   /* UI / Component Colors */
-  --SkyRoute-navy: #4A342A;
-  --SkyRoute-navy-hover: #7D5A44;
-  --SkyRoute-teal: #7D5A44;
-  --SkyRoute-teal-hover: #4A342A;
-  --SkyRoute-teal-light: #D7C9B8;
-  --SkyRoute-sky-blue: #B2967D;
-  --SkyRoute-sky-blue-hover: #7D5A44;
-  --SkyRoute-beige: #D7C9B8;
-  --SkyRoute-white: #F5F1EA;
-  --SkyRoute-rose: #7D5A44;
-  --SkyRoute-rose-hover: #4A342A;
-  --SkyRoute-rose-light: #D7C9B8;
-  --SkyRoute-lavender: #B2967D;
-  --SkyRoute-mauve: #D7C9B8;
-  --SkyRoute-charcoal: #4A342A;
-  --SkyRoute-stone: #B2967D;
-  --SkyRoute-latte: #7D5A44;
-  --SkyRoute-dark-brown: #4A342A;
+  --SkyRoute-navy: #173F3A;
+  --SkyRoute-navy-hover: #4F7C73;
+  --SkyRoute-teal: #4F7C73;
+  --SkyRoute-teal-hover: #173F3A;
+  --SkyRoute-teal-light: #DDE8E3;
+  --SkyRoute-sky-blue: #8FAFA6;
+  --SkyRoute-sky-blue-hover: #4F7C73;
+  --SkyRoute-beige: #DDE8E3;
+  --SkyRoute-white: #F5F7F2;
+  --SkyRoute-rose: #4F7C73;
+  --SkyRoute-rose-hover: #173F3A;
+  --SkyRoute-rose-light: #DDE8E3;
+  --SkyRoute-lavender: #8FAFA6;
+  --SkyRoute-mauve: #DDE8E3;
+  --SkyRoute-charcoal: #173F3A;
+  --SkyRoute-stone: #8FAFA6;
+  --SkyRoute-latte: #4F7C73;
+  --SkyRoute-dark-brown: #173F3A;
 
   /* Buttons */
-  --SkyRoute-primary: #4A342A;
-  --SkyRoute-primary-hover: #7D5A44;
-  --SkyRoute-primary-light: #D7C9B8;
-  --SkyRoute-primary-text: #F5F1EA;
+  --SkyRoute-primary: #173F3A;
+  --SkyRoute-primary-hover: #4F7C73;
+  --SkyRoute-primary-light: #DDE8E3;
+  --SkyRoute-primary-text: #F5F7F2;
 
-  --SkyRoute-secondary: #7D5A44;
-  --SkyRoute-secondary-hover: #4A342A;
-  --SkyRoute-secondary-light: #B2967D;
-  --SkyRoute-secondary-text: #F5F1EA;
+  --SkyRoute-secondary: #4F7C73;
+  --SkyRoute-secondary-hover: #173F3A;
+  --SkyRoute-secondary-light: #8FAFA6;
+  --SkyRoute-secondary-text: #F5F7F2;
 
-  --SkyRoute-accent: #B2967D;
-  --SkyRoute-accent-hover: #7D5A44;
-  --SkyRoute-accent-light: #D7C9B8;
+  --SkyRoute-accent: #8FAFA6;
+  --SkyRoute-accent-hover: #4F7C73;
+  --SkyRoute-accent-light: #DDE8E3;
 
   /* Typography */
-  --SkyRoute-text-main: #4A342A;
-  --SkyRoute-text: #4A342A;
-  --SkyRoute-text-secondary: #7D5A44;
-  --SkyRoute-text-muted: #B2967D;
-  --SkyRoute-card-text-main: #4A342A;
-  --SkyRoute-card-text: #4A342A;
-  --SkyRoute-card-text-secondary: #7D5A44;
-  --SkyRoute-card-text-muted: #B2967D;
+  --SkyRoute-text-main: #173F3A;
+  --SkyRoute-text: #173F3A;
+  --SkyRoute-text-secondary: #4F7C73;
+  --SkyRoute-text-muted: #8FAFA6;
+  --SkyRoute-card-text-main: #173F3A;
+  --SkyRoute-card-text: #173F3A;
+  --SkyRoute-card-text-secondary: #4F7C73;
+  --SkyRoute-card-text-muted: #8FAFA6;
 
   /* Borders & Dividers */
-  --SkyRoute-border: #B2967D;
-  --SkyRoute-border-light: #D7C9B8;
-  --SkyRoute-border-focus: #7D5A44;
+  --SkyRoute-border: #8FAFA6;
+  --SkyRoute-border-light: #DDE8E3;
+  --SkyRoute-border-focus: #4F7C73;
 
   /* Inputs & Forms */
-  --SkyRoute-input-bg: #F5F1EA;
-  --SkyRoute-input-border: #B2967D;
-  --SkyRoute-input-text: #4A342A;
-  --SkyRoute-input-placeholder: #7D5A44;
-  --SkyRoute-hover: rgba(125, 90, 68, 0.1);
+  --SkyRoute-input-bg: #F5F7F2;
+  --SkyRoute-input-border: #8FAFA6;
+  --SkyRoute-input-text: #173F3A;
+  --SkyRoute-input-placeholder: #4F7C73;
+  --SkyRoute-hover: rgba(40, 92, 84, 0.1);
 
   /* Chips & Navigation */
-  --SkyRoute-chip-bg: #D7C9B8;
-  --SkyRoute-chip-text: #4A342A;
-  --SkyRoute-chip-active-bg: #7D5A44;
-  --SkyRoute-chip-active-text: #F5F1EA;
+  --SkyRoute-chip-bg: #DDE8E3;
+  --SkyRoute-chip-text: #173F3A;
+  --SkyRoute-chip-active-bg: #4F7C73;
+  --SkyRoute-chip-active-text: #F5F7F2;
 
-  --SkyRoute-nav-active-bg: #7D5A44;
-  --SkyRoute-nav-active-text: #F5F1EA;
-  --SkyRoute-nav-hover-bg: rgba(178, 150, 125, 0.2);
+  --SkyRoute-nav-active-bg: #4F7C73;
+  --SkyRoute-nav-active-text: #F5F7F2;
+  --SkyRoute-nav-hover-bg: rgba(143, 175, 166, 0.2);
 
   /* Status Colors (Muted / Harmonious) */
-  --SkyRoute-success: #7D5A44;
+  --SkyRoute-success: #4F7C73;
   --SkyRoute-success-bg: rgba(93, 122, 88, 0.15);
-  --SkyRoute-success-border: #7D5A44;
-  --SkyRoute-info: #7D5A44;
-  --SkyRoute-info-bg: rgba(125, 90, 68, 0.15);
-  --SkyRoute-info-border: #B2967D;
-  --SkyRoute-warning: #B2967D;
+  --SkyRoute-success-border: #4F7C73;
+  --SkyRoute-info: #4F7C73;
+  --SkyRoute-info-bg: rgba(40, 92, 84, 0.15);
+  --SkyRoute-info-border: #8FAFA6;
+  --SkyRoute-warning: #8FAFA6;
   --SkyRoute-warning-bg: rgba(178, 131, 68, 0.15);
-  --SkyRoute-warning-border: #B2967D;
-  --SkyRoute-danger: #7D5A44;
+  --SkyRoute-warning-border: #8FAFA6;
+  --SkyRoute-danger: #4F7C73;
   --SkyRoute-danger-bg: rgba(158, 75, 62, 0.15);
-  --SkyRoute-danger-border: #7D5A44;
+  --SkyRoute-danger-border: #4F7C73;
 
   /* Shadows */
-  --SkyRoute-shadow-xs: 0 1px 3px rgba(74, 52, 42, 0.05);
-  --SkyRoute-shadow-sm: 0 2px 8px rgba(74, 52, 42, 0.07);
-  --SkyRoute-shadow-card: 0 4px 18px rgba(74, 52, 42, 0.08);
-  --SkyRoute-shadow-md: 0 8px 24px rgba(74, 52, 42, 0.1);
-  --SkyRoute-shadow-lg: 0 16px 36px rgba(74, 52, 42, 0.14);
+  --SkyRoute-shadow-xs: 0 1px 3px rgba(23, 63, 58, 0.05);
+  --SkyRoute-shadow-sm: 0 2px 8px rgba(23, 63, 58, 0.07);
+  --SkyRoute-shadow-card: 0 4px 18px rgba(23, 63, 58, 0.08);
+  --SkyRoute-shadow-md: 0 8px 24px rgba(23, 63, 58, 0.1);
+  --SkyRoute-shadow-lg: 0 16px 36px rgba(23, 63, 58, 0.14);
 
   color-scheme: light;
 }
@@ -168,10 +168,9 @@
 }
 
 html, body {
-  background-color: #F5F1EA;
-  background-image: linear-gradient(180deg, #F5F1EA 0%, rgba(215, 201, 184, 0.45) 45%, rgba(178, 150, 125, 0.2) 100%);
-  background-attachment: fixed;
-  color: #4A342A;
+  background-color: #F5F7F2;
+  background-image: none;
+  color: #173F3A;
   font-family: var(--SkyRoute-font-sans);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
@@ -185,10 +184,10 @@ input,
 select,
 textarea {
   font-family: var(--SkyRoute-font-sans);
-  color: var(--SkyRoute-input-text, #4A342A);
+  color: var(--SkyRoute-input-text, #173F3A);
 
   &::placeholder {
-    color: var(--SkyRoute-input-placeholder, #7D5A44) !important;
+    color: var(--SkyRoute-input-placeholder, #4F7C73) !important;
     font-weight: 600;
     opacity: 1 !important;
   }
@@ -197,7 +196,7 @@ textarea {
 /* Serif Headings */
 h1, h2, h3, .SkyRoute-serif {
   font-family: var(--SkyRoute-font-serif);
-  color: #4A342A;
+  color: #173F3A;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -207,9 +206,8 @@ h1, h2, h3, .SkyRoute-serif {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #F5F1EA;
-  background-image: linear-gradient(180deg, #F5F1EA 0%, rgba(215, 201, 184, 0.45) 45%, rgba(178, 150, 125, 0.2) 100%);
-  background-attachment: fixed;
+  background-color: #F5F7F2;
+  background-image: none;
   width: 100%;
   overflow-x: hidden;
 }
@@ -252,69 +250,71 @@ h1, h2, h3, .SkyRoute-serif {
   box-sizing: border-box;
 
   &:focus-visible {
-    box-shadow: 0 0 0 3px rgba(125, 90, 68, 0.35);
+    box-shadow: 0 0 0 3px rgba(40, 92, 84, 0.35);
   }
 
-  /* Primary Button - #4A342A (Espresso) */
+  /* Primary Button - #173F3A (Deep Green) */
   &--primary {
-    background-color: #4A342A;
-    color: #F5F1EA;
-    border-color: #4A342A;
-    box-shadow: 0 3px 12px rgba(74, 52, 42, 0.2);
+    background-color: #173F3A;
+    color: #FFFFFF !important;
+    border-color: #173F3A;
+    box-shadow: 0 3px 12px rgba(23, 63, 58, 0.2);
 
     &:hover {
-      background-color: #7D5A44;
-      border-color: #7D5A44;
+      background-color: #285C54;
+      border-color: #285C54;
+      color: #FFFFFF !important;
       transform: translateY(-1px);
-      box-shadow: 0 5px 16px rgba(74, 52, 42, 0.28);
+      box-shadow: 0 5px 16px rgba(23, 63, 58, 0.28);
     }
 
     &:active {
       transform: translateY(0);
-      background-color: #4A342A;
+      background-color: #173F3A;
     }
   }
 
-  /* Secondary Button - #7D5A44 (Cocoa) */
+  /* Secondary Button - #285C54 / #4F7C73 (Deep Teal / Teal) */
   &--secondary,
   &--teal,
   &--latte {
-    background-color: #7D5A44;
-    color: #F5F1EA;
-    border-color: #7D5A44;
-    box-shadow: 0 3px 12px rgba(125, 90, 68, 0.25);
+    background-color: #285C54;
+    color: #FFFFFF !important;
+    border-color: #285C54;
+    box-shadow: 0 3px 12px rgba(40, 92, 84, 0.25);
 
     &:hover {
-      background-color: #4A342A;
-      border-color: #4A342A;
+      background-color: #173F3A;
+      border-color: #173F3A;
+      color: #FFFFFF !important;
       transform: translateY(-1px);
-      box-shadow: 0 5px 16px rgba(74, 52, 42, 0.28);
+      box-shadow: 0 5px 16px rgba(23, 63, 58, 0.28);
     }
 
     &:active {
       transform: translateY(0);
-      background-color: #7D5A44;
+      background-color: #285C54;
     }
   }
 
-  /* Outline / Subtle Button - #7D5A44 / #B2967D */
+  /* Outline / Subtle Button */
   &--outline,
   &--subtle {
     background-color: transparent;
-    border-color: #7D5A44;
-    color: #4A342A;
+    border-color: #4F7C73;
+    color: #173F3A;
     font-weight: 700;
 
     &:hover {
-      background-color: #D7C9B8;
-      border-color: #4A342A;
-      color: #4A342A;
+      background-color: #DDE8E3;
+      border-color: #173F3A;
+      color: #173F3A;
       transform: translateY(-1px);
     }
 
     &:active {
       transform: translateY(0);
-      background-color: #F5F1EA;
+      background-color: #F5F7F2;
     }
   }
 
@@ -322,12 +322,12 @@ h1, h2, h3, .SkyRoute-serif {
   &--ghost {
     background-color: transparent;
     border-color: transparent;
-    color: #7D5A44;
+    color: #4F7C73;
     font-weight: 700;
 
     &:hover {
-      background-color: rgba(215, 201, 184, 0.4);
-      color: #4A342A;
+      background-color: rgba(221, 232, 227, 0.4);
+      color: #173F3A;
     }
   }
 
@@ -407,22 +407,22 @@ h1, h2, h3, .SkyRoute-serif {
 .SkyRoute-exp-card,
 .SkyRoute-hotel-mini-card,
 .SkyRoute-flight-box {
-  background-color: #F5F1EA !important;
-  color: #4A342A;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  color: #173F3A;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-lg);
-  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
   transition: all var(--SkyRoute-transition-normal);
   box-sizing: border-box !important;
   position: relative;
   min-width: 0;
 
   h1, h2, h3, h4, h5, h6 {
-    color: #4A342A !important;
+    color: #173F3A !important;
   }
 
   p {
-    color: #4A342A;
+    color: #173F3A;
   }
 
   img {
@@ -431,27 +431,27 @@ h1, h2, h3, .SkyRoute-serif {
     display: block;
   }
 
-  /* Highlighted card surface (#D7C9B8 - Khaki) */
+  /* Highlighted card surface (#DDE8E3 - Khaki) */
   &--accent,
   &--highlighted {
-    background-color: #D7C9B8 !important;
-    border-color: #B2967D !important;
+    background-color: #DDE8E3 !important;
+    border-color: #8FAFA6 !important;
   }
 
-  /* Deeper card section (#B2967D - Camel) */
+  /* Deeper card section (#8FAFA6 - Camel) */
   &--secondary,
   &--deep {
-    background-color: #B2967D !important;
-    border-color: #7D5A44 !important;
-    color: #F5F1EA;
+    background-color: #8FAFA6 !important;
+    border-color: #4F7C73 !important;
+    color: #F5F7F2;
   }
 
   &--interactive {
     cursor: pointer;
 
     &:hover {
-      border-color: #7D5A44 !important;
-      box-shadow: 0 8px 26px rgba(74, 52, 42, 0.12);
+      border-color: #4F7C73 !important;
+      box-shadow: 0 8px 26px rgba(23, 63, 58, 0.12);
       transform: translateY(-2px);
     }
   }
@@ -470,47 +470,47 @@ h1, h2, h3, .SkyRoute-serif {
   letter-spacing: 0.5px;
   padding: 0.22rem 0.65rem;
   border-radius: var(--SkyRoute-radius-full);
-  background-color: var(--SkyRoute-card-secondary, #D7C9B8);
-  color: var(--SkyRoute-text-main, #4A342A);
-  border: 1px solid var(--SkyRoute-border, #B2967D);
+  background-color: var(--SkyRoute-card-secondary, #DDE8E3);
+  color: var(--SkyRoute-text-main, #173F3A);
+  border: 1px solid var(--SkyRoute-border, #8FAFA6);
 
   &--rose,
   &--accent {
-    background-color: var(--color-camel, #B2967D);
-    color: var(--color-espresso, #4A342A);
-    border-color: var(--color-cocoa, #7D5A44);
+    background-color: var(--color-camel, #8FAFA6);
+    color: var(--color-espresso, #173F3A);
+    border-color: var(--color-cocoa, #4F7C73);
   }
 
   &--teal,
   &--latte {
-    background-color: var(--color-khaki, #D7C9B8);
-    color: var(--color-espresso, #4A342A);
-    border-color: var(--color-camel, #B2967D);
+    background-color: var(--color-khaki, #DDE8E3);
+    color: var(--color-espresso, #173F3A);
+    border-color: var(--color-camel, #8FAFA6);
   }
 
   &--sky,
   &--blue {
-    background-color: var(--color-cocoa, #7D5A44);
-    color: var(--color-linen, #F5F1EA);
-    border-color: var(--color-espresso, #4A342A);
+    background-color: var(--color-cocoa, #4F7C73);
+    color: var(--color-linen, #F5F7F2);
+    border-color: var(--color-espresso, #173F3A);
   }
 
   &--success {
-    background-color: var(--color-khaki, #D7C9B8);
-    color: var(--color-espresso, #4A342A);
-    border-color: var(--color-camel, #B2967D);
+    background-color: var(--color-khaki, #DDE8E3);
+    color: var(--color-espresso, #173F3A);
+    border-color: var(--color-camel, #8FAFA6);
   }
 
   &--warning {
-    background-color: var(--color-camel, #B2967D);
-    color: var(--color-espresso, #4A342A);
-    border-color: var(--color-cocoa, #7D5A44);
+    background-color: var(--color-camel, #8FAFA6);
+    color: var(--color-espresso, #173F3A);
+    border-color: var(--color-cocoa, #4F7C73);
   }
 
   &--danger {
-    background-color: var(--color-cocoa, #7D5A44);
-    color: var(--color-linen, #F5F1EA);
-    border-color: var(--color-espresso, #4A342A);
+    background-color: var(--color-cocoa, #4F7C73);
+    color: var(--color-linen, #F5F7F2);
+    border-color: var(--color-espresso, #173F3A);
   }
 }
 
@@ -533,14 +533,14 @@ h1, h2, h3, .SkyRoute-serif {
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: var(--SkyRoute-text-secondary, #7D5A44);
+    color: var(--SkyRoute-text-secondary, #4F7C73);
     margin-bottom: 0.35rem;
   }
 
   &__title {
     font-size: 2.3rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     line-height: 1.2;
     margin-bottom: 0.4rem;
 
@@ -551,7 +551,7 @@ h1, h2, h3, .SkyRoute-serif {
 
   &__subtitle {
     font-size: 1rem;
-    color: var(--SkyRoute-text-secondary, #7D5A44);
+    color: var(--SkyRoute-text-secondary, #4F7C73);
     font-weight: 600;
     font-family: var(--SkyRoute-font-sans);
   }
@@ -561,7 +561,7 @@ h1, h2, h3, .SkyRoute-serif {
 .SkyRoute-modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(74, 52, 42, 0.65);
+  background-color: rgba(23, 63, 58, 0.65);
   backdrop-filter: blur(4px);
   z-index: 1000;
   display: flex;
@@ -576,8 +576,8 @@ h1, h2, h3, .SkyRoute-serif {
 }
 
 .SkyRoute-modal {
-  background-color: var(--SkyRoute-card-bg, #F5F1EA);
-  border: 1px solid var(--SkyRoute-border, #B2967D);
+  background-color: var(--SkyRoute-card-bg, #F5F7F2);
+  border: 1px solid var(--SkyRoute-border, #8FAFA6);
   border-radius: var(--SkyRoute-radius-lg);
   box-shadow: var(--SkyRoute-shadow-lg);
   max-width: 800px;
@@ -590,7 +590,7 @@ h1, h2, h3, .SkyRoute-serif {
 
   &__header {
     padding: 1.25rem 1.75rem;
-    border-bottom: 1px solid var(--SkyRoute-border, #B2967D);
+    border-bottom: 1px solid var(--SkyRoute-border, #8FAFA6);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -599,7 +599,7 @@ h1, h2, h3, .SkyRoute-serif {
   &__title {
     font-size: 1.35rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     font-family: var(--SkyRoute-font-serif);
   }
 
@@ -607,15 +607,15 @@ h1, h2, h3, .SkyRoute-serif {
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: var(--SkyRoute-text-secondary, #7D5A44);
+    color: var(--SkyRoute-text-secondary, #4F7C73);
     cursor: pointer;
     line-height: 1;
     padding: 0.25rem;
     border-radius: 6px;
 
     &:hover {
-      color: var(--SkyRoute-text-main, #4A342A);
-      background-color: var(--SkyRoute-hover, #D7C9B8);
+      color: var(--SkyRoute-text-main, #173F3A);
+      background-color: var(--SkyRoute-hover, #DDE8E3);
     }
   }
 
@@ -623,17 +623,17 @@ h1, h2, h3, .SkyRoute-serif {
     padding: 1.75rem;
     overflow-y: auto;
     flex: 1;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
   }
 
   &__footer {
     padding: 1.25rem 1.75rem;
-    border-top: 1px solid var(--SkyRoute-border, #B2967D);
+    border-top: 1px solid var(--SkyRoute-border, #8FAFA6);
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 0.75rem;
-    background-color: var(--SkyRoute-card-secondary, #D7C9B8);
+    background-color: var(--SkyRoute-card-secondary, #DDE8E3);
   }
 }
 
@@ -663,9 +663,9 @@ h1, h2, h3, .SkyRoute-serif {
 
 .SkyRoute-toast-item {
   pointer-events: auto;
-  background-color: #4A342A;
-  color: #F5F1EA;
-  border: 1px solid #7D5A44;
+  background-color: #173F3A;
+  color: #F5F7F2;
+  border: 1px solid #4F7C73;
   border-radius: var(--SkyRoute-radius-sm);
   padding: 0.85rem 1.15rem;
   box-shadow: var(--SkyRoute-shadow-lg);
@@ -676,15 +676,15 @@ h1, h2, h3, .SkyRoute-serif {
   cursor: pointer;
 
   &--error {
-    background-color: #7D5A44;
-    border-color: #B2967D;
-    color: #F5F1EA;
+    background-color: #4F7C73;
+    border-color: #8FAFA6;
+    color: #F5F7F2;
   }
 
   &--info {
-    background-color: #4A342A;
-    border-color: #B2967D;
-    color: #F5F1EA;
+    background-color: #173F3A;
+    border-color: #8FAFA6;
+    color: #F5F7F2;
   }
 }
 
@@ -702,14 +702,14 @@ h1, h2, h3, .SkyRoute-serif {
 .SkyRoute-toast-close {
   background: none;
   border: none;
-  color: rgba(245, 241, 234, 0.75);
+  color: rgba(245, 247, 242, 0.75);
   font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
   padding: 0 0.25rem;
 
   &:hover {
-    color: #F5F1EA;
+    color: #F5F7F2;
   }
 }
 

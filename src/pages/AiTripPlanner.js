@@ -163,14 +163,14 @@ const AiTripPlanner = ({ onNavigate, onSearch }) => {
             name: 'Food & Dining',
             amount: foodCost,
             pct: Math.min(100, Math.round((foodCost / totalBudget) * 100)),
-            barColor: '#B2967D'
+            barColor: '#8FAFA6'
           },
           {
             icon: '🚕',
             name: 'Local Transport',
             amount: transportCost,
             pct: Math.min(100, Math.round((transportCost / totalBudget) * 100)),
-            barColor: '#7D5A44'
+            barColor: '#4F7C73'
           },
           {
             icon: '🎟️',
@@ -516,7 +516,7 @@ const AiTripPlanner = ({ onNavigate, onSearch }) => {
                 </div>
                 <div className="SkyRoute-budget-stat-box">
                   <span className="SkyRoute-budget-stat-label">Remaining Buffer</span>
-                  <strong className="SkyRoute-budget-stat-val" style={{ color: '#7D5A44' }}>
+                  <strong className="SkyRoute-budget-stat-val" style={{ color: '#4F7C73' }}>
                     {formatINR(generatedPlan.remaining)}
                   </strong>
                 </div>

@@ -47,7 +47,7 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
         flight: {
           airline: 'IndiGo',
           airlineCode: '6E',
-          airlineColor: '#4A342A',
+          airlineColor: '#173F3A',
           flightNumber: '6E-214',
           originCity: 'Ahmedabad',
           originCode: 'AMD',
@@ -281,7 +281,7 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
 
               <div className="SkyRoute-manage-detail-item">
                 <span className="SkyRoute-manage-label">ASSIGNED SEAT</span>
-                <strong className="SkyRoute-manage-val" style={{ color: '#7D5A44' }}>
+                <strong className="SkyRoute-manage-val" style={{ color: '#4F7C73' }}>
                   {activeBooking.seat?.id || '14A'} ({activeBooking.seat?.type || 'Window'})
                 </strong>
               </div>
@@ -392,11 +392,11 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
                   </div>
                   <div className="SkyRoute-breakdown-row">
                     <span>Airline Cancellation Fee:</span>
-                    <strong style={{ color: '#7D5A44' }}>-₹1,200</strong>
+                    <strong style={{ color: '#4F7C73' }}>-₹1,200</strong>
                   </div>
                   <div className="SkyRoute-breakdown-row" style={{ borderTop: '1px solid var(--SkyRoute-border)', paddingTop: '8px' }}>
                     <span>Estimated Refund Amount:</span>
-                    <strong style={{ color: '#7D5A44', fontSize: '1.1rem' }}>
+                    <strong style={{ color: '#4F7C73', fontSize: '1.1rem' }}>
                       {formatINR(activeBooking?.total ? activeBooking.total - 1200 : 3069)}
                     </strong>
                   </div>
@@ -413,7 +413,7 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
                 <button
                   type="button"
                   className="SkyRoute-btn SkyRoute-btn--primary"
-                  style={{ backgroundColor: '#7D5A44', borderColor: '#7D5A44' }}
+                  style={{ backgroundColor: '#4F7C73', borderColor: '#4F7C73' }}
                   onClick={handleConfirmCancel}
                 >
                   Confirm &amp; Process Refund

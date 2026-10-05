@@ -16,12 +16,12 @@
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-md);
   padding: 1.15rem 1.85rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 16px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 16px rgba(23, 63, 58, 0.08);
   overflow-x: auto;
 }
 
@@ -31,27 +31,27 @@
   gap: 0.6rem;
   font-size: 0.95rem;
   font-weight: 700;
-  color: #B2967D;
+  color: #8FAFA6;
   white-space: nowrap;
 
   &--completed {
-    color: #7D5A44;
+    color: #4F7C73;
 
     .SkyRoute-step-num {
-      background-color: #D7C9B8;
-      color: #4A342A;
-      border-color: #B2967D;
+      background-color: #DDE8E3;
+      color: #173F3A;
+      border-color: #8FAFA6;
     }
   }
 
   &--active {
-    color: #4A342A;
+    color: #173F3A;
     font-weight: 800;
 
     .SkyRoute-step-num {
-      background-color: #4A342A;
-      color: #F5F1EA;
-      border-color: #4A342A;
+      background-color: #173F3A;
+      color: #F5F7F2;
+      border-color: #173F3A;
     }
   }
 }
@@ -60,7 +60,7 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  border: 1.5px solid #B2967D;
+  border: 1.5px solid #8FAFA6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,10 +97,10 @@
 /* Payment Method Card */
 .SkyRoute-payment-methods-card {
   padding: 2.25rem;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: 20px;
-  box-shadow: 0 10px 32px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 10px 32px rgba(23, 63, 58, 0.08);
   box-sizing: border-box;
 }
 
@@ -110,7 +110,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1.15rem;
   padding-bottom: 2rem;
-  border-bottom: 1.5px solid #B2967D;
+  border-bottom: 1.5px solid #8FAFA6;
   margin-bottom: 2rem;
 
   @media (max-width: 640px) {
@@ -129,9 +129,9 @@ button.SkyRoute-payment-method-card,
   gap: 0.45rem !important;
   padding: 1.35rem 1.6rem !important;
   border-radius: var(--SkyRoute-radius-md) !important;
-  border: 2px solid #B2967D !important;
-  background-color: #F5F1EA !important;
-  color: #4A342A !important;
+  border: 2px solid #8FAFA6 !important;
+  background-color: #F5F7F2 !important;
+  color: #173F3A !important;
   font-family: var(--SkyRoute-font-sans) !important;
   text-align: left !important;
   cursor: pointer !important;
@@ -143,29 +143,29 @@ button.SkyRoute-payment-method-card,
   box-sizing: border-box !important;
 
   &:hover {
-    border-color: #7D5A44 !important;
-    background-color: #D7C9B8 !important;
+    border-color: #4F7C73 !important;
+    background-color: #DDE8E3 !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(74, 52, 42, 0.08) !important;
+    box-shadow: 0 4px 12px rgba(23, 63, 58, 0.08) !important;
   }
 
   &--active {
-    background-color: #7D5A44 !important;
-    border-color: #4A342A !important;
-    box-shadow: 0 4px 18px rgba(74, 52, 42, 0.16) !important;
-    color: #F5F1EA !important;
+    background-color: #4F7C73 !important;
+    border-color: #173F3A !important;
+    box-shadow: 0 4px 18px rgba(23, 63, 58, 0.16) !important;
+    color: #F5F7F2 !important;
 
     .SkyRoute-pm-title {
-      color: #F5F1EA !important;
+      color: #F5F7F2 !important;
       font-weight: 800 !important;
     }
 
     .SkyRoute-pm-desc {
-      color: #F5F1EA !important;
+      color: #F5F7F2 !important;
     }
 
     .SkyRoute-pm-icon {
-      color: #F5F1EA !important;
+      color: #F5F7F2 !important;
     }
   }
 }
@@ -182,26 +182,26 @@ button.SkyRoute-payment-method-card,
   font-size: 1.75rem !important;
   line-height: 1 !important;
   display: inline-block !important;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
 }
 
 .SkyRoute-pm-badge {
   font-size: 0.72rem !important;
   font-weight: 800 !important;
   letter-spacing: 0.75px !important;
-  background-color: #4A342A !important;
-  color: #F5F1EA !important;
+  background-color: #173F3A !important;
+  color: #F5F7F2 !important;
   padding: 0.22rem 0.65rem !important;
   border-radius: var(--SkyRoute-radius-full) !important;
-  box-shadow: 0 2px 6px rgba(74, 52, 42, 0.25) !important;
+  box-shadow: 0 2px 6px rgba(23, 63, 58, 0.25) !important;
 }
 
 .SkyRoute-pm-radio-circle {
   width: 18px !important;
   height: 18px !important;
   border-radius: 50% !important;
-  border: 2px solid #B2967D !important;
-  background-color: #F5F1EA !important;
+  border: 2px solid #8FAFA6 !important;
+  background-color: #F5F7F2 !important;
   display: inline-block !important;
 }
 
@@ -217,7 +217,7 @@ button.SkyRoute-payment-method-card,
   display: block !important;
   font-size: 1.15rem !important;
   font-weight: 800 !important;
-  color: #4A342A !important;
+  color: #173F3A !important;
   margin: 0 !important;
   line-height: 1.25 !important;
 }
@@ -225,7 +225,7 @@ button.SkyRoute-payment-method-card,
 .SkyRoute-pm-desc {
   display: block !important;
   font-size: 0.88rem !important;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
   font-weight: 600 !important;
   line-height: 1.4 !important;
   margin: 0 !important;
@@ -272,8 +272,8 @@ button.SkyRoute-payment-method-card,
 }
 
 .SkyRoute-upi-apps-box {
-  background-color: #D7C9B8;
-  border: 1.5px solid #B2967D;
+  background-color: #DDE8E3;
+  border: 1.5px solid #8FAFA6;
   border-radius: var(--SkyRoute-radius-sm);
   padding: 1rem 1.25rem;
 }
@@ -289,14 +289,14 @@ button.SkyRoute-payment-method-card,
   font-weight: 700;
   padding: 0.35rem 0.85rem;
   border-radius: var(--SkyRoute-radius-full);
-  background-color: #F5F1EA;
-  border: 1.5px solid #B2967D;
-  color: #4A342A;
+  background-color: #F5F7F2;
+  border: 1.5px solid #8FAFA6;
+  color: #173F3A;
 }
 
 .SkyRoute-upi-instructions {
   font-size: 0.85rem;
-  color: #7D5A44;
+  color: #4F7C73;
   line-height: 1.5;
   margin: 0;
 }
@@ -307,8 +307,8 @@ button.SkyRoute-payment-method-card,
 }
 
 .SkyRoute-qr-box {
-  background-color: #D7C9B8;
-  border: 1.5px solid #B2967D;
+  background-color: #DDE8E3;
+  border: 1.5px solid #8FAFA6;
   border-radius: var(--SkyRoute-radius-md);
   padding: 1.5rem;
   display: flex;
@@ -319,7 +319,7 @@ button.SkyRoute-payment-method-card,
   width: 100%;
 
   svg {
-    border: 1px solid #B2967D;
+    border: 1px solid #8FAFA6;
     border-radius: var(--SkyRoute-radius-sm);
     box-shadow: var(--SkyRoute-shadow-sm);
   }
@@ -328,7 +328,7 @@ button.SkyRoute-payment-method-card,
 .SkyRoute-qr-caption {
   font-size: 0.82rem;
   font-weight: 700;
-  color: #4A342A;
+  color: #173F3A;
 }
 
 /* Credit / Debit Card Live Interactive Preview & Form */
@@ -344,8 +344,8 @@ button.SkyRoute-payment-method-card,
 }
 
 .SkyRoute-live-card-preview {
-  background: linear-gradient(135deg, #4A342A 0%, #7D5A44 100%);
-  color: #F5F1EA;
+  background: linear-gradient(135deg, #173F3A 0%, #4F7C73 100%);
+  color: #F5F7F2;
   border-radius: var(--SkyRoute-radius-md);
   padding: 1.5rem;
   box-shadow: var(--SkyRoute-shadow-md);
@@ -376,7 +376,7 @@ button.SkyRoute-payment-method-card,
 .SkyRoute-live-card-chip {
   width: 36px;
   height: 26px;
-  background: linear-gradient(135deg, #B2967D 0%, #B2967D 100%);
+  background: linear-gradient(135deg, #8FAFA6 0%, #8FAFA6 100%);
   border-radius: 4px;
 }
 
@@ -405,8 +405,8 @@ button.SkyRoute-payment-method-card,
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 1.15rem;
-  background-color: #F5F1EA;
-  border: 1.5px solid #B2967D;
+  background-color: #F5F7F2;
+  border: 1.5px solid #8FAFA6;
   border-radius: var(--SkyRoute-radius-sm);
   font-family: var(--SkyRoute-font-sans);
   cursor: pointer;
@@ -414,17 +414,17 @@ button.SkyRoute-payment-method-card,
   text-align: left;
 
   &:hover {
-    border-color: #7D5A44;
-    background-color: #D7C9B8;
+    border-color: #4F7C73;
+    background-color: #DDE8E3;
   }
 
   &--active {
-    background-color: #7D5A44;
-    border-color: #4A342A;
-    box-shadow: 0 2px 8px rgba(74, 52, 42, 0.15);
+    background-color: #4F7C73;
+    border-color: #173F3A;
+    box-shadow: 0 2px 8px rgba(23, 63, 58, 0.15);
 
     .SkyRoute-bank-name {
-      color: #F5F1EA;
+      color: #F5F7F2;
       font-weight: 700;
     }
   }
@@ -433,8 +433,8 @@ button.SkyRoute-payment-method-card,
 .SkyRoute-bank-badge {
   font-size: 0.75rem;
   font-weight: 800;
-  background-color: #4A342A;
-  color: #F5F1EA;
+  background-color: #173F3A;
+  color: #F5F7F2;
   padding: 0.2rem 0.45rem;
   border-radius: var(--SkyRoute-radius-xs);
 }
@@ -442,13 +442,13 @@ button.SkyRoute-payment-method-card,
 .SkyRoute-bank-name {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #4A342A;
+  color: #173F3A;
   flex: 1;
 }
 
 .SkyRoute-bank-check {
   font-weight: 800;
-  color: #4A342A;
+  color: #173F3A;
 }
 
 /* Wallet Card Options */
@@ -463,33 +463,33 @@ button.SkyRoute-payment-method-card,
   align-items: center;
   gap: 1rem;
   padding: 1.15rem 1.35rem;
-  background-color: #F5F1EA;
-  border: 1.5px solid #B2967D;
+  background-color: #F5F7F2;
+  border: 1.5px solid #8FAFA6;
   border-radius: var(--SkyRoute-radius-sm);
   cursor: pointer;
   transition: all var(--SkyRoute-transition-fast);
 
   &:hover {
-    border-color: #7D5A44;
-    background-color: #D7C9B8;
+    border-color: #4F7C73;
+    background-color: #DDE8E3;
   }
 
   &--active {
-    background-color: #7D5A44;
-    border-color: #4A342A;
-    box-shadow: 0 2px 8px rgba(74, 52, 42, 0.15);
+    background-color: #4F7C73;
+    border-color: #173F3A;
+    box-shadow: 0 2px 8px rgba(23, 63, 58, 0.15);
 
     strong {
-      color: #F5F1EA !important;
+      color: #F5F7F2 !important;
     }
 
     span {
-      color: #F5F1EA !important;
+      color: #F5F7F2 !important;
     }
   }
 
   input[type="radio"] {
-    accent-color: #4A342A;
+    accent-color: #173F3A;
     width: 18px;
     height: 18px;
   }
@@ -497,7 +497,7 @@ button.SkyRoute-payment-method-card,
 
 .SkyRoute-wallet-icon {
   font-size: 1.4rem;
-  color: #7D5A44;
+  color: #4F7C73;
 }
 
 .SkyRoute-wallet-meta {
@@ -507,22 +507,22 @@ button.SkyRoute-payment-method-card,
 
   strong {
     font-size: 0.95rem;
-    color: #4A342A;
+    color: #173F3A;
   }
 
   span {
     font-size: 0.82rem;
-    color: #7D5A44;
+    color: #4F7C73;
   }
 }
 
 /* Promo Card */
 .SkyRoute-coupon-card {
   padding: 1.5rem 1.75rem;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 16px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 16px rgba(23, 63, 58, 0.08);
   display: flex;
   align-items: flex-start;
   gap: 1.25rem;
@@ -533,7 +533,7 @@ button.SkyRoute-payment-method-card,
   font-size: 1.75rem;
   flex-shrink: 0;
   margin-top: 2px;
-  color: #7D5A44;
+  color: #4F7C73;
 }
 
 .SkyRoute-coupon-body {
@@ -546,7 +546,7 @@ button.SkyRoute-payment-method-card,
 .SkyRoute-coupon-title {
   font-size: 1rem;
   font-weight: 700;
-  color: #4A342A;
+  color: #173F3A;
 }
 
 .SkyRoute-coupon-form {
@@ -566,21 +566,21 @@ button.SkyRoute-payment-method-card,
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 1px;
-  border: 1.5px solid #B2967D !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-sm);
-  background-color: #F5F1EA !important;
-  color: #4A342A !important;
+  background-color: #F5F7F2 !important;
+  color: #173F3A !important;
 
   &:focus {
     outline: none;
-    border-color: #7D5A44 !important;
+    border-color: #4F7C73 !important;
   }
 }
 
 .SkyRoute-coupon-success {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #4A342A;
+  color: #173F3A;
   display: flex;
   align-items: center;
   gap: 0.35rem;
@@ -611,13 +611,13 @@ button.SkyRoute-payment-method-card,
   gap: 0.6rem;
   font-weight: 800;
   font-size: 1.05rem;
-  background-color: #4A342A !important;
-  color: #F5F1EA !important;
+  background-color: #173F3A !important;
+  color: #F5F7F2 !important;
   border-radius: 12px;
   transition: background-color var(--SkyRoute-transition-fast);
 
   &:hover {
-    background-color: #7D5A44 !important;
+    background-color: #4F7C73 !important;
   }
 }
 
@@ -627,10 +627,10 @@ button.SkyRoute-payment-method-card,
 
 .SkyRoute-sidebar-summary {
   padding: 2.25rem;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: 20px;
-  box-shadow: 0 10px 32px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 10px 32px rgba(23, 63, 58, 0.08);
   display: flex;
   flex-direction: column;
   gap: 1.35rem;
@@ -641,7 +641,7 @@ button.SkyRoute-payment-method-card,
     font-family: var(--SkyRoute-font-serif);
     font-size: 1.55rem;
     font-weight: 800;
-    color: #4A342A !important;
+    color: #173F3A !important;
     margin: 0;
   }
 
@@ -655,34 +655,34 @@ button.SkyRoute-payment-method-card,
     width: 48px;
     height: 48px;
     border-radius: var(--SkyRoute-radius-sm);
-    color: #4A342A;
+    color: #173F3A;
     font-weight: 900;
     font-size: 1.1rem;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    background-color: #D7C9B8;
-    border: 1.5px solid #B2967D;
-    box-shadow: 0 4px 12px rgba(74, 52, 42, 0.08);
+    background-color: #DDE8E3;
+    border: 1.5px solid #8FAFA6;
+    box-shadow: 0 4px 12px rgba(23, 63, 58, 0.08);
   }
 
   &__airline-name {
     font-size: 1.15rem;
     font-weight: 800;
-    color: #4A342A !important;
+    color: #173F3A !important;
     margin: 0 0 0.2rem;
   }
 
   &__flight-no {
     font-size: 0.88rem;
-    color: #7D5A44 !important;
+    color: #4F7C73 !important;
     font-weight: 700;
   }
 
   &__divider {
     height: 1.5px;
-    background-color: #B2967D;
+    background-color: #8FAFA6;
     opacity: 0.35;
     width: 100%;
   }
@@ -691,10 +691,10 @@ button.SkyRoute-payment-method-card,
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #D7C9B8 !important;
+    background-color: #DDE8E3 !important;
     padding: 1.35rem 1.6rem;
     border-radius: var(--SkyRoute-radius-md);
-    border: 1.5px solid #B2967D !important;
+    border: 1.5px solid #8FAFA6 !important;
   }
 
   &__point {
@@ -710,19 +710,19 @@ button.SkyRoute-payment-method-card,
   &__time {
     font-size: 1.45rem;
     font-weight: 900;
-    color: #4A342A !important;
+    color: #173F3A !important;
   }
 
   &__code {
     font-size: 1.15rem;
     font-weight: 900;
-    color: #4A342A !important;
+    color: #173F3A !important;
     letter-spacing: 0.5px;
   }
 
   &__city {
     font-size: 0.92rem;
-    color: #7D5A44 !important;
+    color: #4F7C73 !important;
     font-weight: 700;
   }
 
@@ -736,11 +736,11 @@ button.SkyRoute-payment-method-card,
   &__duration {
     font-size: 0.88rem;
     font-weight: 800;
-    color: #4A342A;
+    color: #173F3A;
   }
 
   &__arrow {
-    color: #7D5A44;
+    color: #4F7C73;
     font-size: 1.35rem;
     line-height: 1;
     font-weight: 900;
@@ -749,7 +749,7 @@ button.SkyRoute-payment-method-card,
   &__stops {
     font-size: 0.84rem;
     font-weight: 800;
-    color: #7D5A44;
+    color: #4F7C73;
   }
 
   &__meta-list {
@@ -765,12 +765,12 @@ button.SkyRoute-payment-method-card,
     font-size: 0.92rem;
 
     span {
-      color: #7D5A44;
+      color: #4F7C73;
       font-weight: 600;
     }
 
     strong {
-      color: #4A342A;
+      color: #173F3A;
       font-weight: 800;
     }
   }
@@ -792,14 +792,14 @@ button.SkyRoute-payment-method-card,
     display: block;
     font-size: 1.2rem;
     font-weight: 900;
-    color: #4A342A !important;
+    color: #173F3A !important;
   }
 
   &__total-tax {
     display: block;
     font-size: 0.82rem;
     font-weight: 600;
-    color: #B2967D !important;
+    color: #8FAFA6 !important;
     margin-top: 3px;
   }
 
@@ -807,7 +807,7 @@ button.SkyRoute-payment-method-card,
     font-family: var(--SkyRoute-font-serif);
     font-size: 2.1rem;
     font-weight: 900;
-    color: #4A342A !important;
+    color: #173F3A !important;
     text-align: right;
   }
 }
@@ -817,21 +817,21 @@ button.SkyRoute-payment-method-card,
   align-items: center;
   justify-content: space-between;
   font-size: 0.92rem;
-  color: #7D5A44;
+  color: #4F7C73;
   font-weight: 600;
 
   span:last-child {
     font-weight: 800;
-    color: #4A342A;
+    color: #173F3A;
     text-align: right;
   }
 
   &--discount {
-    color: #7D5A44;
+    color: #4F7C73;
     font-weight: 700;
 
     span:last-child {
-      color: #4A342A;
+      color: #173F3A;
       font-weight: 800;
     }
   }

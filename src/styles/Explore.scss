@@ -7,10 +7,10 @@
 }
 
 .SkyRoute-explore-hero {
-  background: linear-gradient(180deg, #F5F1EA 0%, rgba(215, 201, 184, 0.45) 100%);
-  border-bottom: 1.5px solid #B2967D;
+  background: linear-gradient(180deg, #F5F7F2 0%, rgba(221, 232, 227, 0.45) 100%);
+  border-bottom: 1.5px solid #8FAFA6;
   padding: 3.5rem 0 2.5rem;
-  color: #4A342A;
+  color: #173F3A;
   margin-bottom: 2.5rem;
 
   &__content {
@@ -28,7 +28,7 @@
     font-size: 2.8rem;
     font-weight: 800;
     letter-spacing: -0.02em;
-    color: #4A342A;
+    color: #173F3A;
     line-height: 1.15;
 
     @media (max-width: 640px) {
@@ -39,7 +39,7 @@
   &__subtitle {
     font-family: var(--SkyRoute-font-sans);
     font-size: 1.05rem;
-    color: #7D5A44;
+    color: #4F7C73;
     max-width: 600px;
     margin-bottom: 1rem;
   }
@@ -47,15 +47,15 @@
 
 .SkyRoute-explore-filter-card {
   width: 100%;
-  background-color: #F5F1EA !important;
-  color: #4A342A;
+  background-color: #F5F7F2 !important;
+  color: #173F3A;
   padding: 1.5rem 1.75rem;
   border-radius: var(--SkyRoute-radius-md);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  box-shadow: 0 4px 16px rgba(74, 52, 42, 0.08);
-  border: 1.5px solid #B2967D !important;
+  box-shadow: 0 4px 16px rgba(23, 63, 58, 0.08);
+  border: 1.5px solid #8FAFA6 !important;
   box-sizing: border-box;
 }
 
@@ -63,35 +63,35 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-sm);
   padding: 0.85rem 1.25rem;
   transition: all var(--SkyRoute-transition-fast);
 
   &:focus-within {
-    border-color: #7D5A44 !important;
-    box-shadow: 0 0 0 2px rgba(125, 90, 68, 0.2);
+    border-color: #4F7C73 !important;
+    box-shadow: 0 0 0 2px rgba(40, 92, 84, 0.2);
   }
 }
 
 .SkyRoute-explore-search-icon {
   font-size: 1.15rem;
-  color: #7D5A44;
+  color: #4F7C73;
 }
 
 .SkyRoute-explore-search-input {
   flex: 1;
   border: none;
   background: transparent;
-  color: #4A342A !important;
+  color: #173F3A !important;
   font-size: 1.05rem;
   font-weight: 700;
   font-family: var(--SkyRoute-font-sans);
   outline: none;
 
   &::placeholder {
-    color: #7D5A44 !important;
+    color: #4F7C73 !important;
     font-weight: 600;
     opacity: 1 !important;
   }
@@ -100,13 +100,13 @@
 .SkyRoute-explore-clear-btn {
   background: none;
   border: none;
-  color: #7D5A44;
+  color: #4F7C73;
   font-size: 1.2rem;
   cursor: pointer;
   padding: 0 0.25rem;
 
   &:hover {
-    color: #4A342A;
+    color: #173F3A;
   }
 }
 
@@ -128,30 +128,30 @@
 
 .SkyRoute-budget-label {
   font-size: 0.88rem;
-  color: #7D5A44;
+  color: #4F7C73;
   white-space: nowrap;
 
   strong {
-    color: #4A342A;
+    color: #173F3A;
   }
 }
 
 .SkyRoute-budget-range {
   flex: 1;
-  accent-color: #4A342A;
+  accent-color: #173F3A;
   cursor: pointer;
 }
 
 .SkyRoute-explore-count-tag {
   font-size: 0.88rem;
-  color: #4A342A;
-  background-color: #D7C9B8;
+  color: #173F3A;
+  background-color: #DDE8E3;
   padding: 0.35rem 0.85rem;
   border-radius: var(--SkyRoute-radius-full);
-  border: 1.5px solid #B2967D;
+  border: 1.5px solid #8FAFA6;
 
   strong {
-    color: #4A342A;
+    color: #173F3A;
   }
 }
 
@@ -179,29 +179,29 @@
   gap: 0.5rem;
   padding: 0.65rem 1.35rem;
   border-radius: var(--SkyRoute-radius-full);
-  border: 1.5px solid #B2967D !important;
-  background-color: #F5F1EA !important;
-  color: #4A342A !important;
+  border: 1.5px solid #8FAFA6 !important;
+  background-color: #F5F7F2 !important;
+  color: #173F3A !important;
   font-family: var(--SkyRoute-font-sans);
   font-size: 0.92rem;
   font-weight: 700;
   cursor: pointer;
   white-space: nowrap;
   transition: all var(--SkyRoute-transition-fast);
-  box-shadow: 0 2px 8px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 2px 8px rgba(23, 63, 58, 0.08);
 
   &:hover {
-    border-color: #7D5A44 !important;
-    background-color: #D7C9B8 !important;
+    border-color: #4F7C73 !important;
+    background-color: #DDE8E3 !important;
     transform: translateY(-1px);
   }
 
   &--active {
-    background-color: #7D5A44 !important;
-    color: #F5F1EA !important;
-    border-color: #7D5A44 !important;
+    background-color: #4F7C73 !important;
+    color: #F5F7F2 !important;
+    border-color: #4F7C73 !important;
     font-weight: 800;
-    box-shadow: 0 4px 14px rgba(125, 90, 68, 0.35);
+    box-shadow: 0 4px 14px rgba(40, 92, 84, 0.35);
   }
 
   &__icon {
@@ -218,20 +218,20 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.75rem;
   font-weight: 800;
-  color: #4A342A;
+  color: #173F3A;
   margin-bottom: 0.35rem;
 }
 
 .SkyRoute-explore-count {
   font-family: var(--SkyRoute-font-sans);
-  color: #7D5A44;
+  color: #4F7C73;
   font-size: 1.25rem;
   font-weight: 700;
 }
 
 .SkyRoute-explore-results-sub {
   font-size: 0.95rem;
-  color: #B2967D;
+  color: #8FAFA6;
 }
 
 /* Destination Discovery Cards Grid - Big, Roomy, No Overflow */
@@ -248,11 +248,11 @@
 }
 
 .SkyRoute-destination-explorer-card {
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: 20px;
   overflow: hidden !important;
-  box-shadow: 0 10px 32px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 10px 32px rgba(23, 63, 58, 0.08);
   transition: transform var(--SkyRoute-transition-normal), box-shadow var(--SkyRoute-transition-normal), border-color var(--SkyRoute-transition-normal);
   display: flex;
   flex-direction: column;
@@ -262,8 +262,8 @@
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 14px 38px rgba(74, 52, 42, 0.14);
-    border-color: #7D5A44 !important;
+    box-shadow: 0 14px 38px rgba(23, 63, 58, 0.14);
+    border-color: #4F7C73 !important;
 
     .SkyRoute-destination-explorer-card__image {
       transform: scale(1.04);
@@ -274,7 +274,7 @@
     position: relative;
     height: 250px;
     overflow: hidden !important;
-    background-color: #D7C9B8;
+    background-color: #DDE8E3;
     box-sizing: border-box;
   }
 
@@ -293,8 +293,8 @@
     width: 38px;
     height: 38px;
     border-radius: var(--SkyRoute-radius-full);
-    background-color: #F5F1EA;
-    border: 1.5px solid #B2967D;
+    background-color: #F5F7F2;
+    border: 1.5px solid #8FAFA6;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -310,13 +310,13 @@
     position: absolute;
     top: 14px;
     right: 14px;
-    background-color: #4A342A;
-    color: #F5F1EA;
+    background-color: #173F3A;
+    color: #F5F7F2;
     font-size: 0.75rem;
     font-weight: 800;
     padding: 0.3rem 0.75rem;
     border-radius: var(--SkyRoute-radius-full);
-    border: 1px solid #B2967D;
+    border: 1px solid #8FAFA6;
     letter-spacing: 0.05em;
   }
 
@@ -347,7 +347,7 @@
     font-family: var(--SkyRoute-font-serif);
     font-size: 1.6rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     line-height: 1.2;
     margin: 0;
     min-width: 0;
@@ -356,24 +356,24 @@
 
   &__country {
     font-size: 0.95rem;
-    color: var(--SkyRoute-text-secondary, #7D5A44);
+    color: var(--SkyRoute-text-secondary, #4F7C73);
     font-weight: 700;
   }
 
   &__code-badge {
-    background-color: var(--SkyRoute-card-secondary, #D7C9B8);
-    color: var(--SkyRoute-text-main, #4A342A);
+    background-color: var(--SkyRoute-card-secondary, #DDE8E3);
+    color: var(--SkyRoute-text-main, #173F3A);
     font-family: var(--SkyRoute-font-mono, monospace);
     font-weight: 800;
     font-size: 0.92rem;
     padding: 0.3rem 0.7rem;
     border-radius: var(--SkyRoute-radius-sm);
-    border: 1.5px solid var(--SkyRoute-border, #B2967D);
+    border: 1.5px solid var(--SkyRoute-border, #8FAFA6);
   }
 
   &__description {
     font-size: 0.94rem;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     line-height: 1.55;
     font-weight: 500;
     margin: 0;
@@ -384,10 +384,10 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.75rem;
-    background-color: var(--SkyRoute-card-secondary, #D7C9B8) !important;
+    background-color: var(--SkyRoute-card-secondary, #DDE8E3) !important;
     padding: 1rem 1.25rem;
     border-radius: var(--SkyRoute-radius-sm);
-    border: 1.5px solid var(--SkyRoute-border, #B2967D) !important;
+    border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
 
     @media (max-width: 480px) {
       grid-template-columns: 1fr;
@@ -407,7 +407,7 @@
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: var(--SkyRoute-text-secondary, #7D5A44) !important;
+    color: var(--SkyRoute-text-secondary, #4F7C73) !important;
   }
 
   &__attractions-list {
@@ -421,7 +421,7 @@
 
   &__attraction-bullet {
     font-size: 0.9rem;
-    color: var(--SkyRoute-text-main, #4A342A);
+    color: var(--SkyRoute-text-main, #173F3A);
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -434,27 +434,27 @@
     gap: 0.6rem;
     margin-top: auto;
     padding-top: 0.85rem;
-    border-top: 1.5px solid #B2967D;
+    border-top: 1.5px solid #8FAFA6;
 
     .SkyRoute-btn {
       width: 100%;
       justify-content: center;
-      background-color: #4A342A !important;
-      color: #F5F1EA !important;
-      border: 1.5px solid #4A342A !important;
+      background-color: #173F3A !important;
+      color: #F5F7F2 !important;
+      border: 1.5px solid #173F3A !important;
       border-radius: 12px;
       transition: background-color var(--SkyRoute-transition-fast);
 
       &:hover {
-        background-color: #7D5A44 !important;
-        border-color: #7D5A44 !important;
+        background-color: #4F7C73 !important;
+        border-color: #4F7C73 !important;
       }
     }
   }
 }
 
 .SkyRoute-bullet-dot {
-  color: #7D5A44;
+  color: #4F7C73;
   font-weight: 900;
 }
 
@@ -467,18 +467,18 @@
     font-size: 0.78rem;
     font-weight: 800;
     text-transform: uppercase;
-    color: #7D5A44 !important;
+    color: #4F7C73 !important;
   }
 
   &__value {
     font-size: 0.95rem;
     font-weight: 700;
-    color: #4A342A !important;
+    color: #173F3A !important;
     white-space: nowrap;
   }
 
   &__price {
-    color: #4A342A !important;
+    color: #173F3A !important;
     font-size: 1.35rem;
     font-weight: 900;
   }
@@ -491,24 +491,24 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  background-color: #F5F1EA !important;
+  background-color: #F5F7F2 !important;
   border-radius: var(--SkyRoute-radius-md);
-  border: 1.5px solid #B2967D !important;
+  border: 1.5px solid #8FAFA6 !important;
 
   &__icon {
     font-size: 3rem;
-    color: #7D5A44;
+    color: #4F7C73;
   }
 
   h3 {
     font-family: var(--SkyRoute-font-serif);
     font-size: 1.5rem;
-    color: #4A342A !important;
+    color: #173F3A !important;
     margin: 0;
   }
 
   p {
-    color: #7D5A44 !important;
+    color: #4F7C73 !important;
     max-width: 500px;
     margin: 0;
   }

@@ -43,7 +43,7 @@ const FlightSidebarSummary = ({
       <div className="SkyRoute-sidebar-summary__airline">
         <div
           className="SkyRoute-sidebar-summary__logo"
-          style={{ backgroundColor: flight.airlineColor || '#4A342A' }}
+          style={{ backgroundColor: flight.airlineColor || '#173F3A' }}
         >
           {flight.airlineCode || flight.airline.slice(0, 2).toUpperCase()}
         </div>

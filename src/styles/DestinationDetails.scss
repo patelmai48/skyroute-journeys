@@ -31,7 +31,7 @@
   &__overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(47, 45, 43, 0.35) 0%, rgba(47, 45, 43, 0.88) 100%);
+    background: linear-gradient(180deg, rgba(23, 63, 58, 0.35) 0%, rgba(23, 63, 58, 0.88) 100%);
     z-index: 2;
   }
 
@@ -39,7 +39,7 @@
     position: relative;
     z-index: 3;
     width: 100%;
-    color: #F5F1EA;
+    color: #F5F7F2;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
@@ -67,7 +67,7 @@
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.1;
-    color: #F5F1EA;
+    color: #F5F7F2;
     word-break: break-word;
 
     @media (max-width: 640px) {
@@ -90,7 +90,7 @@
 
   &__tagline {
     font-size: 1.15rem;
-    color: #F5F1EA;
+    color: #F5F7F2;
     max-width: 700px;
 
     @media (max-width: 640px) {
@@ -103,7 +103,7 @@
 .SkyRoute-dest-back-btn {
   background: none;
   border: none;
-  color: #F5F1EA;
+  color: #F5F7F2;
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
@@ -111,7 +111,7 @@
   padding: 0.25rem 0;
 
   &:hover {
-    color: #F5F1EA;
+    color: #F5F7F2;
     text-decoration: underline;
   }
 }
@@ -123,11 +123,11 @@
   grid-template-columns: repeat(4, 1fr) auto;
   gap: 1.5rem;
   align-items: center;
-  background-color: #D7C9B8 !important;
-  color: #4A342A !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #DDE8E3 !important;
+  color: #173F3A !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
   box-sizing: border-box;
 
   @media (max-width: 1024px) {
@@ -157,7 +157,7 @@
   &__label {
     font-size: 0.78rem;
     text-transform: uppercase;
-    color: #7D5A44 !important;
+    color: #4F7C73 !important;
     font-weight: 800;
     letter-spacing: 0.5px;
   }
@@ -166,7 +166,7 @@
     font-family: var(--SkyRoute-font-serif);
     font-size: 1.25rem;
     font-weight: 900;
-    color: #4A342A !important;
+    color: #173F3A !important;
 
     @media (max-width: 640px) {
       font-size: 1.1rem;
@@ -209,7 +209,7 @@
 .SkyRoute-dest-tabs {
   display: flex;
   gap: 0.5rem;
-  border-bottom: 2px solid #B2967D;
+  border-bottom: 2px solid #8FAFA6;
   margin-bottom: 1.5rem;
   overflow-x: auto;
   scrollbar-width: none;
@@ -234,19 +234,19 @@
   font-family: var(--SkyRoute-font-sans);
   font-size: 1rem;
   font-weight: 700;
-  color: #B2967D !important;
+  color: #8FAFA6 !important;
   cursor: pointer;
   white-space: nowrap;
   flex-shrink: 0;
   transition: all var(--SkyRoute-transition-fast);
 
   &:hover {
-    color: #4A342A !important;
+    color: #173F3A !important;
   }
 
   &--active {
-    color: #4A342A !important;
-    border-bottom-color: #7D5A44 !important;
+    color: #173F3A !important;
+    border-bottom-color: #4F7C73 !important;
     font-weight: 800;
   }
 
@@ -268,10 +268,10 @@
 
 .SkyRoute-dest-card-box {
   padding: 2.25rem;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
   box-sizing: border-box;
 
   @media (max-width: 640px) {
@@ -283,7 +283,7 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.45rem;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #173F3A !important;
   margin-bottom: 1.25rem;
 
   @media (max-width: 640px) {
@@ -307,7 +307,7 @@
   gap: 0.85rem;
   font-size: 1rem;
   font-weight: 600;
-  color: #4A342A !important;
+  color: #173F3A !important;
 
   @media (max-width: 640px) {
     font-size: 0.92rem;
@@ -319,8 +319,8 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background-color: #7D5A44 !important;
-  color: #F5F1EA !important;
+  background-color: #4F7C73 !important;
+  color: #F5F7F2 !important;
   font-size: 0.82rem;
   font-weight: 900;
   display: flex;
@@ -344,10 +344,10 @@
   display: flex;
   align-items: flex-start;
   gap: 0.85rem;
-  background-color: #D7C9B8 !important;
+  background-color: #DDE8E3 !important;
   padding: 1.25rem;
   border-radius: var(--SkyRoute-radius-sm);
-  border: 1.5px solid #B2967D !important;
+  border: 1.5px solid #8FAFA6 !important;
   box-sizing: border-box;
 
   @media (max-width: 640px) {
@@ -363,7 +363,7 @@
 .SkyRoute-dest-exp-text {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #4A342A !important;
+  color: #173F3A !important;
   line-height: 1.45;
   margin: 0;
 
@@ -377,12 +377,12 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1.35rem 1.6rem;
-  background-color: #D7C9B8 !important;
-  border-left: 5px solid #7D5A44 !important;
+  background-color: #DDE8E3 !important;
+  border-left: 5px solid #4F7C73 !important;
   border-radius: 0 var(--SkyRoute-radius-sm) var(--SkyRoute-radius-sm) 0;
-  border-top: 1.5px solid #B2967D !important;
-  border-right: 1.5px solid #B2967D !important;
-  border-bottom: 1.5px solid #B2967D !important;
+  border-top: 1.5px solid #8FAFA6 !important;
+  border-right: 1.5px solid #8FAFA6 !important;
+  border-bottom: 1.5px solid #8FAFA6 !important;
   box-sizing: border-box;
 
   @media (max-width: 640px) {
@@ -398,13 +398,13 @@
 .SkyRoute-dest-tips-title {
   font-size: 1.05rem;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #173F3A !important;
   margin-bottom: 0.35rem;
 }
 
 .SkyRoute-dest-tips-text {
   font-size: 0.92rem;
-  color: #4A342A !important;
+  color: #173F3A !important;
   font-weight: 500;
   line-height: 1.55;
   margin: 0;
@@ -432,10 +432,10 @@
   flex-direction: column;
   justify-content: space-between;
   gap: 1.25rem;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
   box-sizing: border-box;
   overflow: hidden;
 
@@ -455,7 +455,7 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 0.95rem;
-    border-top: 1px solid #B2967D !important;
+    border-top: 1px solid #8FAFA6 !important;
     gap: 0.75rem;
     flex-wrap: wrap;
   }
@@ -465,7 +465,7 @@
   font-size: 0.76rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
   letter-spacing: 0.5px;
 }
 
@@ -473,20 +473,20 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.25rem;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #173F3A !important;
   margin: 0;
 }
 
 .SkyRoute-dest-hotel-rating {
   font-size: 0.88rem;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
   font-weight: 800;
 }
 
 .SkyRoute-dest-hotel-price-label {
   display: block;
   font-size: 0.76rem;
-  color: #B2967D !important;
+  color: #8FAFA6 !important;
   font-weight: 700;
 }
 
@@ -494,7 +494,7 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.35rem;
   font-weight: 900;
-  color: #4A342A !important;
+  color: #173F3A !important;
 }
 
 /* Flight Item List */
@@ -515,18 +515,18 @@
   justify-content: space-between;
   gap: 1.75rem;
   flex-wrap: wrap;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
   transition: all var(--SkyRoute-transition-fast);
   box-sizing: border-box;
   overflow: hidden;
 
   &:hover {
-    border-color: #7D5A44 !important;
+    border-color: #4F7C73 !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(74, 52, 42, 0.12);
+    box-shadow: 0 8px 24px rgba(23, 63, 58, 0.12);
   }
 
   &__airline {
@@ -572,7 +572,7 @@
       width: 100%;
       justify-content: space-between;
       padding-top: 0.85rem;
-      border-top: 1px solid #B2967D;
+      border-top: 1px solid #8FAFA6;
 
       .SkyRoute-btn {
         flex: 1;
@@ -586,14 +586,14 @@
   width: 44px;
   height: 44px;
   border-radius: var(--SkyRoute-radius-sm);
-  color: #4A342A !important;
+  color: #173F3A !important;
   font-weight: 900;
   font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #D7C9B8 !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #DDE8E3 !important;
+  border: 1.5px solid #8FAFA6 !important;
   flex-shrink: 0;
 }
 
@@ -601,20 +601,20 @@
   display: block;
   font-size: 1.1rem;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #173F3A !important;
 }
 
 .SkyRoute-dest-flight-num {
   font-size: 0.85rem;
   font-weight: 700;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
 }
 
 .SkyRoute-dest-flight-price {
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.55rem;
   font-weight: 900;
-  color: #4A342A !important;
+  color: #173F3A !important;
 
   @media (max-width: 640px) {
     font-size: 1.35rem;
@@ -635,7 +635,7 @@
   .SkyRoute-flight-time {
     font-size: 1.6rem;
     font-weight: 900;
-    color: #4A342A !important;
+    color: #173F3A !important;
     line-height: 1.1;
 
     @media (max-width: 480px) {
@@ -646,7 +646,7 @@
   .SkyRoute-flight-city {
     font-size: 1.1rem;
     font-weight: 900;
-    color: #7D5A44 !important;
+    color: #4F7C73 !important;
     letter-spacing: 0.5px;
 
     @media (max-width: 480px) {
@@ -663,7 +663,7 @@
   min-width: 130px;
   font-size: 0.88rem;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #173F3A !important;
 
   @media (max-width: 680px) {
     min-width: 60px;
@@ -674,7 +674,7 @@
   .SkyRoute-flight-arrow-bar {
     width: 100%;
     height: 2px;
-    background-color: #B2967D !important;
+    background-color: #8FAFA6 !important;
     position: relative;
     margin: 0.2rem 0;
 
@@ -684,19 +684,19 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      background-color: #F5F1EA !important;
+      background-color: #F5F7F2 !important;
       padding: 0 4px;
       font-size: 0.85rem;
-      color: #4A342A !important;
+      color: #173F3A !important;
     }
   }
 
   .SkyRoute-flight-stops {
     font-size: 0.78rem;
     font-weight: 800;
-    color: #4A342A !important;
-    background-color: #D7C9B8 !important;
-    border: 1px solid #B2967D !important;
+    color: #173F3A !important;
+    background-color: #DDE8E3 !important;
+    border: 1px solid #8FAFA6 !important;
     padding: 0.15rem 0.55rem;
     border-radius: var(--SkyRoute-radius-full);
     white-space: nowrap;
@@ -716,10 +716,10 @@
   gap: 1.25rem;
   position: sticky;
   top: 90px;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 18px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
   box-sizing: border-box;
   overflow: hidden;
 
@@ -737,7 +737,7 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.45rem;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #173F3A !important;
 
   @media (max-width: 640px) {
     font-size: 1.25rem;
@@ -746,16 +746,16 @@
 
 .SkyRoute-dest-sidebar-sub {
   font-size: 0.92rem;
-  color: #7D5A44 !important;
+  color: #4F7C73 !important;
   line-height: 1.5;
   font-weight: 500;
 }
 
 .SkyRoute-dest-sidebar-price-banner {
-  background-color: #D7C9B8 !important;
+  background-color: #DDE8E3 !important;
   padding: 1.15rem 1.35rem;
   border-radius: var(--SkyRoute-radius-sm);
-  border: 1.5px solid #B2967D !important;
+  border: 1.5px solid #8FAFA6 !important;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -766,7 +766,7 @@
 
   span {
     font-size: 0.78rem;
-    color: #7D5A44 !important;
+    color: #4F7C73 !important;
     text-transform: uppercase;
     font-weight: 800;
     letter-spacing: 0.5px;
@@ -777,7 +777,7 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.85rem;
   font-weight: 900;
-  color: #4A342A !important;
+  color: #173F3A !important;
 
   @media (max-width: 640px) {
     font-size: 1.5rem;
@@ -796,7 +796,7 @@
   gap: 0.65rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: #4A342A !important;
+  color: #173F3A !important;
 
   @media (max-width: 640px) {
     font-size: 0.85rem;

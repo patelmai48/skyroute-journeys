@@ -74,7 +74,7 @@ const FlightCard = ({
           <div className="SkyRoute-flight-card__airline-info">
             <div
               className="SkyRoute-flight-card__logo"
-              style={{ backgroundColor: airlineColor || '#4A342A' }}
+              style={{ backgroundColor: airlineColor || '#173F3A' }}
               title={airline}
             >
               <span className="SkyRoute-flight-card__logo-icon">✈</span>

@@ -92,9 +92,9 @@ const CheapestMonthModal = ({
                   fontWeight: 700,
                   cursor: 'pointer',
                   borderRadius: 'var(--SkyRoute-radius-sm)',
-                  backgroundColor: 'var(--SkyRoute-card-secondary, #D7C9B8)',
-                  borderColor: 'var(--SkyRoute-border, #B2967D)',
-                  color: 'var(--SkyRoute-text-main, #4A342A)',
+                  backgroundColor: 'var(--SkyRoute-card-secondary, #DDE8E3)',
+                  borderColor: 'var(--SkyRoute-border, #8FAFA6)',
+                  color: 'var(--SkyRoute-text-main, #173F3A)',
                 }}
                 value={monthOffset}
                 onChange={(e) => setMonthOffset(parseInt(e.target.value, 10))}
@@ -166,8 +166,8 @@ const CheapestMonthModal = ({
                     style={
                       selected
                         ? {
-                            outline: '2.5px solid #4A342A',
-                            boxShadow: '0 0 0 3px #F5F1EA inset, 0 4px 12px rgba(74, 52, 42, 0.25)',
+                            outline: '2.5px solid #173F3A',
+                            boxShadow: '0 0 0 3px #F5F7F2 inset, 0 4px 12px rgba(23, 63, 58, 0.25)',
                             transform: 'scale(1.03)',
                             zIndex: 3,
                           }

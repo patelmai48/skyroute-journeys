@@ -28,7 +28,7 @@ const FlightItinerary = ({ flight, searchData }) => {
         <div className="SkyRoute-itinerary-card__airline-info">
           <div
             className="SkyRoute-itinerary-card__logo"
-            style={{ backgroundColor: airlineColor || '#4A342A' }}
+            style={{ backgroundColor: airlineColor || '#173F3A' }}
           >
             {airlineCode || (airline ? airline.slice(0, 2).toUpperCase() : 'SK')}
           </div>

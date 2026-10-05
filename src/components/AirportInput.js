@@ -34,14 +34,15 @@ const AirportInput = ({ id, label, placeholder, value, onChange, icon, error }) 
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const cleanQuery = query.replace(/[()]/g, ' ').toLowerCase().trim();
+  const qTerms = cleanQuery.split(/\s+/).filter(Boolean);
   const filteredAirports = POPULAR_AIRPORTS.filter((item) => {
-    const q = query.toLowerCase().trim();
-    if (!q) return true;
-    return (
-      item.city.toLowerCase().includes(q) ||
-      item.code.toLowerCase().includes(q) ||
-      item.name.toLowerCase().includes(q) ||
-      item.country.toLowerCase().includes(q)
+    if (qTerms.length === 0) return true;
+    return qTerms.some((term) =>
+      item.city.toLowerCase().includes(term) ||
+      item.code.toLowerCase().includes(term) ||
+      item.name.toLowerCase().includes(term) ||
+      item.country.toLowerCase().includes(term)
     );
   });
 
