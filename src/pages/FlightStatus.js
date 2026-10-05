@@ -16,32 +16,12 @@ const FlightStatus = ({ onNavigate }) => {
       const found = MOCK_FLIGHT_STATUSES.find(
         (f) => f.flightNumber.replace(/\s|-/g, '').toUpperCase() === queryClean
       );
-      if (found) {
-        setActiveStatus(found);
-      } else {
-        // Fallback realistic record
-        setActiveStatus({
-          flightNumber: searchQuery.toUpperCase(),
-          airline: 'SkyRoute Airline',
-          airlineColor: '#4A342A',
-          origin: 'Ahmedabad (AMD)',
-          destination: 'Mumbai (BOM)',
-          scheduledDeparture: '10:15 AM',
-          estimatedDeparture: '10:15 AM',
-          scheduledArrival: '11:40 AM',
-          estimatedArrival: '11:40 AM',
-          status: 'On Time',
-          gate: 'A08',
-          terminal: 'T1',
-          baggageBelt: 'Belt 02',
-          aircraft: 'Airbus A320'
-        });
-      }
+      setActiveStatus(found || null);
     } else {
       const found = MOCK_FLIGHT_STATUSES.find(
-        (f) => f.origin.includes(routeFrom.split(' ')[0]) || f.destination.includes(routeTo.split(' ')[0])
+        (f) => f.origin === routeFrom && f.destination === routeTo
       );
-      setActiveStatus(found || MOCK_FLIGHT_STATUSES[0]);
+      setActiveStatus(found || null);
     }
   };
 
@@ -116,6 +96,7 @@ const FlightStatus = ({ onNavigate }) => {
                   <option value="Goa (GOI)">Goa (GOI)</option>
                   <option value="Mumbai (BOM)">Mumbai (BOM)</option>
                   <option value="Dubai (DXB)">Dubai (DXB)</option>
+                  <option value="Bengaluru (BLR)">Bengaluru (BLR)</option>
                 </select>
 
                 <button type="submit" className="SkyRoute-btn SkyRoute-btn--primary">
@@ -145,8 +126,8 @@ const FlightStatus = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Live Flight Result Card */}
-        {activeStatus && (
+        {/* Live Flight Result Card or Clean Empty State */}
+        {activeStatus ? (
           <div className="SkyRoute-status-result-card SkyRoute-card">
             {/* Top Bar */}
             <div className="SkyRoute-status-result-header">
@@ -215,6 +196,18 @@ const FlightStatus = ({ onNavigate }) => {
                 <strong className="SkyRoute-op-value" style={{ color: '#7D5A44' }}>OPEN</strong>
               </div>
             </div>
+          </div>
+        ) : (
+          <div className="SkyRoute-card SkyRoute-empty-state" style={{ padding: '3rem 2rem', textAlign: 'center' }}>
+            <div className="SkyRoute-empty-state__icon" style={{ fontSize: '3rem', marginBottom: '1rem' }}>🛫</div>
+            <h3 className="SkyRoute-empty-state__title" style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--SkyRoute-text-main, #4A342A)', marginBottom: '0.5rem' }}>
+              No Active Flight Status Found
+            </h3>
+            <p className="SkyRoute-empty-state__text" style={{ color: 'var(--SkyRoute-text-secondary, #7D5A44)', maxWidth: '500px', margin: '0 auto' }}>
+              {activeTab === 'flightNumber'
+                ? `No live radar schedule found for flight number "${searchQuery}". Please check the flight number and try again.`
+                : `No direct scheduled flight found for route ${routeFrom} → ${routeTo}.`}
+            </p>
           </div>
         )}
       </div>

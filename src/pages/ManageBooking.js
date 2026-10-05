@@ -79,6 +79,40 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
       setActiveBooking(updated);
       setCancelSuccess(true);
       setShowCancelModal(false);
+
+      try {
+        const saved = JSON.parse(localStorage.getItem('skyroute_bookings') || '[]');
+        const exists = saved.some(
+          (b) =>
+            (b.pnr && b.pnr.toUpperCase() === activeBooking.pnr?.toUpperCase()) ||
+            (b.bookingId && b.bookingId === activeBooking.bookingId)
+        );
+
+        let updatedList;
+        if (exists) {
+          updatedList = saved.map((b) =>
+            (b.pnr && b.pnr.toUpperCase() === activeBooking.pnr?.toUpperCase()) ||
+            (b.bookingId && b.bookingId === activeBooking.bookingId)
+              ? { ...b, status: 'Cancelled (Refund Processing)' }
+              : b
+          );
+        } else {
+          updatedList = [updated, ...saved];
+        }
+
+        localStorage.setItem('skyroute_bookings', JSON.stringify(updatedList));
+
+        const currentSaved = JSON.parse(localStorage.getItem('skyroute_current_booking') || 'null');
+        if (
+          currentSaved &&
+          ((currentSaved.pnr && currentSaved.pnr.toUpperCase() === activeBooking.pnr?.toUpperCase()) ||
+            (currentSaved.bookingId && currentSaved.bookingId === activeBooking.bookingId))
+        ) {
+          localStorage.setItem('skyroute_current_booking', JSON.stringify(updated));
+        }
+      } catch (err) {
+        console.warn('Error updating cancellation in localStorage:', err);
+      }
     }
   };
 
@@ -92,6 +126,40 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
       setActiveBooking(updated);
       setRescheduleSuccess(true);
       setShowRescheduleModal(false);
+
+      try {
+        const saved = JSON.parse(localStorage.getItem('skyroute_bookings') || '[]');
+        const exists = saved.some(
+          (b) =>
+            (b.pnr && b.pnr.toUpperCase() === activeBooking.pnr?.toUpperCase()) ||
+            (b.bookingId && b.bookingId === activeBooking.bookingId)
+        );
+
+        let updatedList;
+        if (exists) {
+          updatedList = saved.map((b) =>
+            (b.pnr && b.pnr.toUpperCase() === activeBooking.pnr?.toUpperCase()) ||
+            (b.bookingId && b.bookingId === activeBooking.bookingId)
+              ? { ...b, rescheduledDate: newTravelDate, status: 'Confirmed (Rescheduled)' }
+              : b
+          );
+        } else {
+          updatedList = [updated, ...saved];
+        }
+
+        localStorage.setItem('skyroute_bookings', JSON.stringify(updatedList));
+
+        const currentSaved = JSON.parse(localStorage.getItem('skyroute_current_booking') || 'null');
+        if (
+          currentSaved &&
+          ((currentSaved.pnr && currentSaved.pnr.toUpperCase() === activeBooking.pnr?.toUpperCase()) ||
+            (currentSaved.bookingId && currentSaved.bookingId === activeBooking.bookingId))
+        ) {
+          localStorage.setItem('skyroute_current_booking', JSON.stringify(updated));
+        }
+      } catch (err) {
+        console.warn('Error updating reschedule in localStorage:', err);
+      }
     }
   };
 
