@@ -281,6 +281,10 @@
     box-shadow: 0 0 0 3px rgba(178, 150, 125, 0.35);
   }
 
+  &--open {
+    z-index: 1000 !important;
+  }
+
   &--error {
     border-color: var(--SkyRoute-danger) !important;
   }

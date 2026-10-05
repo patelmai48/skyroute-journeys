@@ -47,7 +47,9 @@ const PassengerSelector = ({
 
   return (
     <div
-      className="SkyRoute-search-field-box SkyRoute-search-field-box--btn"
+      className={`SkyRoute-search-field-box SkyRoute-search-field-box--btn ${
+        isOpen ? 'SkyRoute-search-field-box--open' : ''
+      }`}
       ref={containerRef}
       onClick={() => setIsOpen(!isOpen)}
       role="button"

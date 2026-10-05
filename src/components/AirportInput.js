@@ -65,7 +65,7 @@ const AirportInput = ({ id, label, placeholder, value, onChange, icon, error }) 
 
   return (
     <div
-      className={`SkyRoute-search-field-box ${error ? 'SkyRoute-search-field-box--error' : ''}`}
+      className={`SkyRoute-search-field-box ${isOpen ? 'SkyRoute-search-field-box--open' : ''} ${error ? 'SkyRoute-search-field-box--error' : ''}`}
       ref={containerRef}
       onClick={() => {
         const inputEl = document.getElementById(id);
