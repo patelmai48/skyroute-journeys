@@ -41,9 +41,17 @@ const STORAGE_KEYS = {
 };
 
 const AppContent = () => {
-
   const [currentRoute, setCurrentRoute] = useState(() => {
     const path = window.location.pathname;
+    try {
+      const authUser = localStorage.getItem('skyroute_auth_user');
+      // If user opens the website without an active session, open login page first
+      if ((!path || path === '/' || path === '') && !authUser) {
+        return '/login';
+      }
+    } catch (e) {
+      console.warn('Auth check error:', e);
+    }
     return path || '/';
   });
 

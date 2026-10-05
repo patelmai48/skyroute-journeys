@@ -380,6 +380,17 @@ const Login = ({ onNavigate }) => {
                 </button>
               </p>
             )}
+
+            <div style={{ marginTop: '0.85rem', paddingTop: '0.85rem', borderTop: '1px dashed var(--SkyRoute-border, #B2967D)' }}>
+              <button
+                type="button"
+                className="SkyRoute-btn SkyRoute-btn--secondary SkyRoute-btn--sm"
+                style={{ width: '100%' }}
+                onClick={() => onNavigate('/')}
+              >
+                Continue as Guest / Explore Flights →
+              </button>
+            </div>
           </div>
         </div>
 
