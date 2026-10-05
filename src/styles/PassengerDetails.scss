@@ -69,6 +69,10 @@
   box-shadow: 0 10px 32px rgba(74, 52, 42, 0.08);
   box-sizing: border-box;
 
+  @media (max-width: 640px) {
+    padding: 1.25rem 1rem;
+  }
+
   &--primary {
     border-color: #7D5A44 !important;
     box-shadow: 0 14px 38px rgba(74, 52, 42, 0.12);

@@ -125,6 +125,10 @@
   box-shadow: 0 4px 20px rgba(74, 52, 42, 0.08);
   box-sizing: border-box;
 
+  @media (max-width: 640px) {
+    padding: 1.25rem 1rem;
+  }
+
   &__header {
     display: flex;
     align-items: center;
@@ -164,6 +168,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 1.75rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
 }
 
 .SkyRoute-ai-rec-card {
@@ -177,6 +186,10 @@
   gap: 1rem;
   box-sizing: border-box;
   overflow: hidden;
+
+  @media (max-width: 640px) {
+    padding: 1.25rem 1rem;
+  }
 
   &__header {
     display: flex;

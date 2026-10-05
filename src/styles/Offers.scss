@@ -60,6 +60,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2rem;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
 }
 
 .SkyRoute-offer-card {
@@ -75,6 +80,11 @@
   transition: all var(--SkyRoute-transition-normal);
   box-sizing: border-box;
   overflow: hidden;
+
+  @media (max-width: 640px) {
+    padding: 1.25rem 1rem;
+    gap: 1rem;
+  }
 
   &:hover {
     transform: translateY(-3px);

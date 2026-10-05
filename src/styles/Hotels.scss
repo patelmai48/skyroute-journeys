@@ -181,6 +181,10 @@
     flex: 1;
     gap: 1rem;
     justify-content: space-between;
+
+    @media (max-width: 640px) {
+      padding: 1.25rem 1rem;
+    }
   }
 
   &__top {
