@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useState, useRef, useEffect, useMemo } from 'react';
 import format from 'date-fns/format';
 import isSameDay from 'date-fns/isSameDay';
 import isBefore from 'date-fns/isBefore';
@@ -40,10 +39,8 @@ const DatePickerField = ({
   alignRight,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [coords, setCoords] = useState({ top: 0, left: 0, width: 380 });
   const [viewDate, setViewDate] = useState(() => selectedDate || minDate || new Date());
   const containerRef = useRef(null);
-  const popoverRef = useRef(null);
 
   const handleDateChange = onChange || onDateChange || (() => {});
   const shouldAlignRight = alignRight !== undefined ? alignRight : (id === 'return-date' || label === 'Return');
@@ -55,71 +52,29 @@ const DatePickerField = ({
     }
   }, [selectedDate, isOpen]);
 
-  const updatePosition = useCallback(() => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const calendarWidth = Math.min(380, window.innerWidth - 24);
-
-    const top = rect.bottom + 8;
-    let left = shouldAlignRight ? rect.right - calendarWidth : rect.left;
-
-    // Clamp within viewport
-    if (left + calendarWidth > window.innerWidth - 12) {
-      left = window.innerWidth - calendarWidth - 12;
-    }
-    if (left < 12) {
-      left = 12;
-    }
-
-    setCoords({ top, left, width: calendarWidth });
-  }, [shouldAlignRight]);
-
   useEffect(() => {
-    if (!isOpen) return;
-
-    updatePosition();
-
-    const handleReposition = () => {
-      updatePosition();
-    };
-
-    window.addEventListener('resize', handleReposition);
-    window.addEventListener('scroll', handleReposition, true);
-
-    return () => {
-      window.removeEventListener('resize', handleReposition);
-      window.removeEventListener('scroll', handleReposition, true);
-    };
-  }, [isOpen, updatePosition]);
-
-  useEffect(() => {
-    if (!isOpen) return;
-
     const handleClickOutside = (e) => {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(e.target) &&
-        popoverRef.current &&
-        !popoverRef.current.contains(e.target)
-      ) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
         setIsOpen(false);
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [isOpen]);
+  }, []);
 
   const handleDateSelect = (date) => {
     handleDateChange(date);
     setIsOpen(false);
   };
 
-  const handlePrevMonth = () => {
+  const handlePrevMonth = (e) => {
+    e.stopPropagation();
     setViewDate((d) => subMonths(d, 1));
   };
 
-  const handleNextMonth = () => {
+  const handleNextMonth = (e) => {
+    e.stopPropagation();
     setViewDate((d) => addMonths(d, 1));
   };
 
@@ -200,189 +155,185 @@ const DatePickerField = ({
   }, []);
 
   return (
-    <>
-      <div
-        className={`SkyRoute-search-field-box SkyRoute-search-field-box--btn ${
-          isOpen ? 'SkyRoute-search-field-box--open' : ''
-        } ${error ? 'SkyRoute-search-field-box--error' : ''}`}
-        ref={containerRef}
-        onClick={() => setIsOpen(!isOpen)}
-        role="button"
-        tabIndex={0}
-        id={id}
-      >
-        <div className="SkyRoute-search-field-header">
-          <span className="SkyRoute-search-field-icon">{icon}</span>
-          <span className="SkyRoute-search-field-tag">{label}</span>
-        </div>
-
-        <div className="SkyRoute-search-field-body">
-          <span
-            className={
-              selectedDate
-                ? 'SkyRoute-search-field-val'
-                : 'SkyRoute-search-field-val SkyRoute-search-field-val--placeholder'
-            }
-          >
-            {selectedDate ? formatDisplay(selectedDate) : placeholder}
-          </span>
-          <span className="SkyRoute-search-field-calendar-icon">📅</span>
-        </div>
-
-        {selectedDate && (
-          <span className="SkyRoute-search-field-subtext">{formatDayOfWeek(selectedDate)}</span>
-        )}
-
-        {error && <span className="SkyRoute-field-error-text">{error}</span>}
+    <div
+      className={`SkyRoute-search-field-box SkyRoute-search-field-box--btn ${
+        isOpen ? 'SkyRoute-search-field-box--open' : ''
+      } ${error ? 'SkyRoute-search-field-box--error' : ''}`}
+      ref={containerRef}
+      onClick={() => setIsOpen(!isOpen)}
+      role="button"
+      tabIndex={0}
+      id={id}
+    >
+      <div className="SkyRoute-search-field-header">
+        <span className="SkyRoute-search-field-icon">{icon}</span>
+        <span className="SkyRoute-search-field-tag">{label}</span>
       </div>
 
-      {/* Portal-rendered Calendar Popover attached directly to document.body */}
-      {isOpen &&
-        typeof document !== 'undefined' &&
-        ReactDOM.createPortal(
-          <div
-            ref={popoverRef}
-            className={`SkyRoute-search-popover-menu SkyRoute-search-popover-menu--calendar SkyRoute-search-popover-menu--portal ${
-              shouldAlignRight
-                ? 'SkyRoute-search-popover-menu--align-right'
-                : 'SkyRoute-search-popover-menu--align-left'
-            }`}
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              position: 'fixed',
-              top: `${coords.top}px`,
-              left: `${coords.left}px`,
-              width: `${coords.width}px`,
-              zIndex: 999999,
-              backgroundColor: '#F5F1EA',
-              border: '2px solid #7D5A44',
-              borderRadius: '16px',
-              boxShadow: '0 24px 64px rgba(74, 52, 42, 0.38)',
-              overflow: 'hidden',
-            }}
-          >
-            {/* Header */}
-            <div className="SkyRoute-popover-header">
-              <span>Select {label} Date</span>
+      <div className="SkyRoute-search-field-body">
+        <span
+          className={
+            selectedDate
+              ? 'SkyRoute-search-field-val'
+              : 'SkyRoute-search-field-val SkyRoute-search-field-val--placeholder'
+          }
+        >
+          {selectedDate ? formatDisplay(selectedDate) : placeholder}
+        </span>
+        <span className="SkyRoute-search-field-calendar-icon">📅</span>
+      </div>
+
+      {selectedDate && (
+        <span className="SkyRoute-search-field-subtext">{formatDayOfWeek(selectedDate)}</span>
+      )}
+
+      {error && <span className="SkyRoute-field-error-text">{error}</span>}
+
+      {/* Tightly anchored Calendar Dropdown */}
+      {isOpen && (
+        <div
+          className={`SkyRoute-search-popover-menu SkyRoute-search-popover-menu--calendar ${
+            shouldAlignRight
+              ? 'SkyRoute-search-popover-menu--align-right'
+              : 'SkyRoute-search-popover-menu--align-left'
+          }`}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {/* Header */}
+          <div className="SkyRoute-popover-header">
+            <span>Select {label} Date</span>
+            <button
+              type="button"
+              className="SkyRoute-popover-close-btn"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsOpen(false);
+              }}
+              aria-label="Close calendar"
+            >
+              &times;
+            </button>
+          </div>
+
+          {/* Calendar Widget */}
+          <div className="SkyRoute-clean-calendar">
+            {/* Month Navigation & Selector Bar */}
+            <div className="SkyRoute-clean-calendar__nav">
               <button
                 type="button"
-                className="SkyRoute-popover-close-btn"
-                onClick={() => setIsOpen(false)}
-                aria-label="Close calendar"
+                className="SkyRoute-clean-calendar__nav-btn"
+                onClick={handlePrevMonth}
+                title="Previous Month"
+                aria-label="Previous Month"
               >
-                &times;
+                ‹
+              </button>
+
+              <div className="SkyRoute-clean-calendar__dropdowns">
+                <select
+                  value={viewDate.getMonth()}
+                  onChange={(e) => handleMonthSelect(Number(e.target.value))}
+                  onClick={(e) => e.stopPropagation()}
+                  className="SkyRoute-clean-calendar__select"
+                  aria-label="Select month"
+                >
+                  {MONTH_NAMES.map((mName, idx) => (
+                    <option key={mName} value={idx}>
+                      {mName}
+                    </option>
+                  ))}
+                </select>
+
+                <select
+                  value={viewDate.getFullYear()}
+                  onChange={(e) => handleYearSelect(Number(e.target.value))}
+                  onClick={(e) => e.stopPropagation()}
+                  className="SkyRoute-clean-calendar__select"
+                  aria-label="Select year"
+                >
+                  {yearOptions.map((y) => (
+                    <option key={y} value={y}>
+                      {y}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <button
+                type="button"
+                className="SkyRoute-clean-calendar__nav-btn"
+                onClick={handleNextMonth}
+                title="Next Month"
+                aria-label="Next Month"
+              >
+                ›
               </button>
             </div>
 
-            {/* Calendar Widget */}
-            <div className="SkyRoute-clean-calendar">
-              {/* Month Navigation & Selector Bar */}
-              <div className="SkyRoute-clean-calendar__nav">
-                <button
-                  type="button"
-                  className="SkyRoute-clean-calendar__nav-btn"
-                  onClick={handlePrevMonth}
-                  title="Previous Month"
-                  aria-label="Previous Month"
-                >
-                  ‹
-                </button>
-
-                <div className="SkyRoute-clean-calendar__dropdowns">
-                  <select
-                    value={viewDate.getMonth()}
-                    onChange={(e) => handleMonthSelect(Number(e.target.value))}
-                    className="SkyRoute-clean-calendar__select"
-                    aria-label="Select month"
-                  >
-                    {MONTH_NAMES.map((mName, idx) => (
-                      <option key={mName} value={idx}>
-                        {mName}
-                      </option>
-                    ))}
-                  </select>
-
-                  <select
-                    value={viewDate.getFullYear()}
-                    onChange={(e) => handleYearSelect(Number(e.target.value))}
-                    className="SkyRoute-clean-calendar__select"
-                    aria-label="Select year"
-                  >
-                    {yearOptions.map((y) => (
-                      <option key={y} value={y}>
-                        {y}
-                      </option>
-                    ))}
-                  </select>
+            {/* Day Headers (Mon - Sun) */}
+            <div className="SkyRoute-clean-calendar__weekdays">
+              {WEEKDAYS.map((w) => (
+                <div key={w.key} className="SkyRoute-clean-calendar__weekday">
+                  {w.label}
                 </div>
-
-                <button
-                  type="button"
-                  className="SkyRoute-clean-calendar__nav-btn"
-                  onClick={handleNextMonth}
-                  title="Next Month"
-                  aria-label="Next Month"
-                >
-                  ›
-                </button>
-              </div>
-
-              {/* Day Headers (Mon - Sun) */}
-              <div className="SkyRoute-clean-calendar__weekdays">
-                {WEEKDAYS.map((w) => (
-                  <div key={w.key} className="SkyRoute-clean-calendar__weekday">
-                    {w.label}
-                  </div>
-                ))}
-              </div>
-
-              {/* Days Grid */}
-              <div className="SkyRoute-clean-calendar__grid">
-                {calendarDays.map((cell, index) => {
-                  let cellClass = 'SkyRoute-clean-calendar__day';
-                  if (!cell.isCurrentMonth) cellClass += ' SkyRoute-clean-calendar__day--outside';
-                  if (cell.isDisabled) cellClass += ' SkyRoute-clean-calendar__day--disabled';
-                  if (cell.isSelected) cellClass += ' SkyRoute-clean-calendar__day--selected';
-                  if (cell.isToday && !cell.isSelected) cellClass += ' SkyRoute-clean-calendar__day--today';
-
-                  return (
-                    <button
-                      key={`${cell.dayNumber}-${index}`}
-                      type="button"
-                      disabled={cell.isDisabled}
-                      className={cellClass}
-                      onClick={() => !cell.isDisabled && handleDateSelect(cell.date)}
-                      title={format(cell.date, 'EEEE, MMMM d, yyyy')}
-                    >
-                      <span>{cell.dayNumber}</span>
-                    </button>
-                  );
-                })}
-              </div>
+              ))}
             </div>
 
-            {/* Footer */}
-            <div className="SkyRoute-popover-footer">
-              <button
-                type="button"
-                className="SkyRoute-btn SkyRoute-btn--secondary SkyRoute-btn--sm"
-                onClick={() => handleDateSelect(new Date())}
-                style={{ marginRight: 'auto' }}
-              >
-                Today
-              </button>
-              <button
-                type="button"
-                className="SkyRoute-btn SkyRoute-btn--primary SkyRoute-btn--sm"
-                onClick={() => setIsOpen(false)}
-              >
-                Confirm Date
-              </button>
+            {/* Days Grid */}
+            <div className="SkyRoute-clean-calendar__grid">
+              {calendarDays.map((cell, index) => {
+                let cellClass = 'SkyRoute-clean-calendar__day';
+                if (!cell.isCurrentMonth) cellClass += ' SkyRoute-clean-calendar__day--outside';
+                if (cell.isDisabled) cellClass += ' SkyRoute-clean-calendar__day--disabled';
+                if (cell.isSelected) cellClass += ' SkyRoute-clean-calendar__day--selected';
+                if (cell.isToday && !cell.isSelected) cellClass += ' SkyRoute-clean-calendar__day--today';
+
+                return (
+                  <button
+                    key={`${cell.dayNumber}-${index}`}
+                    type="button"
+                    disabled={cell.isDisabled}
+                    className={cellClass}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      if (!cell.isDisabled) handleDateSelect(cell.date);
+                    }}
+                    title={format(cell.date, 'EEEE, MMMM d, yyyy')}
+                  >
+                    <span>{cell.dayNumber}</span>
+                  </button>
+                );
+              })}
             </div>
-          </div>,
-          document.body
-        )}
-    </>
+          </div>
+
+          {/* Footer */}
+          <div className="SkyRoute-popover-footer">
+            <button
+              type="button"
+              className="SkyRoute-btn SkyRoute-btn--secondary SkyRoute-btn--sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDateSelect(new Date());
+              }}
+              style={{ marginRight: 'auto' }}
+            >
+              Today
+            </button>
+            <button
+              type="button"
+              className="SkyRoute-btn SkyRoute-btn--primary SkyRoute-btn--sm"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsOpen(false);
+              }}
+            >
+              Confirm Date
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

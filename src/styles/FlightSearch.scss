@@ -422,23 +422,25 @@
   overflow: visible !important;
 
   &--calendar {
-    min-width: 380px !important;
-    width: 400px !important;
-    max-width: 430px !important;
-    padding-bottom: 0.5rem;
-    overflow: visible !important;
+    width: 350px !important;
+    min-width: 340px !important;
+    max-width: 360px !important;
+    padding-bottom: 0 !important;
+    overflow: hidden !important;
     z-index: 999999 !important;
-    box-shadow: 0 24px 64px rgba(74, 52, 42, 0.38) !important;
+    box-shadow: 0 16px 48px rgba(74, 52, 42, 0.28) !important;
     border: 2px solid #7D5A44 !important;
     border-radius: 16px !important;
+    top: calc(100% + 6px) !important;
 
     @media (max-width: 640px) {
       left: 50% !important;
       right: auto !important;
       transform: translateX(-50%) !important;
-      width: 94vw !important;
+      width: min(350px, 94vw) !important;
       min-width: 290px !important;
-      max-width: 380px !important;
+      max-width: 360px !important;
+      top: calc(100% + 6px) !important;
     }
   }
 
