@@ -107,7 +107,7 @@ const Login = ({ onNavigate }) => {
 
     setTimeout(() => {
       setIsSubmitting(false);
-      onNavigate('/');
+      onNavigate('/home');
     }, 800);
   };
 
@@ -135,7 +135,7 @@ const Login = ({ onNavigate }) => {
       type: 'success',
       text: `Welcome, ${googleUser.name}! Successfully authenticated with Google (${googleUser.email}).`
     });
-    setTimeout(() => onNavigate('/'), 800);
+    setTimeout(() => onNavigate('/home'), 800);
   };
 
   const handleGoogleLogin = () => {
@@ -386,7 +386,7 @@ const Login = ({ onNavigate }) => {
                 type="button"
                 className="SkyRoute-btn SkyRoute-btn--secondary SkyRoute-btn--sm"
                 style={{ width: '100%' }}
-                onClick={() => onNavigate('/')}
+                onClick={() => onNavigate('/home')}
               >
                 Continue as Guest / Explore Flights →
               </button>

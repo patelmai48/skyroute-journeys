@@ -91,7 +91,7 @@ const Header = ({ onNavigate, currentRoute }) => {
         {/* Left: Brand Logo */}
         <div
           className="SkyRoute-header__brand"
-          onClick={() => handleNav('/')}
+          onClick={() => handleNav('/home')}
           role="button"
           tabIndex={0}
           title="SkyRoute Home"
