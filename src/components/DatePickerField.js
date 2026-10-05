@@ -63,22 +63,29 @@ const DatePickerField = ({
       if (!containerRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       const isMobile = window.innerWidth <= 640;
-      const calendarWidth = Math.min(350, window.innerWidth * 0.94);
+      const calendarWidth = 350;
 
-      const top = rect.bottom + window.scrollY + 6;
+      // 10px natural gap directly below the field
+      const top = rect.bottom + window.scrollY + 10;
       let left;
 
       if (isMobile) {
-        left = (window.innerWidth - calendarWidth) / 2 + window.scrollX;
+        const responsiveWidth = Math.min(calendarWidth, window.innerWidth - 24);
+        left = (window.innerWidth - responsiveWidth) / 2 + window.scrollX;
       } else if (shouldAlignRight) {
-        left = rect.right - 350 + window.scrollX;
-        if (left < 10) left = 10;
-      } else {
-        left = rect.left + window.scrollX;
-        if (left + 350 > window.innerWidth - 10) {
-          left = window.innerWidth - 350 - 10 + window.scrollX;
+        // Align right edge of calendar with right edge of Return field
+        left = rect.right - calendarWidth + window.scrollX;
+        if (left < 12) left = 12;
+        if (left + calendarWidth > window.innerWidth - 12) {
+          left = window.innerWidth - calendarWidth - 12 + window.scrollX;
         }
-        if (left < 10) left = 10;
+      } else {
+        // Align left edge of calendar directly with left edge of Departure field
+        left = rect.left + window.scrollX;
+        if (left + calendarWidth > window.innerWidth - 12) {
+          left = window.innerWidth - calendarWidth - 12 + window.scrollX;
+        }
+        if (left < 12) left = 12;
       }
 
       setPopoverCoords({ top, left });
@@ -242,11 +249,7 @@ const DatePickerField = ({
         createPortal(
           <div
             ref={popoverRef}
-            className={`SkyRoute-search-popover-menu SkyRoute-search-popover-menu--calendar ${
-              shouldAlignRight
-                ? 'SkyRoute-search-popover-menu--align-right'
-                : 'SkyRoute-search-popover-menu--align-left'
-            }`}
+            className="SkyRoute-search-popover-menu SkyRoute-search-popover-menu--calendar"
             style={{
               position: 'absolute',
               top: `${popoverCoords.top}px`,
