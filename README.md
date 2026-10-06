@@ -162,7 +162,7 @@ my-app/
 │   │   ├── BookingConfirmation.js  # Boarding pass & printable ticket
 │   │   ├── FlightDetails.js        # Itinerary and baggage breakdown
 │   │   ├── FlightResults.js        # Filterable flight search results
-│   │   ├── FlightStatus.js         # Real-time origin/dest flight radar
+│   │   ├── FlightStatus.js         # Flight status lookup using local mock flight data
 │   │   ├── ManageBooking.js        # Rescheduling & cancellation workflow
 │   │   ├── MyTrips.js              # Historical trips retrieved from localStorage
 │   │   ├── PassengerDetails.js     # Traveller information collection
