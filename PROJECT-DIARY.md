@@ -15,7 +15,7 @@ The objective of SkyRoute was to create a modern, realistic, and highly polished
 The project began from a foundational Skyscanner Backpack setup containing early calendar and flight schedule components. While the component libraries (`@skyscanner/backpack-web`, `bpk-component-calendar`) provided base building blocks, the initial interface was unstyled and lacked end-to-end booking flow capabilities. 
 
 The first step was establishing a unified design system in SCSS:
-- Deep navy primary tones (`#0f172a`), vivid sky accents (`#0284c7`), and neutral background slates (`#f8fafc`).
+- Deep Navy primary tones (`#143F67`), Warm Gold accents (`#E4B46C`), and Clean White backgrounds (`#FAFBFC` / `#FFFFFF`).
 - Reusable elevation shadows, card containers, and standard button variants.
 - Global reset and responsive typography standards.
 

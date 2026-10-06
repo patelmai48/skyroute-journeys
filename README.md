@@ -10,7 +10,7 @@ SkyRoute is a responsive, client-side flight-booking web application built with 
 | :--- | :--- | :--- |
 | **Frontend Framework** | React 17.0.2 | Component-driven architecture utilizing functional components with hooks (`useState`, `useEffect`, `useMemo`, `useRef`) and `createPortal` for floating overlays. |
 | **Core Language** | JavaScript (ES6+) | Immutable state transitions, array manipulation (`filter`, `reduce`, `sort`, `map`), dynamic mock generation, and regex validations. |
-| **Styling & Design Tokens** | Modular SCSS (Sass) | Token-based 5-color palette (`#F5F1EA`, `#D7C9B8`, `#B2967D`, `#7D5A44`, `#4A342A`), CSS Grid, Flexbox layouts, micro-animations, and media queries with zero third-party utility frameworks. |
+| **Styling & Design Tokens** | Modular SCSS (Sass) | Token-based 3-color system (Deep Navy `#143F67`, Warm Gold `#E4B46C`, Clean White `#FAFBFC` / `#FFFFFF`, Neutral Border `#E2E8F0`), CSS Grid, Flexbox layouts, micro-animations, and media queries with zero third-party utility frameworks. |
 | **Design System** | Skyscanner Backpack | `@skyscanner/backpack-web` tokens, calendar stylesheets (`bpk-stylesheets`), and mixins (`bpk-mixins`). |
 | **Client-Side Routing** | HTML5 History API | Native single-page routing powered by `window.history.pushState` and `window.addEventListener('popstate')` without external router bloat. |
 | **Form Handling & Validation** | Custom Controlled Forms | Real-time inline field validation (names, emails, phone numbers, dates), clear error messaging, and atomic state updates. |
@@ -168,11 +168,14 @@ my-app/
 │   │   ├── PassengerDetails.js     # Traveller information collection
 │   │   └── ReviewBooking.js        # Pre-checkout breakdown & simulated payment
 │   ├── styles/
-│   │   ├── _variables.scss         # Central design tokens (5-color system)
+│   │   ├── global.scss             # Typography, central design tokens (3-color system), and reset
+│   │   ├── Header.scss             # Deep Navy sticky navigation & brand bar
+│   │   ├── Footer.scss             # Deep Navy footer & Clean White route cards
+│   │   ├── Hero.scss               # Editorial hero section
 │   │   ├── FlightSearch.scss       # Search widget & popover styling
 │   │   ├── FlightResults.scss      # Filter and card styling
 │   │   ├── BookingFlow.scss        # Checkout & confirmation styling
-│   │   └── global.scss             # Typography, reset, and container rules
+│   │   └── ...                     # Modular SCSS page-specific stylesheets
 │   ├── App.js                      # Root router, state distributor, & storage sync
 │   ├── App.test.js                 # Jest/RTL unit test suite
 │   └── index.js                    # Application entry point
