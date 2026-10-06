@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SkyRoute Authentication & Login/Signup Styles
+   SkyRoute Authentication & Login/Signup Styles - 3-Color System
    ========================================================================== */
 
 .SkyRoute-login-page {
@@ -19,10 +19,10 @@
 
 .SkyRoute-login-card {
   padding: 2.75rem 2.25rem;
-  background-color: #F5F7F2 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-lg);
-  box-shadow: 0 8px 30px rgba(23, 63, 58, 0.12);
+  box-shadow: 0 8px 30px rgba(20, 63, 103, 0.08);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -41,26 +41,26 @@
   width: 44px;
   height: 44px;
   border-radius: var(--SkyRoute-radius-sm);
-  background-color: #173F3A !important;
-  color: #F5F7F2 !important;
+  background-color: #143F67 !important;
+  color: #E4B46C !important;
   font-size: 1.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(23, 63, 58, 0.15);
+  box-shadow: 0 4px 12px rgba(20, 63, 103, 0.15);
 }
 
 .SkyRoute-login-card-title {
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.75rem;
   font-weight: 700;
-  color: #173F3A !important;
+  color: #143F67 !important;
   margin: 0.25rem 0 0;
 }
 
 .SkyRoute-login-card-sub {
   font-size: 0.88rem;
-  color: #4F7C73 !important;
+  color: #1E5282 !important;
   line-height: 1.45;
 }
 
@@ -69,10 +69,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4px;
-  background-color: #DDE8E3 !important;
+  background-color: #FAFBFC !important;
   padding: 4px;
   border-radius: var(--SkyRoute-radius-sm);
-  border: 1px solid #8FAFA6 !important;
+  border: 1px solid #E2E8F0 !important;
 }
 
 .SkyRoute-auth-tab-btn {
@@ -83,19 +83,19 @@
   font-family: var(--SkyRoute-font-sans);
   font-size: 0.88rem;
   font-weight: 600;
-  color: #4F7C73 !important;
+  color: #1E5282 !important;
   cursor: pointer;
   transition: all var(--SkyRoute-transition-fast);
 
   &:hover {
-    color: #173F3A !important;
+    color: #143F67 !important;
   }
 
   &--active {
-    background-color: #4F7C73 !important;
-    color: #F5F7F2 !important;
+    background-color: #143F67 !important;
+    color: #FFFFFF !important;
     font-weight: 700;
-    box-shadow: 0 2px 6px rgba(23, 63, 58, 0.2);
+    box-shadow: 0 2px 6px rgba(20, 63, 103, 0.2);
   }
 }
 
@@ -108,9 +108,9 @@
   width: 100%;
   padding: 0.75rem;
   border-radius: var(--SkyRoute-radius-sm);
-  border: 1.5px solid #8FAFA6 !important;
-  background-color: #F5F7F2 !important;
-  color: #173F3A !important;
+  border: 1.5px solid #E2E8F0 !important;
+  background-color: #FFFFFF !important;
+  color: #143F67 !important;
   font-family: var(--SkyRoute-font-sans);
   font-size: 0.92rem;
   font-weight: 600;
@@ -118,8 +118,8 @@
   transition: all var(--SkyRoute-transition-fast);
 
   &:hover {
-    border-color: #4F7C73 !important;
-    background-color: #DDE8E3 !important;
+    border-color: #E4B46C !important;
+    background-color: #FAFBFC !important;
   }
 }
 
@@ -127,7 +127,7 @@
   display: flex;
   align-items: center;
   text-align: center;
-  color: #4F7C73 !important;
+  color: #1E5282 !important;
   font-size: 0.78rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -136,7 +136,7 @@
   &::after {
     content: '';
     flex: 1;
-    border-bottom: 1px solid #8FAFA6;
+    border-bottom: 1px solid #E2E8F0;
   }
 
   span {
@@ -159,13 +159,13 @@
 .SkyRoute-forgot-link {
   background: none;
   border: none;
-  color: #4F7C73 !important;
+  color: #1E5282 !important;
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
 
   &:hover {
-    color: #173F3A !important;
+    color: #143F67 !important;
     text-decoration: underline;
   }
 }
@@ -182,30 +182,30 @@
   align-items: center;
   justify-content: space-between;
   font-size: 0.85rem;
-  color: #173F3A !important;
+  color: #143F67 !important;
 
   input[type="checkbox"] {
-    accent-color: #4F7C73;
+    accent-color: #E4B46C;
   }
 }
 
 .SkyRoute-auth-footer {
   text-align: center;
   padding-top: 1rem;
-  border-top: 1px solid #8FAFA6 !important;
+  border-top: 1px solid #E2E8F0 !important;
   font-size: 0.88rem;
-  color: #4F7C73 !important;
+  color: #1E5282 !important;
 }
 
 .SkyRoute-switch-mode-btn {
   background: none;
   border: none;
-  color: #173F3A !important;
+  color: #143F67 !important;
   font-weight: 700;
   cursor: pointer;
 
   &:hover {
-    color: #4F7C73 !important;
+    color: #E4B46C !important;
     text-decoration: underline;
   }
 }

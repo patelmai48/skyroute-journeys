@@ -58,7 +58,7 @@ const PassengerSelector = ({
     >
       <div className="SkyRoute-search-field-header">
         <span className="SkyRoute-search-field-icon">
-          <Icon name="users" size={15} color="#4F7C73" />
+          <Icon name="users" size={15} color="#1E5282" />
         </span>
         <span className="SkyRoute-search-field-tag">Travellers &amp; Cabin</span>
       </div>
@@ -68,7 +68,7 @@ const PassengerSelector = ({
           {passengers} {passengers === 1 ? 'Passenger' : 'Passengers'}, {cabinClass}
         </span>
         <span className={`SkyRoute-search-field-arrow ${isOpen ? 'SkyRoute-search-field-arrow--open' : ''}`}>
-          <Icon name="chevronDown" size={13} color="#4F7C73" />
+          <Icon name="chevronDown" size={13} color="#1E5282" />
         </span>
       </div>
 

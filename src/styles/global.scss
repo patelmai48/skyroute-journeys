@@ -1,149 +1,157 @@
 /* ==========================================================================
    SkyRoute Core Brand Design System Tokens & Global Styles
-   Exact 5-Color Warm Neutral Palette:
-   1. LINEN    #F5F7F2 - Main light page background & light card surfaces
-   2. KHAKI    #DDE8E3 - Secondary background, form cards, soft surfaces
-   3. CAMEL    #8FAFA6 - Accent / highlight, active badges, borders
-   4. COCOA    #4F7C73 - Secondary brand action, secondary buttons, active nav
-   5. ESPRESSO #173F3A - Primary dark brand, headings, primary buttons, night background
+   Strict 3-Color Combination:
+   1. DEEP NAVY BLUE   (#143F67 / #1E5282) - Primary brand, text, headings, navbar, footer, secondary CTA
+   2. WARM GOLD        (#E4B46C / #FBF3E4) - Primary CTA buttons, search buttons, active states, highlights, accents
+   3. CLEAN WHITE      (#FAFBFC / #FFFFFF) - Backgrounds, cards, search containers, forms, modals
    ========================================================================== */
 
 :root {
-  /* 5-Color Palette Tokens */
-  --color-linen: #F5F7F2;
-  --color-khaki: #DDE8E3;
-  --color-camel: #8FAFA6;
-  --color-cocoa: #4F7C73;
-  --color-espresso: #173F3A;
-
-  /* Global Design System Tokens (Day Mode Defaults) */
-  --color-primary: #173F3A;
-  --color-secondary: #4F7C73;
-  --color-tertiary: #8FAFA6;
-
-  --color-bg-deep: #DDE8E3;
-  --color-bg-accent: #DDE8E3;
-  --color-bg-light: #F5F7F2;
+  /* 3-Color Palette Tokens */
+  --color-navy: #143F67;
+  --color-navy-dark: #143F67;
+  --color-navy-slate: #1E5282;
+  --color-navy-light: #E2E8F0;
+  --color-gold: #E4B46C;
+  --color-gold-hover: #D39F52;
+  --color-gold-light: #FBF3E4;
+  --color-white: #FFFFFF;
+  --color-offwhite: #FAFBFC;
+  --color-border: #E2E8F0;
 
   /* Aliases for backwards compatibility */
-  --color-dark: #173F3A;
-  --color-teal: #4F7C73;
-  --color-blue-gray: #8FAFA6;
-  --color-lavender-gray: #DDE8E3;
-  --color-mauve: #DDE8E3;
-  --color-light-gray: #F5F7F2;
+  --color-linen: #FAFBFC;
+  --color-khaki: #FBF3E4;
+  --color-camel: #E4B46C;
+  --color-cocoa: #1E5282;
+  --color-espresso: #143F67;
+  --color-primary: #143F67;
+  --color-secondary: #E4B46C;
+  --color-tertiary: #1E5282;
+
+  --color-bg-deep: #FAFBFC;
+  --color-bg-accent: #FBF3E4;
+  --color-bg-light: #FFFFFF;
+
+  --color-dark: #143F67;
+  --color-teal: #143F67;
+  --color-blue-gray: #1E5282;
+  --color-lavender-gray: #E2E8F0;
+  --color-mauve: #FBF3E4;
+  --color-light-gray: #FAFBFC;
 
   /* Website Background (Day Mode) */
-  --SkyRoute-bg: #F5F7F2;
-  --SkyRoute-bg-subtle: #DDE8E3;
-  --SkyRoute-bg-deep: #8FAFA6;
+  --SkyRoute-bg: #FAFBFC;
+  --SkyRoute-bg-subtle: #FFFFFF;
+  --SkyRoute-bg-deep: #143F67;
 
-  /* Cards & Surfaces (Day Mode) */
-  --SkyRoute-surface: #F5F7F2;
-  --SkyRoute-card-bg: #F5F7F2;
-  --SkyRoute-card-secondary: #DDE8E3;
-  --SkyRoute-card-deep: #8FAFA6;
-  --SkyRoute-card-elevated: #F5F7F2;
-  --SkyRoute-sidebar-bg: #DDE8E3;
-  --SkyRoute-sidebar-bottom-bg: #DDE8E3;
+  /* Cards & Surfaces */
+  --SkyRoute-surface: #FFFFFF;
+  --SkyRoute-card-bg: #FFFFFF;
+  --SkyRoute-card-secondary: #FAFBFC;
+  --SkyRoute-card-deep: #143F67;
+  --SkyRoute-card-elevated: #FFFFFF;
+  --SkyRoute-sidebar-bg: #143F67;
+  --SkyRoute-sidebar-bottom-bg: #103456;
 
   /* Navbar / Header */
-  --SkyRoute-header-bg: #F5F7F2;
+  --SkyRoute-header-bg: #143F67;
 
   /* UI / Component Colors */
-  --SkyRoute-navy: #173F3A;
-  --SkyRoute-navy-hover: #4F7C73;
-  --SkyRoute-teal: #4F7C73;
-  --SkyRoute-teal-hover: #173F3A;
-  --SkyRoute-teal-light: #DDE8E3;
-  --SkyRoute-sky-blue: #8FAFA6;
-  --SkyRoute-sky-blue-hover: #4F7C73;
-  --SkyRoute-beige: #DDE8E3;
-  --SkyRoute-white: #F5F7F2;
-  --SkyRoute-rose: #4F7C73;
-  --SkyRoute-rose-hover: #173F3A;
-  --SkyRoute-rose-light: #DDE8E3;
-  --SkyRoute-lavender: #8FAFA6;
-  --SkyRoute-mauve: #DDE8E3;
-  --SkyRoute-charcoal: #173F3A;
-  --SkyRoute-stone: #8FAFA6;
-  --SkyRoute-latte: #4F7C73;
-  --SkyRoute-dark-brown: #173F3A;
+  --SkyRoute-navy: #143F67;
+  --SkyRoute-navy-hover: #1E5282;
+  --SkyRoute-teal: #143F67;
+  --SkyRoute-teal-hover: #1E5282;
+  --SkyRoute-teal-light: #FBF3E4;
+  --SkyRoute-sky-blue: #E4B46C;
+  --SkyRoute-sky-blue-hover: #D39F52;
+  --SkyRoute-beige: #FBF3E4;
+  --SkyRoute-white: #FAFBFC;
+  --SkyRoute-gold: #E4B46C;
+  --SkyRoute-rose: #E4B46C;
+  --SkyRoute-rose-hover: #D39F52;
+  --SkyRoute-rose-light: #FBF3E4;
+  --SkyRoute-lavender: #FBF3E4;
+  --SkyRoute-mauve: #FAFBFC;
+  --SkyRoute-charcoal: #143F67;
+  --SkyRoute-stone: #E2E8F0;
+  --SkyRoute-latte: #E4B46C;
+  --SkyRoute-dark-brown: #143F67;
 
   /* Buttons */
-  --SkyRoute-primary: #173F3A;
-  --SkyRoute-primary-hover: #4F7C73;
-  --SkyRoute-primary-light: #DDE8E3;
-  --SkyRoute-primary-text: #F5F7F2;
+  --SkyRoute-primary: #E4B46C;
+  --SkyRoute-primary-hover: #D39F52;
+  --SkyRoute-primary-light: #FBF3E4;
+  --SkyRoute-primary-text: #143F67;
 
-  --SkyRoute-secondary: #4F7C73;
-  --SkyRoute-secondary-hover: #173F3A;
-  --SkyRoute-secondary-light: #8FAFA6;
-  --SkyRoute-secondary-text: #F5F7F2;
+  --SkyRoute-secondary: #143F67;
+  --SkyRoute-secondary-hover: #1E5282;
+  --SkyRoute-secondary-light: #1E5282;
+  --SkyRoute-secondary-text: #FAFBFC;
 
-  --SkyRoute-accent: #8FAFA6;
-  --SkyRoute-accent-hover: #4F7C73;
-  --SkyRoute-accent-light: #DDE8E3;
+  --SkyRoute-accent: #E4B46C;
+  --SkyRoute-accent-hover: #D39F52;
+  --SkyRoute-accent-light: #FBF3E4;
 
   /* Typography */
-  --SkyRoute-text-main: #173F3A;
-  --SkyRoute-text: #173F3A;
-  --SkyRoute-text-secondary: #4F7C73;
-  --SkyRoute-text-muted: #8FAFA6;
-  --SkyRoute-card-text-main: #173F3A;
-  --SkyRoute-card-text: #173F3A;
-  --SkyRoute-card-text-secondary: #4F7C73;
-  --SkyRoute-card-text-muted: #8FAFA6;
+  --SkyRoute-text-main: #143F67;
+  --SkyRoute-text: #143F67;
+  --SkyRoute-text-secondary: #1E5282;
+  --SkyRoute-text-muted: #1E5282;
+  --SkyRoute-card-text-main: #143F67;
+  --SkyRoute-card-text: #143F67;
+  --SkyRoute-card-text-secondary: #1E5282;
+  --SkyRoute-card-text-muted: #1E5282;
 
   /* Borders & Dividers */
-  --SkyRoute-border: #8FAFA6;
-  --SkyRoute-border-light: #DDE8E3;
-  --SkyRoute-border-focus: #4F7C73;
+  --SkyRoute-border: #E2E8F0;
+  --SkyRoute-border-light: #E2E8F0;
+  --SkyRoute-border-focus: #E4B46C;
 
   /* Inputs & Forms */
-  --SkyRoute-input-bg: #F5F7F2;
-  --SkyRoute-input-border: #8FAFA6;
-  --SkyRoute-input-text: #173F3A;
-  --SkyRoute-input-placeholder: #4F7C73;
-  --SkyRoute-hover: rgba(40, 92, 84, 0.1);
+  --SkyRoute-input-bg: #FFFFFF;
+  --SkyRoute-input-border: #E2E8F0;
+  --SkyRoute-input-text: #143F67;
+  --SkyRoute-input-placeholder: #1E5282;
+  --SkyRoute-hover: rgba(20, 63, 103, 0.06);
 
   /* Chips & Navigation */
-  --SkyRoute-chip-bg: #DDE8E3;
-  --SkyRoute-chip-text: #173F3A;
-  --SkyRoute-chip-active-bg: #4F7C73;
-  --SkyRoute-chip-active-text: #F5F7F2;
+  --SkyRoute-chip-bg: #FBF3E4;
+  --SkyRoute-chip-text: #143F67;
+  --SkyRoute-chip-active-bg: #E4B46C;
+  --SkyRoute-chip-active-text: #143F67;
 
-  --SkyRoute-nav-active-bg: #4F7C73;
-  --SkyRoute-nav-active-text: #F5F7F2;
-  --SkyRoute-nav-hover-bg: rgba(143, 175, 166, 0.2);
+  --SkyRoute-nav-active-bg: #E4B46C;
+  --SkyRoute-nav-active-text: #143F67;
+  --SkyRoute-nav-hover-bg: rgba(228, 180, 108, 0.18);
 
-  /* Status Colors (Muted / Harmonious) */
-  --SkyRoute-success: #4F7C73;
-  --SkyRoute-success-bg: rgba(93, 122, 88, 0.15);
-  --SkyRoute-success-border: #4F7C73;
-  --SkyRoute-info: #4F7C73;
-  --SkyRoute-info-bg: rgba(40, 92, 84, 0.15);
-  --SkyRoute-info-border: #8FAFA6;
-  --SkyRoute-warning: #8FAFA6;
-  --SkyRoute-warning-bg: rgba(178, 131, 68, 0.15);
-  --SkyRoute-warning-border: #8FAFA6;
-  --SkyRoute-danger: #4F7C73;
-  --SkyRoute-danger-bg: rgba(158, 75, 62, 0.15);
-  --SkyRoute-danger-border: #4F7C73;
+  /* Status Colors */
+  --SkyRoute-success: #E4B46C;
+  --SkyRoute-success-bg: #FBF3E4;
+  --SkyRoute-success-border: #E4B46C;
+  --SkyRoute-info: #143F67;
+  --SkyRoute-info-bg: #FAFBFC;
+  --SkyRoute-info-border: #1E5282;
+  --SkyRoute-warning: #E4B46C;
+  --SkyRoute-warning-bg: #FBF3E4;
+  --SkyRoute-warning-border: #E4B46C;
+  --SkyRoute-danger: #143F67;
+  --SkyRoute-danger-bg: #FBF3E4;
+  --SkyRoute-danger-border: #143F67;
 
   /* Shadows */
-  --SkyRoute-shadow-xs: 0 1px 3px rgba(23, 63, 58, 0.05);
-  --SkyRoute-shadow-sm: 0 2px 8px rgba(23, 63, 58, 0.07);
-  --SkyRoute-shadow-card: 0 4px 18px rgba(23, 63, 58, 0.08);
-  --SkyRoute-shadow-md: 0 8px 24px rgba(23, 63, 58, 0.1);
-  --SkyRoute-shadow-lg: 0 16px 36px rgba(23, 63, 58, 0.14);
+  --SkyRoute-shadow-xs: 0 1px 3px rgba(20, 63, 103, 0.04);
+  --SkyRoute-shadow-sm: 0 2px 8px rgba(20, 63, 103, 0.06);
+  --SkyRoute-shadow-card: 0 4px 18px rgba(20, 63, 103, 0.07);
+  --SkyRoute-shadow-md: 0 8px 24px rgba(20, 63, 103, 0.09);
+  --SkyRoute-shadow-lg: 0 16px 36px rgba(20, 63, 103, 0.14);
 
   color-scheme: light;
 }
 
 :root {
   /* Typography */
-  --SkyRoute-font-serif: "Playfair Display", "DM Serif Display", Georgia, serif;
+  --SkyRoute-font-serif: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --SkyRoute-font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --SkyRoute-font-family: var(--SkyRoute-font-sans);
   --sky-font-family: var(--SkyRoute-font-sans);
@@ -168,9 +176,9 @@
 }
 
 html, body {
-  background-color: #F5F7F2;
+  background-color: #FAFBFC;
   background-image: none;
-  color: #173F3A;
+  color: #143F67;
   font-family: var(--SkyRoute-font-sans);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
@@ -184,20 +192,20 @@ input,
 select,
 textarea {
   font-family: var(--SkyRoute-font-sans);
-  color: var(--SkyRoute-input-text, #173F3A);
+  color: var(--SkyRoute-input-text, #143F67);
 
   &::placeholder {
-    color: var(--SkyRoute-input-placeholder, #4F7C73) !important;
-    font-weight: 600;
-    opacity: 1 !important;
+    color: var(--SkyRoute-input-placeholder, #1E5282) !important;
+    font-weight: 500;
+    opacity: 0.8 !important;
   }
 }
 
-/* Serif Headings */
+/* Headings */
 h1, h2, h3, .SkyRoute-serif {
-  font-family: var(--SkyRoute-font-serif);
-  color: #173F3A;
-  font-weight: 700;
+  font-family: var(--SkyRoute-font-sans);
+  color: #143F67;
+  font-weight: 800;
   letter-spacing: -0.02em;
 }
 
@@ -206,7 +214,7 @@ h1, h2, h3, .SkyRoute-serif {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #F5F7F2;
+  background-color: #FAFBFC;
   background-image: none;
   width: 100%;
   overflow-x: hidden;
@@ -238,7 +246,7 @@ h1, h2, h3, .SkyRoute-serif {
   font-family: var(--SkyRoute-font-sans);
   font-size: 0.95rem;
   font-weight: 700;
-  padding: 0.65rem 1.45rem;
+  padding: 0.7rem 1.5rem;
   border-radius: var(--SkyRoute-radius-full);
   border: 1.5px solid transparent;
   cursor: pointer;
@@ -250,71 +258,71 @@ h1, h2, h3, .SkyRoute-serif {
   box-sizing: border-box;
 
   &:focus-visible {
-    box-shadow: 0 0 0 3px rgba(40, 92, 84, 0.35);
+    box-shadow: 0 0 0 3px rgba(228, 180, 108, 0.4);
   }
 
-  /* Primary Button - #173F3A (Deep Green) */
+  /* Primary Button - Warm Gold background + Deep Navy text */
   &--primary {
-    background-color: #173F3A;
-    color: #FFFFFF !important;
-    border-color: #173F3A;
-    box-shadow: 0 3px 12px rgba(23, 63, 58, 0.2);
+    background-color: #E4B46C !important;
+    color: #143F67 !important;
+    border-color: #E4B46C !important;
+    box-shadow: 0 3px 12px rgba(228, 180, 108, 0.35);
 
     &:hover {
-      background-color: #285C54;
-      border-color: #285C54;
-      color: #FFFFFF !important;
+      background-color: #D39F52 !important;
+      border-color: #D39F52 !important;
+      color: #143F67 !important;
       transform: translateY(-1px);
-      box-shadow: 0 5px 16px rgba(23, 63, 58, 0.28);
+      box-shadow: 0 5px 16px rgba(228, 180, 108, 0.45);
     }
 
     &:active {
       transform: translateY(0);
-      background-color: #173F3A;
+      background-color: #E4B46C !important;
     }
   }
 
-  /* Secondary Button - #285C54 / #4F7C73 (Deep Teal / Teal) */
+  /* Secondary Button - Deep Navy background + White text */
   &--secondary,
   &--teal,
   &--latte {
-    background-color: #285C54;
-    color: #FFFFFF !important;
-    border-color: #285C54;
-    box-shadow: 0 3px 12px rgba(40, 92, 84, 0.25);
+    background-color: #143F67 !important;
+    color: #FAFBFC !important;
+    border-color: #143F67 !important;
+    box-shadow: 0 3px 12px rgba(20, 63, 103, 0.25);
 
     &:hover {
-      background-color: #173F3A;
-      border-color: #173F3A;
-      color: #FFFFFF !important;
+      background-color: #1E5282 !important;
+      border-color: #1E5282 !important;
+      color: #FAFBFC !important;
       transform: translateY(-1px);
-      box-shadow: 0 5px 16px rgba(23, 63, 58, 0.28);
+      box-shadow: 0 5px 16px rgba(20, 63, 103, 0.32);
     }
 
     &:active {
       transform: translateY(0);
-      background-color: #285C54;
+      background-color: #143F67 !important;
     }
   }
 
-  /* Outline / Subtle Button */
+  /* Outline / Subtle Button - Deep Navy border + Deep Navy text + White background */
   &--outline,
   &--subtle {
-    background-color: transparent;
-    border-color: #4F7C73;
-    color: #173F3A;
+    background-color: #FAFBFC;
+    border-color: #143F67;
+    color: #143F67;
     font-weight: 700;
 
     &:hover {
-      background-color: #DDE8E3;
-      border-color: #173F3A;
-      color: #173F3A;
+      background-color: #FBF3E4;
+      border-color: #E4B46C;
+      color: #143F67;
       transform: translateY(-1px);
     }
 
     &:active {
       transform: translateY(0);
-      background-color: #F5F7F2;
+      background-color: #FAFBFC;
     }
   }
 
@@ -322,12 +330,12 @@ h1, h2, h3, .SkyRoute-serif {
   &--ghost {
     background-color: transparent;
     border-color: transparent;
-    color: #4F7C73;
+    color: #143F67;
     font-weight: 700;
 
     &:hover {
-      background-color: rgba(221, 232, 227, 0.4);
-      color: #173F3A;
+      background-color: rgba(228, 180, 108, 0.18);
+      color: #143F67;
     }
   }
 
@@ -355,7 +363,7 @@ h1, h2, h3, .SkyRoute-serif {
   }
 }
 
-/* Card Foundation - Sits on Warm Linen & Khaki Palette */
+/* Card Foundation - Clean White on Off-White with Subtle Borders */
 .SkyRoute-card,
 .SkyRoute-summary-card,
 .SkyRoute-flight-card,
@@ -407,22 +415,22 @@ h1, h2, h3, .SkyRoute-serif {
 .SkyRoute-exp-card,
 .SkyRoute-hotel-mini-card,
 .SkyRoute-flight-box {
-  background-color: #F5F7F2 !important;
-  color: #173F3A;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  color: #143F67;
+  border: 1px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-lg);
-  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 18px rgba(20, 63, 103, 0.06);
   transition: all var(--SkyRoute-transition-normal);
   box-sizing: border-box !important;
   position: relative;
   min-width: 0;
 
   h1, h2, h3, h4, h5, h6 {
-    color: #173F3A !important;
+    color: #143F67 !important;
   }
 
   p {
-    color: #173F3A;
+    color: #1E5282;
   }
 
   img {
@@ -431,86 +439,84 @@ h1, h2, h3, .SkyRoute-serif {
     display: block;
   }
 
-  /* Highlighted card surface (#DDE8E3 - Khaki) */
+  /* Highlighted card surface (#FBF3E4 - Warm Gold Light) */
   &--accent,
   &--highlighted {
-    background-color: #DDE8E3 !important;
-    border-color: #8FAFA6 !important;
+    background-color: #FBF3E4 !important;
+    border-color: #E4B46C !important;
   }
 
-  /* Deeper card section (#8FAFA6 - Camel) */
+  /* Deeper card section (#143F67 - Deep Navy) */
   &--secondary,
   &--deep {
-    background-color: #8FAFA6 !important;
-    border-color: #4F7C73 !important;
-    color: #F5F7F2;
+    background-color: #143F67 !important;
+    border-color: #1E5282 !important;
+    color: #FAFBFC;
+
+    h1, h2, h3, h4, h5, h6, p {
+      color: #FAFBFC !important;
+    }
   }
 
   &--interactive {
     cursor: pointer;
 
     &:hover {
-      border-color: #4F7C73 !important;
-      box-shadow: 0 8px 26px rgba(23, 63, 58, 0.12);
+      border-color: #E4B46C !important;
+      box-shadow: 0 8px 26px rgba(20, 63, 103, 0.1);
       transform: translateY(-2px);
     }
   }
 }
-
-
 
 /* Badges & Tags */
 .SkyRoute-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  padding: 0.22rem 0.65rem;
+  padding: 0.25rem 0.75rem;
   border-radius: var(--SkyRoute-radius-full);
-  background-color: var(--SkyRoute-card-secondary, #DDE8E3);
-  color: var(--SkyRoute-text-main, #173F3A);
-  border: 1px solid var(--SkyRoute-border, #8FAFA6);
+  background-color: #FBF3E4;
+  color: #143F67;
+  border: 1px solid #E4B46C;
 
   &--rose,
-  &--accent {
-    background-color: var(--color-camel, #8FAFA6);
-    color: var(--color-espresso, #173F3A);
-    border-color: var(--color-cocoa, #4F7C73);
+  &--accent,
+  &--warning {
+    background-color: #FBF3E4;
+    color: #143F67;
+    border-color: #E4B46C;
   }
 
   &--teal,
   &--latte {
-    background-color: var(--color-khaki, #DDE8E3);
-    color: var(--color-espresso, #173F3A);
-    border-color: var(--color-camel, #8FAFA6);
+    background-color: #FAFBFC;
+    color: #143F67;
+    border-color: #E2E8F0;
   }
 
   &--sky,
-  &--blue {
-    background-color: var(--color-cocoa, #4F7C73);
-    color: var(--color-linen, #F5F7F2);
-    border-color: var(--color-espresso, #173F3A);
+  &--blue,
+  &--navy {
+    background-color: #143F67;
+    color: #FAFBFC;
+    border-color: #143F67;
   }
 
   &--success {
-    background-color: var(--color-khaki, #DDE8E3);
-    color: var(--color-espresso, #173F3A);
-    border-color: var(--color-camel, #8FAFA6);
-  }
-
-  &--warning {
-    background-color: var(--color-camel, #8FAFA6);
-    color: var(--color-espresso, #173F3A);
-    border-color: var(--color-cocoa, #4F7C73);
+    background-color: #FBF3E4;
+    color: #143F67;
+    border-color: #E4B46C;
   }
 
   &--danger {
-    background-color: var(--color-cocoa, #4F7C73);
-    color: var(--color-linen, #F5F7F2);
-    border-color: var(--color-espresso, #173F3A);
+    background-color: #143F67;
+    color: #FAFBFC;
+    border-color: #143F67;
   }
 }
 
@@ -533,14 +539,14 @@ h1, h2, h3, .SkyRoute-serif {
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: var(--SkyRoute-text-secondary, #4F7C73);
+    color: #E4B46C;
     margin-bottom: 0.35rem;
   }
 
   &__title {
     font-size: 2.3rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #173F3A);
+    color: #143F67;
     line-height: 1.2;
     margin-bottom: 0.4rem;
 
@@ -551,8 +557,8 @@ h1, h2, h3, .SkyRoute-serif {
 
   &__subtitle {
     font-size: 1rem;
-    color: var(--SkyRoute-text-secondary, #4F7C73);
-    font-weight: 600;
+    color: #1E5282;
+    font-weight: 500;
     font-family: var(--SkyRoute-font-sans);
   }
 }
@@ -561,7 +567,7 @@ h1, h2, h3, .SkyRoute-serif {
 .SkyRoute-modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(23, 63, 58, 0.65);
+  background-color: rgba(20, 63, 103, 0.65);
   backdrop-filter: blur(4px);
   z-index: 1000;
   display: flex;
@@ -576,8 +582,8 @@ h1, h2, h3, .SkyRoute-serif {
 }
 
 .SkyRoute-modal {
-  background-color: var(--SkyRoute-card-bg, #F5F7F2);
-  border: 1px solid var(--SkyRoute-border, #8FAFA6);
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: var(--SkyRoute-radius-lg);
   box-shadow: var(--SkyRoute-shadow-lg);
   max-width: 800px;
@@ -590,7 +596,7 @@ h1, h2, h3, .SkyRoute-serif {
 
   &__header {
     padding: 1.25rem 1.75rem;
-    border-bottom: 1px solid var(--SkyRoute-border, #8FAFA6);
+    border-bottom: 1px solid #E2E8F0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -598,24 +604,24 @@ h1, h2, h3, .SkyRoute-serif {
 
   &__title {
     font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--SkyRoute-text-main, #173F3A);
-    font-family: var(--SkyRoute-font-serif);
+    font-weight: 800;
+    color: #143F67;
+    font-family: var(--SkyRoute-font-sans);
   }
 
   &__close {
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: var(--SkyRoute-text-secondary, #4F7C73);
+    color: #1E5282;
     cursor: pointer;
     line-height: 1;
     padding: 0.25rem;
     border-radius: 6px;
 
     &:hover {
-      color: var(--SkyRoute-text-main, #173F3A);
-      background-color: var(--SkyRoute-hover, #DDE8E3);
+      color: #143F67;
+      background-color: #FAFBFC;
     }
   }
 
@@ -623,17 +629,17 @@ h1, h2, h3, .SkyRoute-serif {
     padding: 1.75rem;
     overflow-y: auto;
     flex: 1;
-    color: var(--SkyRoute-text-main, #173F3A);
+    color: #143F67;
   }
 
   &__footer {
     padding: 1.25rem 1.75rem;
-    border-top: 1px solid var(--SkyRoute-border, #8FAFA6);
+    border-top: 1px solid #E2E8F0;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     gap: 0.75rem;
-    background-color: var(--SkyRoute-card-secondary, #DDE8E3);
+    background-color: #FAFBFC;
   }
 }
 
@@ -663,9 +669,9 @@ h1, h2, h3, .SkyRoute-serif {
 
 .SkyRoute-toast-item {
   pointer-events: auto;
-  background-color: #173F3A;
-  color: #F5F7F2;
-  border: 1px solid #4F7C73;
+  background-color: #143F67;
+  color: #FAFBFC;
+  border: 1.5px solid #E4B46C;
   border-radius: var(--SkyRoute-radius-sm);
   padding: 0.85rem 1.15rem;
   box-shadow: var(--SkyRoute-shadow-lg);
@@ -676,21 +682,22 @@ h1, h2, h3, .SkyRoute-serif {
   cursor: pointer;
 
   &--error {
-    background-color: #4F7C73;
-    border-color: #8FAFA6;
-    color: #F5F7F2;
+    background-color: #143F67;
+    border-color: #E4B46C;
+    color: #FAFBFC;
   }
 
   &--info {
-    background-color: #173F3A;
-    border-color: #8FAFA6;
-    color: #F5F7F2;
+    background-color: #143F67;
+    border-color: #E4B46C;
+    color: #FAFBFC;
   }
 }
 
 .SkyRoute-toast-icon {
   font-size: 1.15rem;
   line-height: 1;
+  color: #E4B46C;
 }
 
 .SkyRoute-toast-text {
@@ -702,14 +709,14 @@ h1, h2, h3, .SkyRoute-serif {
 .SkyRoute-toast-close {
   background: none;
   border: none;
-  color: rgba(245, 247, 242, 0.75);
+  color: rgba(250, 251, 252, 0.75);
   font-size: 1.25rem;
   line-height: 1;
   cursor: pointer;
   padding: 0 0.25rem;
 
   &:hover {
-    color: #F5F7F2;
+    color: #E4B46C;
   }
 }
 
@@ -717,4 +724,3 @@ h1, h2, h3, .SkyRoute-serif {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
-

@@ -130,7 +130,7 @@ export const getMemberTierInfo = (bookingsCount = 0, points = 0) => {
       tier: 'SkyRoute Gold Member',
       badgeClass: 'SkyRoute-badge--success',
       perk: '₹500 Repeat Discount • Priority Boarding • 1.2x Points',
-      color: '#173F3A'
+      color: '#143F67'
     };
   }
   if (bookingsCount >= 1 || points >= 3000) {
@@ -138,14 +138,14 @@ export const getMemberTierInfo = (bookingsCount = 0, points = 0) => {
       tier: 'SkyRoute Silver Member',
       badgeClass: 'SkyRoute-badge--teal',
       perk: '₹500 Repeat Discount • Free Seat Selection Perk',
-      color: '#4F7C73'
+      color: '#E4B46C'
     };
   }
   return {
     tier: 'SkyRoute Explorer',
     badgeClass: 'SkyRoute-badge--secondary',
     perk: 'Earn 10% SkyPoints on every flight booking',
-    color: '#8FAFA6'
+    color: '#1E5282'
   };
 };
 

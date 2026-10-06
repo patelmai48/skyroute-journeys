@@ -125,7 +125,7 @@ const Profile = ({ onNavigate }) => {
               expiry: '08/28',
               holder: 'MAHI PATEL',
               isDefault: true,
-              color: 'linear-gradient(135deg, #173F3A 0%, #4F7C73 100%)'
+              color: 'linear-gradient(135deg, #143F67 0%, #1E5282 100%)'
             },
             {
               id: 'card-2',
@@ -136,7 +136,7 @@ const Profile = ({ onNavigate }) => {
               expiry: '11/29',
               holder: 'MAHI PATEL',
               isDefault: false,
-              color: 'linear-gradient(135deg, #4F7C73 0%, #8FAFA6 100%)'
+              color: 'linear-gradient(135deg, #1E5282 0%, #143F67 100%)'
             }
           ];
     } catch (e) {
@@ -300,7 +300,7 @@ const Profile = ({ onNavigate }) => {
       expiry: cardForm.expiry || '12/28',
       holder: (cardForm.holder || userInfo.fullName).toUpperCase(),
       isDefault: paymentCards.length === 0,
-      color: 'linear-gradient(135deg, #173F3A 0%, #4F7C73 100%)'
+      color: 'linear-gradient(135deg, #143F67 0%, #1E5282 100%)'
     };
 
     setPaymentCards((prev) => [...prev, newCard]);
@@ -345,10 +345,10 @@ const Profile = ({ onNavigate }) => {
           <div className="SkyRoute-profile-points-box">
             <span className="SkyRoute-points-label">SkyPoints Balance</span>
             <strong className="SkyRoute-points-value">{userInfo.points.toLocaleString()} pts</strong>
-            <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.72rem', color: '#4F7C73', marginTop: '2px', fontWeight: 600 }}>
+            <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.72rem', color: '#1E5282', marginTop: '2px', fontWeight: 600 }}>
               {loyalty.isRepeat ? (
                 <>
-                  <Icon name="star" size={12} color="#4F7C73" style={{ marginRight: '3px' }} /> Repeat Traveler
+                  <Icon name="star" size={12} color="#E4B46C" style={{ marginRight: '3px' }} /> Repeat Traveler
                 </>
               ) : (
                 'Explorer Member'
@@ -554,7 +554,7 @@ const Profile = ({ onNavigate }) => {
                 <div className="SkyRoute-loyalty-stats-grid">
                   <div className="SkyRoute-loyalty-stat-card SkyRoute-card">
                     <span className="SkyRoute-loyalty-stat-card__icon">
-                      <Icon name="sparkles" size={22} color="#4F7C73" />
+                      <Icon name="sparkles" size={22} color="#E4B46C" />
                     </span>
                     <span className="SkyRoute-loyalty-stat-card__label">Available SkyPoints</span>
                     <strong className="SkyRoute-loyalty-stat-card__val">{loyalty.pointsBalance.toLocaleString()} pts</strong>
@@ -563,7 +563,7 @@ const Profile = ({ onNavigate }) => {
 
                   <div className="SkyRoute-loyalty-stat-card SkyRoute-card">
                     <span className="SkyRoute-loyalty-stat-card__icon">
-                      <Icon name="crown" size={22} color="#4F7C73" />
+                      <Icon name="crown" size={22} color="#E4B46C" />
                     </span>
                     <span className="SkyRoute-loyalty-stat-card__label">Membership Tier</span>
                     <strong className="SkyRoute-loyalty-stat-card__val" style={{ fontSize: '1.25rem' }}>{loyalty.tier}</strong>
@@ -572,10 +572,10 @@ const Profile = ({ onNavigate }) => {
 
                   <div className="SkyRoute-loyalty-stat-card SkyRoute-card">
                     <span className="SkyRoute-loyalty-stat-card__icon">
-                      <Icon name="star" size={22} color="#4F7C73" />
+                      <Icon name="star" size={22} color="#E4B46C" />
                     </span>
                     <span className="SkyRoute-loyalty-stat-card__label">Repeat Traveler Status</span>
-                    <strong className="SkyRoute-loyalty-stat-card__val" style={{ color: '#4F7C73', fontSize: '1.25rem' }}>
+                    <strong className="SkyRoute-loyalty-stat-card__val" style={{ color: '#E4B46C', fontSize: '1.25rem' }}>
                       {loyalty.isRepeat ? 'Active (₹500 OFF)' : '1 Trip to Unlock'}
                     </strong>
                     <span className="SkyRoute-loyalty-stat-card__sub">
@@ -601,7 +601,7 @@ const Profile = ({ onNavigate }) => {
                     <div className={`SkyRoute-loyalty-tier-row ${loyalty.bookingsCount >= 1 ? 'SkyRoute-loyalty-tier-row--active' : ''}`}>
                       <div className="SkyRoute-loyalty-tier-row__header">
                         <span className="SkyRoute-badge SkyRoute-badge--teal">SILVER MEMBER (1+ TRIPS)</span>
-                        <strong style={{ color: '#173F3A' }}>₹500 Repeat Discount + Free Standard Seats</strong>
+                        <strong style={{ color: '#143F67' }}>₹500 Repeat Discount + Free Standard Seats</strong>
                       </div>
                       <p>Instant ₹500 repeat traveller discount auto-applied on all future bookings + seat selection perks.</p>
                     </div>
@@ -609,7 +609,7 @@ const Profile = ({ onNavigate }) => {
                     <div className={`SkyRoute-loyalty-tier-row ${loyalty.bookingsCount >= 3 ? 'SkyRoute-loyalty-tier-row--active' : ''}`}>
                       <div className="SkyRoute-loyalty-tier-row__header">
                         <span className="SkyRoute-badge SkyRoute-badge--success">GOLD MEMBER (3+ TRIPS)</span>
-                        <strong style={{ color: '#173F3A' }}>Priority Check-in + 1.2x SkyPoints Boost</strong>
+                        <strong style={{ color: '#143F67' }}>Priority Check-in + 1.2x SkyPoints Boost</strong>
                       </div>
                       <p>Top-tier benefits with fast-track terminal assistance and elevated rewards accrual.</p>
                     </div>
@@ -621,16 +621,16 @@ const Profile = ({ onNavigate }) => {
                   marginTop: '1.5rem',
                   padding: '1rem 1.25rem',
                   borderRadius: '8px',
-                  backgroundColor: '#DDE8E3',
-                  border: '1px solid #8FAFA6',
+                  backgroundColor: '#FBF3E4',
+                  border: '1.5px solid #E4B46C',
                   fontSize: '0.85rem',
-                  color: '#173F3A',
+                  color: '#143F67',
                   lineHeight: 1.5
                 }}>
                   <strong>
                     <Icon name="lightbulb" size={14} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
                     Demo Loyalty Architecture:
-                  </strong> SkyRoute Rewards runs entirely in your browser using persistent client-side storage (<code style={{ backgroundColor: '#F5F7F2', padding: '2px 4px', borderRadius: '4px' }}>localStorage: skyroute_bookings &amp; skyroute_skypoints</code>). Completing any booking automatically updates your points and triggers the repeat traveler discount on subsequent bookings.
+                  </strong> SkyRoute Rewards runs entirely in your browser using persistent client-side storage (<code style={{ backgroundColor: '#FFFFFF', padding: '2px 4px', borderRadius: '4px' }}>localStorage: skyroute_bookings &amp; skyroute_skypoints</code>). Completing any booking automatically updates your points and triggers the repeat traveler discount on subsequent bookings.
                 </div>
               </div>
             )}
@@ -704,7 +704,7 @@ const Profile = ({ onNavigate }) => {
                           <button
                             type="button"
                             className="SkyRoute-btn SkyRoute-btn--outline SkyRoute-btn--sm"
-                            style={{ borderColor: '#4F7C73', color: '#4F7C73' }}
+                            style={{ borderColor: '#143F67', color: '#143F67' }}
                             onClick={() => handleDeleteTraveller(tr.id)}
                           >
                             Remove

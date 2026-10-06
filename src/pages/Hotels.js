@@ -276,7 +276,7 @@ const Hotels = ({ onNavigate }) => {
                 <strong className="SkyRoute-hotel-res-val" style={{ color: 'var(--SkyRoute-navy)', fontSize: '1.15rem' }}>
                   {formatINR(confirmedBooking.totalAmount)}
                 </strong>
-                <span style={{ fontSize: '0.78rem', color: '#4F7C73', fontWeight: 600, display: 'block', marginTop: '0.15rem' }}>
+                <span style={{ fontSize: '0.78rem', color: '#1E5282', fontWeight: 600, display: 'block', marginTop: '0.15rem' }}>
                   Includes {formatINR(confirmedBooking.taxes)} GST &amp; fees
                 </span>
               </div>

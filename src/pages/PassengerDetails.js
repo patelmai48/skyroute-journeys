@@ -402,8 +402,8 @@ const PassengerDetails = ({
                     justifyContent: 'space-between',
                     flexWrap: 'wrap',
                     gap: '1rem',
-                    backgroundColor: '#173F3A',
-                    border: '1.5px solid #4F7C73',
+                    backgroundColor: '#143F67',
+                    border: '1.5px solid #1E5282',
                     borderRadius: '12px'
                   }}
                 >
@@ -411,7 +411,7 @@ const PassengerDetails = ({
                     <span className="SkyRoute-badge SkyRoute-badge--teal" style={{ marginBottom: '0.4rem' }}>
                       SEAT SELECTION
                     </span>
-                    <h3 style={{ margin: 0, color: '#F5F7F2', fontSize: '1.1rem' }}>
+                    <h3 style={{ margin: 0, color: '#FFFFFF', fontSize: '1.1rem' }}>
                       Seat {selectedSeat?.id || '14A'} &bull; {selectedSeat?.type || 'Window'} ({selectedSeat?.category || 'Standard Window'})
                     </h3>
                     <p style={{ margin: '0.25rem 0 0', color: '#F5F7F2', fontSize: '0.88rem' }}>

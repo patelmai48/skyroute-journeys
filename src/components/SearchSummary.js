@@ -36,7 +36,7 @@ const SearchSummary = ({ searchData, onEdit }) => {
               <div className="SkyRoute-summary-card__route-title">
                 <span className="SkyRoute-summary-route-city">{origin}</span>
                 <span className="SkyRoute-summary-route-arrow" aria-hidden="true">
-                  <Icon name={isRoundTrip ? 'swap' : 'arrowRight'} size={18} color="#4F7C73" />
+                  <Icon name={isRoundTrip ? 'swap' : 'arrowRight'} size={18} color="#E4B46C" />
                 </span>
                 <span className="SkyRoute-summary-route-city">{destination}</span>
               </div>
@@ -46,7 +46,7 @@ const SearchSummary = ({ searchData, onEdit }) => {
             <div className="SkyRoute-summary-card__details-grid">
               <div className="SkyRoute-summary-meta-item">
                 <span className="SkyRoute-summary-meta-item__icon">
-                  <Icon name="calendar" size={16} color="#4F7C73" />
+                  <Icon name="calendar" size={16} color="#E4B46C" />
                 </span>
                 <div className="SkyRoute-summary-meta-item__content">
                   <span className="SkyRoute-summary-meta-item__label">Travel Date</span>
@@ -61,7 +61,7 @@ const SearchSummary = ({ searchData, onEdit }) => {
 
               <div className="SkyRoute-summary-meta-item">
                 <span className="SkyRoute-summary-meta-item__icon">
-                  <Icon name="users" size={16} color="#4F7C73" />
+                  <Icon name="users" size={16} color="#E4B46C" />
                 </span>
                 <div className="SkyRoute-summary-meta-item__content">
                   <span className="SkyRoute-summary-meta-item__label">Passengers</span>
@@ -73,7 +73,7 @@ const SearchSummary = ({ searchData, onEdit }) => {
 
               <div className="SkyRoute-summary-meta-item">
                 <span className="SkyRoute-summary-meta-item__icon">
-                  <Icon name="seat" size={16} color="#4F7C73" />
+                  <Icon name="seat" size={16} color="#E4B46C" />
                 </span>
                 <div className="SkyRoute-summary-meta-item__content">
                   <span className="SkyRoute-summary-meta-item__label">Cabin Class</span>

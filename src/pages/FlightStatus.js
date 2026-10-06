@@ -135,7 +135,7 @@ const FlightStatus = ({ onNavigate }) => {
               <div className="SkyRoute-status-airline-info">
                 <span
                   className="SkyRoute-airline-logo-badge"
-                  style={{ backgroundColor: activeStatus.airlineColor || '#173F3A' }}
+                  style={{ backgroundColor: activeStatus.airlineColor || '#143F67' }}
                 >
                   {activeStatus.airline.slice(0, 2).toUpperCase()}
                 </span>
@@ -196,7 +196,7 @@ const FlightStatus = ({ onNavigate }) => {
               </div>
               <div className="SkyRoute-airport-op-card">
                 <span className="SkyRoute-op-label">WEB CHECK-IN</span>
-                <strong className="SkyRoute-op-value" style={{ color: '#4F7C73' }}>OPEN</strong>
+                <strong className="SkyRoute-op-value" style={{ color: '#143F67' }}>OPEN</strong>
               </div>
             </div>
           </div>
@@ -205,10 +205,10 @@ const FlightStatus = ({ onNavigate }) => {
             <div className="SkyRoute-empty-state__icon" style={{ marginBottom: '1rem' }}>
               <Icon name="takeoff" size={42} color="var(--primary)" />
             </div>
-            <h3 className="SkyRoute-empty-state__title" style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--SkyRoute-text-main, #173F3A)', marginBottom: '0.5rem' }}>
+            <h3 className="SkyRoute-empty-state__title" style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--SkyRoute-text-main, #143F67)', marginBottom: '0.5rem' }}>
               No Active Flight Status Found
             </h3>
-            <p className="SkyRoute-empty-state__text" style={{ color: 'var(--SkyRoute-text-secondary, #4F7C73)', maxWidth: '500px', margin: '0 auto' }}>
+            <p className="SkyRoute-empty-state__text" style={{ color: 'var(--SkyRoute-text-secondary, #1E5282)', maxWidth: '500px', margin: '0 auto' }}>
               {activeTab === 'flightNumber'
                 ? `No live radar schedule found for flight number "${searchQuery}". Please check the flight number and try again.`
                 : `No direct scheduled flight found for route ${routeFrom} → ${routeTo}.`}

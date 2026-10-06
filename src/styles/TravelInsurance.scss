@@ -1,10 +1,10 @@
 /* ==========================================================================
-   SkyRoute Travel Insurance Styles (Warm 5-Color System)
+   SkyRoute Travel Insurance Styles - 3-Color System
    ========================================================================== */
 
 .SkyRoute-insurance-page {
   padding-bottom: 5rem;
-  background-color: var(--SkyRoute-bg, #F5F7F2);
+  background-color: var(--SkyRoute-bg, #FAFBFC);
   min-height: calc(100vh - 72px - 200px);
   padding-top: 2rem;
 }
@@ -33,24 +33,24 @@
   justify-content: space-between;
   gap: 1.75rem;
   position: relative;
-  background-color: #F5F7F2 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-lg);
-  box-shadow: 0 6px 24px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 6px 24px rgba(20, 63, 103, 0.06);
   transition: all var(--SkyRoute-transition-fast);
   box-sizing: border-box;
   cursor: pointer;
 
   &:hover {
     transform: translateY(-4px);
-    border-color: #4F7C73 !important;
-    box-shadow: 0 12px 32px rgba(23, 63, 58, 0.14);
+    border-color: #E4B46C !important;
+    box-shadow: 0 12px 32px rgba(20, 63, 103, 0.12);
   }
 
   &--popular {
-    border: 2px solid #173F3A !important;
-    background-color: #F5F7F2 !important;
-    box-shadow: 0 10px 36px rgba(23, 63, 58, 0.15);
+    border: 2px solid #E4B46C !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 10px 36px rgba(20, 63, 103, 0.12);
     transform: scale(1.03);
 
     @media (max-width: 992px) {
@@ -67,8 +67,8 @@
   }
 
   &--selected {
-    border-color: #173F3A !important;
-    box-shadow: 0 0 0 3px rgba(23, 63, 58, 0.2);
+    border-color: #143F67 !important;
+    box-shadow: 0 0 0 3px rgba(20, 63, 103, 0.2);
   }
 }
 
@@ -77,15 +77,15 @@
   top: -14px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: #173F3A;
-  color: #F5F7F2;
+  background-color: #E4B46C;
+  color: #143F67;
   font-size: 0.74rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
   padding: 0.35rem 1.15rem;
   border-radius: var(--SkyRoute-radius-full);
-  box-shadow: 0 3px 10px rgba(23, 63, 58, 0.3);
+  box-shadow: 0 3px 10px rgba(228, 180, 108, 0.3);
   white-space: nowrap;
 }
 
@@ -108,7 +108,7 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.7rem;
   font-weight: 800;
-  color: #173F3A !important;
+  color: #143F67 !important;
   margin: 0;
   line-height: 1.2;
   text-align: center;
@@ -127,14 +127,14 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 2.4rem;
   font-weight: 900;
-  color: #173F3A !important;
+  color: #143F67 !important;
   line-height: 1;
 }
 
 .SkyRoute-ins-price-sub {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #4F7C73 !important;
+  color: #1E5282 !important;
 }
 
 .SkyRoute-ins-coverage-pill {
@@ -142,12 +142,12 @@
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  background-color: #DDE8E3;
-  border: 1px solid #8FAFA6;
+  background-color: #FBF3E4;
+  border: 1px solid #E4B46C;
   padding: 0.45rem 1rem;
   border-radius: var(--SkyRoute-radius-sm);
   font-size: 0.84rem;
-  color: #173F3A;
+  color: #143F67;
   margin: 0 auto;
 
   strong {
@@ -161,8 +161,8 @@
   align-items: center;
   gap: 0.85rem;
   padding: 1rem 0;
-  border-top: 1px solid #8FAFA6;
-  border-bottom: 1px solid #8FAFA6;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
   flex: 1;
   text-align: center;
   width: 100%;
@@ -177,7 +177,7 @@
 }
 
 .SkyRoute-ins-check {
-  color: #173F3A;
+  color: #E4B46C;
   font-weight: 900;
   font-size: 0.95rem;
   line-height: 1.3;
@@ -185,7 +185,7 @@
 
 .SkyRoute-ins-feature-text {
   font-size: 0.9rem;
-  color: #173F3A !important;
+  color: #143F67 !important;
   font-weight: 600;
   line-height: 1.35;
   text-align: center;
@@ -201,25 +201,25 @@
 /* Feature Matrix Card */
 .SkyRoute-ins-matrix-card {
   padding: 2.5rem;
-  background-color: #F5F7F2 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-lg);
-  box-shadow: 0 6px 24px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 6px 24px rgba(20, 63, 103, 0.06);
 }
 
 .SkyRoute-ins-matrix-title {
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.8rem;
   font-weight: 800;
-  color: #173F3A !important;
+  color: #143F67 !important;
   margin: 0 0 1.5rem;
 }
 
 .SkyRoute-comparison-table-wrapper {
   overflow-x: auto;
-  border: 1.5px solid #8FAFA6;
+  border: 1.5px solid #E2E8F0;
   border-radius: var(--SkyRoute-radius-md);
-  background-color: #F5F7F2;
+  background-color: #FFFFFF;
 }
 
 .SkyRoute-comparison-table {
@@ -230,10 +230,10 @@
 
   th, td {
     padding: 1rem 1.35rem;
-    border-bottom: 1px solid #8FAFA6;
-    border-right: 1px solid #8FAFA6;
+    border-bottom: 1px solid #E2E8F0;
+    border-right: 1px solid #E2E8F0;
     font-size: 0.92rem;
-    color: #173F3A;
+    color: #143F67;
 
     &:last-child {
       border-right: none;
@@ -241,11 +241,11 @@
   }
 
   th {
-    background-color: #DDE8E3;
+    background-color: #FAFBFC;
     font-weight: 800;
-    color: #173F3A;
+    color: #143F67;
     font-size: 0.95rem;
-    border-bottom: 2px solid #8FAFA6;
+    border-bottom: 2px solid #E2E8F0;
   }
 
   tr:last-child td {
@@ -253,6 +253,6 @@
   }
 
   tr:nth-child(even) td {
-    background-color: rgba(221, 232, 227, 0.25);
+    background-color: rgba(241, 245, 249, 0.4);
   }
 }

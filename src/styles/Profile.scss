@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SkyRoute User Profile & Settings Styles (Brand Theme Preserved)
+   SkyRoute User Profile & Settings Styles - 3-Color System
    ========================================================================== */
 
 .SkyRoute-profile-page {
@@ -14,10 +14,10 @@
   align-items: center;
   gap: 1.75rem;
   padding: 2.25rem 2.5rem;
-  background-color: #F5F7F2 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 20px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 20px rgba(20, 63, 103, 0.06);
   margin-bottom: 2rem;
   box-sizing: border-box;
 
@@ -32,15 +32,15 @@
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background-color: #4F7C73 !important;
-  color: #F5F7F2 !important;
+  background-color: #143F67 !important;
+  color: #E4B46C !important;
   font-size: 1.65rem;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(23, 63, 58, 0.15);
+  box-shadow: 0 4px 14px rgba(20, 63, 103, 0.15);
 }
 
 .SkyRoute-profile-hero-meta {
@@ -65,19 +65,19 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.75rem;
   font-weight: 700;
-  color: #173F3A !important;
+  color: #143F67 !important;
   margin: 0;
 }
 
 .SkyRoute-profile-sub {
   font-size: 0.9rem;
-  color: #4F7C73 !important;
+  color: #1E5282 !important;
   margin: 0;
 }
 
 .SkyRoute-profile-points-box {
-  background-color: #DDE8E3 !important;
-  border: 1px solid #8FAFA6 !important;
+  background-color: #FBF3E4 !important;
+  border: 1.5px solid #E4B46C !important;
   border-radius: var(--SkyRoute-radius-md);
   padding: 1rem 1.5rem;
   text-align: center;
@@ -89,14 +89,14 @@
   font-size: 0.76rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #4F7C73 !important;
+  color: #143F67 !important;
 }
 
 .SkyRoute-points-value {
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.5rem;
-  font-weight: 800;
-  color: #173F3A !important;
+  font-weight: 900;
+  color: #143F67 !important;
 }
 
 /* 2-Column Profile Layout */
@@ -118,10 +118,10 @@
 
 .SkyRoute-profile-nav-menu {
   padding: 0.75rem;
-  background-color: #F5F7F2 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 20px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 20px rgba(20, 63, 103, 0.06);
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -140,28 +140,28 @@
   text-align: left;
   transition: all var(--SkyRoute-transition-fast);
   font-family: var(--SkyRoute-font-sans);
-  color: #4F7C73 !important;
+  color: #1E5282 !important;
 
   &:hover {
-    background-color: #DDE8E3 !important;
-    color: #173F3A !important;
+    background-color: #FAFBFC !important;
+    color: #143F67 !important;
   }
 
   &--active {
-    background-color: #4F7C73 !important;
-    color: #F5F7F2 !important;
-    box-shadow: 0 4px 12px rgba(40, 92, 84, 0.3);
+    background-color: #143F67 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 12px rgba(20, 63, 103, 0.25);
 
     .SkyRoute-profile-tab-text strong {
-      color: #F5F7F2 !important;
+      color: #FFFFFF !important;
     }
 
     .SkyRoute-profile-tab-text span {
-      color: #F5F7F2 !important;
+      color: #FBF3E4 !important;
     }
 
     &:hover {
-      background-color: #173F3A !important;
+      background-color: #1E5282 !important;
     }
   }
 }
@@ -169,6 +169,7 @@
 .SkyRoute-profile-tab-icon {
   font-size: 1.4rem;
   flex-shrink: 0;
+  color: #E4B46C;
 }
 
 .SkyRoute-profile-tab-text {
@@ -179,22 +180,22 @@
   strong {
     font-size: 0.95rem;
     font-weight: 700;
-    color: #173F3A !important;
+    color: #143F67 !important;
   }
 
   span {
     font-size: 0.78rem;
-    color: #4F7C73 !important;
+    color: #1E5282 !important;
   }
 }
 
 /* Main Content Panel */
 .SkyRoute-profile-content-card {
   padding: 2.5rem;
-  background-color: #F5F7F2 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 20px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 20px rgba(20, 63, 103, 0.06);
   min-width: 0;
   box-sizing: border-box;
 }
@@ -206,7 +207,7 @@
   gap: 1.5rem;
   flex-wrap: wrap;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #8FAFA6 !important;
+  border-bottom: 1px solid #E2E8F0 !important;
   margin-bottom: 1.75rem;
 }
 
@@ -214,13 +215,13 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.5rem;
   font-weight: 700;
-  color: #173F3A !important;
+  color: #143F67 !important;
   margin: 0 0 0.35rem;
 }
 
 .SkyRoute-profile-section-desc {
   font-size: 0.88rem;
-  color: #4F7C73 !important;
+  color: #1E5282 !important;
   margin: 0;
   max-width: 600px;
   line-height: 1.5;
@@ -241,7 +242,7 @@
   justify-content: flex-end;
   margin-top: 2rem;
   padding-top: 1.5rem;
-  border-top: 1px solid #8FAFA6 !important;
+  border-top: 1px solid #E2E8F0 !important;
 }
 
 /* Co-Traveller Cards Grid */
@@ -253,8 +254,8 @@
 
 .SkyRoute-traveller-card {
   padding: 1.75rem;
-  background-color: #DDE8E3 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FAFBFC !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
   display: flex;
   flex-direction: column;
@@ -263,9 +264,9 @@
   box-sizing: border-box;
 
   &:hover {
-    border-color: #4F7C73 !important;
-    background-color: #F5F7F2 !important;
-    box-shadow: 0 4px 14px rgba(23, 63, 58, 0.12);
+    border-color: #E4B46C !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(20, 63, 103, 0.08);
   }
 
   &__header {
@@ -278,8 +279,8 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background-color: #4F7C73 !important;
-    color: #F5F7F2 !important;
+    background-color: #143F67 !important;
+    color: #E4B46C !important;
     font-weight: 800;
     font-size: 1.1rem;
     display: flex;
@@ -291,7 +292,7 @@
   &__name {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #173F3A !important;
+    color: #143F67 !important;
     display: block;
   }
 
@@ -300,14 +301,14 @@
     flex-direction: column;
     gap: 0.45rem;
     font-size: 0.85rem;
-    color: #4F7C73 !important;
+    color: #1E5282 !important;
   }
 
   &__actions {
     display: flex;
     gap: 0.65rem;
     padding-top: 0.75rem;
-    border-top: 1px solid #8FAFA6 !important;
+    border-top: 1px solid #E2E8F0 !important;
   }
 }
 
@@ -317,18 +318,18 @@
   align-items: center;
 
   span {
-    color: #4F7C73 !important;
+    color: #1E5282 !important;
   }
 
   strong {
-    color: #173F3A !important;
+    color: #143F67 !important;
   }
 }
 
 /* Preferences Switches */
 .SkyRoute-pref-divider {
   height: 1px;
-  background-color: #8FAFA6 !important;
+  background-color: #E2E8F0 !important;
   margin: 1.75rem 0;
 }
 
@@ -336,7 +337,7 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 1.25rem;
   font-weight: 700;
-  color: #173F3A !important;
+  color: #143F67 !important;
   margin: 0 0 1.25rem;
 }
 
@@ -352,8 +353,8 @@
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.15rem 1.35rem;
-  background-color: #DDE8E3 !important;
-  border: 1px solid #8FAFA6 !important;
+  background-color: #FAFBFC !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-sm);
   cursor: pointer;
 
@@ -364,17 +365,17 @@
 
     strong {
       font-size: 0.95rem;
-      color: #173F3A !important;
+      color: #143F67 !important;
     }
 
     span {
       font-size: 0.82rem;
-      color: #4F7C73 !important;
+      color: #1E5282 !important;
     }
   }
 
   input[type="checkbox"] {
-    accent-color: #4F7C73;
+    accent-color: #E4B46C;
     width: 20px;
     height: 20px;
     cursor: pointer;
@@ -391,8 +392,9 @@
 .SkyRoute-realistic-card {
   border-radius: var(--SkyRoute-radius-md);
   padding: 1.75rem;
-  color: #F5F7F2;
-  box-shadow: var(--SkyRoute-shadow-md);
+  background: linear-gradient(135deg, #143F67 0%, #1E5282 100%);
+  color: #FFFFFF;
+  box-shadow: 0 8px 24px rgba(20, 63, 103, 0.15);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -409,7 +411,7 @@
   &__chip {
     width: 40px;
     height: 30px;
-    background: linear-gradient(135deg, #8FAFA6 0%, #8FAFA6 100%);
+    background: linear-gradient(135deg, #E4B46C 0%, #D39F52 100%);
     border-radius: 4px;
     margin: 0.5rem 0;
   }
@@ -419,6 +421,7 @@
     font-size: 1.3rem;
     letter-spacing: 2.5px;
     font-weight: 700;
+    color: #FFFFFF;
   }
 
   &__bottom {
@@ -441,6 +444,7 @@
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: 0.5px;
+  color: #FFFFFF;
 }
 
 .SkyRoute-card-network-badge {
@@ -448,6 +452,7 @@
   font-size: 0.9rem;
   letter-spacing: 1px;
   text-transform: uppercase;
+  color: #E4B46C;
 }
 
 .SkyRoute-card-sub-label {
@@ -455,24 +460,26 @@
   font-size: 0.68rem;
   letter-spacing: 1px;
   opacity: 0.75;
+  color: #FFFFFF;
 }
 
 .SkyRoute-card-val {
   font-size: 0.9rem;
   letter-spacing: 0.5px;
+  color: #FFFFFF;
 }
 
 .SkyRoute-card-remove-btn {
   background: transparent;
   border: none;
-  color: #DDE8E3;
+  color: #E4B46C;
   font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
   padding: 4px 8px;
 
   &:hover {
-    color: #4F7C73;
+    color: #FFFFFF;
     text-decoration: underline;
   }
 }
@@ -491,8 +498,8 @@
 
 .SkyRoute-loyalty-stat-card {
   padding: 1.5rem;
-  background-color: #F5F7F2 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
   display: flex;
   flex-direction: column;
@@ -502,25 +509,26 @@
     font-size: 1.75rem;
     line-height: 1;
     margin-bottom: 0.35rem;
+    color: #E4B46C;
   }
 
   &__label {
     font-size: 0.78rem;
     font-weight: 800;
     text-transform: uppercase;
-    color: #4F7C73 !important;
+    color: #1E5282 !important;
   }
 
   &__val {
     font-family: var(--SkyRoute-font-serif);
     font-size: 1.6rem;
     font-weight: 900;
-    color: #173F3A !important;
+    color: #143F67 !important;
   }
 
   &__sub {
     font-size: 0.82rem;
-    color: #4F7C73 !important;
+    color: #1E5282 !important;
     line-height: 1.4;
   }
 }
@@ -533,14 +541,14 @@
 
 .SkyRoute-loyalty-tier-row {
   padding: 1.15rem 1.35rem;
-  background-color: #F5F7F2 !important;
-  border: 1px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
 
   &--active {
-    border-color: #173F3A !important;
-    background-color: #DDE8E3 !important;
-    box-shadow: 0 4px 14px rgba(23, 63, 58, 0.06);
+    border-color: #E4B46C !important;
+    background-color: #FBF3E4 !important;
+    box-shadow: 0 4px 14px rgba(228, 180, 108, 0.15);
   }
 
   &__header {
@@ -552,14 +560,14 @@
 
     strong {
       font-size: 0.95rem;
-      color: #173F3A !important;
+      color: #143F67 !important;
     }
   }
 
   p {
     margin: 0;
     font-size: 0.86rem;
-    color: #4F7C73 !important;
+    color: #1E5282 !important;
     line-height: 1.4;
   }
 }

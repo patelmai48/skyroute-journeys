@@ -82,11 +82,11 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
   // Budget Tracker State
   const [tripBudget] = useState(25000);
   const [budgetCategories] = useState([
-    { name: 'Flights', amount: 8400, icon: 'flight', color: 'var(--SkyRoute-navy)' },
-    { name: 'Hotels & Stay', amount: 6500, icon: 'hotel', color: 'var(--SkyRoute-teal)' },
-    { name: 'Food & Dining', amount: 3000, icon: 'coffee', color: '#4F7C73' },
-    { name: 'Local Transport', amount: 2000, icon: 'compass', color: '#4F7C73' },
-    { name: 'Sightseeing & Activities', amount: 2500, icon: 'beach', color: '#8FAFA6' }
+    { name: 'Flights', amount: 8400, icon: 'flight', color: '#143F67' },
+    { name: 'Hotels & Stay', amount: 6500, icon: 'hotel', color: '#1E5282' },
+    { name: 'Food & Dining', amount: 3000, icon: 'coffee', color: '#E4B46C' },
+    { name: 'Local Transport', amount: 2000, icon: 'compass', color: '#143F67' },
+    { name: 'Sightseeing & Activities', amount: 2500, icon: 'beach', color: '#1E5282' }
   ]);
 
   // Load bookings from localStorage
@@ -619,7 +619,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
             <div className="SkyRoute-group-owe-strip">
               <div className="SkyRoute-group-owe-card">
                 <span>You Owe</span>
-                <strong style={{ color: '#4F7C73' }}>₹0</strong>
+                <strong style={{ color: '#143F67' }}>₹0</strong>
               </div>
               <div className="SkyRoute-group-owe-card">
                 <span>You Are Owed</span>
@@ -717,7 +717,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
                 </div>
                 <div className="SkyRoute-budget-overview-item">
                   <span>Remaining</span>
-                  <strong style={{ color: budgetRemaining >= 0 ? '#4F7C73' : '#4F7C73' }}>
+                  <strong style={{ color: budgetRemaining >= 0 ? '#143F67' : '#143F67' }}>
                     {formatINR(budgetRemaining)}
                   </strong>
                 </div>
@@ -735,7 +735,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
                   className="SkyRoute-budget-meter-fill"
                   style={{
                     width: `${budgetSpentPercent}%`,
-                    backgroundColor: budgetSpentPercent > 90 ? '#4F7C73' : 'var(--SkyRoute-navy)'
+                    backgroundColor: budgetSpentPercent > 90 ? '#E4B46C' : '#143F67'
                   }}
                 ></div>
               </div>

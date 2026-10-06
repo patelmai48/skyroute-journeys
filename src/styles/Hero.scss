@@ -1,17 +1,18 @@
 /* ==========================================================================
-   SkyRoute Warm Editorial Hero Section Styles
+   SkyRoute Hero Section Styles
+   3-Color System: Deep Navy Blue, Warm Golden Yellow, White
    ========================================================================== */
 
 .SkyRoute-hero {
-  background: linear-gradient(180deg, var(--SkyRoute-bg, #F5F7F2) 0%, var(--SkyRoute-card-secondary, #DDE8E3) 100%);
-  border-bottom: 1px solid var(--SkyRoute-border, #8FAFA6);
-  color: var(--SkyRoute-text-main, #173F3A);
+  background: linear-gradient(180deg, #FAFBFC 0%, #FFFFFF 100%);
+  border-bottom: 1px solid #E2E8F0;
+  color: #143F67;
   padding: 5rem 1.5rem 9rem;
   position: relative;
   z-index: 20;
   overflow: visible;
 
-  /* Subtle warm travel atmospheric background */
+  /* Subtle atmospheric background */
   &::before {
     content: '';
     position: absolute;
@@ -20,8 +21,8 @@
     right: 0;
     bottom: 0;
     background-image: 
-      radial-gradient(circle at 15% 25%, rgba(143, 175, 166, 0.2) 0%, transparent 50%),
-      radial-gradient(circle at 85% 55%, rgba(221, 232, 227, 0.35) 0%, transparent 50%);
+      radial-gradient(circle at 15% 25%, rgba(228, 180, 108, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 85% 55%, rgba(20, 63, 103, 0.04) 0%, transparent 50%);
     pointer-events: none;
   }
 
@@ -37,9 +38,9 @@
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    background: #173F3A;
-    border: 1.5px solid #4F7C73;
-    color: #F5F7F2;
+    background: #143F67;
+    border: 1.5px solid #E4B46C;
+    color: #FFFFFF;
     font-size: 0.82rem;
     font-weight: 800;
     text-transform: uppercase;
@@ -47,13 +48,13 @@
     padding: 0.45rem 1.25rem;
     border-radius: var(--SkyRoute-radius-full);
     margin-bottom: 1.5rem;
-    box-shadow: 0 4px 12px rgba(23, 63, 58, 0.2);
+    box-shadow: 0 4px 12px rgba(20, 63, 103, 0.15);
   }
 
   &__tag-dot {
     width: 6px;
     height: 6px;
-    background-color: #8FAFA6;
+    background-color: #E4B46C;
     border-radius: 50%;
   }
 
@@ -62,13 +63,13 @@
   }
 
   &__title {
-    font-family: var(--SkyRoute-font-serif);
+    font-family: var(--SkyRoute-font-sans);
     font-size: 3.6rem;
     font-weight: 800;
     letter-spacing: -0.02em;
     margin: 0 0 1rem;
     line-height: 1.12;
-    color: var(--SkyRoute-text-main, #173F3A) !important;
+    color: #143F67 !important;
 
     @media (max-width: 768px) {
       font-size: 2.5rem;
@@ -82,11 +83,11 @@
   &__subtitle {
     font-family: var(--SkyRoute-font-sans);
     font-size: 1.15rem;
-    color: var(--SkyRoute-text-secondary, #4F7C73) !important;
+    color: #1E5282 !important;
     margin: 0 auto 3rem;
     max-width: 580px;
     line-height: 1.6;
-    font-weight: 600;
+    font-weight: 500;
 
     @media (max-width: 768px) {
       font-size: 1rem;

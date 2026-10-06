@@ -20,7 +20,7 @@ const TECH_STACK_ITEMS = [
     category: 'Styling & Tokens',
     name: 'Modular SCSS',
     version: 'CSS3 / Sass',
-    desc: 'Strict 5-color token palette (#F5F7F2, #DDE8E3, #8FAFA6, #4F7C73, #173F3A), CSS Grid, Flexbox, media queries, and print stylesheets.',
+    desc: 'Strict 3-color token palette (Deep Navy #143F67, Warm Golden Yellow #E4B46C, Off-White #FFFFFF / #FAFBFC), CSS Grid, Flexbox, media queries, and print stylesheets.',
     iconName: 'edit',
   },
   {
@@ -344,7 +344,7 @@ const About = ({ onNavigate }) => {
                   <div className="SkyRoute-about-tech-card__header">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <span className="SkyRoute-about-tech-card__icon-wrap">
-                        <Icon name={t.iconName} size={18} color="#173F3A" />
+                        <Icon name={t.iconName} size={18} color="#143F67" />
                       </span>
                       <h3 className="SkyRoute-about-tech-card__name">{t.name}</h3>
                     </div>

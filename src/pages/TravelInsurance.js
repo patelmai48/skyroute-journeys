@@ -84,7 +84,7 @@ const TravelInsurance = ({ onNavigate }) => {
                   {plan.features.map((feature, i) => (
                     <div key={i} className="SkyRoute-ins-feature-row">
                       <span className="SkyRoute-ins-check">
-                        <Icon name="check" size={14} color="#4F7C73" />
+                        <Icon name="check" size={14} color="#E4B46C" />
                       </span>
                       <span className="SkyRoute-ins-feature-text">{feature}</span>
                     </div>
@@ -151,17 +151,17 @@ const TravelInsurance = ({ onNavigate }) => {
                   <td>24/7 Global Assistance</td>
                   <td>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                      <Icon name="check" size={14} color="#4F7C73" /> Phone support
+                      <Icon name="check" size={14} color="#E4B46C" /> Phone support
                     </span>
                   </td>
                   <td>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                      <Icon name="check" size={14} color="#4F7C73" /> Priority Concierge
+                      <Icon name="check" size={14} color="#E4B46C" /> Priority Concierge
                     </span>
                   </td>
                   <td>
                     <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                      <Icon name="check" size={14} color="#4F7C73" /> Dedicated Care Agent
+                      <Icon name="check" size={14} color="#E4B46C" /> Dedicated Care Agent
                     </span>
                   </td>
                 </tr>

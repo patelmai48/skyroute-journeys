@@ -149,7 +149,7 @@ const FlightComparisonModal = ({
                   <td className="SkyRoute-comparison-label">On-Time Score</td>
                   {comparedFlights.map((flight) => (
                     <td key={flight.id}>
-                      <strong style={{ color: '#4F7C73' }}>{flight.onTimeRating || '95% On-time'}</strong>
+                      <strong style={{ color: '#1E5282' }}>{flight.onTimeRating || '95% On-time'}</strong>
                     </td>
                   ))}
                 </tr>

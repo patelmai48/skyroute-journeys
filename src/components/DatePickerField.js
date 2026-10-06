@@ -222,7 +222,7 @@ const DatePickerField = ({
     >
       <div className="SkyRoute-search-field-header">
         <span className="SkyRoute-search-field-icon">
-          <Icon name="calendar" size={15} color="#4F7C73" />
+          <Icon name="calendar" size={15} color="#1E5282" />
         </span>
         <span className="SkyRoute-search-field-tag">{label}</span>
       </div>
@@ -238,7 +238,7 @@ const DatePickerField = ({
           {selectedDate ? formatDisplay(selectedDate) : placeholder}
         </span>
         <span className="SkyRoute-search-field-calendar-icon">
-          <Icon name="calendar" size={15} color="#4F7C73" />
+          <Icon name="calendar" size={15} color="#1E5282" />
         </span>
       </div>
 

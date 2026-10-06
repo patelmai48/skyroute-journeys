@@ -100,7 +100,7 @@ const FlightFilters = ({
                 className={`SkyRoute-time-slot-btn ${departureTimeFilter === slot.id ? 'SkyRoute-time-slot-btn--active' : ''}`}
                 onClick={() => onDepartureTimeChange(slot.id)}
               >
-                <Icon name={slot.iconName} size={15} color={departureTimeFilter === slot.id ? '#FFFFFF' : '#4F7C73'} />
+                <Icon name={slot.iconName} size={15} color={departureTimeFilter === slot.id ? '#FFFFFF' : '#1E5282'} />
                 <span>{slot.label}</span>
               </button>
             ))}

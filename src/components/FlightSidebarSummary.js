@@ -45,7 +45,7 @@ const FlightSidebarSummary = ({
       <div className="SkyRoute-sidebar-summary__airline">
         <div
           className="SkyRoute-sidebar-summary__logo"
-          style={{ backgroundColor: flight.airlineColor || '#173F3A' }}
+          style={{ backgroundColor: flight.airlineColor || '#143F67' }}
         >
           {flight.airlineCode || flight.airline.slice(0, 2).toUpperCase()}
         </div>
@@ -164,13 +164,13 @@ const FlightSidebarSummary = ({
           marginTop: '12px',
           padding: '10px 12px',
           borderRadius: '8px',
-          backgroundColor: '#DDE8E3',
-          border: '1px solid #8FAFA6',
+          backgroundColor: '#FBF3E4',
+          border: '1.5px solid #E4B46C',
           display: 'flex',
           alignItems: 'center',
           gap: '8px',
           fontSize: '0.82rem',
-          color: '#173F3A'
+          color: '#143F67'
         }}>
           <span>🎁</span>
           <span>

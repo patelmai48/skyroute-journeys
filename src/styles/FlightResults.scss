@@ -1,9 +1,10 @@
 /* ==========================================================================
    SkyRoute Flight Results, Filters, Search Summary & Heatmap Styles
+   3-Color System: Deep Navy Blue, Warm Golden Yellow, White/Off-White
    ========================================================================== */
 
 .SkyRoute-results-page {
-  background-color: var(--SkyRoute-bg, #F5F7F2);
+  background-color: #FAFBFC;
   min-height: calc(100vh - 72px - 200px);
   padding: 1.5rem 0 5rem;
 }
@@ -14,11 +15,11 @@
 }
 
 .SkyRoute-summary-card {
-  background-color: var(--SkyRoute-card-secondary, #DDE8E3) !important;
-  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 20px;
   padding: 2.25rem 2.5rem;
-  box-shadow: 0 4px 20px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 18px rgba(20, 63, 103, 0.05);
   box-sizing: border-box;
   overflow: visible !important;
 
@@ -49,10 +50,10 @@
   }
 
   &__route-title {
-    font-family: var(--SkyRoute-font-serif);
+    font-family: var(--SkyRoute-font-sans);
     font-size: 2.25rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #173F3A);
+    color: #143F67;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -81,27 +82,28 @@
 }
 
 .SkyRoute-summary-route-arrow {
-  color: var(--color-camel, #8FAFA6);
+  color: #E4B46C;
   font-size: 1.75rem;
   font-weight: 900;
 }
 
 .SkyRoute-summary-route-city {
   font-weight: 800;
-  color: var(--SkyRoute-text-main, #173F3A);
+  color: #143F67;
 }
 
 .SkyRoute-summary-meta-item {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  background-color: var(--SkyRoute-card-bg, #F5F7F2) !important;
+  background-color: #FAFBFC !important;
   padding: 0.85rem 1.35rem;
   border-radius: var(--SkyRoute-radius-sm);
-  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
+  border: 1px solid #E2E8F0 !important;
 
   &__icon {
     font-size: 1.35rem;
+    color: #E4B46C;
   }
 
   &__content {
@@ -114,14 +116,14 @@
     font-size: 0.8rem;
     font-weight: 800;
     text-transform: uppercase;
-    color: var(--SkyRoute-text-secondary, #4F7C73) !important;
+    color: #1E5282 !important;
     letter-spacing: 0.75px;
   }
 
   &__val {
     font-size: 1.05rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #173F3A) !important;
+    color: #143F67 !important;
     white-space: nowrap;
   }
 }
@@ -140,36 +142,37 @@
   display: inline-flex !important;
   align-items: center !important;
   gap: 0.65rem !important;
-  background-color: #173F3A !important;
-  color: #F5F7F2 !important;
-  border: 1.5px solid #173F3A !important;
-  box-shadow: 0 4px 14px rgba(23, 63, 58, 0.22) !important;
+  background-color: #143F67 !important;
+  color: #FFFFFF !important;
+  border: 1.5px solid #143F67 !important;
+  box-shadow: 0 4px 14px rgba(20, 63, 103, 0.18) !important;
   cursor: pointer;
   white-space: nowrap;
   transition: all var(--SkyRoute-transition-fast) !important;
 
   &:hover {
-    background-color: #4F7C73 !important;
-    border-color: #4F7C73 !important;
-    color: #F5F7F2 !important;
+    background-color: #132F54 !important;
+    border-color: #132F54 !important;
+    color: #FFFFFF !important;
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(23, 63, 58, 0.32) !important;
+    box-shadow: 0 6px 18px rgba(20, 63, 103, 0.28) !important;
   }
 
   .SkyRoute-modify-icon {
     font-size: 1.2rem;
     line-height: 1;
+    color: #E4B46C;
   }
 }
 
 /* 2. Flexible Dates Ribbon */
 .SkyRoute-flexible-dates-bar {
-  background-color: var(--SkyRoute-card-secondary, #DDE8E3) !important;
-  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
   padding: 1.35rem 1.85rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 18px rgba(20, 63, 103, 0.05);
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -186,14 +189,14 @@
 .SkyRoute-flex-dates-title {
   font-size: 0.92rem;
   font-weight: 700;
-  color: var(--SkyRoute-text-main, #173F3A);
+  color: #143F67;
   letter-spacing: 0.3px;
 }
 
 .SkyRoute-cheapest-month-btn {
   background: none;
   border: none;
-  color: var(--SkyRoute-text-secondary, #4F7C73);
+  color: #143F67;
   font-size: 0.88rem;
   font-weight: 700;
   cursor: pointer;
@@ -202,7 +205,7 @@
   gap: 0.35rem;
 
   &:hover {
-    color: var(--SkyRoute-text-main, #173F3A);
+    color: #E4B46C;
     text-decoration: underline;
   }
 }
@@ -219,12 +222,12 @@
   }
 
   &::-webkit-scrollbar-track {
-    background: #DDE8E3;
+    background: #FAFBFC;
     border-radius: 9999px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #8FAFA6;
+    background: #E2E8F0;
     border-radius: 9999px;
   }
 }
@@ -235,8 +238,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
-  background-color: var(--SkyRoute-card-bg, #F5F7F2) !important;
-  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
+  background-color: #FAFBFC !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-sm);
   padding: 0.95rem 1.35rem;
   min-width: 140px;
@@ -246,23 +249,24 @@
   flex-shrink: 0;
 
   &:hover {
-    border-color: #4F7C73 !important;
+    border-color: #E4B46C !important;
+    background-color: #FBF3E4 !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(23, 63, 58, 0.12);
+    box-shadow: 0 4px 14px rgba(20, 63, 103, 0.08);
   }
 
   &--current {
-    border-color: #173F3A !important;
-    background-color: #DDE8E3 !important;
-    box-shadow: 0 0 0 1.5px #173F3A;
+    border-color: #143F67 !important;
+    background-color: #FFFFFF !important;
+    box-shadow: 0 0 0 1.5px #143F67;
   }
 
   &--cheapest {
-    border-color: #4F7C73 !important;
-    background-color: #DDE8E3 !important;
+    border-color: #E4B46C !important;
+    background-color: #FBF3E4 !important;
 
     .SkyRoute-flex-date-price {
-      color: var(--SkyRoute-text-main, #173F3A) !important;
+      color: #143F67 !important;
     }
   }
 }
@@ -273,21 +277,21 @@
   font-size: 0.65rem;
   font-weight: 800;
   text-transform: uppercase;
-  background-color: #4F7C73;
-  color: #F5F7F2;
+  background-color: #E4B46C;
+  color: #143F67;
   padding: 0.15rem 0.5rem;
   border-radius: var(--SkyRoute-radius-full);
 }
 
 .SkyRoute-flex-date-str {
   font-size: 0.82rem;
-  color: var(--SkyRoute-text-secondary, #4F7C73);
+  color: #1E5282;
   font-weight: 600;
 }
 
 .SkyRoute-flex-date-price {
   font-size: 1.15rem;
-  color: var(--SkyRoute-text-main, #173F3A);
+  color: #143F67;
   font-weight: 800;
 }
 
@@ -306,11 +310,11 @@
 
 /* Filter Sidebar Card */
 .SkyRoute-filters-card {
-  background-color: var(--SkyRoute-card-secondary, #DDE8E3) !important;
-  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 18px;
   padding: 1.75rem;
-  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 18px rgba(20, 63, 103, 0.05);
   position: sticky;
   top: 90px;
   box-sizing: border-box;
@@ -321,14 +325,14 @@
     justify-content: space-between;
     padding-bottom: 1rem;
     margin-bottom: 1.25rem;
-    border-bottom: 1px solid var(--SkyRoute-border, #8FAFA6);
+    border-bottom: 1px solid #E2E8F0;
   }
 
   &__title {
-    font-family: var(--SkyRoute-font-serif);
+    font-family: var(--SkyRoute-font-sans);
     font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--SkyRoute-text-main, #173F3A);
+    font-weight: 800;
+    color: #143F67;
     margin: 0;
   }
 
@@ -338,13 +342,13 @@
     font-family: var(--SkyRoute-font-sans);
     font-size: 0.8rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-secondary, #4F7C73);
+    color: #1E5282;
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 
     &:hover {
-      color: var(--SkyRoute-text-main, #173F3A);
+      color: #E4B46C;
       text-decoration: underline;
     }
   }
@@ -363,8 +367,8 @@
 
   &__title {
     font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--SkyRoute-text-main, #173F3A);
+    font-weight: 800;
+    color: #143F67;
     text-transform: uppercase;
     letter-spacing: 0.75px;
   }
@@ -381,7 +385,7 @@
   align-items: center;
   gap: 0.65rem;
   font-size: 0.88rem;
-  color: var(--SkyRoute-text-main, #173F3A);
+  color: #143F67;
   cursor: pointer;
   user-select: none;
 
@@ -389,13 +393,13 @@
   input[type="checkbox"] {
     width: 16px;
     height: 16px;
-    accent-color: #173F3A;
+    accent-color: #143F67;
     cursor: pointer;
     margin: 0;
   }
 
   &:hover {
-    color: var(--color-camel, #8FAFA6);
+    color: #E4B46C;
   }
 
   &__text {
@@ -417,9 +421,9 @@
   gap: 0.2rem;
   padding: 0.6rem 0.4rem;
   border-radius: var(--SkyRoute-radius-sm);
-  border: 1px solid var(--SkyRoute-border, #8FAFA6);
-  background-color: var(--SkyRoute-card-bg, #F5F7F2);
-  color: var(--SkyRoute-text-main, #173F3A);
+  border: 1px solid #E2E8F0;
+  background-color: #FAFBFC;
+  color: #143F67;
   font-family: var(--SkyRoute-font-sans);
   font-size: 0.75rem;
   font-weight: 600;
@@ -427,20 +431,21 @@
   transition: all var(--SkyRoute-transition-fast);
 
   &:hover {
-    border-color: #4F7C73;
+    border-color: #E4B46C;
+    background-color: #FBF3E4;
   }
 
   &--active {
-    background-color: #173F3A;
-    border-color: #173F3A;
-    color: #F5F7F2;
+    background-color: #143F67;
+    border-color: #143F67;
+    color: #FFFFFF;
   }
 }
 
 /* Header summary / Sort Controls */
 .SkyRoute-results-header-card {
-  background-color: var(--SkyRoute-card-secondary, #DDE8E3) !important;
-  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
   padding: 1.15rem 1.75rem;
   margin-bottom: 1.5rem;
@@ -449,7 +454,7 @@
   justify-content: space-between;
   gap: 1rem;
   flex-wrap: wrap;
-  box-shadow: 0 4px 16px rgba(23, 63, 58, 0.07);
+  box-shadow: 0 4px 16px rgba(20, 63, 103, 0.05);
 
   &__info {
     display: flex;
@@ -459,10 +464,10 @@
   }
 
   &__title {
-    font-family: var(--SkyRoute-font-serif);
+    font-family: var(--SkyRoute-font-sans);
     font-size: 1.35rem;
-    font-weight: 700;
-    color: var(--SkyRoute-text-main, #173F3A);
+    font-weight: 800;
+    color: #143F67;
     margin: 0;
   }
 
@@ -476,13 +481,13 @@
 .SkyRoute-sort-label {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--SkyRoute-text-secondary, #4F7C73);
+  color: #1E5282;
 }
 
 .SkyRoute-sort-buttons {
   display: flex;
-  background-color: var(--SkyRoute-card-bg, #F5F7F2);
-  border: 1px solid var(--SkyRoute-border, #8FAFA6);
+  background-color: #FAFBFC;
+  border: 1px solid #E2E8F0;
   border-radius: var(--SkyRoute-radius-sm);
   padding: 3px;
   gap: 2px;
@@ -494,19 +499,19 @@
   font-family: var(--SkyRoute-font-sans);
   font-size: 0.84rem;
   font-weight: 600;
-  color: var(--SkyRoute-text-secondary, #4F7C73);
+  color: #1E5282;
   padding: 0.4rem 0.85rem;
   border-radius: 6px;
   cursor: pointer;
   transition: all var(--SkyRoute-transition-fast);
 
   &:hover {
-    color: var(--SkyRoute-text-main, #173F3A);
+    color: #143F67;
   }
 
   &--active {
-    background-color: #173F3A;
-    color: #F5F7F2;
+    background-color: #143F67;
+    color: #FFFFFF;
     font-weight: 700;
   }
 }
@@ -520,23 +525,23 @@
 }
 
 .SkyRoute-flight-card {
-  background-color: var(--SkyRoute-card-bg, #F5F7F2) !important;
-  border: 1.5px solid var(--SkyRoute-border, #8FAFA6) !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 20px;
-  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 18px rgba(20, 63, 103, 0.05);
   transition: all var(--SkyRoute-transition-fast);
   overflow: hidden !important;
   box-sizing: border-box;
 
   &:hover {
-    border-color: #4F7C73 !important;
+    border-color: #E4B46C !important;
     transform: translateY(-3px);
-    box-shadow: 0 8px 26px rgba(23, 63, 58, 0.12);
+    box-shadow: 0 8px 26px rgba(20, 63, 103, 0.1);
   }
 
   &--compared {
-    border-color: var(--color-camel, #8FAFA6);
-    box-shadow: 0 0 0 2px var(--color-camel, #8FAFA6);
+    border-color: #E4B46C !important;
+    box-shadow: 0 0 0 2px #E4B46C;
   }
 
   &__tag-bar {
@@ -558,7 +563,7 @@
     align-items: center;
     justify-content: space-between;
     padding-bottom: 0.95rem;
-    border-bottom: 1.5px solid var(--SkyRoute-border, #8FAFA6);
+    border-bottom: 1px solid #E2E8F0;
   }
 
   &__airline-info {
@@ -572,20 +577,20 @@
     height: 44px;
     padding: 0 0.55rem;
     border-radius: var(--SkyRoute-radius-sm);
-    color: #F5F7F2;
+    color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.35rem;
-    background-color: #173F3A;
-    border: 1.5px solid #4F7C73;
-    box-shadow: 0 2px 8px rgba(23, 63, 58, 0.15);
+    background-color: #143F67;
+    border: 1px solid #143F67;
+    box-shadow: 0 2px 8px rgba(20, 63, 103, 0.15);
   }
 
   &__logo-icon {
     font-size: 0.85rem;
     line-height: 1;
-    opacity: 0.9;
+    color: #E4B46C;
   }
 
   &__logo-code {
@@ -604,13 +609,13 @@
   &__airline-name {
     font-size: 1.15rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #173F3A);
+    color: #143F67;
   }
 
   &__flight-number {
     font-size: 0.88rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-secondary, #4F7C73);
+    color: #1E5282;
   }
 
   &__compare-toggle {
@@ -619,13 +624,13 @@
     gap: 0.5rem;
     font-size: 0.88rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-main, #173F3A);
+    color: #143F67;
     cursor: pointer;
 
     input[type="checkbox"] {
       width: 17px;
       height: 17px;
-      accent-color: #173F3A;
+      accent-color: #143F67;
     }
 
     &--disabled {
@@ -634,7 +639,6 @@
     }
   }
 
-  /* Trip of Destinations Schedule Card Row - Roomy, No Overflow */
   &__main {
     display: grid;
     grid-template-columns: 160px 1fr 160px;
@@ -668,21 +672,21 @@
   &__time {
     font-size: 2.2rem;
     font-weight: 900;
-    color: var(--SkyRoute-text-main, #173F3A);
+    color: #143F67;
     line-height: 1.1;
   }
 
   &__city-code {
     font-size: 1.25rem;
     font-weight: 900;
-    color: var(--SkyRoute-text-main, #173F3A);
+    color: #143F67;
     letter-spacing: 0.5px;
   }
 
   &__city-name {
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-secondary, #4F7C73);
+    color: #1E5282;
   }
 
   &__route-graphic {
@@ -695,7 +699,7 @@
   &__duration-text {
     font-size: 0.92rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #173F3A);
+    color: #143F67;
   }
 
   &__flight-line {
@@ -711,23 +715,23 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background-color: #4F7C73;
+    background-color: #E4B46C;
   }
 
   &__line-track {
     flex: 1;
     height: 2px;
-    background-color: #8FAFA6;
+    background-color: #E2E8F0;
   }
 
   &__plane-icon {
     font-size: 1rem;
-    color: #173F3A;
+    color: #143F67;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
     top: 50%;
-    background-color: var(--SkyRoute-card-bg, #F5F7F2);
+    background-color: #FFFFFF;
     padding: 0 6px;
     font-weight: 900;
   }
@@ -735,14 +739,14 @@
   &__stops-badge {
     font-size: 0.82rem;
     font-weight: 800;
-    color: #173F3A;
-    background-color: #DDE8E3;
+    color: #143F67;
+    background-color: #FBF3E4;
     padding: 0.2rem 0.65rem;
     border-radius: 100px;
 
     &--nonstop {
-      color: #173F3A;
-      background-color: #DDE8E3;
+      color: #143F67;
+      background-color: #FBF3E4;
     }
   }
 
@@ -759,7 +763,7 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 1.15rem;
-    border-top: 1.5px solid var(--SkyRoute-border, #8FAFA6);
+    border-top: 1px solid #E2E8F0;
     gap: 1rem;
     flex-wrap: wrap;
   }
@@ -771,30 +775,33 @@
   }
 
   &__price-amount {
-    font-family: var(--SkyRoute-font-serif);
+    font-family: var(--SkyRoute-font-sans);
     font-size: 2.1rem;
     font-weight: 800;
-    color: var(--SkyRoute-text-main, #173F3A);
+    color: #143F67;
   }
 
   &__price-label {
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-secondary, #4F7C73);
+    color: #1E5282;
   }
 
+  /* Primary CTA: Golden Yellow button with Deep Navy text */
   &__select-btn {
     min-width: 150px;
     font-size: 1rem;
     font-weight: 800;
-    background-color: #173F3A !important;
-    color: #F5F7F2 !important;
-    border: 1.5px solid #173F3A !important;
+    background-color: #E4B46C !important;
+    color: #143F67 !important;
+    border: 1.5px solid #E4B46C !important;
     border-radius: var(--SkyRoute-radius-full);
+    box-shadow: 0 4px 14px rgba(228, 180, 108, 0.3) !important;
 
     &:hover {
-      background-color: #4F7C73 !important;
-      border-color: #4F7C73 !important;
+      background-color: #D39F52 !important;
+      border-color: #D39F52 !important;
+      color: #143F67 !important;
     }
   }
 }
@@ -802,11 +809,11 @@
 .SkyRoute-flight-perk-item {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--SkyRoute-text-main, #173F3A) !important;
-  background-color: var(--SkyRoute-card-secondary, #DDE8E3) !important;
+  color: #143F67 !important;
+  background-color: #FAFBFC !important;
   padding: 0.4rem 0.85rem;
   border-radius: var(--SkyRoute-radius-sm);
-  border: 1px solid var(--SkyRoute-border, #8FAFA6) !important;
+  border: 1px solid #E2E8F0 !important;
 }
 
 /* Cheapest Month / Fare Calendar Modal */
@@ -828,10 +835,10 @@
 }
 
 .SkyRoute-current-month-heading {
-  font-family: var(--SkyRoute-font-serif);
+  font-family: var(--SkyRoute-font-sans);
   font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--SkyRoute-text-main, #173F3A);
+  font-weight: 800;
+  color: #143F67;
   margin: 0;
   text-align: center;
 }
@@ -844,7 +851,7 @@
   margin-bottom: 1.25rem;
   flex-wrap: wrap;
   padding: 0.5rem;
-  background-color: var(--SkyRoute-card-secondary, #DDE8E3);
+  background-color: #FAFBFC;
   border-radius: var(--SkyRoute-radius-sm);
 }
 
@@ -854,7 +861,7 @@
   gap: 0.45rem;
   font-size: 0.82rem;
   font-weight: 600;
-  color: var(--SkyRoute-text-main, #173F3A);
+  color: #143F67;
 }
 
 .SkyRoute-legend-dot {
@@ -864,31 +871,31 @@
   flex-shrink: 0;
 
   &--low {
-    background-color: #4F7C73;
+    background-color: #E4B46C;
   }
 
   &--med {
-    background-color: #8FAFA6;
+    background-color: #FBF3E4;
   }
 
   &--high {
-    background-color: #173F3A;
+    background-color: #143F67;
   }
 }
 
 .SkyRoute-calendar-wrapper {
-  border: 1px solid var(--SkyRoute-border, #8FAFA6);
+  border: 1px solid #E2E8F0;
   border-radius: var(--SkyRoute-radius-md);
   overflow: hidden;
-  background-color: var(--SkyRoute-card-bg, #F5F7F2);
+  background-color: #FFFFFF;
   box-shadow: var(--SkyRoute-shadow-sm);
 }
 
 .SkyRoute-calendar-weekdays-row {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  background-color: var(--SkyRoute-card-secondary, #DDE8E3);
-  border-bottom: 1px solid var(--SkyRoute-border, #8FAFA6);
+  background-color: #FAFBFC;
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .SkyRoute-calendar-weekday-header {
@@ -896,7 +903,7 @@
   padding: 0.75rem 0.25rem;
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--SkyRoute-text-main, #173F3A);
+  color: #143F67;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -905,11 +912,11 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 1px;
-  background-color: var(--SkyRoute-border, #8FAFA6);
+  background-color: #E2E8F0;
 }
 
 .SkyRoute-month-day-cell {
-  background-color: var(--SkyRoute-card-bg, #F5F7F2);
+  background-color: #FFFFFF;
   padding: 0.75rem 0.35rem;
   min-height: 65px;
   display: flex;
@@ -927,35 +934,35 @@
   }
 
   &--empty {
-    background-color: var(--SkyRoute-card-secondary, #DDE8E3);
+    background-color: #FAFBFC;
     cursor: default;
     pointer-events: none;
     opacity: 0.5;
   }
 
   &--low {
-    background-color: #F5F7F2;
+    background-color: #FBF3E4;
 
     .SkyRoute-month-day-price {
-      color: #4F7C73;
+      color: #143F67;
       font-weight: 800;
     }
   }
 
   &--med {
-    background-color: #DDE8E3;
+    background-color: #FFFFFF;
 
     .SkyRoute-month-day-price {
-      color: #173F3A;
+      color: #143F67;
       font-weight: 800;
     }
   }
 
   &--high {
-    background-color: #8FAFA6;
+    background-color: #FAFBFC;
 
     .SkyRoute-month-day-price {
-      color: #F5F7F2;
+      color: #143F67;
       font-weight: 800;
     }
   }
@@ -964,7 +971,7 @@
 .SkyRoute-month-day-number {
   font-size: 0.88rem;
   font-weight: 700;
-  color: var(--SkyRoute-text-main, #173F3A);
+  color: #143F67;
 }
 
 .SkyRoute-month-day-price {
@@ -974,7 +981,7 @@
 
 .SkyRoute-calendar-note {
   font-size: 0.85rem;
-  color: var(--SkyRoute-text-secondary, #4F7C73);
+  color: #1E5282;
   margin: 0;
   flex: 1;
 }
@@ -996,8 +1003,8 @@
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    background-color: var(--SkyRoute-card-bg, #F5F7F2);
-    border: 1px solid var(--SkyRoute-border, #8FAFA6);
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
     border-radius: var(--SkyRoute-radius-full);
     box-shadow: var(--SkyRoute-shadow-lg);
   }
@@ -1024,13 +1031,13 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  color: #F5F7F2;
+  color: #FFFFFF;
   font-size: 0.65rem;
   font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #173F3A;
+  background-color: #143F67;
 }
 
 /* ==========================================================================
@@ -1039,10 +1046,10 @@
 .SkyRoute-comparison-modal {
   max-width: 880px !important;
   width: 95vw !important;
-  background-color: #F5F7F2 !important;
-  border: 2px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-lg, 12px) !important;
-  box-shadow: 0 16px 48px rgba(23, 63, 58, 0.22) !important;
+  box-shadow: 0 16px 48px rgba(20, 63, 103, 0.18) !important;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -1056,10 +1063,10 @@
 
 .SkyRoute-comparison-table-wrapper {
   overflow-x: auto;
-  border: 1.5px solid #8FAFA6;
+  border: 1px solid #E2E8F0;
   border-radius: var(--SkyRoute-radius-md, 8px);
-  background-color: #F5F7F2;
-  box-shadow: 0 2px 10px rgba(23, 63, 58, 0.05);
+  background-color: #FFFFFF;
+  box-shadow: 0 2px 10px rgba(20, 63, 103, 0.05);
 }
 
 .SkyRoute-comparison-table {
@@ -1070,10 +1077,10 @@
 
   th, td {
     padding: 1rem 1.25rem;
-    border-bottom: 1px solid #DDE8E3;
-    border-right: 1px solid #DDE8E3;
+    border-bottom: 1px solid #E2E8F0;
+    border-right: 1px solid #E2E8F0;
     vertical-align: middle;
-    color: #173F3A;
+    color: #143F67;
 
     &:last-child {
       border-right: none;
@@ -1081,8 +1088,8 @@
   }
 
   thead th {
-    background-color: #DDE8E3;
-    border-bottom: 2px solid #8FAFA6;
+    background-color: #FAFBFC;
+    border-bottom: 2px solid #E2E8F0;
     padding: 1.1rem 1rem;
   }
 
@@ -1091,11 +1098,11 @@
   }
 
   tbody tr:nth-child(even) td {
-    background-color: rgba(221, 232, 227, 0.22);
+    background-color: #FAFBFC;
   }
 
   tbody tr:hover td {
-    background-color: rgba(221, 232, 227, 0.42);
+    background-color: #FBF3E4;
   }
 }
 
@@ -1104,19 +1111,19 @@
   min-width: 130px;
   font-weight: 800;
   font-size: 0.92rem;
-  color: #173F3A !important;
-  background-color: #DDE8E3 !important;
-  border-right: 1.5px solid #8FAFA6 !important;
+  color: #143F67 !important;
+  background-color: #FAFBFC !important;
+  border-right: 1px solid #E2E8F0 !important;
 }
 
 .SkyRoute-comparison-label {
   font-weight: 800;
-  color: #4F7C73 !important;
+  color: #1E5282 !important;
   font-size: 0.84rem;
   text-transform: uppercase;
   letter-spacing: 0.4px;
-  background-color: #DDE8E3 !important;
-  border-right: 1.5px solid #8FAFA6 !important;
+  background-color: #FAFBFC !important;
+  border-right: 1px solid #E2E8F0 !important;
   width: 150px;
 }
 
@@ -1124,7 +1131,7 @@
   min-width: 190px;
   text-align: center;
   vertical-align: top;
-  background-color: #F5F7F2 !important;
+  background-color: #FFFFFF !important;
   padding: 1.25rem 1rem !important;
 }
 
@@ -1144,9 +1151,9 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: #DDE8E3;
-  border: 1px solid #8FAFA6;
-  color: #173F3A;
+  background-color: #FAFBFC;
+  border: 1px solid #E2E8F0;
+  color: #143F67;
   font-size: 1.1rem;
   line-height: 1;
   display: flex;
@@ -1156,9 +1163,9 @@
   transition: all var(--SkyRoute-transition-fast, 0.2s);
 
   &:hover {
-    background-color: #173F3A;
-    color: #F5F7F2;
-    border-color: #173F3A;
+    background-color: #143F67;
+    color: #FFFFFF;
+    border-color: #143F67;
     transform: scale(1.1);
   }
 }
@@ -1173,31 +1180,30 @@
 .SkyRoute-comparison-airline-name {
   font-size: 1.05rem;
   font-weight: 800;
-  color: #173F3A !important;
-  font-family: var(--SkyRoute-font-serif, Georgia, serif);
+  color: #143F67 !important;
+  font-family: var(--SkyRoute-font-sans);
 }
 
 .SkyRoute-comparison-flight-num {
   font-size: 0.76rem;
   font-weight: 800;
-  color: #4F7C73 !important;
-  background-color: #DDE8E3;
+  color: #1E5282 !important;
+  background-color: #FAFBFC;
   padding: 2px 7px;
   border-radius: var(--SkyRoute-radius-xs, 4px);
-  border: 1px solid rgba(143, 175, 166, 0.4);
+  border: 1px solid #E2E8F0;
 }
 
 .SkyRoute-comparison-flight-price {
   font-size: 1.35rem;
   font-weight: 900;
-  color: #173F3A !important;
+  color: #143F67 !important;
   margin-top: 0.25rem;
 }
 
 .SkyRoute-comparison-sub {
   font-size: 0.78rem;
-  color: #4F7C73 !important;
+  color: #1E5282 !important;
   font-weight: 600;
   margin-top: 0.25rem;
 }
-

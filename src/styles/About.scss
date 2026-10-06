@@ -1,19 +1,20 @@
-// SkyRoute About / Technical Overview Styles
-// Strict 5-Color Warm Palette: #F5F1EA, #D7C9B8, #B2967D, #7D5A44, #4A342A
+/* ==========================================================================
+   SkyRoute About / Technical Overview Styles - 3-Color System
+   ========================================================================== */
 
 .SkyRoute-about-page {
-  background-color: #F5F1EA;
+  background-color: var(--SkyRoute-bg);
   min-height: calc(100vh - 72px - 200px);
   width: 100%;
   box-sizing: border-box;
-  color: #4A342A;
+  color: #143F67;
 }
 
 // 1. Hero Section
 .SkyRoute-about-hero {
-  background: linear-gradient(180deg, #F5F1EA 0%, #D7C9B8 100%);
-  border-bottom: 1.5px solid #B2967D;
-  color: #4A342A;
+  background: linear-gradient(180deg, #FAFBFC 0%, rgba(241, 245, 249, 0.8) 100%);
+  border-bottom: 1.5px solid #E2E8F0;
+  color: #143F67;
   padding: 60px 0 50px;
   text-align: center;
   position: relative;
@@ -30,9 +31,9 @@
 
   &__badge {
     display: inline-block;
-    background-color: #4A342A !important;
-    border: 1px solid #7D5A44 !important;
-    color: #F5F1EA !important;
+    background-color: #143F67 !important;
+    border: 1px solid #E4B46C !important;
+    color: #E4B46C !important;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 1.2px;
@@ -49,12 +50,12 @@
     line-height: 1.2;
     margin-bottom: 16px;
     letter-spacing: -0.5px;
-    color: #4A342A !important;
+    color: #143F67 !important;
   }
 
   &__subtitle {
     font-size: 17px;
-    color: #7D5A44 !important;
+    color: #1E5282 !important;
     line-height: 1.6;
     max-width: 720px;
     margin: 0;
@@ -82,9 +83,9 @@
 .SkyRoute-about-tab-btn {
   padding: 10px 20px;
   border-radius: var(--SkyRoute-radius-full);
-  border: 1.5px solid #B2967D;
-  background-color: #D7C9B8;
-  color: #4A342A;
+  border: 1.5px solid #E2E8F0;
+  background-color: #FFFFFF;
+  color: #143F67;
   font-family: var(--SkyRoute-font-sans);
   font-size: 14px;
   font-weight: 700;
@@ -92,16 +93,17 @@
   transition: all var(--SkyRoute-transition-fast);
 
   &:hover {
-    background-color: #B2967D;
-    color: #F5F1EA;
+    background-color: #FBF3E4;
+    border-color: #E4B46C;
+    color: #143F67;
     transform: translateY(-1px);
   }
 
   &--active {
-    background-color: #4A342A !important;
-    border-color: #4A342A !important;
-    color: #F5F1EA !important;
-    box-shadow: 0 4px 14px rgba(74, 52, 42, 0.25);
+    background-color: #143F67 !important;
+    border-color: #143F67 !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(20, 63, 103, 0.25);
   }
 }
 
@@ -119,7 +121,7 @@
     display: inline-block;
     font-size: 12px;
     font-weight: 800;
-    color: #7D5A44 !important;
+    color: #E4B46C !important;
     letter-spacing: 1.2px;
     margin-bottom: 8px;
     text-transform: uppercase;
@@ -129,13 +131,13 @@
     font-family: var(--SkyRoute-font-serif);
     font-size: 32px;
     font-weight: 800;
-    color: #4A342A !important;
+    color: #143F67 !important;
     margin-bottom: 8px;
   }
 
   &-sub {
     font-size: 15px;
-    color: #7D5A44 !important;
+    color: #1E5282 !important;
     margin: 0;
     line-height: 1.55;
   }
@@ -153,17 +155,17 @@
   padding: 24px 26px;
   display: flex;
   flex-direction: column;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 20px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 20px rgba(20, 63, 103, 0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   box-sizing: border-box;
 
   &:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(74, 52, 42, 0.12);
-    border-color: #7D5A44 !important;
+    box-shadow: 0 10px 24px rgba(20, 63, 103, 0.12);
+    border-color: #E4B46C !important;
   }
 
   &__header {
@@ -176,10 +178,10 @@
   &__num {
     font-size: 14px;
     font-weight: 800;
-    color: #4A342A !important;
+    color: #143F67 !important;
     font-family: monospace;
-    background-color: #D7C9B8 !important;
-    border: 1px solid #B2967D !important;
+    background-color: #FBF3E4 !important;
+    border: 1px solid #E4B46C !important;
     padding: 3px 8px;
     border-radius: 6px;
   }
@@ -187,7 +189,7 @@
   &__role {
     font-size: 11px;
     font-weight: 800;
-    color: #7D5A44;
+    color: #1E5282;
     text-transform: uppercase;
     letter-spacing: 0.8px;
   }
@@ -196,13 +198,13 @@
     font-family: var(--SkyRoute-font-serif);
     font-size: 20px;
     font-weight: 800;
-    color: #4A342A !important;
+    color: #143F67 !important;
     margin: 0 0 8px;
   }
 
   &__desc {
     font-size: 13.5px;
-    color: #7D5A44 !important;
+    color: #1E5282 !important;
     line-height: 1.55;
     margin: 0 0 16px;
     flex: 1;
@@ -210,23 +212,23 @@
 
   &__meta {
     padding-top: 14px;
-    border-top: 1px solid #D7C9B8;
+    border-top: 1px solid #E2E8F0;
     display: flex;
     flex-direction: column;
     gap: 6px;
     font-size: 12.5px;
-    color: #4A342A;
+    color: #143F67;
 
     strong {
-      color: #4A342A;
+      color: #143F67;
     }
 
     code {
-      background-color: #D7C9B8;
+      background-color: #FAFBFC;
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 11.5px;
-      color: #4A342A;
+      color: #143F67;
       font-weight: 700;
     }
   }
@@ -235,10 +237,10 @@
 // Code Block / Architecture Tree Card
 .SkyRoute-about-code-block-card {
   padding: 30px 34px;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 20px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 20px rgba(20, 63, 103, 0.06);
   margin-top: 24px;
 }
 
@@ -246,20 +248,20 @@
   font-family: var(--SkyRoute-font-serif);
   font-size: 20px;
   font-weight: 800;
-  color: #4A342A !important;
+  color: #143F67 !important;
   margin: 0 0 16px;
 }
 
 .SkyRoute-about-ascii-tree {
-  background-color: #4A342A;
-  color: #F5F1EA;
+  background-color: #143F67;
+  color: #FFFFFF;
   padding: 22px 24px;
   border-radius: var(--SkyRoute-radius-sm);
   font-family: Consolas, 'Courier New', monospace;
   font-size: 12.5px;
   line-height: 1.5;
   overflow-x: auto;
-  border: 1.5px solid #7D5A44;
+  border: 1.5px solid #1E5282;
   margin: 0;
 }
 
@@ -272,10 +274,10 @@
 
 .SkyRoute-about-tech-card {
   padding: 24px;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 20px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 20px rgba(20, 63, 103, 0.06);
   box-sizing: border-box;
 
   &__header {
@@ -290,7 +292,7 @@
   &__name {
     font-size: 18px;
     font-weight: 800;
-    color: #4A342A !important;
+    color: #143F67 !important;
     margin: 0;
   }
 
@@ -298,7 +300,7 @@
     display: block;
     font-size: 11px;
     font-weight: 800;
-    color: #7D5A44;
+    color: #E4B46C;
     text-transform: uppercase;
     letter-spacing: 0.8px;
     margin-bottom: 10px;
@@ -306,7 +308,7 @@
 
   &__desc {
     font-size: 13px;
-    color: #7D5A44 !important;
+    color: #1E5282 !important;
     line-height: 1.55;
     margin: 0;
   }
@@ -315,10 +317,10 @@
 // Data Tables
 .SkyRoute-about-table-card {
   padding: 28px 30px;
-  background-color: #F5F1EA !important;
-  border: 1.5px solid #B2967D !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 20px rgba(74, 52, 42, 0.08);
+  box-shadow: 0 4px 20px rgba(20, 63, 103, 0.06);
 }
 
 .SkyRoute-about-table-wrap {
@@ -333,28 +335,28 @@
   font-size: 13.5px;
 
   th {
-    background-color: #D7C9B8;
-    color: #4A342A;
+    background-color: #FAFBFC;
+    color: #143F67;
     font-weight: 800;
     padding: 12px 16px;
-    border-bottom: 2px solid #B2967D;
+    border-bottom: 2px solid #E2E8F0;
     white-space: nowrap;
   }
 
   td {
     padding: 14px 16px;
-    border-bottom: 1px solid #D7C9B8;
-    color: #4A342A;
+    border-bottom: 1px solid #E2E8F0;
+    color: #143F67;
     vertical-align: top;
     line-height: 1.5;
 
     code {
-      background-color: #D7C9B8;
+      background-color: #FAFBFC;
       padding: 2px 6px;
       border-radius: 4px;
       font-size: 12px;
       font-weight: 700;
-      color: #4A342A;
+      color: #143F67;
     }
   }
 
@@ -367,10 +369,11 @@
   display: inline-block;
   font-size: 11.5px;
   font-weight: 800;
-  background-color: #B2967D;
-  color: #4A342A;
+  background-color: #FBF3E4;
+  color: #143F67;
   padding: 2px 8px;
   border-radius: 4px;
+  border: 1px solid #E4B46C;
 }
 
 .SkyRoute-status-badge {
@@ -382,15 +385,15 @@
   white-space: nowrap;
 
   &--real {
-    background-color: #4A342A;
-    color: #F5F1EA;
-    border: 1px solid #7D5A44;
+    background-color: #143F67;
+    color: #FFFFFF;
+    border: 1px solid #1E5282;
   }
 
   &--simulated {
-    background-color: #D7C9B8;
-    color: #4A342A;
-    border: 1px solid #B2967D;
+    background-color: #FBF3E4;
+    color: #143F67;
+    border: 1px solid #E4B46C;
   }
 }
 
@@ -399,25 +402,25 @@
   &__card {
     text-align: center;
     padding: 50px 32px;
-    background: linear-gradient(135deg, #4A342A 0%, #7D5A44 100%) !important;
-    border: 1.5px solid #B2967D !important;
+    background: linear-gradient(135deg, #143F67 0%, #1E5282 100%) !important;
+    border: 1.5px solid #143F67 !important;
     border-radius: var(--SkyRoute-radius-md);
-    box-shadow: 0 10px 30px rgba(74, 52, 42, 0.15);
+    box-shadow: 0 10px 30px rgba(20, 63, 103, 0.15);
     box-sizing: border-box;
-    color: #F5F1EA;
+    color: #FFFFFF;
   }
 
   &__title {
     font-family: var(--SkyRoute-font-serif);
     font-size: 32px;
     font-weight: 800;
-    color: #F5F1EA !important;
+    color: #FFFFFF !important;
     margin-bottom: 10px;
   }
 
   &__subtitle {
     font-size: 15px;
-    color: #D7C9B8 !important;
+    color: #E2E8F0 !important;
     margin-bottom: 28px;
   }
 

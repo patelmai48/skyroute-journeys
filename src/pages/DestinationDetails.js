@@ -60,7 +60,7 @@ const DestinationDetails = ({ destination, destinationId, onNavigate, onSearch, 
             <span className="SkyRoute-badge SkyRoute-badge--success">{dest.category.toUpperCase()}</span>
             <span className="SkyRoute-badge">{dest.country}</span>
             <span className="SkyRoute-dest-hero__weather-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-              <Icon name="cloudSun" size={14} color="#173F3A" />
+              <Icon name="cloudSun" size={14} color="#143F67" />
               <span>{dest.weather}</span>
             </span>
           </div>

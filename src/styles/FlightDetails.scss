@@ -1,17 +1,17 @@
-// SkyRoute Flight Details Styling - Warm Nude Design System
+// SkyRoute Flight Details Styling - 3-Color Design System (Deep Navy, Warm Golden Yellow, White)
 
 .SkyRoute-details-page {
-  background-color: var(--SkyRoute-bg);
+  background-color: #FAFBFC;
   min-height: calc(100vh - 72px - 200px);
   padding-bottom: 60px;
-  color: var(--SkyRoute-text-main);
+  color: #143F67;
 
   &__header-bar {
-    background-color: var(--SkyRoute-card-bg);
-    border-bottom: 1px solid var(--SkyRoute-border);
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #E2E8F0;
     padding: 24px 0;
     margin-bottom: 32px;
-    box-shadow: var(--SkyRoute-shadow-sm);
+    box-shadow: 0 2px 8px rgba(20, 63, 103, 0.04);
   }
 
   &__header-container {
@@ -24,21 +24,21 @@
 
   &__breadcrumb {
     font-size: 14px;
-    color: var(--SkyRoute-text-secondary);
+    color: #1E5282;
     font-weight: 600;
     margin-bottom: 8px;
 
     strong {
-      color: var(--SkyRoute-text-main);
+      color: #143F67;
       font-weight: 800;
     }
   }
 
   &__title {
-    font-family: var(--SkyRoute-font-serif);
+    font-family: var(--SkyRoute-font-sans);
     font-size: 28px;
     font-weight: 800;
-    color: var(--SkyRoute-text-main);
+    color: #143F67;
     margin-bottom: 12px;
   }
 
@@ -55,15 +55,15 @@
     gap: 6px;
     font-size: 14px;
     font-weight: 700;
-    color: var(--SkyRoute-text-main);
+    color: #143F67;
   }
 
   &__empty-card {
     margin-top: 40px;
     text-align: center;
     padding: 60px 24px;
-    background-color: var(--SkyRoute-card-bg);
-    border: 1.5px solid var(--SkyRoute-border);
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
     border-radius: var(--SkyRoute-radius-lg);
   }
 }
@@ -91,13 +91,13 @@
   }
 }
 
-// Itinerary Card (Enlarged Trip of Destinations Card - Big, Roomy, No Overflow)
+// Itinerary Card
 .SkyRoute-itinerary-card {
   padding: 36px 40px;
-  background-color: #F5F7F2 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 20px;
-  box-shadow: 0 10px 32px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 18px rgba(20, 63, 103, 0.05);
   box-sizing: border-box;
   overflow: hidden;
 
@@ -123,31 +123,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #DDE8E3;
-    color: #173F3A;
-    border: 1.5px solid #8FAFA6;
+    background: #143F67;
+    color: #E4B46C;
+    border: 1px solid #143F67;
     font-weight: 900;
     font-size: 19px;
-    box-shadow: 0 4px 12px rgba(23, 63, 58, 0.08);
+    box-shadow: 0 4px 12px rgba(20, 63, 103, 0.12);
   }
 
   &__airline-name {
     font-size: 22px;
     font-weight: 800;
-    color: #173F3A !important;
+    color: #143F67 !important;
     margin-bottom: 3px;
   }
 
   &__flight-meta {
     font-size: 14px;
-    color: #4F7C73 !important;
-    font-weight: 700;
+    color: #1E5282 !important;
+    font-weight: 600;
   }
 
   &__divider {
-    height: 1.5px;
-    background-color: #8FAFA6;
-    opacity: 0.35;
+    height: 1px;
+    background-color: #E2E8F0;
     margin-bottom: 26px;
   }
 
@@ -175,7 +174,7 @@
   &__time {
     font-size: 38px;
     font-weight: 900;
-    color: #173F3A !important;
+    color: #143F67 !important;
     line-height: 1.1;
     margin-bottom: 8px;
   }
@@ -189,20 +188,20 @@
   &__code {
     font-size: 24px;
     font-weight: 900;
-    color: #173F3A !important;
+    color: #143F67 !important;
     letter-spacing: 0.5px;
   }
 
   &__city {
     font-size: 17px;
     font-weight: 700;
-    color: #4F7C73 !important;
+    color: #1E5282 !important;
   }
 
   &__terminal {
     font-size: 13px;
     font-weight: 700;
-    color: #8FAFA6 !important;
+    color: #1E5282 !important;
   }
 
   &__path {
@@ -216,7 +215,7 @@
   &__duration {
     font-size: 16px;
     font-weight: 800;
-    color: #173F3A !important;
+    color: #143F67 !important;
     margin-bottom: 8px;
   }
 
@@ -233,14 +232,14 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #4F7C73;
+    background-color: #E4B46C;
     flex-shrink: 0;
   }
 
   &__line {
     flex: 1;
     height: 2px;
-    background-color: #8FAFA6;
+    background-color: #E2E8F0;
   }
 
   &__plane {
@@ -248,9 +247,9 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    background-color: #F5F7F2 !important;
+    background-color: #FFFFFF !important;
     padding: 2px 8px;
-    color: #173F3A !important;
+    color: #143F67 !important;
     font-size: 16px;
     font-weight: 900;
   }
@@ -262,15 +261,15 @@
     border-radius: 100px;
 
     &--direct {
-      background-color: #DDE8E3;
-      color: #173F3A;
-      border: 1px solid #8FAFA6;
+      background-color: #FBF3E4;
+      color: #143F67;
+      border: 1px solid #E4B46C;
     }
 
     &--layover {
-      background-color: #DDE8E3;
-      color: #4F7C73;
-      border: 1px solid #8FAFA6;
+      background-color: #FAFBFC;
+      color: #143F67;
+      border: 1px solid #E2E8F0;
     }
   }
 }
@@ -278,17 +277,17 @@
 // Flight Information Card
 .SkyRoute-info-card {
   padding: 28px 32px;
-  background-color: #F5F7F2 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 20px;
-  box-shadow: 0 10px 32px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 18px rgba(20, 63, 103, 0.05);
   box-sizing: border-box;
 
-    &__title {
-    font-family: var(--SkyRoute-font-serif);
+  &__title {
+    font-family: var(--SkyRoute-font-sans);
     font-size: 20px;
     font-weight: 800;
-    color: #173F3A !important;
+    color: #143F67 !important;
     margin-bottom: 20px;
   }
 
@@ -310,37 +309,37 @@
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.6px;
-    color: #8FAFA6 !important;
+    color: #1E5282 !important;
   }
 
   &__value {
     font-size: 16px;
     font-weight: 800;
-    color: #173F3A !important;
+    color: #143F67 !important;
   }
 
   &__notice {
     display: flex;
     align-items: flex-start;
     gap: 12px;
-    background-color: #DDE8E3;
+    background-color: #FBF3E4;
     padding: 14px 18px;
     border-radius: 10px;
-    border: 1.5px solid #8FAFA6;
-    border-left: 4px solid #4F7C73;
+    border: 1px solid #E4B46C;
+    border-left: 4px solid #E4B46C;
   }
 
   &__notice-icon {
     font-size: 17px;
     line-height: 1;
     flex-shrink: 0;
-    color: #4F7C73;
+    color: #E4B46C;
   }
 
   &__notice-text {
     font-size: 13px;
     font-weight: 700;
-    color: #173F3A;
+    color: #143F67;
     line-height: 1.5;
   }
 }
@@ -348,17 +347,17 @@
 // Baggage Info Card
 .SkyRoute-baggage-card {
   padding: 28px 32px;
-  background-color: #F5F7F2 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 20px;
-  box-shadow: 0 10px 32px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 18px rgba(20, 63, 103, 0.05);
   box-sizing: border-box;
 
   &__title {
-    font-family: var(--SkyRoute-font-serif);
+    font-family: var(--SkyRoute-font-sans);
     font-size: 20px;
     font-weight: 800;
-    color: #173F3A !important;
+    color: #143F67 !important;
     margin-bottom: 20px;
   }
 
@@ -374,15 +373,15 @@
     align-items: flex-start;
     gap: 16px;
     padding: 18px;
-    background-color: #DDE8E3 !important;
+    background-color: #FAFBFC !important;
     border-radius: 12px;
-    border: 1.5px solid #8FAFA6 !important;
+    border: 1px solid #E2E8F0 !important;
   }
 
   &__icon-box {
     font-size: 28px;
     line-height: 1;
-    color: #4F7C73 !important;
+    color: #E4B46C !important;
   }
 
   &__content {
@@ -394,25 +393,25 @@
   &__name {
     font-size: 15px;
     font-weight: 800;
-    color: #173F3A !important;
+    color: #143F67 !important;
   }
 
   &__limit {
     font-size: 14px;
     font-weight: 800;
-    color: #173F3A !important;
+    color: #143F67 !important;
   }
 
   &__desc {
     font-size: 13px;
     font-weight: 600;
-    color: #4F7C73 !important;
+    color: #1E5282 !important;
   }
 
   &__footer-note {
     font-size: 13px;
     font-weight: 600;
-    color: #8FAFA6 !important;
+    color: #1E5282 !important;
     font-style: italic;
   }
 }
@@ -420,17 +419,17 @@
 // Fare Summary Card
 .SkyRoute-fare-summary-card {
   padding: 32px;
-  background-color: #F5F7F2 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #E2E8F0 !important;
   border-radius: 20px;
-  box-shadow: 0 10px 32px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 18px rgba(20, 63, 103, 0.05);
   box-sizing: border-box;
 
   &__title {
-    font-family: var(--SkyRoute-font-serif);
+    font-family: var(--SkyRoute-font-sans);
     font-size: 22px;
     font-weight: 800;
-    color: #173F3A !important;
+    color: #143F67 !important;
     margin-bottom: 22px;
   }
 
@@ -447,7 +446,7 @@
     justify-content: space-between;
     font-size: 15px;
     font-weight: 600;
-    color: #173F3A !important;
+    color: #143F67 !important;
 
     &--addon {
       font-size: 14px;
@@ -461,23 +460,22 @@
 
   &__label {
     font-weight: 600;
-    color: #4F7C73 !important;
+    color: #1E5282 !important;
   }
 
   &__val {
     font-weight: 800;
-    color: #173F3A !important;
+    color: #143F67 !important;
 
     &--free {
-      color: #4F7C73 !important;
+      color: #E4B46C !important;
       font-weight: 800;
     }
   }
 
   &__divider {
-    height: 1.5px;
-    background-color: #8FAFA6;
-    opacity: 0.35;
+    height: 1px;
+    background-color: #E2E8F0;
     margin: 8px 0;
   }
 
@@ -485,22 +483,22 @@
     display: block;
     font-size: 18px;
     font-weight: 900;
-    color: #173F3A !important;
+    color: #143F67 !important;
   }
 
   &__total-sub {
     display: block;
     font-size: 12px;
     font-weight: 600;
-    color: #8FAFA6 !important;
+    color: #1E5282 !important;
     margin-top: 3px;
   }
 
   &__total-val {
-    font-family: var(--SkyRoute-font-serif);
+    font-family: var(--SkyRoute-font-sans);
     font-size: 32px;
     font-weight: 900;
-    color: #173F3A !important;
+    color: #143F67 !important;
     line-height: 1;
   }
 
@@ -508,8 +506,8 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: #DDE8E3;
-    border: 1.5px solid #8FAFA6;
+    background-color: #FBF3E4;
+    border: 1px solid #E4B46C;
     padding: 12px 16px;
     border-radius: 10px;
     margin-bottom: 24px;
@@ -517,35 +515,40 @@
 
   &__guarantee-icon {
     font-size: 18px;
-    color: #4F7C73;
+    color: #E4B46C;
   }
 
   &__guarantee-text {
     font-size: 13px;
     font-weight: 700;
-    color: #173F3A;
+    color: #143F67;
   }
 
+  /* Primary CTA: Golden Yellow button with Deep Navy text */
   &__cta-btn {
     width: 100%;
     padding: 16px;
     font-size: 16px;
     font-weight: 800;
     justify-content: center;
-    background-color: #173F3A !important;
-    color: #F5F7F2 !important;
-    border-radius: 12px;
-    transition: background-color var(--SkyRoute-transition-fast);
+    background-color: #E4B46C !important;
+    color: #143F67 !important;
+    border: 1.5px solid #E4B46C !important;
+    border-radius: var(--SkyRoute-radius-full);
+    box-shadow: 0 4px 14px rgba(228, 180, 108, 0.3) !important;
+    transition: all var(--SkyRoute-transition-fast);
 
     &:hover {
-      background-color: #4F7C73 !important;
+      background-color: #D39F52 !important;
+      border-color: #D39F52 !important;
+      color: #143F67 !important;
     }
   }
 }
 
 // Passenger Details Placeholder Page
 .SkyRoute-passenger-placeholder {
-  background-color: var(--SkyRoute-bg);
+  background-color: #FAFBFC;
   min-height: calc(100vh - 72px - 200px);
   padding: 50px 0;
 
@@ -554,16 +557,16 @@
     margin: 0 auto;
     padding: 36px;
     text-align: center;
-    background-color: var(--SkyRoute-card-bg);
-    border: 1px solid var(--SkyRoute-border);
+    background-color: #FFFFFF;
+    border: 1px solid #E2E8F0;
     border-radius: 14px;
   }
 
   &__badge {
     display: inline-block;
-    background-color: var(--SkyRoute-card-secondary);
-    border: 1px solid var(--SkyRoute-border);
-    color: var(--SkyRoute-rose-hover);
+    background-color: #FBF3E4;
+    border: 1px solid #E4B46C;
+    color: #143F67;
     font-size: 12px;
     font-weight: 700;
     text-transform: uppercase;
@@ -574,16 +577,16 @@
   }
 
   &__title {
-    font-family: var(--SkyRoute-font-serif);
+    font-family: var(--SkyRoute-font-sans);
     font-size: 28px;
-    font-weight: 700;
-    color: var(--SkyRoute-text-main);
+    font-weight: 800;
+    color: #143F67;
     margin-bottom: 24px;
   }
 
   &__flight-box {
-    background-color: var(--SkyRoute-card-secondary);
-    border: 1px solid var(--SkyRoute-border);
+    background-color: #FAFBFC;
+    border: 1px solid #E2E8F0;
     border-radius: 12px;
     padding: 18px 24px;
     text-align: left;
@@ -599,29 +602,29 @@
     h3 {
       font-size: 17px;
       font-weight: 700;
-      color: var(--SkyRoute-text-main);
+      color: #143F67;
       margin-bottom: 4px;
     }
 
     p {
       font-size: 13px;
-      color: var(--SkyRoute-text-secondary);
+      color: #1E5282;
     }
   }
 
   &__price {
-    font-family: var(--SkyRoute-font-serif);
+    font-family: var(--SkyRoute-font-sans);
     font-size: 22px;
-    font-weight: 700;
-    color: var(--SkyRoute-rose-hover);
+    font-weight: 800;
+    color: #143F67;
   }
 
   &__notice {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    background-color: var(--SkyRoute-card-secondary);
-    border: 1px solid var(--SkyRoute-border);
+    background-color: #FBF3E4;
+    border: 1px solid #E4B46C;
     border-radius: 12px;
     padding: 18px 20px;
     text-align: left;
@@ -630,13 +633,13 @@
     h3 {
       font-size: 15px;
       font-weight: 700;
-      color: var(--SkyRoute-text-main);
+      color: #143F67;
       margin-bottom: 4px;
     }
 
     p {
       font-size: 13px;
-      color: var(--SkyRoute-text-secondary);
+      color: #1E5282;
       line-height: 1.5;
     }
   }
@@ -644,7 +647,7 @@
   &__notice-icon {
     font-size: 24px;
     line-height: 1;
-    color: var(--SkyRoute-rose);
+    color: #E4B46C;
   }
 
   &__actions {

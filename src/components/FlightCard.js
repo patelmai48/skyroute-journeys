@@ -75,7 +75,7 @@ const FlightCard = ({
           <div className="SkyRoute-flight-card__airline-info">
             <div
               className="SkyRoute-flight-card__logo"
-              style={{ backgroundColor: airlineColor || '#173F3A' }}
+              style={{ backgroundColor: airlineColor || '#143F67' }}
               title={airline}
             >
               <Icon name="flight" size={14} color="#FFFFFF" />
@@ -118,7 +118,7 @@ const FlightCard = ({
               <span className="SkyRoute-flight-card__dot SkyRoute-flight-card__dot--origin"></span>
               <div className="SkyRoute-flight-card__line-track"></div>
               <span className="SkyRoute-flight-card__plane-icon">
-                <Icon name="flight" size={14} color="#4F7C73" />
+                <Icon name="flight" size={14} color="#1E5282" />
               </span>
               <span className="SkyRoute-flight-card__dot SkyRoute-flight-card__dot--dest"></span>
             </div>
@@ -138,17 +138,17 @@ const FlightCard = ({
         {/* Perks & Amenities Line */}
         <div className="SkyRoute-flight-card__perks-bar">
           <span className="SkyRoute-flight-perk-item">
-            <Icon name="luggage" size={14} color="#4F7C73" /> {baggage || '15kg baggage'}
+            <Icon name="luggage" size={14} color="#1E5282" /> {baggage || '15kg baggage'}
           </span>
           <span className="SkyRoute-flight-perk-item">
-            <Icon name="shieldCheck" size={14} color="#4F7C73" /> {refundable ? 'Free cancellation' : 'Standard cancellation'}
+            <Icon name="shieldCheck" size={14} color="#1E5282" /> {refundable ? 'Free cancellation' : 'Standard cancellation'}
           </span>
           <span className="SkyRoute-flight-perk-item">
-            <Icon name="clock" size={14} color="#4F7C73" /> {onTimeRating || '95% On-time'}
+            <Icon name="clock" size={14} color="#1E5282" /> {onTimeRating || '95% On-time'}
           </span>
           {cabin && (
             <span className="SkyRoute-flight-perk-item">
-              <Icon name="seat" size={14} color="#4F7C73" /> {cabin}
+              <Icon name="seat" size={14} color="#1E5282" /> {cabin}
             </span>
           )}
         </div>

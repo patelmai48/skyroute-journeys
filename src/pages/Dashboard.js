@@ -65,7 +65,7 @@ const Dashboard = ({ onNavigate, onSelectBooking }) => {
       <div className="SkyRoute-dashboard-summary-row">
         <div className="SkyRoute-dashboard-stat-card SkyRoute-card">
           <div className="SkyRoute-dashboard-stat-card__icon SkyRoute-dashboard-stat-card__icon--blue">
-            <Icon name="ticket" size={24} color="#173F3A" />
+            <Icon name="ticket" size={24} color="#143F67" />
           </div>
           <div className="SkyRoute-dashboard-stat-card__content">
             <span className="SkyRoute-dashboard-stat-card__label">Confirmed Bookings</span>
@@ -77,7 +77,7 @@ const Dashboard = ({ onNavigate, onSelectBooking }) => {
 
         <div className="SkyRoute-dashboard-stat-card SkyRoute-card">
           <div className="SkyRoute-dashboard-stat-card__icon SkyRoute-dashboard-stat-card__icon--purple">
-            <Icon name="search" size={24} color="#4F7C73" />
+            <Icon name="search" size={24} color="#143F67" />
           </div>
           <div className="SkyRoute-dashboard-stat-card__content">
             <span className="SkyRoute-dashboard-stat-card__label">Recent Search Route</span>
@@ -89,7 +89,7 @@ const Dashboard = ({ onNavigate, onSelectBooking }) => {
 
         <div className="SkyRoute-dashboard-stat-card SkyRoute-card">
           <div className="SkyRoute-dashboard-stat-card__icon SkyRoute-dashboard-stat-card__icon--green">
-            <Icon name="sparkles" size={24} color="#16A34A" />
+            <Icon name="sparkles" size={24} color="#E4B46C" />
           </div>
           <div className="SkyRoute-dashboard-stat-card__content">
             <span className="SkyRoute-dashboard-stat-card__label">SkyPoints ({loyalty.tier.split(' ')[1] || 'Loyalty'})</span>
@@ -106,7 +106,7 @@ const Dashboard = ({ onNavigate, onSelectBooking }) => {
         {/* Card 1: Search Flights */}
         <div className="SkyRoute-dashboard-action-card SkyRoute-card">
           <div className="SkyRoute-dashboard-action-card__icon">
-            <Icon name="flight" size={26} color="#173F3A" />
+            <Icon name="flight" size={26} color="#E4B46C" />
           </div>
           <div className="SkyRoute-dashboard-action-card__body">
             <h3 className="SkyRoute-dashboard-action-card__title">Search Flights</h3>
@@ -126,7 +126,7 @@ const Dashboard = ({ onNavigate, onSelectBooking }) => {
         {/* Card 2: My Bookings */}
         <div className="SkyRoute-dashboard-action-card SkyRoute-card">
           <div className="SkyRoute-dashboard-action-card__icon">
-            <Icon name="ticket" size={26} color="#173F3A" />
+            <Icon name="ticket" size={26} color="#E4B46C" />
           </div>
           <div className="SkyRoute-dashboard-action-card__body">
             <h3 className="SkyRoute-dashboard-action-card__title">My Bookings</h3>

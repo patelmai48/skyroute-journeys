@@ -1,5 +1,5 @@
 /* ==========================================================================
-   SkyRoute Notifications Page Styles (Brand Theme Preserved)
+   SkyRoute Notifications Page Styles - 3-Color System
    ========================================================================== */
 
 .SkyRoute-notifications-page {
@@ -29,9 +29,9 @@
   gap: 0.6rem;
   padding: 0.65rem 1.25rem;
   border-radius: var(--SkyRoute-radius-full);
-  border: 1.5px solid #8FAFA6 !important;
-  background-color: #F5F7F2 !important;
-  color: #173F3A !important;
+  border: 1.5px solid #E2E8F0 !important;
+  background-color: #FFFFFF !important;
+  color: #143F67 !important;
   font-family: var(--SkyRoute-font-sans);
   font-size: 0.88rem;
   font-weight: 700;
@@ -40,22 +40,22 @@
   white-space: nowrap;
 
   &:hover {
-    border-color: #4F7C73 !important;
-    background-color: #DDE8E3 !important;
+    border-color: #E4B46C !important;
+    background-color: #FBF3E4 !important;
   }
 
   &--active {
-    background-color: #4F7C73 !important;
-    border-color: #4F7C73 !important;
-    color: #F5F7F2 !important;
+    background-color: #E4B46C !important;
+    border-color: #E4B46C !important;
+    color: #143F67 !important;
 
     .SkyRoute-notif-pill-count {
-      background-color: #173F3A !important;
-      color: #F5F7F2 !important;
+      background-color: #143F67 !important;
+      color: #FFFFFF !important;
     }
 
     &:hover {
-      background-color: #173F3A !important;
+      background-color: #D39F52 !important;
     }
   }
 }
@@ -66,8 +66,8 @@
   justify-content: center;
   padding: 0.15rem 0.5rem;
   border-radius: var(--SkyRoute-radius-full);
-  background-color: #DDE8E3 !important;
-  color: #173F3A !important;
+  background-color: #FAFBFC !important;
+  color: #143F67 !important;
   font-size: 0.75rem;
   font-weight: 800;
 }
@@ -84,10 +84,10 @@
   align-items: flex-start;
   gap: 1.35rem;
   padding: 1.75rem 2rem;
-  background-color: #F5F7F2 !important;
-  border: 1.5px solid #8FAFA6 !important;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: 0 4px 18px rgba(23, 63, 58, 0.08);
+  box-shadow: 0 4px 18px rgba(20, 63, 103, 0.06);
   cursor: pointer;
   transition: all var(--SkyRoute-transition-fast);
   position: relative;
@@ -95,24 +95,24 @@
   overflow: hidden;
 
   &:hover {
-    border-color: #4F7C73 !important;
-    box-shadow: 0 8px 24px rgba(23, 63, 58, 0.12);
+    border-color: #E4B46C !important;
+    box-shadow: 0 8px 24px rgba(20, 63, 103, 0.12);
     transform: translateY(-1px);
   }
 
   &--unread {
-    background-color: #DDE8E3 !important;
-    border-color: #4F7C73 !important;
-    border-left: 5px solid #4F7C73 !important;
+    background-color: #FBF3E4 !important;
+    border-color: #E4B46C !important;
+    border-left: 5px solid #E4B46C !important;
   }
 
   &__icon-box {
     width: 48px;
     height: 48px;
     border-radius: var(--SkyRoute-radius-md);
-    background-color: #DDE8E3 !important;
-    border: 1.5px solid #8FAFA6 !important;
-    color: #173F3A;
+    background-color: #FAFBFC !important;
+    border: 1.5px solid #E2E8F0 !important;
+    color: #E4B46C;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -146,7 +146,7 @@
     border: none;
     font-size: 1.25rem;
     line-height: 1;
-    color: #8FAFA6;
+    color: #1E5282;
     cursor: pointer;
     padding: 0.2rem 0.45rem;
     border-radius: var(--SkyRoute-radius-xs);
@@ -156,15 +156,15 @@
     justify-content: center;
 
     &:hover {
-      color: #173F3A;
-      background-color: rgba(23, 63, 58, 0.08);
+      color: #143F67;
+      background-color: rgba(20, 63, 103, 0.08);
     }
   }
 
   &__title {
     font-size: 1.05rem;
     font-weight: 800;
-    color: #173F3A !important;
+    color: #143F67 !important;
     margin: 0;
     display: flex;
     align-items: center;
@@ -173,13 +173,13 @@
 
   &__time {
     font-size: 0.8rem;
-    color: #8FAFA6 !important;
+    color: #1E5282 !important;
     font-weight: 600;
   }
 
   &__message {
     font-size: 0.9rem;
-    color: #173F3A !important;
+    color: #143F67 !important;
     line-height: 1.5;
     margin: 0;
   }
@@ -188,12 +188,12 @@
     display: inline-block;
     font-size: 0.84rem;
     font-weight: 700;
-    color: #4F7C73 !important;
+    color: #143F67 !important;
     margin-top: 0.25rem;
 
     &:hover {
       text-decoration: underline;
-      color: #173F3A !important;
+      color: #E4B46C !important;
     }
   }
 
@@ -201,7 +201,7 @@
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: #4F7C73 !important;
+    background-color: #E4B46C !important;
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
@@ -209,9 +209,9 @@
 }
 
 .SkyRoute-notif-new-badge {
-  background-color: #4F7C73 !important;
-  color: #F5F7F2 !important;
-  border: 1px solid #4F7C73 !important;
+  background-color: #E4B46C !important;
+  color: #143F67 !important;
+  border: 1px solid #E4B46C !important;
   font-size: 0.68rem;
   font-weight: 800;
   padding: 0.15rem 0.5rem;
@@ -220,17 +220,17 @@
   display: inline-block;
 }
 
-/* Floating Notifications Panel (if used) */
+/* Floating Notifications Panel */
 .SkyRoute-notif-panel {
   position: absolute;
   top: calc(100% + 10px);
   right: 0;
   width: 380px;
   max-width: 90vw;
-  background-color: var(--SkyRoute-card-bg, #F5F7F2);
-  border: 1px solid var(--SkyRoute-border);
+  background-color: #FFFFFF;
+  border: 1.5px solid #E2E8F0;
   border-radius: var(--SkyRoute-radius-md);
-  box-shadow: var(--SkyRoute-shadow-lg);
+  box-shadow: 0 10px 30px rgba(20, 63, 103, 0.15);
   z-index: 1000;
   overflow: hidden;
   display: flex;
@@ -241,8 +241,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 1.25rem;
-    border-bottom: 1px solid var(--SkyRoute-border-light);
-    background-color: var(--SkyRoute-card-secondary);
+    border-bottom: 1px solid #E2E8F0;
+    background-color: #FAFBFC;
   }
 
   &__title-row {
@@ -255,15 +255,15 @@
     font-family: var(--SkyRoute-font-serif);
     font-size: 1.15rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-main);
+    color: #143F67;
     margin: 0;
   }
 
   &__badge {
-    background-color: var(--SkyRoute-navy);
-    color: #F5F7F2;
+    background-color: #E4B46C;
+    color: #143F67;
     font-size: 0.7rem;
-    font-weight: 700;
+    font-weight: 800;
     padding: 0.15rem 0.5rem;
     border-radius: var(--SkyRoute-radius-full);
   }
@@ -276,24 +276,24 @@
 
   &__action-btn {
     background: transparent;
-    border: 1px solid var(--SkyRoute-border);
+    border: 1px solid #E2E8F0;
     padding: 0.25rem 0.6rem;
     border-radius: var(--SkyRoute-radius-xs);
     font-size: 0.75rem;
     font-weight: 600;
-    color: var(--SkyRoute-text-secondary);
+    color: #1E5282;
     cursor: pointer;
     transition: all var(--SkyRoute-transition-fast);
 
     &:hover {
-      background-color: var(--SkyRoute-card-bg);
-      color: var(--SkyRoute-navy);
-      border-color: var(--SkyRoute-navy);
+      background-color: #FAFBFC;
+      color: #143F67;
+      border-color: #143F67;
     }
 
     &--clear:hover {
-      color: #4F7C73;
-      border-color: #4F7C73;
+      color: #143F67;
+      border-color: #143F67;
     }
   }
 
@@ -306,21 +306,22 @@
 
   &__footer {
     padding: 0.75rem 1rem;
-    border-top: 1px solid var(--SkyRoute-border-light);
-    background-color: var(--SkyRoute-card-secondary);
+    border-top: 1px solid #E2E8F0;
+    background-color: #FAFBFC;
     text-align: center;
   }
 
   &__view-all-btn {
     background: transparent;
     border: none;
-    color: var(--SkyRoute-navy);
+    color: #143F67;
     font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
     padding: 0.25rem;
 
     &:hover {
+      color: #E4B46C;
       text-decoration: underline;
     }
   }
@@ -331,23 +332,24 @@
   align-items: flex-start;
   gap: 0.85rem;
   padding: 0.85rem 1.15rem;
-  border-bottom: 1px solid var(--SkyRoute-border-light);
+  border-bottom: 1px solid #E2E8F0;
   cursor: pointer;
   transition: all var(--SkyRoute-transition-fast);
   position: relative;
 
   &:hover {
-    background-color: var(--SkyRoute-hover);
+    background-color: #FAFBFC;
   }
 
   &--unread {
-    background-color: rgba(86, 124, 141, 0.05);
+    background-color: #FBF3E4;
   }
 
   &__icon-box {
     font-size: 1.25rem;
     flex-shrink: 0;
     margin-top: 2px;
+    color: #E4B46C;
   }
 
   &__content {
@@ -373,12 +375,12 @@
   &__title {
     font-size: 0.88rem;
     font-weight: 700;
-    color: var(--SkyRoute-text-main);
+    color: #143F67;
   }
 
   &__time {
     font-size: 0.72rem;
-    color: var(--SkyRoute-text-secondary);
+    color: #1E5282;
   }
 
   &__delete-btn {
@@ -386,21 +388,21 @@
     border: none;
     font-size: 1.1rem;
     line-height: 1;
-    color: var(--SkyRoute-text-secondary, #8FAFA6);
+    color: #1E5282;
     cursor: pointer;
     padding: 0 0.25rem;
     border-radius: var(--SkyRoute-radius-xs);
     transition: all var(--SkyRoute-transition-fast);
 
     &:hover {
-      color: #4F7C73;
-      background-color: rgba(239, 68, 68, 0.12);
+      color: #143F67;
+      background-color: rgba(20, 63, 103, 0.08);
     }
   }
 
   &__message {
     font-size: 0.8rem;
-    color: var(--SkyRoute-text-secondary);
+    color: #1E5282;
     line-height: 1.4;
     margin: 0;
   }
@@ -409,7 +411,7 @@
     width: 7px;
     height: 7px;
     border-radius: 50%;
-    background-color: var(--SkyRoute-navy);
+    background-color: #E4B46C;
     position: absolute;
     top: 1rem;
     right: 0.6rem;
