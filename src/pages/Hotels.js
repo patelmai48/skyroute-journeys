@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Icon from '../components/Icon';
 import { useToast } from '../context/ToastContext';
 
 const formatINR = (num) => {
@@ -207,15 +208,19 @@ const Hotels = ({ onNavigate }) => {
             type="button"
             className={`SkyRoute-btn ${activeTab === 'browse' ? 'SkyRoute-btn--primary' : 'SkyRoute-btn--outline'}`}
             onClick={() => setActiveTab('browse')}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
           >
-            🏨 Browse Stays &amp; Resorts
+            <Icon name="hotel" size={16} color={activeTab === 'browse' ? '#FFFFFF' : 'var(--primary)'} />
+            <span>Browse Stays &amp; Resorts</span>
           </button>
           <button
             type="button"
             className={`SkyRoute-btn ${activeTab === 'my-reservations' ? 'SkyRoute-btn--primary' : 'SkyRoute-btn--outline'}`}
             onClick={() => setActiveTab('my-reservations')}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
           >
-            📋 My Hotel Reservations ({savedReservations.length})
+            <Icon name="list" size={16} color={activeTab === 'my-reservations' ? '#FFFFFF' : 'var(--primary)'} />
+            <span>My Hotel Reservations ({savedReservations.length})</span>
           </button>
         </div>
 
@@ -243,8 +248,8 @@ const Hotels = ({ onNavigate }) => {
               <div className="SkyRoute-hotel-confirmed-col">
                 <span className="SkyRoute-hotel-res-label">HOTEL &amp; LOCATION</span>
                 <strong className="SkyRoute-hotel-res-val">{confirmedBooking.hotelName}</strong>
-                <span style={{ fontSize: '0.82rem', color: 'var(--SkyRoute-text-secondary)', display: 'block', marginTop: '0.15rem' }}>
-                  📍 {confirmedBooking.location} ({confirmedBooking.city})
+                <span style={{ fontSize: '0.82rem', color: 'var(--SkyRoute-text-secondary)', display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: '0.15rem' }}>
+                  <Icon name="mapPin" size={13} color="var(--SkyRoute-teal)" /> {confirmedBooking.location} ({confirmedBooking.city})
                 </span>
               </div>
 
@@ -286,22 +291,28 @@ const Hotels = ({ onNavigate }) => {
                 type="button"
                 className="SkyRoute-hotel-btn-voucher"
                 onClick={() => setSelectedVoucher(confirmedBooking)}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
               >
-                📄 View Official Voucher
+                <Icon name="fileText" size={15} />
+                <span>View Official Voucher</span>
               </button>
               <button
                 type="button"
                 className="SkyRoute-hotel-btn-receipt"
                 onClick={handlePrintConfirmation}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
               >
-                🖨️ Download / Print Confirmation
+                <Icon name="printer" size={15} />
+                <span>Download / Print Confirmation</span>
               </button>
               <button
                 type="button"
                 className="SkyRoute-hotel-btn-receipt"
                 onClick={() => onNavigate('/my-trips')}
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
               >
-                ✈️ Go to My Trips
+                <Icon name="flight" size={15} />
+                <span>Go to My Trips</span>
               </button>
             </div>
           </div>
@@ -367,17 +378,21 @@ const Hotels = ({ onNavigate }) => {
                       <div>
                         <span className="SkyRoute-hotel-card__type">{hotel.type}</span>
                         <h3 className="SkyRoute-hotel-card__title">{hotel.name}</h3>
-                        <span className="SkyRoute-hotel-card__loc">📍 {hotel.location}</span>
+                        <span className="SkyRoute-hotel-card__loc" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Icon name="mapPin" size={13} color="var(--SkyRoute-teal)" /> {hotel.location}
+                        </span>
                       </div>
                       <div className="SkyRoute-hotel-card__rating">
-                        <span>★</span> {hotel.rating}
+                        <Icon name="star" size={13} color="#D97706" /> {hotel.rating}
                         <span className="SkyRoute-hotel-reviews-count">({hotel.reviews})</span>
                       </div>
                     </div>
 
                     <div className="SkyRoute-hotel-amenities-tags">
                       {hotel.amenities.map((am, i) => (
-                        <span key={i} className="SkyRoute-hotel-amenity-tag">✓ {am}</span>
+                        <span key={i} className="SkyRoute-hotel-amenity-tag" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Icon name="check" size={11} color="var(--SkyRoute-teal)" /> {am}
+                        </span>
                       ))}
                     </div>
 
@@ -410,7 +425,9 @@ const Hotels = ({ onNavigate }) => {
           <div className="SkyRoute-hotels-saved-list">
             {savedReservations.length === 0 ? (
               <div className="SkyRoute-card SkyRoute-empty-state">
-                <div className="SkyRoute-empty-state__icon">🏨</div>
+                <div className="SkyRoute-empty-state__icon">
+                  <Icon name="hotel" size={36} color="var(--primary)" />
+                </div>
                 <h3 className="SkyRoute-empty-state__title">No hotel reservations found</h3>
                 <p className="SkyRoute-empty-state__text">
                   You have not booked any hotel stays yet. Explore our luxury resorts and boutique city hotels.
@@ -443,14 +460,16 @@ const Hotels = ({ onNavigate }) => {
                           <span className="SkyRoute-hotel-res-id-tag">ID: {res.id}</span>
                         </div>
                         <h3 className="SkyRoute-hotel-res-title">{res.hotelName}</h3>
-                        <span className="SkyRoute-hotel-res-loc">📍 {res.location}</span>
+                        <span className="SkyRoute-hotel-res-loc" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Icon name="mapPin" size={13} color="var(--SkyRoute-teal)" /> {res.location}
+                        </span>
                       </div>
 
                       <div className="SkyRoute-hotel-res-price-col">
                         <span className="SkyRoute-hotel-res-price-label">TOTAL FARE PAID</span>
                         <strong className="SkyRoute-hotel-res-price-val">{formatINR(res.totalAmount)}</strong>
-                        <span className="SkyRoute-hotel-res-tax-badge">
-                          ✓ GST &amp; Taxes Included
+                        <span className="SkyRoute-hotel-res-tax-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Icon name="check" size={11} /> GST &amp; Taxes Included
                         </span>
                       </div>
                     </div>
@@ -479,15 +498,19 @@ const Hotels = ({ onNavigate }) => {
                         type="button"
                         className="SkyRoute-hotel-btn-voucher"
                         onClick={() => setSelectedVoucher(res)}
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                       >
-                        📄 View Official Voucher
+                        <Icon name="fileText" size={15} />
+                        <span>View Official Voucher</span>
                       </button>
                       <button
                         type="button"
                         className="SkyRoute-hotel-btn-receipt"
                         onClick={handlePrintConfirmation}
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                       >
-                        🖨️ Print Receipt
+                        <Icon name="printer" size={15} />
+                        <span>Print Receipt</span>
                       </button>
                     </div>
                   </div>
@@ -523,11 +546,15 @@ const Hotels = ({ onNavigate }) => {
                   <div className="SkyRoute-hotel-modal-meta">
                     <div className="SkyRoute-hotel-modal-meta__item">
                       <span className="SkyRoute-hotel-modal-meta__label">Address &amp; Location:</span>
-                      <strong className="SkyRoute-hotel-modal-meta__val">📍 {selectedHotel.location}, {selectedHotel.city}</strong>
+                      <strong className="SkyRoute-hotel-modal-meta__val" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                        <Icon name="mapPin" size={14} color="var(--SkyRoute-teal)" /> {selectedHotel.location}, {selectedHotel.city}
+                      </strong>
                     </div>
                     <div className="SkyRoute-hotel-modal-meta__item">
                       <span className="SkyRoute-hotel-modal-meta__label">Rating &amp; Category:</span>
-                      <strong className="SkyRoute-hotel-modal-meta__val">★ {selectedHotel.rating} / 5.0 &bull; {selectedHotel.type}</strong>
+                      <strong className="SkyRoute-hotel-modal-meta__val" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                        <Icon name="star" size={14} color="#D97706" /> {selectedHotel.rating} / 5.0 &bull; {selectedHotel.type}
+                      </strong>
                     </div>
                   </div>
 
@@ -653,8 +680,10 @@ const Hotels = ({ onNavigate }) => {
                   type="button"
                   className="SkyRoute-btn SkyRoute-btn--primary"
                   onClick={handlePrintConfirmation}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                 >
-                  🖨️ Print Voucher
+                  <Icon name="printer" size={15} color="#FFFFFF" />
+                  <span>Print Voucher</span>
                 </button>
               </div>
             </div>

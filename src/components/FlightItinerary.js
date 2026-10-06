@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from './Icon';
 
 const FlightItinerary = ({ flight, searchData }) => {
   if (!flight) return null;
@@ -65,7 +66,9 @@ const FlightItinerary = ({ flight, searchData }) => {
           <div className="SkyRoute-itinerary-card__path-graphic">
             <span className="SkyRoute-itinerary-card__dot"></span>
             <div className="SkyRoute-itinerary-card__line"></div>
-            <span className="SkyRoute-itinerary-card__plane">✈</span>
+            <span className="SkyRoute-itinerary-card__plane">
+              <Icon name="flight" size={14} color="var(--primary)" />
+            </span>
             <span className="SkyRoute-itinerary-card__dot"></span>
           </div>
           <span

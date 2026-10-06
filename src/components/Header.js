@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import NotificationsPanel from './NotificationsPanel';
+import Icon from './Icon';
 import { INITIAL_NOTIFICATIONS } from '../data/travelData';
 
 const NAV_LINKS = [
@@ -188,10 +189,10 @@ const Header = ({ onNavigate, currentRoute }) => {
                       }}
                     />
                   ) : (
-                    currentUser.name ? currentUser.name.trim().charAt(0).toUpperCase() : '👤'
+                    currentUser.name ? currentUser.name.trim().charAt(0).toUpperCase() : <Icon name="user" size={16} />
                   )
                 ) : (
-                  '👤'
+                  <Icon name="user" size={16} />
                 )}
               </div>
               <span className="SkyRoute-header__profile-name">
@@ -216,7 +217,7 @@ const Header = ({ onNavigate, currentRoute }) => {
                       className="SkyRoute-header__dropdown-item"
                       onClick={() => handleNav('/profile')}
                     >
-                      <span>👤</span>
+                      <Icon name="user" size={16} color="var(--primary)" />
                       <span>My Profile</span>
                     </button>
                     <button
@@ -224,7 +225,7 @@ const Header = ({ onNavigate, currentRoute }) => {
                       className="SkyRoute-header__dropdown-item"
                       onClick={() => handleNav('/my-trips')}
                     >
-                      <span>✈️</span>
+                      <Icon name="flight" size={16} color="var(--primary)" />
                       <span>My Trips &amp; Bookings</span>
                     </button>
                     <button
@@ -232,7 +233,7 @@ const Header = ({ onNavigate, currentRoute }) => {
                       className="SkyRoute-header__dropdown-item"
                       onClick={() => handleNav('/price-alerts')}
                     >
-                      <span>🔔</span>
+                      <Icon name="bell" size={16} color="var(--primary)" />
                       <span>Price Alerts</span>
                     </button>
                     <button
@@ -240,7 +241,7 @@ const Header = ({ onNavigate, currentRoute }) => {
                       className="SkyRoute-header__dropdown-item"
                       onClick={() => handleNav('/profile')}
                     >
-                      <span>⚙️</span>
+                      <Icon name="settings" size={16} color="var(--primary)" />
                       <span>Settings</span>
                     </button>
                     <div className="SkyRoute-header__dropdown-divider"></div>
@@ -249,7 +250,7 @@ const Header = ({ onNavigate, currentRoute }) => {
                       className="SkyRoute-header__dropdown-item SkyRoute-header__dropdown-item--logout"
                       onClick={handleLogout}
                     >
-                      <span>🚪</span>
+                      <Icon name="logOut" size={16} color="#DC2626" />
                       <span>Log Out</span>
                     </button>
                   </>
@@ -265,7 +266,7 @@ const Header = ({ onNavigate, currentRoute }) => {
                       className="SkyRoute-header__dropdown-item"
                       onClick={() => handleNav('/login')}
                     >
-                      <span>🔑</span>
+                      <Icon name="key" size={16} color="var(--primary)" />
                       <span>Log In</span>
                     </button>
                     <button
@@ -273,7 +274,7 @@ const Header = ({ onNavigate, currentRoute }) => {
                       className="SkyRoute-header__dropdown-item"
                       onClick={() => handleNav('/login')}
                     >
-                      <span>✨</span>
+                      <Icon name="sparkles" size={16} color="var(--primary)" />
                       <span>Create Account</span>
                     </button>
                   </>
@@ -315,7 +316,9 @@ const Header = ({ onNavigate, currentRoute }) => {
               className={`SkyRoute-header__mobile-item ${currentRoute === '/' ? 'SkyRoute-header__mobile-item--active' : ''}`}
               onClick={() => handleNav('/')}
             >
-              <span>🏠 Home</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                <Icon name="home" size={16} color="var(--primary)" /> Home
+              </span>
             </button>
             {NAV_LINKS.map((link) => (
               <button
@@ -335,14 +338,18 @@ const Header = ({ onNavigate, currentRoute }) => {
               className={`SkyRoute-header__mobile-item ${currentRoute === '/flight-status' ? 'SkyRoute-header__mobile-item--active' : ''}`}
               onClick={() => handleNav('/flight-status')}
             >
-              <span>📡 Flight Status</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                <Icon name="activity" size={16} color="var(--primary)" /> Flight Status
+              </span>
             </button>
             <button
               type="button"
               className={`SkyRoute-header__mobile-item ${currentRoute === '/manage-booking' ? 'SkyRoute-header__mobile-item--active' : ''}`}
               onClick={() => handleNav('/manage-booking')}
             >
-              <span>📋 Manage Booking</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                <Icon name="package" size={16} color="var(--primary)" /> Manage Booking
+              </span>
             </button>
           </div>
 

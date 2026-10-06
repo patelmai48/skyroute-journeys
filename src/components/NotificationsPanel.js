@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Icon from './Icon';
 import { INITIAL_NOTIFICATIONS } from '../data/travelData';
 
 const NotificationsPanel = ({ isOpen, onClose, onNavigate }) => {
@@ -95,7 +96,9 @@ const NotificationsPanel = ({ isOpen, onClose, onNavigate }) => {
       <div className="SkyRoute-notif-panel__list">
         {notifications.length === 0 ? (
           <div className="SkyRoute-notif-panel__empty">
-            <span className="SkyRoute-notif-panel__empty-icon">🔔</span>
+            <span className="SkyRoute-notif-panel__empty-icon">
+              <Icon name="bell" size={32} color="var(--primary)" />
+            </span>
             <p className="SkyRoute-notif-panel__empty-text">You're all caught up!</p>
             <span className="SkyRoute-notif-panel__empty-sub">No new notifications at this time.</span>
           </div>
@@ -109,10 +112,11 @@ const NotificationsPanel = ({ isOpen, onClose, onNavigate }) => {
               tabIndex={0}
             >
               <div className="SkyRoute-notif-item__icon-box">
-                {item.type === 'flight' && '✈️'}
-                {item.type === 'price' && '📉'}
-                {item.type === 'booking' && '🎫'}
-                {item.type === 'alert' && '🔔'}
+                {item.type === 'flight' && <Icon name="flight" size={16} color="var(--primary)" />}
+                {item.type === 'price' && <Icon name="trendDown" size={16} color="#16A34A" />}
+                {item.type === 'booking' && <Icon name="ticket" size={16} color="var(--primary)" />}
+                {item.type === 'alert' && <Icon name="bell" size={16} color="var(--primary)" />}
+                {!['flight', 'price', 'booking', 'alert'].includes(item.type) && <Icon name="bell" size={16} color="var(--primary)" />}
               </div>
               <div className="SkyRoute-notif-item__content">
                 <div className="SkyRoute-notif-item__top">

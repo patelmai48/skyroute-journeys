@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FlightSidebarSummary from '../components/FlightSidebarSummary';
 import SeatSelection from '../components/SeatSelection';
+import Icon from '../components/Icon';
 import { INSURANCE_PLANS } from '../data/travelData';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -116,7 +117,7 @@ const PassengerDetails = ({
         {/* Step Indicator */}
         <div className="SkyRoute-booking-steps-bar">
           <div className="SkyRoute-step-item SkyRoute-step-item--completed">
-            <span className="SkyRoute-step-num">✓</span>
+            <span className="SkyRoute-step-num"><Icon name="check" size={12} /></span>
             <span>1. Flight Selected</span>
           </div>
           <div
@@ -125,7 +126,7 @@ const PassengerDetails = ({
             onClick={() => setShowSeatMap(!showSeatMap)}
             title="Click to view or change seat"
           >
-            <span className="SkyRoute-step-num">💺</span>
+            <span className="SkyRoute-step-num"><Icon name="seat" size={13} /></span>
             <span>2. Seat: {selectedSeat?.id || '14A'} ({showSeatMap ? 'Close Map ▲' : 'Change ▼'})</span>
           </div>
           <div className="SkyRoute-step-item SkyRoute-step-item--active">
@@ -151,8 +152,9 @@ const PassengerDetails = ({
               </div>
 
               {formSubmitted && Object.keys(errors).length > 0 && (
-                <div className="SkyRoute-form-alert-banner">
-                  <span>⚠️ Please fill in all required traveller fields marked with red below before continuing to payment.</span>
+                <div className="SkyRoute-form-alert-banner" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Icon name="alertTriangle" size={16} color="#DC2626" />
+                  <span>Please fill in all required traveller fields marked with red below before continuing to payment.</span>
                 </div>
               )}
 
@@ -170,7 +172,7 @@ const PassengerDetails = ({
                       <div className="SkyRoute-traveller-card__header">
                         <div className="SkyRoute-traveller-card__title-row">
                           <span className="SkyRoute-traveller-badge-icon">
-                            {isPrimary ? '👑' : '👤'}
+                            <Icon name={isPrimary ? "crown" : "user"} size={16} color={isPrimary ? "#B45309" : "var(--primary)"} />
                           </span>
                           <div>
                             <h3 className="SkyRoute-traveller-title">
@@ -204,7 +206,8 @@ const PassengerDetails = ({
                             />
                             {errors[`${idx}_firstName`] && (
                               <span className="SkyRoute-field-error">
-                                ⚠ {errors[`${idx}_firstName`]}
+                                <Icon name="alertTriangle" size={13} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
+                                {errors[`${idx}_firstName`]}
                               </span>
                             )}
                           </div>
@@ -225,7 +228,8 @@ const PassengerDetails = ({
                             />
                             {errors[`${idx}_lastName`] && (
                               <span className="SkyRoute-field-error">
-                                ⚠ {errors[`${idx}_lastName`]}
+                                <Icon name="alertTriangle" size={13} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
+                                {errors[`${idx}_lastName`]}
                               </span>
                             )}
                           </div>
@@ -262,7 +266,8 @@ const PassengerDetails = ({
                             />
                             {errors[`${idx}_dateOfBirth`] && (
                               <span className="SkyRoute-field-error">
-                                ⚠ {errors[`${idx}_dateOfBirth`]}
+                                <Icon name="alertTriangle" size={13} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
+                                {errors[`${idx}_dateOfBirth`]}
                               </span>
                             )}
                           </div>
@@ -300,7 +305,8 @@ const PassengerDetails = ({
                             />
                             {errors[`${idx}_govtIdNumber`] && (
                               <span className="SkyRoute-field-error">
-                                ⚠ {errors[`${idx}_govtIdNumber`]}
+                                <Icon name="alertTriangle" size={13} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
+                                {errors[`${idx}_govtIdNumber`]}
                               </span>
                             )}
                           </div>
@@ -310,7 +316,9 @@ const PassengerDetails = ({
                         {isPrimary && (
                           <div className="SkyRoute-contact-details-box">
                             <div className="SkyRoute-contact-details-box__header">
-                              <span className="SkyRoute-contact-icon">📬</span>
+                              <span className="SkyRoute-contact-icon">
+                                <Icon name="mail" size={18} color="var(--primary)" />
+                              </span>
                               <div>
                                 <h4 className="SkyRoute-contact-details-title">
                                   E-Ticket &amp; Flight SMS Updates
@@ -337,7 +345,7 @@ const PassengerDetails = ({
                                 />
                                 {errors[`${idx}_email`] && (
                                   <span className="SkyRoute-field-error">
-                                    ⚠ {errors[`${idx}_email`]}
+                                    {errors[`${idx}_email`]}
                                   </span>
                                 )}
                               </div>
@@ -357,7 +365,7 @@ const PassengerDetails = ({
                                 />
                                 {errors[`${idx}_phone`] && (
                                   <span className="SkyRoute-field-error">
-                                    ⚠ {errors[`${idx}_phone`]}
+                                    {errors[`${idx}_phone`]}
                                   </span>
                                 )}
                               </div>
@@ -413,9 +421,10 @@ const PassengerDetails = ({
                   <button
                     type="button"
                     className="SkyRoute-btn SkyRoute-btn--teal SkyRoute-btn--sm"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                     onClick={() => setShowSeatMap(true)}
                   >
-                    💺 Choose / Change Seat
+                    <Icon name="seat" size={16} /> Choose / Change Seat
                   </button>
                 </div>
               )}
@@ -424,8 +433,8 @@ const PassengerDetails = ({
               <div className="SkyRoute-insurance-selector-card SkyRoute-card">
                 <div className="SkyRoute-insurance-selector-header">
                   <span className="SkyRoute-badge SkyRoute-badge--teal">PROTECTION ADD-ON</span>
-                  <h2 className="SkyRoute-insurance-selector-title">
-                    🛡️ Secure Your Journey with Travel Insurance
+                  <h2 className="SkyRoute-insurance-selector-title" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Icon name="shieldCheck" size={22} color="var(--primary)" /> Secure Your Journey with Travel Insurance
                   </h2>
                   <p className="SkyRoute-insurance-selector-sub">
                     Get full coverage for flight delays, lost baggage, medical emergencies, and unexpected trip cancellations.
@@ -479,14 +488,16 @@ const PassengerDetails = ({
                         <ul className="SkyRoute-insurance-features-list">
                           {plan.features.map((feature, idx) => (
                             <li key={idx} className="SkyRoute-insurance-feature-item">
-                              <span className="SkyRoute-check-icon">✓</span> {feature}
+                              <span className="SkyRoute-check-icon">
+                                <Icon name="check" size={12} color="var(--primary)" />
+                              </span> {feature}
                             </li>
                           ))}
                         </ul>
 
                         <div className="SkyRoute-insurance-plan-action">
                           <span className="SkyRoute-insurance-select-label">
-                            {isSelected ? '✓ Selected Plan' : 'Select This Plan'}
+                            {isSelected ? 'Selected Plan' : 'Select This Plan'}
                           </span>
                         </div>
                       </div>

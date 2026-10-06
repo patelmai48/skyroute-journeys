@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Icon from '../components/Icon';
 
 const TECH_STACK_ITEMS = [
   {
@@ -6,56 +7,56 @@ const TECH_STACK_ITEMS = [
     name: 'React',
     version: 'v17.0.2',
     desc: 'Functional component architecture, unidirectional state distribution, hooks (useState, useEffect, useMemo, useRef), and React Portals (createPortal).',
-    icon: '⚛️',
+    iconName: 'code',
   },
   {
     category: 'Core Language',
     name: 'JavaScript',
     version: 'ES6+',
     desc: 'Immutable state updates, multi-criteria array filtering & sorting algorithms, dynamic mock generation, and regex validations.',
-    icon: '📜',
+    iconName: 'terminal',
   },
   {
     category: 'Styling & Tokens',
     name: 'Modular SCSS',
     version: 'CSS3 / Sass',
-    desc: 'Strict 5-color token palette (#F5F1EA, #D7C9B8, #B2967D, #7D5A44, #4A342A), CSS Grid, Flexbox, media queries, and print stylesheets.',
-    icon: '🎨',
+    desc: 'Strict 5-color token palette (#F5F7F2, #DDE8E3, #8FAFA6, #4F7C73, #173F3A), CSS Grid, Flexbox, media queries, and print stylesheets.',
+    iconName: 'edit',
   },
   {
     category: 'Design System',
     name: 'Backpack System',
     version: 'Skyscanner',
     desc: 'Accessible Skyscanner Backpack web mixins (bpk-mixins), stylesheets (bpk-stylesheets), and design tokens.',
-    icon: '🎒',
+    iconName: 'package',
   },
   {
     category: 'Client Routing',
     name: 'HTML5 History API',
     version: 'Single-Page',
     desc: 'Native browser routing utilizing window.history.pushState and popstate event listeners without external router bloat.',
-    icon: '🧭',
+    iconName: 'compass',
   },
   {
     category: 'State Persistence',
     name: 'Web LocalStorage',
     version: 'Browser API',
     desc: 'Synchronous client-side persistence for active searches, selected flights, passenger manifests, and confirmed bookings.',
-    icon: '💾',
+    iconName: 'database',
   },
   {
     category: 'Form Engine',
     name: 'Controlled Validation',
     version: 'Real-Time',
     desc: 'Controlled component inputs with regex verification for passenger names, emails, phone numbers, and flight dates.',
-    icon: '✅',
+    iconName: 'checkCircle',
   },
   {
     category: 'Responsive Design',
     name: 'Adaptive Engine',
     version: 'Mobile & Desktop',
     desc: 'Custom fluid layouts tested across 360px (mobile), 768px (tablet), and 1440px+ (desktop) viewports with zero horizontal overflow.',
-    icon: '📱',
+    iconName: 'smartphone',
   },
 ];
 
@@ -239,28 +240,28 @@ const About = ({ onNavigate }) => {
             className={`SkyRoute-about-tab-btn ${activeTab === 'architecture' ? 'SkyRoute-about-tab-btn--active' : ''}`}
             onClick={() => setActiveTab('architecture')}
           >
-            🏛️ Architecture &amp; Flow
+            <Icon name="layers" size={16} /> Architecture &amp; Flow
           </button>
           <button
             type="button"
             className={`SkyRoute-about-tab-btn ${activeTab === 'tech' ? 'SkyRoute-about-tab-btn--active' : ''}`}
             onClick={() => setActiveTab('tech')}
           >
-            ⚙️ Tech Stack Specifications
+            <Icon name="code" size={16} /> Tech Stack Specifications
           </button>
           <button
             type="button"
             className={`SkyRoute-about-tab-btn ${activeTab === 'storage' ? 'SkyRoute-about-tab-btn--active' : ''}`}
             onClick={() => setActiveTab('storage')}
           >
-            💾 Data &amp; LocalStorage Schema
+            <Icon name="database" size={16} /> Data &amp; LocalStorage Schema
           </button>
           <button
             type="button"
             className={`SkyRoute-about-tab-btn ${activeTab === 'reality' ? 'SkyRoute-about-tab-btn--active' : ''}`}
             onClick={() => setActiveTab('reality')}
           >
-            🛡️ Implementation Reality
+            <Icon name="shieldCheck" size={16} /> Implementation Reality
           </button>
         </div>
 
@@ -342,7 +343,9 @@ const About = ({ onNavigate }) => {
                 <div key={i} className="SkyRoute-card SkyRoute-about-tech-card">
                   <div className="SkyRoute-about-tech-card__header">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <span style={{ fontSize: '20px' }}>{t.icon}</span>
+                      <span className="SkyRoute-about-tech-card__icon-wrap">
+                        <Icon name={t.iconName} size={18} color="#173F3A" />
+                      </span>
                       <h3 className="SkyRoute-about-tech-card__name">{t.name}</h3>
                     </div>
                     <span className="SkyRoute-tag SkyRoute-tag--blue">{t.version}</span>
@@ -420,7 +423,8 @@ const About = ({ onNavigate }) => {
                         <td><strong>{item.feature}</strong></td>
                         <td>
                           <span className={`SkyRoute-status-badge ${item.isReal ? 'SkyRoute-status-badge--real' : 'SkyRoute-status-badge--simulated'}`}>
-                            {item.isReal ? '✓ ' : 'ℹ '} {item.status}
+                            <Icon name={item.isReal ? 'checkCircle' : 'info'} size={14} style={{ marginRight: '4px' }} />
+                            {item.status}
                           </span>
                         </td>
                         <td>{item.detail}</td>
@@ -446,14 +450,14 @@ const About = ({ onNavigate }) => {
                 className="SkyRoute-btn SkyRoute-btn--primary SkyRoute-btn--lg"
                 onClick={() => onNavigate('/')}
               >
-                ✈️ Start Flight Search
+                <Icon name="flight" size={18} style={{ marginRight: '8px' }} /> Start Flight Search
               </button>
               <button
                 type="button"
                 className="SkyRoute-btn SkyRoute-btn--outline SkyRoute-btn--lg"
                 onClick={() => onNavigate('/my-trips')}
               >
-                📋 View Stored Trips
+                <Icon name="list" size={18} style={{ marginRight: '8px' }} /> View Stored Trips
               </button>
             </div>
           </div>

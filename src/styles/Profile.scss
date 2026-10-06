@@ -476,3 +476,90 @@
     text-decoration: underline;
   }
 }
+
+/* Loyalty & SkyPoints Section Styles */
+.SkyRoute-loyalty-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.SkyRoute-loyalty-stat-card {
+  padding: 1.5rem;
+  background-color: #F5F7F2 !important;
+  border: 1.5px solid #8FAFA6 !important;
+  border-radius: var(--SkyRoute-radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+
+  &__icon {
+    font-size: 1.75rem;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+
+  &__label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #4F7C73 !important;
+  }
+
+  &__val {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #173F3A !important;
+  }
+
+  &__sub {
+    font-size: 0.82rem;
+    color: #4F7C73 !important;
+    line-height: 1.4;
+  }
+}
+
+.SkyRoute-loyalty-tiers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.SkyRoute-loyalty-tier-row {
+  padding: 1.15rem 1.35rem;
+  background-color: #F5F7F2 !important;
+  border: 1px solid #8FAFA6 !important;
+  border-radius: var(--SkyRoute-radius-md);
+
+  &--active {
+    border-color: #173F3A !important;
+    background-color: #DDE8E3 !important;
+    box-shadow: 0 4px 14px rgba(23, 63, 58, 0.06);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 0.4rem;
+    flex-wrap: wrap;
+
+    strong {
+      font-size: 0.95rem;
+      color: #173F3A !important;
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.86rem;
+    color: #4F7C73 !important;
+    line-height: 1.4;
+  }
+}

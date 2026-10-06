@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { INSURANCE_PLANS } from '../data/travelData';
+import Icon from '../components/Icon';
 
 const formatINR = (num) => {
   return new Intl.NumberFormat('en-IN', {
@@ -39,7 +40,9 @@ const TravelInsurance = ({ onNavigate }) => {
         {/* Success Alert */}
         {showConfirmation && (
           <div className="SkyRoute-alert-banner SkyRoute-alert-banner--success" role="alert">
-            <span className="SkyRoute-alert-banner__icon">✓</span>
+            <span className="SkyRoute-alert-banner__icon">
+              <Icon name="checkCircle" size={18} />
+            </span>
             <div className="SkyRoute-alert-banner__content">
               Policy activated for {activePlanObj.name}! Certificate of Insurance has been sent to your registered email.
             </div>
@@ -80,7 +83,9 @@ const TravelInsurance = ({ onNavigate }) => {
                 <div className="SkyRoute-ins-features-list">
                   {plan.features.map((feature, i) => (
                     <div key={i} className="SkyRoute-ins-feature-row">
-                      <span className="SkyRoute-ins-check">✓</span>
+                      <span className="SkyRoute-ins-check">
+                        <Icon name="check" size={14} color="#4F7C73" />
+                      </span>
                       <span className="SkyRoute-ins-feature-text">{feature}</span>
                     </div>
                   ))}
@@ -144,9 +149,21 @@ const TravelInsurance = ({ onNavigate }) => {
                 </tr>
                 <tr>
                   <td>24/7 Global Assistance</td>
-                  <td>✓ Phone support</td>
-                  <td>✓ Priority Concierge</td>
-                  <td>✓ Dedicated Care Agent</td>
+                  <td>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                      <Icon name="check" size={14} color="#4F7C73" /> Phone support
+                    </span>
+                  </td>
+                  <td>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                      <Icon name="check" size={14} color="#4F7C73" /> Priority Concierge
+                    </span>
+                  </td>
+                  <td>
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                      <Icon name="check" size={14} color="#4F7C73" /> Dedicated Care Agent
+                    </span>
+                  </td>
                 </tr>
               </tbody>
             </table>

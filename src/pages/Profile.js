@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import Icon from '../components/Icon';
 import { useToast } from '../context/ToastContext';
+import { getLoyaltySummary } from '../services/loyaltyService';
 
 const Profile = ({ onNavigate }) => {
   const { showSuccess, showInfo } = useToast();
-  const [activeTab, setActiveTab] = useState('personal'); // personal | travellers | preferences | payment
+  const [activeTab, setActiveTab] = useState('personal'); // personal | rewards | travellers | preferences | payment
   const [isSavingPersonal, setIsSavingPersonal] = useState(false);
   const [isSavingPrefs, setIsSavingPrefs] = useState(false);
+
+  // Loyalty Summary State
+  const [loyalty, setLoyalty] = useState(() => getLoyaltySummary());
 
   // 1. Personal Info State
   const [userInfo, setUserInfo] = useState(() => {
@@ -14,6 +19,7 @@ const Profile = ({ onNavigate }) => {
       const authUser = auth ? JSON.parse(auth) : null;
       const saved = localStorage.getItem('skyroute_profile_info');
       const base = saved ? JSON.parse(saved) : {};
+      const currentLoyalty = getLoyaltySummary();
 
       if (authUser) {
         return {
@@ -24,8 +30,8 @@ const Profile = ({ onNavigate }) => {
           dob: base.dob || '1998-05-14',
           nationality: base.nationality || 'Indian',
           passport: base.passport || 'Z9841203',
-          memberTier: base.memberTier || 'SkyRoute Gold Member',
-          points: base.points || 12450
+          memberTier: currentLoyalty.tier || base.memberTier || 'SkyRoute Gold Member',
+          points: currentLoyalty.pointsBalance || base.points || 2450
         };
       }
 
@@ -37,8 +43,8 @@ const Profile = ({ onNavigate }) => {
         dob: base.dob || '1998-05-14',
         nationality: base.nationality || 'Indian',
         passport: base.passport || 'Z9841203',
-        memberTier: base.memberTier || 'SkyRoute Gold Member',
-        points: base.points || 12450
+        memberTier: currentLoyalty.tier || base.memberTier || 'SkyRoute Gold Member',
+        points: currentLoyalty.pointsBalance || base.points || 2450
       };
     } catch (e) {
       return {
@@ -50,7 +56,7 @@ const Profile = ({ onNavigate }) => {
         nationality: 'Indian',
         passport: 'Z9841203',
         memberTier: 'SkyRoute Gold Member',
-        points: 12450
+        points: 2450
       };
     }
   });
@@ -337,8 +343,17 @@ const Profile = ({ onNavigate }) => {
             </p>
           </div>
           <div className="SkyRoute-profile-points-box">
-            <span className="SkyRoute-points-label">SkyMiles Balance</span>
+            <span className="SkyRoute-points-label">SkyPoints Balance</span>
             <strong className="SkyRoute-points-value">{userInfo.points.toLocaleString()} pts</strong>
+            <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', fontSize: '0.72rem', color: '#4F7C73', marginTop: '2px', fontWeight: 600 }}>
+              {loyalty.isRepeat ? (
+                <>
+                  <Icon name="star" size={12} color="#4F7C73" style={{ marginRight: '3px' }} /> Repeat Traveler
+                </>
+              ) : (
+                'Explorer Member'
+              )}
+            </span>
           </div>
         </div>
 
@@ -352,7 +367,9 @@ const Profile = ({ onNavigate }) => {
                 className={`SkyRoute-profile-nav-link ${activeTab === 'personal' ? 'SkyRoute-profile-nav-link--active' : ''}`}
                 onClick={() => setActiveTab('personal')}
               >
-                <span className="SkyRoute-profile-tab-icon">👤</span>
+                <span className="SkyRoute-profile-tab-icon">
+                  <Icon name="user" size={18} color="var(--primary)" />
+                </span>
                 <div className="SkyRoute-profile-tab-text">
                   <strong>Personal Information</strong>
                   <span>Name, email, passport &amp; contact</span>
@@ -361,10 +378,26 @@ const Profile = ({ onNavigate }) => {
 
               <button
                 type="button"
+                className={`SkyRoute-profile-nav-link ${activeTab === 'rewards' ? 'SkyRoute-profile-nav-link--active' : ''}`}
+                onClick={() => setActiveTab('rewards')}
+              >
+                <span className="SkyRoute-profile-tab-icon">
+                  <Icon name="star" size={18} color="var(--primary)" />
+                </span>
+                <div className="SkyRoute-profile-tab-text">
+                  <strong>SkyPoints &amp; Rewards</strong>
+                  <span>Tier status, perks &amp; discounts</span>
+                </div>
+              </button>
+
+              <button
+                type="button"
                 className={`SkyRoute-profile-nav-link ${activeTab === 'travellers' ? 'SkyRoute-profile-nav-link--active' : ''}`}
                 onClick={() => setActiveTab('travellers')}
               >
-                <span className="SkyRoute-profile-tab-icon">👥</span>
+                <span className="SkyRoute-profile-tab-icon">
+                  <Icon name="users" size={18} color="var(--primary)" />
+                </span>
                 <div className="SkyRoute-profile-tab-text">
                   <strong>Saved Co-Travellers</strong>
                   <span>Family &amp; frequent travel companions</span>
@@ -376,7 +409,9 @@ const Profile = ({ onNavigate }) => {
                 className={`SkyRoute-profile-nav-link ${activeTab === 'preferences' ? 'SkyRoute-profile-nav-link--active' : ''}`}
                 onClick={() => setActiveTab('preferences')}
               >
-                <span className="SkyRoute-profile-tab-icon">⚙️</span>
+                <span className="SkyRoute-profile-tab-icon">
+                  <Icon name="settings" size={18} color="var(--primary)" />
+                </span>
                 <div className="SkyRoute-profile-tab-text">
                   <strong>Travel Preferences</strong>
                   <span>Cabin, meal, seat &amp; airline choices</span>
@@ -388,7 +423,9 @@ const Profile = ({ onNavigate }) => {
                 className={`SkyRoute-profile-nav-link ${activeTab === 'payment' ? 'SkyRoute-profile-nav-link--active' : ''}`}
                 onClick={() => setActiveTab('payment')}
               >
-                <span className="SkyRoute-profile-tab-icon">💳</span>
+                <span className="SkyRoute-profile-tab-icon">
+                  <Icon name="creditCard" size={18} color="var(--primary)" />
+                </span>
                 <div className="SkyRoute-profile-tab-text">
                   <strong>Saved Payment Methods</strong>
                   <span>Credit/debit cards &amp; UPI accounts</span>
@@ -489,6 +526,112 @@ const Profile = ({ onNavigate }) => {
                     </button>
                   </div>
                 </form>
+              </div>
+            )}
+
+            {/* ============================================================
+               SECTION: REWARDS & LOYALTY (SKYPOINTS)
+               ============================================================ */}
+            {activeTab === 'rewards' && (
+              <div className="SkyRoute-profile-content-card SkyRoute-card">
+                <div className="SkyRoute-profile-content-header">
+                  <div>
+                    <h2 className="SkyRoute-profile-section-title">SkyPoints &amp; Loyalty Rewards</h2>
+                    <p className="SkyRoute-profile-section-desc">
+                      Track your accrued SkyPoints, repeat traveler discounts, and membership benefits across all flights.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    className="SkyRoute-btn SkyRoute-btn--primary SkyRoute-btn--sm"
+                    onClick={() => onNavigate('/flights')}
+                  >
+                    Book with ₹{loyalty.discountAmount || 500} Off &rarr;
+                  </button>
+                </div>
+
+                {/* Loyalty Overview Cards Grid */}
+                <div className="SkyRoute-loyalty-stats-grid">
+                  <div className="SkyRoute-loyalty-stat-card SkyRoute-card">
+                    <span className="SkyRoute-loyalty-stat-card__icon">
+                      <Icon name="sparkles" size={22} color="#4F7C73" />
+                    </span>
+                    <span className="SkyRoute-loyalty-stat-card__label">Available SkyPoints</span>
+                    <strong className="SkyRoute-loyalty-stat-card__val">{loyalty.pointsBalance.toLocaleString()} pts</strong>
+                    <span className="SkyRoute-loyalty-stat-card__sub">Earn 10% points on every flight</span>
+                  </div>
+
+                  <div className="SkyRoute-loyalty-stat-card SkyRoute-card">
+                    <span className="SkyRoute-loyalty-stat-card__icon">
+                      <Icon name="crown" size={22} color="#4F7C73" />
+                    </span>
+                    <span className="SkyRoute-loyalty-stat-card__label">Membership Tier</span>
+                    <strong className="SkyRoute-loyalty-stat-card__val" style={{ fontSize: '1.25rem' }}>{loyalty.tier}</strong>
+                    <span className="SkyRoute-loyalty-stat-card__sub">{loyalty.tierPerk}</span>
+                  </div>
+
+                  <div className="SkyRoute-loyalty-stat-card SkyRoute-card">
+                    <span className="SkyRoute-loyalty-stat-card__icon">
+                      <Icon name="star" size={22} color="#4F7C73" />
+                    </span>
+                    <span className="SkyRoute-loyalty-stat-card__label">Repeat Traveler Status</span>
+                    <strong className="SkyRoute-loyalty-stat-card__val" style={{ color: '#4F7C73', fontSize: '1.25rem' }}>
+                      {loyalty.isRepeat ? 'Active (₹500 OFF)' : '1 Trip to Unlock'}
+                    </strong>
+                    <span className="SkyRoute-loyalty-stat-card__sub">
+                      {loyalty.bookingsCount} completed {loyalty.bookingsCount === 1 ? 'flight' : 'flights'} on record
+                    </span>
+                  </div>
+                </div>
+
+                {/* Perks & Benefits Breakdown */}
+                <div className="SkyRoute-loyalty-perks-box" style={{ marginTop: '1.5rem' }}>
+                  <h3 className="SkyRoute-field-label" style={{ fontSize: '1rem', marginBottom: '1rem' }}>
+                    Tier Benefits &amp; Repeat Flyer Privileges
+                  </h3>
+                  <div className="SkyRoute-loyalty-tiers-list">
+                    <div className="SkyRoute-loyalty-tier-row">
+                      <div className="SkyRoute-loyalty-tier-row__header">
+                        <span className="SkyRoute-badge SkyRoute-badge--secondary">EXPLORER (0 TRIPS)</span>
+                        <strong>10% SkyPoints Back</strong>
+                      </div>
+                      <p>Earn 1 SkyPoint for every ₹10 spent on flights, seat selections, and upgrades.</p>
+                    </div>
+
+                    <div className={`SkyRoute-loyalty-tier-row ${loyalty.bookingsCount >= 1 ? 'SkyRoute-loyalty-tier-row--active' : ''}`}>
+                      <div className="SkyRoute-loyalty-tier-row__header">
+                        <span className="SkyRoute-badge SkyRoute-badge--teal">SILVER MEMBER (1+ TRIPS)</span>
+                        <strong style={{ color: '#173F3A' }}>₹500 Repeat Discount + Free Standard Seats</strong>
+                      </div>
+                      <p>Instant ₹500 repeat traveller discount auto-applied on all future bookings + seat selection perks.</p>
+                    </div>
+
+                    <div className={`SkyRoute-loyalty-tier-row ${loyalty.bookingsCount >= 3 ? 'SkyRoute-loyalty-tier-row--active' : ''}`}>
+                      <div className="SkyRoute-loyalty-tier-row__header">
+                        <span className="SkyRoute-badge SkyRoute-badge--success">GOLD MEMBER (3+ TRIPS)</span>
+                        <strong style={{ color: '#173F3A' }}>Priority Check-in + 1.2x SkyPoints Boost</strong>
+                      </div>
+                      <p>Top-tier benefits with fast-track terminal assistance and elevated rewards accrual.</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Architecture Transparency Notice */}
+                <div className="SkyRoute-loyalty-notice-banner" style={{
+                  marginTop: '1.5rem',
+                  padding: '1rem 1.25rem',
+                  borderRadius: '8px',
+                  backgroundColor: '#DDE8E3',
+                  border: '1px solid #8FAFA6',
+                  fontSize: '0.85rem',
+                  color: '#173F3A',
+                  lineHeight: 1.5
+                }}>
+                  <strong>
+                    <Icon name="lightbulb" size={14} style={{ marginRight: '4px', verticalAlign: 'middle' }} />
+                    Demo Loyalty Architecture:
+                  </strong> SkyRoute Rewards runs entirely in your browser using persistent client-side storage (<code style={{ backgroundColor: '#F5F7F2', padding: '2px 4px', borderRadius: '4px' }}>localStorage: skyroute_bookings &amp; skyroute_skypoints</code>). Completing any booking automatically updates your points and triggers the repeat traveler discount on subsequent bookings.
+                </div>
               </div>
             )}
 

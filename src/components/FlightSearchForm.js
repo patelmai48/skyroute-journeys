@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import AirportInput from './AirportInput';
 import DatePickerField from './DatePickerField';
 import PassengerSelector from './PassengerSelector';
+import Icon from './Icon';
 
 const SERVICE_TABS = [
-  { id: 'flights', label: 'Flights', icon: '✈' },
-  { id: 'hotels', label: 'Hotels', icon: '▣' },
-  { id: 'flight-hotel', label: 'Flight + Hotel', icon: '✦' },
+  { id: 'flights', label: 'Flights', iconName: 'flight' },
+  { id: 'hotels', label: 'Hotels', iconName: 'hotel' },
+  { id: 'flight-hotel', label: 'Flight + Hotel', iconName: 'package' },
 ];
 
 const TRIP_TYPES = {
@@ -166,7 +167,9 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
             }`}
             onClick={() => setActiveServiceTab(tab.id)}
           >
-            <span className="SkyRoute-service-tab__icon">{tab.icon}</span>
+            <span className="SkyRoute-service-tab__icon">
+              <Icon name={tab.iconName} size={17} />
+            </span>
             <span>{tab.label}</span>
           </button>
         ))}
@@ -211,7 +214,9 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
       {/* Validation Banner if errors present */}
       {Object.keys(errors).length > 0 && (
         <div className="SkyRoute-alert-banner" role="alert">
-          <span className="SkyRoute-alert-banner__icon">⚠️</span>
+          <span className="SkyRoute-alert-banner__icon">
+            <Icon name="alertTriangle" size={18} color="#993D3D" />
+          </span>
           <div className="SkyRoute-alert-banner__content">
             {Object.values(errors)[0]}
           </div>
@@ -238,7 +243,7 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
                 setOrigin(val);
                 if (errors.origin) setErrors((e) => ({ ...e, origin: null }));
               }}
-              icon="🛫"
+              icon="takeoff"
               error={errors.origin}
             />
           </div>
@@ -252,7 +257,7 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
               title="Swap Departure and Arrival Airports"
               aria-label="Swap airports"
             >
-              ⇄
+              <Icon name="swap" size={17} />
             </button>
           </div>
 
@@ -267,7 +272,7 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
                 setDestination(val);
                 if (errors.destination) setErrors((e) => ({ ...e, destination: null }));
               }}
-              icon="🛬"
+              icon="landing"
               error={errors.destination}
             />
           </div>
@@ -283,7 +288,7 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
                 if (errors.departureDate) setErrors((e) => ({ ...e, departureDate: null }));
               }}
               minDate={new Date()}
-              icon="📅"
+              icon="calendar"
               error={errors.departureDate}
             />
           </div>
@@ -300,7 +305,7 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
                   if (errors.returnDate) setErrors((e) => ({ ...e, returnDate: null }));
                 }}
                 minDate={departureDate || new Date()}
-                icon="📅"
+                icon="calendar"
                 error={errors.returnDate}
               />
             </div>
@@ -329,7 +334,7 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
                   placeholder="Origin"
                   value={leg.origin}
                   onChange={(val) => handleLegChange(index, 'origin', val)}
-                  icon="🛫"
+                  icon="takeoff"
                 />
                 <AirportInput
                   id={`mc-dest-${index}`}
@@ -337,7 +342,7 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
                   placeholder="Destination"
                   value={leg.destination}
                   onChange={(val) => handleLegChange(index, 'destination', val)}
-                  icon="🛬"
+                  icon="landing"
                 />
                 <DatePickerField
                   id={`mc-date-${index}`}
@@ -345,7 +350,7 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
                   selectedDate={leg.date}
                   onChange={(d) => handleLegChange(index, 'date', d)}
                   minDate={new Date()}
-                  icon="📅"
+                  icon="calendar"
                 />
                 {multiCityLegs.length > 2 && (
                   <button
@@ -354,7 +359,7 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
                     onClick={() => handleRemoveLeg(index)}
                     title="Remove flight leg"
                   >
-                    &times;
+                    <Icon name="close" size={16} />
                   </button>
                 )}
               </div>
@@ -383,14 +388,14 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
         </div>
       )}
 
-      {/* 4. Action Submit Button (Muted Rose / Navy warm CTA) */}
+      {/* 4. Action Submit Button */}
       <div className="SkyRoute-search-card__actions">
         <button
           type="submit"
           className="SkyRoute-btn SkyRoute-btn--primary SkyRoute-btn--lg SkyRoute-search-card__submit-btn"
         >
           <span>Search Flights</span>
-          <span>→</span>
+          <Icon name="arrowRight" size={18} />
         </button>
       </div>
     </form>

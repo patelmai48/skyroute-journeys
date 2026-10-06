@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from './Icon';
 
 const formatINR = (num) => {
   return new Intl.NumberFormat('en-IN', {
@@ -48,22 +49,22 @@ const FlightCard = ({
       <div className="SkyRoute-flight-card__tag-bar">
         {isCheapest && (
           <span className="SkyRoute-badge SkyRoute-badge--teal">
-            ⚡ CHEAPEST FARE
+            <Icon name="sparkles" size={12} /> CHEAPEST FARE
           </span>
         )}
         {isFastest && (
           <span className="SkyRoute-badge SkyRoute-badge--rose">
-            🚀 FASTEST FLIGHT
+            <Icon name="clock" size={12} /> FASTEST FLIGHT
           </span>
         )}
         {seatsLeft && seatsLeft <= 3 && (
           <span className="SkyRoute-badge SkyRoute-badge--warning">
-            🔥 {seatsLeft} SEATS LEFT
+            <Icon name="alertTriangle" size={12} /> {seatsLeft} SEATS LEFT
           </span>
         )}
         {refundable && (
           <span className="SkyRoute-badge SkyRoute-badge--success">
-            ✓ FREE CANCELLATION
+            <Icon name="shieldCheck" size={12} /> FREE CANCELLATION
           </span>
         )}
       </div>
@@ -77,10 +78,7 @@ const FlightCard = ({
               style={{ backgroundColor: airlineColor || '#173F3A' }}
               title={airline}
             >
-              <span className="SkyRoute-flight-card__logo-icon">✈</span>
-              <span className="SkyRoute-flight-card__logo-code">
-                {airlineCode || (airline ? airline.slice(0, 2).toUpperCase() : 'SK')}
-              </span>
+              <Icon name="flight" size={14} color="#FFFFFF" />
             </div>
             <div className="SkyRoute-flight-card__airline-meta">
               <strong className="SkyRoute-flight-card__airline-name">{airline || 'SkyRoute Partner'}</strong>
@@ -119,7 +117,9 @@ const FlightCard = ({
             <div className="SkyRoute-flight-card__flight-line">
               <span className="SkyRoute-flight-card__dot SkyRoute-flight-card__dot--origin"></span>
               <div className="SkyRoute-flight-card__line-track"></div>
-              <span className="SkyRoute-flight-card__plane-icon">✈</span>
+              <span className="SkyRoute-flight-card__plane-icon">
+                <Icon name="flight" size={14} color="#4F7C73" />
+              </span>
               <span className="SkyRoute-flight-card__dot SkyRoute-flight-card__dot--dest"></span>
             </div>
             <span className={`SkyRoute-flight-card__stops-badge ${stops === 0 ? 'SkyRoute-flight-card__stops-badge--nonstop' : ''}`}>
@@ -137,12 +137,20 @@ const FlightCard = ({
 
         {/* Perks & Amenities Line */}
         <div className="SkyRoute-flight-card__perks-bar">
-          <span className="SkyRoute-flight-perk-item">🧳 {baggage || '15kg baggage'}</span>
           <span className="SkyRoute-flight-perk-item">
-            {refundable ? 'Free cancellation' : 'Standard cancellation'}
+            <Icon name="luggage" size={14} color="#4F7C73" /> {baggage || '15kg baggage'}
           </span>
-          <span className="SkyRoute-flight-perk-item">⏱️ {onTimeRating || '95% On-time'}</span>
-          {cabin && <span className="SkyRoute-flight-perk-item">💺 {cabin}</span>}
+          <span className="SkyRoute-flight-perk-item">
+            <Icon name="shieldCheck" size={14} color="#4F7C73" /> {refundable ? 'Free cancellation' : 'Standard cancellation'}
+          </span>
+          <span className="SkyRoute-flight-perk-item">
+            <Icon name="clock" size={14} color="#4F7C73" /> {onTimeRating || '95% On-time'}
+          </span>
+          {cabin && (
+            <span className="SkyRoute-flight-perk-item">
+              <Icon name="seat" size={14} color="#4F7C73" /> {cabin}
+            </span>
+          )}
         </div>
 
         {/* Price & Select CTA */}
@@ -158,7 +166,7 @@ const FlightCard = ({
             onClick={() => onSelectFlight(flight)}
           >
             <span>Select</span>
-            <span>→</span>
+            <Icon name="arrowRight" size={16} />
           </button>
         </div>
       </div>

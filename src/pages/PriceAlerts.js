@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Icon from '../components/Icon';
 import { INITIAL_PRICE_ALERTS, DESTINATIONS } from '../data/travelData';
 import { useToast } from '../context/ToastContext';
 
@@ -48,7 +49,7 @@ const PriceAlerts = ({ onNavigate, onSearch }) => {
       toCity,
       currentPrice: Math.round(numPrice * 1.18),
       targetPrice: numPrice,
-      status: 'Active Monitoring 🟢',
+      status: 'Active Monitoring',
       dateCreated: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
       trend: 'stable'
     };
@@ -184,7 +185,9 @@ const PriceAlerts = ({ onNavigate, onSearch }) => {
 
             {alerts.length === 0 ? (
               <div className="SkyRoute-empty-state SkyRoute-card">
-                <span className="SkyRoute-empty-state__icon">🔕</span>
+                <span className="SkyRoute-empty-state__icon">
+                  <Icon name="bell" size={36} color="var(--primary)" />
+                </span>
                 <h3 className="SkyRoute-empty-state__title">No Active Price Alerts</h3>
                 <p className="SkyRoute-empty-state__subtitle">
                   Use the form on the left to start tracking flights for your favorite destinations.
@@ -196,7 +199,9 @@ const PriceAlerts = ({ onNavigate, onSearch }) => {
                   <div key={item.id} className="SkyRoute-alert-item-card SkyRoute-card">
                     <div className="SkyRoute-alert-item-card__header">
                       <div className="SkyRoute-alert-item-card__route-box">
-                        <span className="SkyRoute-alert-route-icon">✈️</span>
+                        <span className="SkyRoute-alert-route-icon">
+                          <Icon name="flight" size={18} color="var(--primary)" />
+                        </span>
                         <div>
                           <h3 className="SkyRoute-alert-route-title">
                             {item.fromCity} &rarr; {item.toCity}

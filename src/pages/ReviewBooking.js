@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import FlightSidebarSummary from '../components/FlightSidebarSummary';
+import Icon from '../components/Icon';
 import { OFFERS_DATA } from '../data/travelData';
 import { useToast } from '../context/ToastContext';
+import {
+  isRepeatCustomer,
+  getRepeatTravelerDiscount,
+  calculateEarnedPoints,
+  awardBookingSkyPoints
+} from '../services/loyaltyService';
 
 const formatINR = (num) => {
   return new Intl.NumberFormat('en-IN', {
@@ -44,6 +51,10 @@ const ReviewBooking = ({
   const [couponError, setCouponError] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
 
+  // Repeat User Loyalty State
+  const isRepeatUser = isRepeatCustomer();
+  const repeatDiscount = isRepeatUser ? getRepeatTravelerDiscount() : 0;
+
   const passengers = Number(searchData?.passengers) || 1;
   const baseFlightFare = (selectedFlight?.price || 3800) * passengers;
   const taxesAndFees = Math.round(baseFlightFare * 0.12);
@@ -56,7 +67,8 @@ const ReviewBooking = ({
   else if (appliedCoupon === 'FLYINTL2500') discountAmount = 2500;
   else if (appliedCoupon === 'STUDENTSKY') discountAmount = Math.round(baseFlightFare * 0.1);
 
-  const finalTotal = Math.max(0, baseFlightFare + taxesAndFees + seatFee + insuranceFee - discountAmount);
+  const finalTotal = Math.max(0, baseFlightFare + taxesAndFees + seatFee + insuranceFee - discountAmount - repeatDiscount);
+  const pointsToEarn = calculateEarnedPoints(finalTotal);
 
   const handleApplyCoupon = (e) => {
     e.preventDefault();
@@ -65,7 +77,7 @@ const ReviewBooking = ({
     const found = OFFERS_DATA.find((o) => o.code === code);
     if (found || code === 'SKYDOM500' || code === 'FLYINTL2500' || code === 'STUDENTSKY') {
       setAppliedCoupon(code);
-      if (showSuccess) showSuccess(`✓ Coupon ${code} applied — saved ${formatINR(code === 'FLYINTL2500' ? 2500 : 500)}!`);
+      if (showSuccess) showSuccess(`Coupon ${code} applied — saved ${formatINR(code === 'FLYINTL2500' ? 2500 : 500)}!`);
     } else {
       setCouponError('Invalid promo code. Try SKYDOM500 or FLYINTL2500.');
     }
@@ -77,12 +89,15 @@ const ReviewBooking = ({
       return;
     }
     setIsUpiVerified(true);
-    if (showSuccess) showSuccess('✓ UPI ID verified for Mahi Patel');
+    if (showSuccess) showSuccess('UPI ID verified for Mahi Patel');
   };
 
   const handlePay = (e) => {
     e.preventDefault();
     setIsProcessing(true);
+
+    // Award loyalty points to localStorage
+    const pointsResult = awardBookingSkyPoints(finalTotal);
 
     // Generate random PNR
     const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -105,7 +120,10 @@ const ReviewBooking = ({
       taxes: taxesAndFees,
       seatFee,
       insuranceFee,
-      discount: discountAmount,
+      discount: discountAmount + repeatDiscount,
+      couponDiscount: discountAmount,
+      repeatDiscount,
+      pointsEarned: pointsResult.earned,
       total: finalTotal,
       gate: 'B12',
       terminal: 'T1',
@@ -122,7 +140,9 @@ const ReviewBooking = ({
 
     setTimeout(() => {
       setIsProcessing(false);
-      if (showSuccess) showSuccess('✓ Payment confirmed! Boarding pass generated.');
+      if (showSuccess) {
+        showSuccess(`Payment confirmed! +${pointsResult.earned} SkyPoints credited.`);
+      }
       onConfirmBooking(bookingRecord);
     }, 1200);
   };
@@ -133,15 +153,15 @@ const ReviewBooking = ({
         {/* Step Indicator */}
         <div className="SkyRoute-booking-steps-bar">
           <div className="SkyRoute-step-item SkyRoute-step-item--completed">
-            <span className="SkyRoute-step-num">✓</span>
+            <span className="SkyRoute-step-num"><Icon name="check" size={12} /></span>
             <span>1. Flight Selected</span>
           </div>
           <div className="SkyRoute-step-item SkyRoute-step-item--completed">
-            <span className="SkyRoute-step-num">✓</span>
+            <span className="SkyRoute-step-num"><Icon name="check" size={12} /></span>
             <span>2. Seat Assigned</span>
           </div>
           <div className="SkyRoute-step-item SkyRoute-step-item--completed">
-            <span className="SkyRoute-step-num">✓</span>
+            <span className="SkyRoute-step-num"><Icon name="check" size={12} /></span>
             <span>3. Traveller Details</span>
           </div>
           <div className="SkyRoute-step-item SkyRoute-step-item--active">
@@ -163,6 +183,39 @@ const ReviewBooking = ({
               </div>
             </div>
 
+            {/* Loyalty & Repeat Traveler Banner */}
+            {isRepeatUser ? (
+              <div className="SkyRoute-loyalty-reward-banner SkyRoute-card">
+                <div className="SkyRoute-loyalty-reward-banner__icon">
+                  <Icon name="star" size={22} color="#D97706" />
+                </div>
+                <div className="SkyRoute-loyalty-reward-banner__content">
+                  <div className="SkyRoute-loyalty-reward-banner__header">
+                    <strong>Repeat Traveler Reward Applied</strong>
+                    <span className="SkyRoute-badge SkyRoute-badge--success">SAVE ₹{repeatDiscount}</span>
+                  </div>
+                  <p className="SkyRoute-loyalty-reward-banner__desc">
+                    Welcome back! As a returning SkyRoute member, an automatic <strong>₹{repeatDiscount} Repeat Traveler Discount</strong> has been deducted from your fare. Plus, you'll earn <strong>+{pointsToEarn.toLocaleString()} SkyPoints</strong> on this booking!
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="SkyRoute-loyalty-reward-banner SkyRoute-loyalty-reward-banner--welcome SkyRoute-card">
+                <div className="SkyRoute-loyalty-reward-banner__icon">
+                  <Icon name="gift" size={22} color="var(--primary)" />
+                </div>
+                <div className="SkyRoute-loyalty-reward-banner__content">
+                  <div className="SkyRoute-loyalty-reward-banner__header">
+                    <strong>First Flight with SkyRoute?</strong>
+                    <span className="SkyRoute-badge SkyRoute-badge--teal">+{pointsToEarn.toLocaleString()} SKYPOINTS</span>
+                  </div>
+                  <p className="SkyRoute-loyalty-reward-banner__desc">
+                    Complete this booking to earn <strong>+{pointsToEarn.toLocaleString()} SkyPoints</strong> and unlock <strong>Repeat Traveler Rewards (₹500 OFF future flights)</strong>!
+                  </p>
+                </div>
+              </div>
+            )}
+
             {/* Payment Method Selector Card */}
             <div className="SkyRoute-payment-methods-card SkyRoute-card">
               {/* Payment Tabs - Large, Clear, Professional Cards */}
@@ -173,9 +226,9 @@ const ReviewBooking = ({
                   onClick={() => setPaymentMethod('upi')}
                 >
                   <div className="SkyRoute-pm-header">
-                    <span className="SkyRoute-pm-icon">📱</span>
+                    <span className="SkyRoute-pm-icon"><Icon name="smartphone" size={20} color="var(--primary)" /></span>
                     {paymentMethod === 'upi' ? (
-                      <span className="SkyRoute-pm-badge">✓ SELECTED</span>
+                      <span className="SkyRoute-pm-badge">SELECTED</span>
                     ) : (
                       <span className="SkyRoute-pm-radio-circle"></span>
                     )}
@@ -192,9 +245,9 @@ const ReviewBooking = ({
                   onClick={() => setPaymentMethod('card')}
                 >
                   <div className="SkyRoute-pm-header">
-                    <span className="SkyRoute-pm-icon">💳</span>
+                    <span className="SkyRoute-pm-icon"><Icon name="creditCard" size={20} color="var(--primary)" /></span>
                     {paymentMethod === 'card' ? (
-                      <span className="SkyRoute-pm-badge">✓ SELECTED</span>
+                      <span className="SkyRoute-pm-badge">SELECTED</span>
                     ) : (
                       <span className="SkyRoute-pm-radio-circle"></span>
                     )}
@@ -211,9 +264,9 @@ const ReviewBooking = ({
                   onClick={() => setPaymentMethod('netbanking')}
                 >
                   <div className="SkyRoute-pm-header">
-                    <span className="SkyRoute-pm-icon">🏦</span>
+                    <span className="SkyRoute-pm-icon"><Icon name="bank" size={20} color="var(--primary)" /></span>
                     {paymentMethod === 'netbanking' ? (
-                      <span className="SkyRoute-pm-badge">✓ SELECTED</span>
+                      <span className="SkyRoute-pm-badge">SELECTED</span>
                     ) : (
                       <span className="SkyRoute-pm-radio-circle"></span>
                     )}
@@ -230,9 +283,9 @@ const ReviewBooking = ({
                   onClick={() => setPaymentMethod('wallet')}
                 >
                   <div className="SkyRoute-pm-header">
-                    <span className="SkyRoute-pm-icon">👛</span>
+                    <span className="SkyRoute-pm-icon"><Icon name="wallet" size={20} color="var(--primary)" /></span>
                     {paymentMethod === 'wallet' ? (
-                      <span className="SkyRoute-pm-badge">✓ SELECTED</span>
+                      <span className="SkyRoute-pm-badge">SELECTED</span>
                     ) : (
                       <span className="SkyRoute-pm-radio-circle"></span>
                     )}
@@ -271,8 +324,8 @@ const ReviewBooking = ({
                           </button>
                         </div>
                         {isUpiVerified && (
-                          <span className="SkyRoute-coupon-success" style={{ marginTop: '4px' }}>
-                            ✓ Verified VPA (Account Holder: Mahi Patel)
+                          <span className="SkyRoute-coupon-success" style={{ marginTop: '4px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                            <Icon name="checkCircle" size={14} color="#16A34A" /> Verified VPA (Account Holder: Mahi Patel)
                           </span>
                         )}
                       </div>
@@ -291,7 +344,7 @@ const ReviewBooking = ({
                       </div>
 
                       <p className="SkyRoute-upi-instructions">
-                        ℹ️ A payment request for <strong>{formatINR(finalTotal)}</strong> will be sent to your UPI app. Please approve within 5 minutes.
+                        A payment request for <strong>{formatINR(finalTotal)}</strong> will be sent to your UPI app. Please approve within 5 minutes.
                       </p>
                     </div>
 
@@ -420,7 +473,11 @@ const ReviewBooking = ({
                       >
                         <span className="SkyRoute-bank-badge">{bank.code}</span>
                         <span className="SkyRoute-bank-name">{bank.name}</span>
-                        {selectedBank === bank.id && <span className="SkyRoute-bank-check">✓</span>}
+                        {selectedBank === bank.id && (
+                          <span className="SkyRoute-bank-check">
+                            <Icon name="check" size={12} color="var(--primary)" />
+                          </span>
+                        )}
                       </button>
                     ))}
                   </div>
@@ -455,10 +512,10 @@ const ReviewBooking = ({
                   </span>
                   <div className="SkyRoute-wallet-list">
                     {[
-                      { id: 'phonepe', name: 'PhonePe Wallet', balance: '₹1,250.00', icon: '🟣' },
-                      { id: 'paytm', name: 'Paytm Wallet / Postpaid', balance: '₹480.00', icon: '🔵' },
-                      { id: 'amazon', name: 'Amazon Pay Balance', balance: '₹2,100.00', icon: '🟠' },
-                      { id: 'mobikwik', name: 'MobiKwik ZIP Pay Later', balance: '₹5,000.00', icon: '🔴' },
+                      { id: 'phonepe', name: 'PhonePe Wallet', balance: '₹1,250.00' },
+                      { id: 'paytm', name: 'Paytm Wallet / Postpaid', balance: '₹480.00' },
+                      { id: 'amazon', name: 'Amazon Pay Balance', balance: '₹2,100.00' },
+                      { id: 'mobikwik', name: 'MobiKwik ZIP Pay Later', balance: '₹5,000.00' },
                     ].map((w) => (
                       <label
                         key={w.id}
@@ -470,7 +527,9 @@ const ReviewBooking = ({
                           checked={selectedWallet === w.id}
                           onChange={() => setSelectedWallet(w.id)}
                         />
-                        <span className="SkyRoute-wallet-icon">{w.icon}</span>
+                        <span className="SkyRoute-wallet-icon">
+                          <Icon name="wallet" size={18} color="var(--primary)" />
+                        </span>
                         <div className="SkyRoute-wallet-meta">
                           <strong>{w.name}</strong>
                           <span>Verified balance: {w.balance}</span>
@@ -489,7 +548,9 @@ const ReviewBooking = ({
 
             {/* Promo Code Box */}
             <div className="SkyRoute-coupon-card SkyRoute-card">
-              <span className="SkyRoute-coupon-icon">🏷️</span>
+              <span className="SkyRoute-coupon-icon">
+                <Icon name="tag" size={20} color="var(--primary)" />
+              </span>
               <div className="SkyRoute-coupon-body">
                 <strong className="SkyRoute-coupon-title">Have a promo or coupon code?</strong>
                 <form className="SkyRoute-coupon-form" onSubmit={handleApplyCoupon}>
@@ -505,8 +566,8 @@ const ReviewBooking = ({
                   </button>
                 </form>
                 {appliedCoupon && !couponError && (
-                  <span className="SkyRoute-coupon-success">
-                    ✓ Applied {appliedCoupon}: {discountAmount > 0 ? `Saved ${formatINR(discountAmount)} on your total fare` : 'Active'}
+                  <span className="SkyRoute-coupon-success" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                    <Icon name="checkCircle" size={14} color="#16A34A" /> Applied {appliedCoupon}: {discountAmount > 0 ? `Saved ${formatINR(discountAmount)} on your total fare` : 'Active'}
                   </span>
                 )}
                 {couponError && <span className="SkyRoute-field-error">{couponError}</span>}
@@ -537,8 +598,9 @@ const ReviewBooking = ({
                   </>
                 ) : (
                   <>
-                    <span>🔒</span>
-                    <span>Pay {formatINR(finalTotal)} &rarr;</span>
+                    <Icon name="lock" size={18} color="#FFFFFF" />
+                    <span>Pay {formatINR(finalTotal)}</span>
+                    <Icon name="arrowRight" size={16} color="#FFFFFF" />
                   </>
                 )}
               </button>
@@ -553,6 +615,8 @@ const ReviewBooking = ({
               selectedSeat={selectedSeat}
               insurancePrice={insuranceFee}
               discountAmount={discountAmount}
+              repeatDiscount={repeatDiscount}
+              pointsEarned={pointsToEarn}
             />
           </div>
         </div>

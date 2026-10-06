@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Icon from './Icon';
 
 const CABIN_CLASSES = ['Economy', 'Premium Economy', 'Business', 'First Class'];
 
@@ -56,7 +57,9 @@ const PassengerSelector = ({
       tabIndex={0}
     >
       <div className="SkyRoute-search-field-header">
-        <span className="SkyRoute-search-field-icon">👥</span>
+        <span className="SkyRoute-search-field-icon">
+          <Icon name="users" size={15} color="#4F7C73" />
+        </span>
         <span className="SkyRoute-search-field-tag">Travellers &amp; Cabin</span>
       </div>
 
@@ -65,7 +68,7 @@ const PassengerSelector = ({
           {passengers} {passengers === 1 ? 'Passenger' : 'Passengers'}, {cabinClass}
         </span>
         <span className={`SkyRoute-search-field-arrow ${isOpen ? 'SkyRoute-search-field-arrow--open' : ''}`}>
-          ▼
+          <Icon name="chevronDown" size={13} color="#4F7C73" />
         </span>
       </div>
 
@@ -84,7 +87,7 @@ const PassengerSelector = ({
               className="SkyRoute-popover-close-btn"
               onClick={() => setIsOpen(false)}
             >
-              &times;
+              <Icon name="close" size={15} />
             </button>
           </div>
 

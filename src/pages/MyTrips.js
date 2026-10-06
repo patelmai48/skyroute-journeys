@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Icon from '../components/Icon';
 import { useToast } from '../context/ToastContext';
+import { getLoyaltySummary } from '../services/loyaltyService';
 
 const formatINR = (num) => {
   return new Intl.NumberFormat('en-IN', {
@@ -80,11 +82,11 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
   // Budget Tracker State
   const [tripBudget] = useState(25000);
   const [budgetCategories] = useState([
-    { name: 'Flights', amount: 8400, icon: '✈️', color: 'var(--SkyRoute-navy)' },
-    { name: 'Hotels & Stay', amount: 6500, icon: '🏨', color: 'var(--SkyRoute-teal)' },
-    { name: 'Food & Dining', amount: 3000, icon: '🍜', color: 'var(--SkyRoute-rose)' },
-    { name: 'Local Transport', amount: 2000, icon: '🚕', color: '#4F7C73' },
-    { name: 'Sightseeing & Activities', amount: 2500, icon: '🏖️', color: '#8FAFA6' }
+    { name: 'Flights', amount: 8400, icon: 'flight', color: 'var(--SkyRoute-navy)' },
+    { name: 'Hotels & Stay', amount: 6500, icon: 'hotel', color: 'var(--SkyRoute-teal)' },
+    { name: 'Food & Dining', amount: 3000, icon: 'coffee', color: '#4F7C73' },
+    { name: 'Local Transport', amount: 2000, icon: 'compass', color: '#4F7C73' },
+    { name: 'Sightseeing & Activities', amount: 2500, icon: 'beach', color: '#8FAFA6' }
   ]);
 
   // Load bookings from localStorage
@@ -221,6 +223,8 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
   const budgetRemaining = tripBudget - totalBudgetSpent;
   const budgetSpentPercent = Math.min(100, Math.round((totalBudgetSpent / tripBudget) * 100));
 
+  const loyaltySummary = getLoyaltySummary();
+
   return (
     <div className="SkyRoute-mytrips-page">
       <div className="SkyRoute-container">
@@ -244,6 +248,40 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
           </button>
         </div>
 
+        {/* Loyalty / Repeat Traveler Status Banner */}
+        <div className="SkyRoute-mytrips-rewards-banner SkyRoute-card">
+          <div className="SkyRoute-mytrips-rewards-banner__left">
+            <span className="SkyRoute-mytrips-rewards-icon">
+              <Icon name="star" size={24} color="#D97706" />
+            </span>
+            <div>
+              <div className="SkyRoute-mytrips-rewards-title-row">
+                <strong>SkyRoute Rewards: {loyaltySummary.tier}</strong>
+                <span className="SkyRoute-badge SkyRoute-badge--success">
+                  {loyaltySummary.pointsBalance.toLocaleString()} SkyPoints
+                </span>
+                {loyaltySummary.isRepeat ? (
+                  <span className="SkyRoute-badge SkyRoute-badge--teal">₹500 REPEAT DISCOUNT ACTIVE</span>
+                ) : (
+                  <span className="SkyRoute-badge SkyRoute-badge--secondary">1 TRIP TO UNLOCK REPEAT PERKS</span>
+                )}
+              </div>
+              <p className="SkyRoute-mytrips-rewards-sub">
+                {loyaltySummary.isRepeat
+                  ? `Welcome back! You have ₹500 repeat customer discount ready for your next booking + 10% points accrual.`
+                  : `Complete your first booking to unlock ₹500 Repeat Traveler Discount and earn SkyPoints!`}
+              </p>
+            </div>
+          </div>
+          <button
+            type="button"
+            className="SkyRoute-btn SkyRoute-btn--outline SkyRoute-btn--sm"
+            onClick={() => onNavigate('/profile')}
+          >
+            Loyalty Hub &rarr;
+          </button>
+        </div>
+
         {/* Navigation Tabs Bar */}
         <div className="SkyRoute-trips-tabs-bar" role="tablist">
           <button
@@ -253,7 +291,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
             className={`SkyRoute-trips-tab ${activeTab === 'upcoming' ? 'SkyRoute-trips-tab--active' : ''}`}
             onClick={() => setActiveTab('upcoming')}
           >
-            <span>✈️</span>
+            <Icon name="flight" size={16} />
             <span>Upcoming Trips ({bookings.length})</span>
           </button>
           <button
@@ -263,7 +301,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
             className={`SkyRoute-trips-tab ${activeTab === 'timeline' ? 'SkyRoute-trips-tab--active' : ''}`}
             onClick={() => setActiveTab('timeline')}
           >
-            <span>⏱️</span>
+            <Icon name="clock" size={16} />
             <span>Journey Timeline</span>
           </button>
           <button
@@ -273,7 +311,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
             className={`SkyRoute-trips-tab ${activeTab === 'packing' ? 'SkyRoute-trips-tab--active' : ''}`}
             onClick={() => setActiveTab('packing')}
           >
-            <span>🎒</span>
+            <Icon name="luggage" size={16} />
             <span>Packing List ({packingPercent}%)</span>
           </button>
           <button
@@ -283,7 +321,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
             className={`SkyRoute-trips-tab ${activeTab === 'group' ? 'SkyRoute-trips-tab--active' : ''}`}
             onClick={() => setActiveTab('group')}
           >
-            <span>👥</span>
+            <Icon name="users" size={16} />
             <span>Group Trip Split</span>
           </button>
           <button
@@ -293,7 +331,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
             className={`SkyRoute-trips-tab ${activeTab === 'budget' ? 'SkyRoute-trips-tab--active' : ''}`}
             onClick={() => setActiveTab('budget')}
           >
-            <span>💰</span>
+            <Icon name="dollar" size={16} />
             <span>Trip Budget</span>
           </button>
         </div>
@@ -303,7 +341,9 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
           <div className="SkyRoute-trips-content-block">
             {bookings.length === 0 ? (
               <div className="SkyRoute-empty-state SkyRoute-card">
-                <span className="SkyRoute-empty-state__icon">✈️</span>
+                <span className="SkyRoute-empty-state__icon">
+                  <Icon name="flight" size={36} color="var(--primary)" />
+                </span>
                 <h3 className="SkyRoute-empty-state__title">No Upcoming Bookings Found</h3>
                 <p className="SkyRoute-empty-state__subtitle">
                   You don't have any confirmed flights right now. Ready to start your next adventure?
@@ -343,7 +383,9 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
                           <span className="SkyRoute-trip-card__airline-info">
                             {booking.flight?.airline || 'IndiGo'} &bull; {booking.flight?.flightNumber || '6E 201'}
                           </span>
-                          <div className="SkyRoute-trip-card__vector-line">✈</div>
+                          <div className="SkyRoute-trip-card__vector-line">
+                            <Icon name="flight" size={14} color="var(--primary)" />
+                          </div>
                           <span className="SkyRoute-trip-card__duration">{booking.flight?.durationText || '1h 45m'}</span>
                         </div>
 
@@ -423,14 +465,14 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
 
             <div className="SkyRoute-journey-timeline">
               {[
-                { time: '10:00 AM', title: 'Airport Arrival', status: 'Completed', desc: 'Arrived at Terminal 1 departures entrance.', icon: '🏢', completed: true },
-                { time: '10:45 AM', title: 'Baggage Drop', status: 'Completed', desc: 'Checked in 15kg bag at IndiGo Counter 4.', icon: '🧳', completed: true },
-                { time: '11:30 AM', title: 'Security Clearance', status: 'Completed', desc: 'Cleared security frisking and baggage x-ray scan.', icon: '🛡️', completed: true },
-                { time: '12:00 PM', title: 'Gate Entry', status: 'Completed', desc: 'Reached Gate B12 waiting lounge area.', icon: '🚪', completed: true },
-                { time: '12:10 PM', title: 'Boarding Call', status: 'Now Boarding', desc: 'Zone 1 & Zone 2 priority boarding in progress.', icon: '✈️', active: true },
-                { time: '12:40 PM', title: 'Pushback & Takeoff', status: 'Scheduled', desc: 'Runway taxi and scheduled takeoff for Goa (GOI).', icon: '🛫', active: false },
-                { time: '02:15 PM', title: 'Touchdown & Landing', status: 'Scheduled', desc: 'Expected on-time landing at Dabolim Airport.', icon: '🛬', active: false },
-                { time: '02:35 PM', title: 'Baggage Claim', status: 'Scheduled', desc: 'Collect check-in luggage from Carousel Belt 3.', icon: '🏁', active: false }
+                { time: '10:00 AM', title: 'Airport Arrival', status: 'Completed', desc: 'Arrived at Terminal 1 departures entrance.', iconName: 'city', completed: true },
+                { time: '10:45 AM', title: 'Baggage Drop', status: 'Completed', desc: 'Checked in 15kg bag at IndiGo Counter 4.', iconName: 'luggage', completed: true },
+                { time: '11:30 AM', title: 'Security Clearance', status: 'Completed', desc: 'Cleared security frisking and baggage x-ray scan.', iconName: 'shieldCheck', completed: true },
+                { time: '12:00 PM', title: 'Gate Entry', status: 'Completed', desc: 'Reached Gate B12 waiting lounge area.', iconName: 'mapPin', completed: true },
+                { time: '12:10 PM', title: 'Boarding Call', status: 'Now Boarding', desc: 'Zone 1 & Zone 2 priority boarding in progress.', iconName: 'flight', active: true },
+                { time: '12:40 PM', title: 'Pushback & Takeoff', status: 'Scheduled', desc: 'Runway taxi and scheduled takeoff for Goa (GOI).', iconName: 'takeoff', active: false },
+                { time: '02:15 PM', title: 'Touchdown & Landing', status: 'Scheduled', desc: 'Expected on-time landing at Dabolim Airport.', iconName: 'landing', active: false },
+                { time: '02:35 PM', title: 'Baggage Claim', status: 'Scheduled', desc: 'Collect check-in luggage from Carousel Belt 3.', iconName: 'checkCircle', active: false }
               ].map((step, index) => (
                 <div
                   key={index}
@@ -441,7 +483,9 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
                     <span className="SkyRoute-timeline-step-status">{step.status}</span>
                   </div>
                   <div className="SkyRoute-timeline-node">
-                    <span className="SkyRoute-timeline-icon">{step.icon}</span>
+                    <span className="SkyRoute-timeline-icon">
+                      <Icon name={step.iconName} size={16} color="var(--primary)" />
+                    </span>
                     {index < 7 && <div className="SkyRoute-timeline-line"></div>}
                   </div>
                   <div className="SkyRoute-timeline-content-col">
@@ -459,7 +503,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
           <div className="SkyRoute-packing-block SkyRoute-card">
             <div className="SkyRoute-packing-header">
               <div className="SkyRoute-packing-header__left">
-                <span className="SkyRoute-badge SkyRoute-badge--teal">Packing for Goa 🌴</span>
+                <span className="SkyRoute-badge SkyRoute-badge--teal">Goa Journey</span>
                 <h3 className="SkyRoute-packing-title">Smart Packing Checklist</h3>
                 <p className="SkyRoute-packing-subtitle">
                   Never leave essentials behind. Check off items as you pack your bags.
@@ -484,7 +528,9 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
             {/* Add New Item Form - Big Prominent Search Bar & Add Item Button */}
             <form className="SkyRoute-packing-add-form" onSubmit={handleAddPackingItem}>
               <div className="SkyRoute-packing-input-wrap">
-                <span className="SkyRoute-packing-input-icon">🔍</span>
+                <span className="SkyRoute-packing-input-icon">
+                  <Icon name="search" size={16} color="var(--primary)" />
+                </span>
                 <input
                   type="text"
                   className="SkyRoute-packing-search-input"
@@ -548,7 +594,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
           <div className="SkyRoute-group-block SkyRoute-card">
             <div className="SkyRoute-group-header">
               <div>
-                <span className="SkyRoute-badge SkyRoute-badge--teal">Goa Trip 🌴</span>
+                <span className="SkyRoute-badge SkyRoute-badge--teal">Goa Trip Suite</span>
                 <h3 className="SkyRoute-group-title">Group Expense Splitter</h3>
                 <p className="SkyRoute-group-subtitle">
                   Members: {groupMembers.join(', ')} ({groupMembers.length} Travellers)
@@ -622,7 +668,9 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
               {groupExpenses.map((exp) => (
                 <div key={exp.id} className="SkyRoute-group-expense-item">
                   <div className="SkyRoute-group-exp-left">
-                    <span className="SkyRoute-group-exp-icon">💳</span>
+                    <span className="SkyRoute-group-exp-icon">
+                      <Icon name="creditCard" size={18} color="var(--primary)" />
+                    </span>
                     <div>
                       <strong className="SkyRoute-group-exp-title">{exp.title}</strong>
                       <span className="SkyRoute-group-exp-paid">Paid by {exp.paidBy} &bull; Split 3 ways</span>
@@ -698,7 +746,9 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
               {budgetCategories.map((cat, index) => (
                 <div key={index} className="SkyRoute-budget-cat-card">
                   <div className="SkyRoute-budget-cat-card__top">
-                    <span className="SkyRoute-budget-cat-icon">{cat.icon}</span>
+                    <span className="SkyRoute-budget-cat-icon">
+                      <Icon name={cat.icon} size={18} color="var(--primary)" />
+                    </span>
                     <strong className="SkyRoute-budget-cat-name">{cat.name}</strong>
                   </div>
                   <div className="SkyRoute-budget-cat-amount">{formatINR(cat.amount)}</div>

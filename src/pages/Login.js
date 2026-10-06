@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { triggerGoogleAuth } from '../services/googleAuth';
+import Icon from '../components/Icon';
 
 const STORAGE_KEYS = {
   REMEMBERED_EMAIL: 'skyroute_remembered_email',
@@ -83,7 +84,7 @@ const Login = ({ onNavigate }) => {
     const userObj = {
       name: displayName.charAt(0).toUpperCase() + displayName.slice(1),
       email: email.trim(),
-      avatar: '👤',
+      avatar: null,
       memberSince: '2026',
       tier: 'SkyRoute Gold Member',
       points: 2450
@@ -185,7 +186,9 @@ const Login = ({ onNavigate }) => {
         <div className="SkyRoute-login-card SkyRoute-card">
           {/* Brand Header */}
           <div className="SkyRoute-login-brand-header">
-            <div className="SkyRoute-login-logo-icon">✈</div>
+            <div className="SkyRoute-login-logo-icon">
+              <Icon name="flight" size={24} color="#173F3A" />
+            </div>
             <h2 className="SkyRoute-login-card-title">
               {authMode === 'login' ? 'Welcome Back' : 'Create SkyRoute Account'}
             </h2>
@@ -225,7 +228,12 @@ const Login = ({ onNavigate }) => {
           {/* Status Message */}
           {statusMessage && (
             <div className={`SkyRoute-alert-banner SkyRoute-alert-banner--${statusMessage.type}`}>
-              <span>{statusMessage.type === 'success' ? '✓' : statusMessage.type === 'error' ? '⚠️' : 'ℹ'}</span>
+              <span>
+                <Icon
+                  name={statusMessage.type === 'success' ? 'checkCircle' : statusMessage.type === 'error' ? 'alertTriangle' : 'info'}
+                  size={16}
+                />
+              </span>
               <span>{statusMessage.text}</span>
             </div>
           )}

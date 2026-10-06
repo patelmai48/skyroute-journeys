@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Icon from './Icon';
 
 // Generates 20 rows of seats (A B C | D E F)
 const generateSeatRows = () => {
@@ -131,7 +132,9 @@ const SeatSelection = ({
         {/* Left: Aircraft Fuselage Visualization */}
         <div className="SkyRoute-fuselage-wrapper">
           <div className="SkyRoute-aircraft-nose">
-            <span className="SkyRoute-cockpit-icon">✈ Cockpit / Front</span>
+            <span className="SkyRoute-cockpit-icon" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+              <Icon name="flight" size={16} /> Cockpit / Front
+            </span>
           </div>
 
           {/* Cabin Column Headers (A B C | Aisle | D E F) */}
@@ -274,7 +277,7 @@ const SeatSelection = ({
           </div>
 
           <div className="SkyRoute-aircraft-tail">
-            <span>Rear Galley &amp; Lavatories 🚻</span>
+            <span>Rear Galley &amp; Lavatories</span>
           </div>
         </div>
 
@@ -315,11 +318,15 @@ const SeatSelection = ({
 
             <div className="SkyRoute-seat-perks-list">
               <div className="SkyRoute-seat-perk-item">
-                <span className="SkyRoute-seat-perk-icon">💺</span>
+                <span className="SkyRoute-seat-perk-icon">
+                  <Icon name="seat" size={16} color="var(--primary)" />
+                </span>
                 <span className="SkyRoute-seat-perk-text">Pre-assigned seat printed on boarding pass</span>
               </div>
               <div className="SkyRoute-seat-perk-item">
-                <span className="SkyRoute-seat-perk-icon">✈️</span>
+                <span className="SkyRoute-seat-perk-icon">
+                  <Icon name="zap" size={16} color="var(--primary)" />
+                </span>
                 <span className="SkyRoute-seat-perk-text">Fast-track boarding with Front / Exit rows</span>
               </div>
             </div>

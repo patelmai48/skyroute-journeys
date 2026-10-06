@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Icon from '../components/Icon';
 import { MOCK_FLIGHT_STATUSES } from '../data/travelData';
 
 const FlightStatus = ({ onNavigate }) => {
@@ -166,7 +167,9 @@ const FlightStatus = ({ onNavigate }) => {
               <div className="SkyRoute-status-vector-col">
                 <span className="SkyRoute-status-vector-badge">Direct Route</span>
                 <div className="SkyRoute-status-vector-line">
-                  <span className="SkyRoute-status-vector-plane">✈</span>
+                  <span className="SkyRoute-status-vector-plane">
+                    <Icon name="flight" size={16} color="var(--primary)" />
+                  </span>
                 </div>
               </div>
 
@@ -199,7 +202,9 @@ const FlightStatus = ({ onNavigate }) => {
           </div>
         ) : (
           <div className="SkyRoute-card SkyRoute-empty-state" style={{ padding: '3rem 2rem', textAlign: 'center' }}>
-            <div className="SkyRoute-empty-state__icon" style={{ fontSize: '3rem', marginBottom: '1rem' }}>🛫</div>
+            <div className="SkyRoute-empty-state__icon" style={{ marginBottom: '1rem' }}>
+              <Icon name="takeoff" size={42} color="var(--primary)" />
+            </div>
             <h3 className="SkyRoute-empty-state__title" style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--SkyRoute-text-main, #173F3A)', marginBottom: '0.5rem' }}>
               No Active Flight Status Found
             </h3>

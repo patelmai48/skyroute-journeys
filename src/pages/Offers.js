@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { OFFERS_DATA } from '../data/travelData';
 import { useToast } from '../context/ToastContext';
+import Icon from '../components/Icon';
 
 const Offers = ({ onNavigate, onSearch }) => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -96,7 +97,13 @@ const Offers = ({ onNavigate, onSearch }) => {
                     className="SkyRoute-btn SkyRoute-btn--outline SkyRoute-btn--sm"
                     onClick={() => handleCopyCode(offer.code)}
                   >
-                    {copiedCode === offer.code ? '✓ Copied' : 'Copy Promo Code'}
+                    {copiedCode === offer.code ? (
+                      <>
+                        <Icon name="check" size={14} style={{ marginRight: '4px' }} /> Copied
+                      </>
+                    ) : (
+                      'Copy Promo Code'
+                    )}
                   </button>
                   <button
                     type="button"

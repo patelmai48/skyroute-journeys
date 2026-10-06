@@ -24,7 +24,9 @@ const FlightSidebarSummary = ({
   searchData,
   selectedSeat,
   insurancePrice = 0,
-  discountAmount = 0
+  discountAmount = 0,
+  repeatDiscount = 0,
+  pointsEarned = 0
 }) => {
   if (!flight) return null;
 
@@ -33,7 +35,7 @@ const FlightSidebarSummary = ({
   const taxesAndFees = Math.round(baseFlightFare * 0.12);
   const seatFee = selectedSeat ? (selectedSeat.price || 0) : 0;
   const insuranceFee = insurancePrice || 0;
-  const grandTotal = Math.max(0, baseFlightFare + taxesAndFees + seatFee + insuranceFee - discountAmount);
+  const grandTotal = Math.max(0, baseFlightFare + taxesAndFees + seatFee + insuranceFee - discountAmount - repeatDiscount);
 
   return (
     <div className="SkyRoute-card SkyRoute-sidebar-summary">
@@ -136,6 +138,14 @@ const FlightSidebarSummary = ({
             <span>-{formatINR(discountAmount)}</span>
           </div>
         )}
+        {repeatDiscount > 0 && (
+          <div className="SkyRoute-breakdown-row SkyRoute-breakdown-row--discount SkyRoute-breakdown-row--loyalty">
+            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+              ⭐ Repeat Traveler Reward
+            </span>
+            <span>-{formatINR(repeatDiscount)}</span>
+          </div>
+        )}
       </div>
 
       <div className="SkyRoute-sidebar-summary__divider"></div>
@@ -148,6 +158,26 @@ const FlightSidebarSummary = ({
         </div>
         <span className="SkyRoute-sidebar-summary__total-val">{formatINR(grandTotal)}</span>
       </div>
+
+      {pointsEarned > 0 && (
+        <div className="SkyRoute-sidebar-summary__points-reward" style={{
+          marginTop: '12px',
+          padding: '10px 12px',
+          borderRadius: '8px',
+          backgroundColor: '#DDE8E3',
+          border: '1px solid #8FAFA6',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          fontSize: '0.82rem',
+          color: '#173F3A'
+        }}>
+          <span>🎁</span>
+          <span>
+            Earn <strong>+{pointsEarned.toLocaleString()} SkyPoints</strong> on this booking!
+          </span>
+        </div>
+      )}
     </div>
   );
 };

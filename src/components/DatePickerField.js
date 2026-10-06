@@ -8,6 +8,7 @@ import addMonths from 'date-fns/addMonths';
 import subMonths from 'date-fns/subMonths';
 import setMonth from 'date-fns/setMonth';
 import setYear from 'date-fns/setYear';
+import Icon from './Icon';
 
 const formatDisplay = (date) => (date ? format(date, 'EEE, d MMM') : '');
 const formatDayOfWeek = (date) => (date ? format(date, 'EEEE, yyyy') : '');
@@ -220,7 +221,9 @@ const DatePickerField = ({
       id={id}
     >
       <div className="SkyRoute-search-field-header">
-        <span className="SkyRoute-search-field-icon">{icon}</span>
+        <span className="SkyRoute-search-field-icon">
+          <Icon name="calendar" size={15} color="#4F7C73" />
+        </span>
         <span className="SkyRoute-search-field-tag">{label}</span>
       </div>
 
@@ -234,7 +237,9 @@ const DatePickerField = ({
         >
           {selectedDate ? formatDisplay(selectedDate) : placeholder}
         </span>
-        <span className="SkyRoute-search-field-calendar-icon">📅</span>
+        <span className="SkyRoute-search-field-calendar-icon">
+          <Icon name="calendar" size={15} color="#4F7C73" />
+        </span>
       </div>
 
       {selectedDate && (
@@ -270,7 +275,7 @@ const DatePickerField = ({
                 }}
                 aria-label="Close calendar"
               >
-                &times;
+                <Icon name="close" size={15} />
               </button>
             </div>
 
@@ -285,7 +290,7 @@ const DatePickerField = ({
                   title="Previous Month"
                   aria-label="Previous Month"
                 >
-                  ‹
+                  <Icon name="chevronLeft" size={15} />
                 </button>
 
                 <div className="SkyRoute-clean-calendar__dropdowns">
@@ -325,7 +330,7 @@ const DatePickerField = ({
                   title="Next Month"
                   aria-label="Next Month"
                 >
-                  ›
+                  <Icon name="chevronRight" size={15} />
                 </button>
               </div>
 

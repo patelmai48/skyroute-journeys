@@ -1,5 +1,6 @@
 import React from 'react';
 import format from 'date-fns/format';
+import Icon from './Icon';
 
 const formatDisplayDate = (date) => {
   if (!date) return '';
@@ -35,7 +36,7 @@ const SearchSummary = ({ searchData, onEdit }) => {
               <div className="SkyRoute-summary-card__route-title">
                 <span className="SkyRoute-summary-route-city">{origin}</span>
                 <span className="SkyRoute-summary-route-arrow" aria-hidden="true">
-                  {isRoundTrip ? '⇄' : '➔'}
+                  <Icon name={isRoundTrip ? 'swap' : 'arrowRight'} size={18} color="#4F7C73" />
                 </span>
                 <span className="SkyRoute-summary-route-city">{destination}</span>
               </div>
@@ -44,7 +45,9 @@ const SearchSummary = ({ searchData, onEdit }) => {
             {/* Secondary Metadata Grid */}
             <div className="SkyRoute-summary-card__details-grid">
               <div className="SkyRoute-summary-meta-item">
-                <span className="SkyRoute-summary-meta-item__icon">📅</span>
+                <span className="SkyRoute-summary-meta-item__icon">
+                  <Icon name="calendar" size={16} color="#4F7C73" />
+                </span>
                 <div className="SkyRoute-summary-meta-item__content">
                   <span className="SkyRoute-summary-meta-item__label">Travel Date</span>
                   <strong className="SkyRoute-summary-meta-item__val">
@@ -57,7 +60,9 @@ const SearchSummary = ({ searchData, onEdit }) => {
               </div>
 
               <div className="SkyRoute-summary-meta-item">
-                <span className="SkyRoute-summary-meta-item__icon">👥</span>
+                <span className="SkyRoute-summary-meta-item__icon">
+                  <Icon name="users" size={16} color="#4F7C73" />
+                </span>
                 <div className="SkyRoute-summary-meta-item__content">
                   <span className="SkyRoute-summary-meta-item__label">Passengers</span>
                   <strong className="SkyRoute-summary-meta-item__val">
@@ -67,7 +72,9 @@ const SearchSummary = ({ searchData, onEdit }) => {
               </div>
 
               <div className="SkyRoute-summary-meta-item">
-                <span className="SkyRoute-summary-meta-item__icon">💺</span>
+                <span className="SkyRoute-summary-meta-item__icon">
+                  <Icon name="seat" size={16} color="#4F7C73" />
+                </span>
                 <div className="SkyRoute-summary-meta-item__content">
                   <span className="SkyRoute-summary-meta-item__label">Cabin Class</span>
                   <strong className="SkyRoute-summary-meta-item__val">{cabinClass}</strong>
@@ -84,7 +91,9 @@ const SearchSummary = ({ searchData, onEdit }) => {
                   onClick={onEdit}
                   title="Click to modify flight search parameters"
                 >
-                  <span className="SkyRoute-modify-icon">✏️</span>
+                  <span className="SkyRoute-modify-icon">
+                    <Icon name="edit" size={15} color="#FFFFFF" />
+                  </span>
                   <span>Modify Search</span>
                 </button>
               </div>

@@ -183,3 +183,147 @@ describe('Google OAuth 2.0 Authentication Integration', () => {
     triggerSpy.mockRestore();
   });
 });
+
+describe('SkyRoute Loyalty, SkyPoints & Repeat User Rewards System', () => {
+  let container;
+
+  beforeEach(() => {
+    container = document.createElement('div');
+    document.body.appendChild(container);
+    localStorage.clear();
+  });
+
+  afterEach(() => {
+    if (container) {
+      ReactDOM.unmountComponentAtNode(container);
+      container.remove();
+      container = null;
+    }
+    localStorage.clear();
+  });
+
+  it('recognizes a first-time user and displays loyalty points accrual preview without repeat discount', () => {
+    // 0 bookings in localStorage
+    localStorage.setItem('skyroute_bookings', JSON.stringify([]));
+
+    const loyaltyService = require('./services/loyaltyService');
+    expect(loyaltyService.isRepeatCustomer()).toBe(false);
+    expect(loyaltyService.getRepeatTravelerDiscount()).toBe(0);
+
+    const ReviewBooking = require('./pages/ReviewBooking').default;
+    const mockFlight = {
+      id: 'fl-1',
+      airline: 'IndiGo',
+      price: 4000,
+      departureTime: '10:00 AM',
+      arrivalTime: '12:00 PM',
+      originCode: 'AMD',
+      destinationCode: 'BOM',
+      stops: 0
+    };
+
+    act(() => {
+      ReactDOM.render(
+        <ReviewBooking
+          selectedFlight={mockFlight}
+          searchData={{ passengers: 1 }}
+          passengerData={[{ name: 'Kinjal Patel' }]}
+          onConfirmBooking={() => {}}
+        />,
+        container
+      );
+    });
+
+    // Contains welcome / unlock repeat perks message
+    expect(container.textContent).toContain('First Flight with SkyRoute?');
+    expect(container.textContent).toContain('Repeat Traveler Rewards');
+    // Does NOT show repeat discount applied
+    expect(container.textContent).not.toContain('Repeat Traveler Reward Applied');
+  });
+
+  it('recognizes a repeat customer and applies the ₹500 discount consistently in Review and Fare breakdown', () => {
+    // 1 completed booking in localStorage
+    const pastBooking = {
+      bookingId: 'BK-111111',
+      pnr: 'SKY99P',
+      total: 4200,
+      status: 'Confirmed'
+    };
+    localStorage.setItem('skyroute_bookings', JSON.stringify([pastBooking]));
+
+    const loyaltyService = require('./services/loyaltyService');
+    expect(loyaltyService.isRepeatCustomer()).toBe(true);
+    expect(loyaltyService.getRepeatTravelerDiscount()).toBe(500);
+
+    const ReviewBooking = require('./pages/ReviewBooking').default;
+    const mockFlight = {
+      id: 'fl-2',
+      airline: 'Air India',
+      price: 5000,
+      departureTime: '06:00 AM',
+      arrivalTime: '08:00 AM',
+      originCode: 'DEL',
+      destinationCode: 'BLR',
+      stops: 0
+    };
+
+    act(() => {
+      ReactDOM.render(
+        <ReviewBooking
+          selectedFlight={mockFlight}
+          searchData={{ passengers: 1 }}
+          passengerData={[{ name: 'Kinjal Patel' }]}
+          onConfirmBooking={() => {}}
+        />,
+        container
+      );
+    });
+
+    // Shows repeat reward applied badge & banner
+    expect(container.textContent).toContain('Repeat Traveler Reward Applied');
+    expect(container.textContent).toContain('SAVE ₹500');
+    expect(container.textContent).toContain('Repeat Traveler Reward');
+    expect(container.textContent).toContain('-₹500');
+  });
+
+  it('accrues 10% SkyPoints and persists points correctly in localStorage upon booking confirmation', () => {
+    const loyaltyService = require('./services/loyaltyService');
+    const initialBalance = loyaltyService.getSkyPointsBalance();
+
+    const bookingTotal = 4500;
+    const result = loyaltyService.awardBookingSkyPoints(bookingTotal);
+
+    expect(result.earned).toBe(450); // 10% of 4500
+    expect(result.newBalance).toBe(initialBalance + 450);
+    expect(Number(localStorage.getItem('skyroute_skypoints'))).toBe(initialBalance + 450);
+  });
+
+  it('renders loyalty tier, SkyPoints balance, and repeat discount in Profile and My Trips', () => {
+    const pastBooking = {
+      bookingId: 'BK-222222',
+      pnr: 'SKY77T',
+      total: 5000,
+      status: 'Confirmed'
+    };
+    localStorage.setItem('skyroute_bookings', JSON.stringify([pastBooking]));
+    localStorage.setItem('skyroute_skypoints', '3500');
+
+    const Profile = require('./pages/Profile').default;
+    act(() => {
+      ReactDOM.render(<Profile onNavigate={() => {}} />, container);
+    });
+
+    expect(container.textContent).toContain('SkyPoints Balance');
+    expect(container.textContent).toContain('3,500 pts');
+    expect(container.textContent).toContain('Repeat Traveler');
+
+    const MyTrips = require('./pages/MyTrips').default;
+    act(() => {
+      ReactDOM.render(<MyTrips onNavigate={() => {}} />, container);
+    });
+
+    expect(container.textContent).toContain('SkyRoute Rewards');
+    expect(container.textContent).toContain('3,500 SkyPoints');
+    expect(container.textContent).toContain('REPEAT DISCOUNT ACTIVE');
+  });
+});

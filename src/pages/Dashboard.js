@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Icon from '../components/Icon';
+import { getLoyaltySummary } from '../services/loyaltyService';
 
 const formatINR = (num) => {
   return new Intl.NumberFormat('en-IN', {
@@ -11,6 +13,7 @@ const formatINR = (num) => {
 const Dashboard = ({ onNavigate, onSelectBooking }) => {
   const [bookings, setBookings] = useState([]);
   const [lastSearch, setLastSearch] = useState(null);
+  const [loyalty, setLoyalty] = useState(() => getLoyaltySummary());
 
   useEffect(() => {
     try {
@@ -26,6 +29,8 @@ const Dashboard = ({ onNavigate, onSelectBooking }) => {
     } catch (e) {
       setLastSearch(null);
     }
+
+    setLoyalty(getLoyaltySummary());
   }, []);
 
   const totalBookingsCount = bookings.length;
@@ -48,17 +53,19 @@ const Dashboard = ({ onNavigate, onSelectBooking }) => {
             type="button"
             className="SkyRoute-btn SkyRoute-btn--primary"
             onClick={() => onNavigate('/dashboard/flights')}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
           >
-            ✈ Search Flights
+            <Icon name="flight" size={16} color="#FFFFFF" />
+            <span>Search Flights</span>
           </button>
         </div>
       </div>
 
       {/* Stats / Real Count Summary */}
-      <div className="SkyRoute-dashboard-summary-row SkyRoute-dashboard-summary-row--two-col">
+      <div className="SkyRoute-dashboard-summary-row">
         <div className="SkyRoute-dashboard-stat-card SkyRoute-card">
           <div className="SkyRoute-dashboard-stat-card__icon SkyRoute-dashboard-stat-card__icon--blue">
-            🎫
+            <Icon name="ticket" size={24} color="#173F3A" />
           </div>
           <div className="SkyRoute-dashboard-stat-card__content">
             <span className="SkyRoute-dashboard-stat-card__label">Confirmed Bookings</span>
@@ -70,12 +77,24 @@ const Dashboard = ({ onNavigate, onSelectBooking }) => {
 
         <div className="SkyRoute-dashboard-stat-card SkyRoute-card">
           <div className="SkyRoute-dashboard-stat-card__icon SkyRoute-dashboard-stat-card__icon--purple">
-            🔍
+            <Icon name="search" size={24} color="#4F7C73" />
           </div>
           <div className="SkyRoute-dashboard-stat-card__content">
             <span className="SkyRoute-dashboard-stat-card__label">Recent Search Route</span>
             <strong className="SkyRoute-dashboard-stat-card__value SkyRoute-dashboard-stat-card__value--sm">
               {lastSearch ? `${lastSearch.origin?.split(' ')[0]} → ${lastSearch.destination?.split(' ')[0]}` : 'Ahmedabad → Mumbai'}
+            </strong>
+          </div>
+        </div>
+
+        <div className="SkyRoute-dashboard-stat-card SkyRoute-card">
+          <div className="SkyRoute-dashboard-stat-card__icon SkyRoute-dashboard-stat-card__icon--green">
+            <Icon name="sparkles" size={24} color="#16A34A" />
+          </div>
+          <div className="SkyRoute-dashboard-stat-card__content">
+            <span className="SkyRoute-dashboard-stat-card__label">SkyPoints ({loyalty.tier.split(' ')[1] || 'Loyalty'})</span>
+            <strong className="SkyRoute-dashboard-stat-card__value">
+              {loyalty.pointsBalance.toLocaleString()} pts
             </strong>
           </div>
         </div>
@@ -86,7 +105,9 @@ const Dashboard = ({ onNavigate, onSelectBooking }) => {
       <div className="SkyRoute-dashboard-cards-grid SkyRoute-dashboard-cards-grid--two-col">
         {/* Card 1: Search Flights */}
         <div className="SkyRoute-dashboard-action-card SkyRoute-card">
-          <div className="SkyRoute-dashboard-action-card__icon">✈️</div>
+          <div className="SkyRoute-dashboard-action-card__icon">
+            <Icon name="flight" size={26} color="#173F3A" />
+          </div>
           <div className="SkyRoute-dashboard-action-card__body">
             <h3 className="SkyRoute-dashboard-action-card__title">Search Flights</h3>
             <p className="SkyRoute-dashboard-action-card__desc">
@@ -104,7 +125,9 @@ const Dashboard = ({ onNavigate, onSelectBooking }) => {
 
         {/* Card 2: My Bookings */}
         <div className="SkyRoute-dashboard-action-card SkyRoute-card">
-          <div className="SkyRoute-dashboard-action-card__icon">🎫</div>
+          <div className="SkyRoute-dashboard-action-card__icon">
+            <Icon name="ticket" size={26} color="#173F3A" />
+          </div>
           <div className="SkyRoute-dashboard-action-card__body">
             <h3 className="SkyRoute-dashboard-action-card__title">My Bookings</h3>
             <p className="SkyRoute-dashboard-action-card__desc">

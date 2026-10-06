@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Icon from './Icon';
 
 const POPULAR_AIRPORTS = [
   { city: 'Ahmedabad', code: 'AMD', name: 'Sardar Vallabhbhai Patel Intl', country: 'India' },
@@ -64,6 +65,8 @@ const AirportInput = ({ id, label, placeholder, value, onChange, icon, error }) 
     setIsOpen(true);
   };
 
+  const iconName = icon === 'landing' || icon === '🛬' || label === 'To' ? 'landing' : 'takeoff';
+
   return (
     <div
       className={`SkyRoute-search-field-box ${isOpen ? 'SkyRoute-search-field-box--open' : ''} ${error ? 'SkyRoute-search-field-box--error' : ''}`}
@@ -74,7 +77,9 @@ const AirportInput = ({ id, label, placeholder, value, onChange, icon, error }) 
       }}
     >
       <div className="SkyRoute-search-field-header">
-        <span className="SkyRoute-search-field-icon">{icon || '✈️'}</span>
+        <span className="SkyRoute-search-field-icon">
+          <Icon name={iconName} size={15} color="#4F7C73" />
+        </span>
         <span className="SkyRoute-search-field-tag">{label}</span>
       </div>
 
@@ -101,7 +106,7 @@ const AirportInput = ({ id, label, placeholder, value, onChange, icon, error }) 
             aria-label="Clear input"
             title="Clear"
           >
-            &times;
+            <Icon name="close" size={13} />
           </button>
         )}
       </div>

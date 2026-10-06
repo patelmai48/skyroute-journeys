@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Icon from '../components/Icon';
 import { INITIAL_NOTIFICATIONS } from '../data/travelData';
 import { useToast } from '../context/ToastContext';
 
@@ -25,7 +26,7 @@ const Notifications = ({ onNavigate }) => {
 
   const handleMarkAllRead = () => {
     setNotifications((prev) => prev.map((n) => ({ ...n, unread: false })));
-    if (showSuccess) showSuccess('✓ All notifications marked as read');
+    if (showSuccess) showSuccess('All notifications marked as read');
   };
 
   const handleClearAll = () => {
@@ -117,7 +118,9 @@ const Notifications = ({ onNavigate }) => {
         <div className="SkyRoute-notif-page-list">
           {filteredNotifications.length === 0 ? (
             <div className="SkyRoute-card SkyRoute-empty-state">
-              <div className="SkyRoute-empty-state__icon">🔔</div>
+              <div className="SkyRoute-empty-state__icon">
+                <Icon name="bell" size={36} color="var(--primary)" />
+              </div>
               <h3 className="SkyRoute-empty-state__title">No notifications in this category</h3>
               <p className="SkyRoute-empty-state__text">
                 You're all caught up! As soon as prices drop or your flight updates, we'll notify you right here.
@@ -140,10 +143,11 @@ const Notifications = ({ onNavigate }) => {
                 tabIndex={0}
               >
                 <div className="SkyRoute-notif-card__icon-box">
-                  {item.type === 'flight' && '✈️'}
-                  {item.type === 'price' && '📉'}
-                  {item.type === 'booking' && '🎫'}
-                  {item.type === 'alert' && '🔔'}
+                  {item.type === 'flight' && <Icon name="flight" size={18} color="var(--primary)" />}
+                  {item.type === 'price' && <Icon name="trendDown" size={18} color="#16A34A" />}
+                  {item.type === 'booking' && <Icon name="ticket" size={18} color="var(--primary)" />}
+                  {item.type === 'alert' && <Icon name="bell" size={18} color="var(--primary)" />}
+                  {!['flight', 'price', 'booking', 'alert'].includes(item.type) && <Icon name="bell" size={18} color="var(--primary)" />}
                 </div>
 
                 <div className="SkyRoute-notif-card__body">

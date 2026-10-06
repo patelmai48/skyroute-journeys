@@ -1,5 +1,6 @@
 import React from 'react';
 import format from 'date-fns/format';
+import Icon from '../components/Icon';
 import FlightItinerary from '../components/FlightItinerary';
 import FlightInformation from '../components/FlightInformation';
 import BaggageInfo from '../components/BaggageInfo';
@@ -21,7 +22,9 @@ const FlightDetails = ({ selectedFlight, searchData, onBackToResults, onContinue
       <div className="SkyRoute-details-page">
         <div className="SkyRoute-container">
           <div className="SkyRoute-empty-state SkyRoute-card SkyRoute-details-page__empty-card">
-            <div className="SkyRoute-empty-state__icon">✈️</div>
+            <div className="SkyRoute-empty-state__icon">
+              <Icon name="flight" size={36} color="var(--primary)" />
+            </div>
             <h2 className="SkyRoute-empty-state__title">No flight selected</h2>
             <p className="SkyRoute-empty-state__subtitle">
               You haven't selected a flight yet. Please view available flights and choose your preferred schedule.
@@ -63,14 +66,14 @@ const FlightDetails = ({ selectedFlight, searchData, onBackToResults, onContinue
               {originCity || 'Ahmedabad'} ({originCode || 'AMD'}) &rarr; {destinationCity || 'Mumbai'} ({destinationCode || 'BOM'})
             </h1>
             <div className="SkyRoute-details-page__meta">
-              <span className="SkyRoute-summary-pill SkyRoute-summary-pill--accent">
-                📅 {formatDisplayDate(departureDate)}
+              <span className="SkyRoute-summary-pill SkyRoute-summary-pill--accent" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <Icon name="calendar" size={13} /> {formatDisplayDate(departureDate)}
               </span>
-              <span className="SkyRoute-summary-pill">
-                👥 {passengers} {passengers === 1 ? 'Passenger' : 'Passengers'}
+              <span className="SkyRoute-summary-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <Icon name="users" size={13} /> {passengers} {passengers === 1 ? 'Passenger' : 'Passengers'}
               </span>
-              <span className="SkyRoute-summary-pill">
-                ✈ {tripType}
+              <span className="SkyRoute-summary-pill" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                <Icon name="flight" size={13} /> {tripType}
               </span>
             </div>
           </div>

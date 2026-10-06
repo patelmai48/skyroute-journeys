@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Icon from '../components/Icon';
 import { DESTINATIONS } from '../data/travelData';
 import { useToast } from '../context/ToastContext';
 
@@ -145,39 +146,39 @@ const AiTripPlanner = ({ onNavigate, onSearch }) => {
         itinerary: planItinerary,
         categories: [
           {
-            icon: '✈️',
+            icon: 'flight',
             name: 'Flights',
             amount: flightCost,
             pct: Math.min(100, Math.round((flightCost / totalBudget) * 100)),
             barColor: 'var(--SkyRoute-navy)'
           },
           {
-            icon: '🏨',
+            icon: 'hotel',
             name: 'Hotel & Stay',
             amount: hotelCost,
             pct: Math.min(100, Math.round((hotelCost / totalBudget) * 100)),
             barColor: 'var(--SkyRoute-teal)'
           },
           {
-            icon: '🍽️',
+            icon: 'coffee',
             name: 'Food & Dining',
             amount: foodCost,
             pct: Math.min(100, Math.round((foodCost / totalBudget) * 100)),
             barColor: '#8FAFA6'
           },
           {
-            icon: '🚕',
+            icon: 'compass',
             name: 'Local Transport',
             amount: transportCost,
             pct: Math.min(100, Math.round((transportCost / totalBudget) * 100)),
             barColor: '#4F7C73'
           },
           {
-            icon: '🎟️',
+            icon: 'ticket',
             name: 'Sightseeing & Activities',
             amount: activitiesCost,
             pct: Math.min(100, Math.round((activitiesCost / totalBudget) * 100)),
-            barColor: 'var(--SkyRoute-rose)'
+            barColor: '#285C54'
           }
         ]
       });
@@ -388,9 +389,10 @@ const AiTripPlanner = ({ onNavigate, onSearch }) => {
                   <button
                     type="button"
                     className="SkyRoute-btn SkyRoute-btn--outline SkyRoute-btn--sm"
+                    style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}
                     onClick={handleCopyItinerary}
                   >
-                    📋 Copy Itinerary
+                    <Icon name="edit" size={14} /> Copy Itinerary
                   </button>
                   <button
                     type="button"
@@ -408,7 +410,9 @@ const AiTripPlanner = ({ onNavigate, onSearch }) => {
               {/* Flight Card */}
               <div className="SkyRoute-ai-rec-card SkyRoute-card">
                 <div className="SkyRoute-ai-rec-card__header">
-                  <span className="SkyRoute-ai-rec-icon">✈️</span>
+                  <span className="SkyRoute-ai-rec-icon">
+                    <Icon name="flight" size={18} color="var(--primary)" />
+                  </span>
                   <div>
                     <span className="SkyRoute-ai-rec-tag">RECOMMENDED FLIGHT</span>
                     <h3 className="SkyRoute-ai-rec-title">{generatedPlan.flightSuggestion.airline}</h3>
@@ -431,15 +435,17 @@ const AiTripPlanner = ({ onNavigate, onSearch }) => {
               {/* Hotel Card */}
               <div className="SkyRoute-ai-rec-card SkyRoute-card">
                 <div className="SkyRoute-ai-rec-card__header">
-                  <span className="SkyRoute-ai-rec-icon">🏨</span>
+                  <span className="SkyRoute-ai-rec-icon">
+                    <Icon name="hotel" size={18} color="var(--primary)" />
+                  </span>
                   <div>
                     <span className="SkyRoute-ai-rec-tag">RECOMMENDED HOTEL</span>
                     <h3 className="SkyRoute-ai-rec-title">{generatedPlan.hotelSuggestion.name}</h3>
                   </div>
                 </div>
                 <div className="SkyRoute-ai-rec-card__body">
-                  <div className="SkyRoute-ai-rec-route">
-                    ★ {generatedPlan.hotelSuggestion.rating} / 5.0 &bull; {generatedPlan.hotelSuggestion.type}
+                  <div className="SkyRoute-ai-rec-route" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <Icon name="star" size={14} color="#B45309" /> {generatedPlan.hotelSuggestion.rating} / 5.0 &bull; {generatedPlan.hotelSuggestion.type}
                   </div>
                   <p className="SkyRoute-ai-rec-desc">
                     Top-rated central location with complimentary breakfast, infinity pool, and airport pickup.
@@ -456,7 +462,9 @@ const AiTripPlanner = ({ onNavigate, onSearch }) => {
 
             {/* 3. Day-by-Day Schedule Cards */}
             <div className="SkyRoute-ai-schedule-section">
-              <h3 className="SkyRoute-ai-section-heading">📅 Day-by-Day Travel Schedule</h3>
+              <h3 className="SkyRoute-ai-section-heading" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Icon name="calendar" size={18} color="var(--primary)" /> Day-by-Day Travel Schedule
+              </h3>
               <div className="SkyRoute-ai-days-stack">
                 {generatedPlan.itinerary.map((dayItem) => (
                   <div key={dayItem.day} className="SkyRoute-ai-day-card SkyRoute-card">
@@ -467,23 +475,31 @@ const AiTripPlanner = ({ onNavigate, onSearch }) => {
 
                     <div className="SkyRoute-ai-day-timeline-grid">
                       <div className="SkyRoute-ai-time-slot">
-                        <span className="SkyRoute-ai-time-label">🌅 Morning</span>
+                        <span className="SkyRoute-ai-time-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Icon name="sun" size={14} color="var(--primary)" /> Morning
+                        </span>
                         <p className="SkyRoute-ai-time-text">{dayItem.morning}</p>
                       </div>
 
                       <div className="SkyRoute-ai-time-slot">
-                        <span className="SkyRoute-ai-time-label">☀️ Afternoon</span>
+                        <span className="SkyRoute-ai-time-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Icon name="sun" size={14} color="var(--primary)" /> Afternoon
+                        </span>
                         <p className="SkyRoute-ai-time-text">{dayItem.afternoon}</p>
                       </div>
 
                       <div className="SkyRoute-ai-time-slot">
-                        <span className="SkyRoute-ai-time-label">🌙 Evening</span>
+                        <span className="SkyRoute-ai-time-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Icon name="moon" size={14} color="var(--primary)" /> Evening
+                        </span>
                         <p className="SkyRoute-ai-time-text">{dayItem.evening}</p>
                       </div>
                     </div>
 
                     <div className="SkyRoute-ai-day-card__footer">
-                      <span className="SkyRoute-dining-tip-icon">🍜</span>
+                      <span className="SkyRoute-dining-tip-icon">
+                        <Icon name="coffee" size={15} color="var(--primary)" />
+                      </span>
                       <span className="SkyRoute-dining-tip-text">
                         <strong>Dining Tip:</strong> {dayItem.diningTip}
                       </span>
@@ -527,8 +543,8 @@ const AiTripPlanner = ({ onNavigate, onSearch }) => {
                 {generatedPlan.categories.map((cat, idx) => (
                   <div key={idx} className="SkyRoute-budget-category-row">
                     <div className="SkyRoute-budget-cat-info">
-                      <span className="SkyRoute-budget-cat-name">
-                        <span className="SkyRoute-budget-cat-icon">{cat.icon}</span> {cat.name}
+                      <span className="SkyRoute-budget-cat-name" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                        <Icon name={cat.icon} size={16} color="var(--primary)" /> {cat.name}
                       </span>
                       <div className="SkyRoute-budget-cat-values">
                         <strong className="SkyRoute-budget-cat-amount">{formatINR(cat.amount)}</strong>

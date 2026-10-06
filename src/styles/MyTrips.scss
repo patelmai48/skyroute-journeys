@@ -12,6 +12,63 @@
   padding: 2rem 0 5rem;
 }
 
+/* MyTrips Loyalty / Rewards Status Banner */
+.SkyRoute-mytrips-rewards-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.15rem 1.5rem;
+  background-color: #DDE8E3 !important;
+  border: 1.5px solid #8FAFA6 !important;
+  border-radius: var(--SkyRoute-radius-md);
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 14px rgba(23, 63, 58, 0.06);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .SkyRoute-mytrips-rewards-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .SkyRoute-mytrips-rewards-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+
+    strong {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #173F3A !important;
+    }
+  }
+
+  .SkyRoute-mytrips-rewards-sub {
+    font-size: 0.88rem;
+    color: #4F7C73 !important;
+    margin: 0.25rem 0 0;
+    line-height: 1.4;
+
+    strong {
+      color: #173F3A !important;
+    }
+  }
+}
+
 /* Tabs Bar */
 .SkyRoute-trips-tabs-bar {
   display: flex;

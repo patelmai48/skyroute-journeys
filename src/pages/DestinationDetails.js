@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Icon from '../components/Icon';
 import { DESTINATIONS } from '../data/travelData';
 import { INITIAL_MOCK_FLIGHTS } from '../data/flights';
 
@@ -58,7 +59,10 @@ const DestinationDetails = ({ destination, destinationId, onNavigate, onSearch, 
           <div className="SkyRoute-dest-hero__badges">
             <span className="SkyRoute-badge SkyRoute-badge--success">{dest.category.toUpperCase()}</span>
             <span className="SkyRoute-badge">{dest.country}</span>
-            <span className="SkyRoute-dest-hero__weather-badge">🌤 {dest.weather}</span>
+            <span className="SkyRoute-dest-hero__weather-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
+              <Icon name="cloudSun" size={14} color="#173F3A" />
+              <span>{dest.weather}</span>
+            </span>
           </div>
 
           <h1 className="SkyRoute-dest-hero__title">
@@ -82,7 +86,9 @@ const DestinationDetails = ({ destination, destinationId, onNavigate, onSearch, 
             </div>
             <div className="SkyRoute-dest-metric">
               <span className="SkyRoute-dest-metric__label">Traveller Rating</span>
-              <strong className="SkyRoute-dest-metric__value">★ {dest.rating} ({dest.reviews} reviews)</strong>
+              <strong className="SkyRoute-dest-metric__value" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                <Icon name="star" size={13} color="#D97706" /> {dest.rating} ({dest.reviews} reviews)
+              </strong>
             </div>
             <div className="SkyRoute-dest-metric__action">
               <button
@@ -132,7 +138,10 @@ const DestinationDetails = ({ destination, destinationId, onNavigate, onSearch, 
               <div className="SkyRoute-dest-section-block">
                 {/* Popular Attractions */}
                 <div className="SkyRoute-dest-card-box SkyRoute-card">
-                  <h3 className="SkyRoute-dest-box-title">📍 Top Popular Attractions in {dest.name}</h3>
+                  <h3 className="SkyRoute-dest-box-title" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <Icon name="mapPin" size={18} color="var(--SkyRoute-teal)" />
+                    <span>Top Popular Attractions in {dest.name}</span>
+                  </h3>
                   <ul className="SkyRoute-dest-attractions-list">
                     {dest.attractions?.map((item, index) => (
                       <li key={index} className="SkyRoute-dest-attraction-item">
@@ -145,11 +154,16 @@ const DestinationDetails = ({ destination, destinationId, onNavigate, onSearch, 
 
                 {/* Things to Do */}
                 <div className="SkyRoute-dest-card-box SkyRoute-card">
-                  <h3 className="SkyRoute-dest-box-title">✨ Curated Experiences &amp; Things to Do</h3>
+                  <h3 className="SkyRoute-dest-box-title" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <Icon name="sparkles" size={18} color="#16A34A" />
+                    <span>Curated Experiences &amp; Things to Do</span>
+                  </h3>
                   <div className="SkyRoute-dest-experiences-grid">
                     {dest.thingsToDo?.map((exp, index) => (
                       <div key={index} className="SkyRoute-dest-exp-card">
-                        <span className="SkyRoute-dest-exp-icon">🎯</span>
+                        <span className="SkyRoute-dest-exp-icon">
+                          <Icon name="target" size={18} color="var(--primary)" />
+                        </span>
                         <p className="SkyRoute-dest-exp-text">{exp}</p>
                       </div>
                     ))}
@@ -159,7 +173,9 @@ const DestinationDetails = ({ destination, destinationId, onNavigate, onSearch, 
                 {/* Travel Tips */}
                 {dest.travelTips && (
                   <div className="SkyRoute-dest-tips-box SkyRoute-card">
-                    <span className="SkyRoute-dest-tips-icon">💡</span>
+                    <span className="SkyRoute-dest-tips-icon">
+                      <Icon name="lightbulb" size={20} color="var(--primary)" />
+                    </span>
                     <div>
                       <h4 className="SkyRoute-dest-tips-title">SkyRoute Local Travel Tip</h4>
                       <p className="SkyRoute-dest-tips-text">{dest.travelTips}</p>
@@ -172,15 +188,18 @@ const DestinationDetails = ({ destination, destinationId, onNavigate, onSearch, 
             {/* Tab 2: Hotels */}
             {activeTab === 'hotels' && (
               <div className="SkyRoute-dest-hotels-section">
-                <h3 className="SkyRoute-dest-box-title">🏨 Handpicked Stays in {dest.name}</h3>
+                <h3 className="SkyRoute-dest-box-title" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <Icon name="hotel" size={18} color="var(--primary)" />
+                  <span>Handpicked Stays in {dest.name}</span>
+                </h3>
                 <div className="SkyRoute-dest-hotels-grid">
                   {dest.popularHotels?.map((hotel, index) => (
                     <div key={index} className="SkyRoute-dest-hotel-card SkyRoute-card">
                       <div className="SkyRoute-dest-hotel-card__body">
                         <span className="SkyRoute-dest-hotel-type">{hotel.type}</span>
                         <h4 className="SkyRoute-dest-hotel-name">{hotel.name}</h4>
-                        <div className="SkyRoute-dest-hotel-rating">
-                          <span>★</span> {hotel.rating} / 5.0
+                        <div className="SkyRoute-dest-hotel-rating" style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                          <Icon name="star" size={13} color="#D97706" /> {hotel.rating} / 5.0
                         </div>
                       </div>
                       <div className="SkyRoute-dest-hotel-card__footer">
@@ -205,7 +224,10 @@ const DestinationDetails = ({ destination, destinationId, onNavigate, onSearch, 
             {/* Tab 3: Direct Flights */}
             {activeTab === 'flights' && (
               <div className="SkyRoute-dest-flights-section">
-                <h3 className="SkyRoute-dest-box-title">✈️ Top Direct Flights to {dest.name}</h3>
+                <h3 className="SkyRoute-dest-box-title" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <Icon name="flight" size={18} color="var(--primary)" />
+                  <span>Top Direct Flights to {dest.name}</span>
+                </h3>
                 <div className="SkyRoute-dest-flight-list">
                   {matchingFlights.map((flight) => (
                     <div key={flight.id} className="SkyRoute-dest-flight-item SkyRoute-card">
@@ -270,15 +292,15 @@ const DestinationDetails = ({ destination, destinationId, onNavigate, onSearch, 
 
               <div className="SkyRoute-dest-sidebar-perks">
                 <div className="SkyRoute-dest-perk">
-                  <span>🛡️</span>
+                  <Icon name="shieldCheck" size={16} color="var(--SkyRoute-teal)" />
                   <span>100% Price Match Guarantee</span>
                 </div>
                 <div className="SkyRoute-dest-perk">
-                  <span>⚡</span>
+                  <Icon name="zap" size={16} color="var(--SkyRoute-teal)" />
                   <span>Instant E-ticket Generation</span>
                 </div>
                 <div className="SkyRoute-dest-perk">
-                  <span>📱</span>
+                  <Icon name="smartphone" size={16} color="var(--SkyRoute-teal)" />
                   <span>Mobile Boarding Pass Support</span>
                 </div>
               </div>

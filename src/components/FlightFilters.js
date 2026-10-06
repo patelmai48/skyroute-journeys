@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from './Icon';
 
 const FlightFilters = ({
   stopsFilter,
@@ -88,10 +89,10 @@ const FlightFilters = ({
           <label className="SkyRoute-filter-group__title">Departure Time</label>
           <div className="SkyRoute-time-slots-grid">
             {[
-              { id: 'all', label: 'Any', icon: '🕒' },
-              { id: 'morning', label: 'Morning (06-12)', icon: '🌅' },
-              { id: 'afternoon', label: 'Afternoon (12-18)', icon: '☀️' },
-              { id: 'evening', label: 'Evening (18-24)', icon: '🌙' },
+              { id: 'all', label: 'Any', iconName: 'clock' },
+              { id: 'morning', label: 'Morning (06-12)', iconName: 'sun' },
+              { id: 'afternoon', label: 'Afternoon (12-18)', iconName: 'sun' },
+              { id: 'evening', label: 'Evening (18-24)', iconName: 'compass' },
             ].map((slot) => (
               <button
                 key={slot.id}
@@ -99,7 +100,7 @@ const FlightFilters = ({
                 className={`SkyRoute-time-slot-btn ${departureTimeFilter === slot.id ? 'SkyRoute-time-slot-btn--active' : ''}`}
                 onClick={() => onDepartureTimeChange(slot.id)}
               >
-                <span>{slot.icon}</span>
+                <Icon name={slot.iconName} size={15} color={departureTimeFilter === slot.id ? '#FFFFFF' : '#4F7C73'} />
                 <span>{slot.label}</span>
               </button>
             ))}

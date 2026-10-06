@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Icon from '../components/Icon';
 
 const formatINR = (num) => {
   return new Intl.NumberFormat('en-IN', {
@@ -219,7 +220,9 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
         {/* Success Feedback Banners */}
         {cancelSuccess && (
           <div className="SkyRoute-alert-banner SkyRoute-alert-banner--success" role="alert">
-            <span className="SkyRoute-alert-banner__icon">✓</span>
+            <span className="SkyRoute-alert-banner__icon">
+              <Icon name="checkCircle" size={18} />
+            </span>
             <div className="SkyRoute-alert-banner__content">
               Cancellation request submitted. A refund of {formatINR(activeBooking?.total ? activeBooking.total - 1200 : 3069)} will be credited to your original payment method within 3-5 business days.
             </div>
@@ -228,7 +231,9 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
 
         {rescheduleSuccess && (
           <div className="SkyRoute-alert-banner SkyRoute-alert-banner--success" role="alert">
-            <span className="SkyRoute-alert-banner__icon">✓</span>
+            <span className="SkyRoute-alert-banner__icon">
+              <Icon name="checkCircle" size={18} />
+            </span>
             <div className="SkyRoute-alert-banner__content">
               Flight successfully rescheduled to {newTravelDate}. Updated digital boarding pass has been generated.
             </div>
@@ -317,7 +322,9 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
                   className="SkyRoute-manage-action-box"
                   onClick={() => setShowRescheduleModal(true)}
                 >
-                  <span className="SkyRoute-action-icon">🗓️</span>
+                  <span className="SkyRoute-action-icon">
+                    <Icon name="calendar" size={22} color="var(--primary)" />
+                  </span>
                   <div className="SkyRoute-action-meta">
                     <strong>Reschedule Flight</strong>
                     <span>Change departure date or flight time</span>
@@ -329,7 +336,9 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
                   className="SkyRoute-manage-action-box"
                   onClick={() => setShowCancelModal(true)}
                 >
-                  <span className="SkyRoute-action-icon">❌</span>
+                  <span className="SkyRoute-action-icon">
+                    <Icon name="close" size={22} color="var(--primary)" />
+                  </span>
                   <div className="SkyRoute-action-meta">
                     <strong>Cancel Reservation</strong>
                     <span>Review cancellation fee &amp; instant refund</span>
@@ -341,7 +350,9 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
                   className="SkyRoute-manage-action-box"
                   onClick={() => onNavigate('/flight-status')}
                 >
-                  <span className="SkyRoute-action-icon">⏱️</span>
+                  <span className="SkyRoute-action-icon">
+                    <Icon name="clock" size={22} color="var(--primary)" />
+                  </span>
                   <div className="SkyRoute-action-meta">
                     <strong>Live Flight Radar</strong>
                     <span>Check terminal, gate and baggage belt</span>
@@ -356,7 +367,9 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
                     onNavigate('/booking-confirmation');
                   }}
                 >
-                  <span className="SkyRoute-action-icon">📥</span>
+                  <span className="SkyRoute-action-icon">
+                    <Icon name="download" size={22} color="var(--primary)" />
+                  </span>
                   <div className="SkyRoute-action-meta">
                     <strong>Download E-Ticket</strong>
                     <span>Print official PDF receipt with QR code</span>

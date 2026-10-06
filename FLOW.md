@@ -122,12 +122,14 @@ This document provides a technical walkthrough of the SkyRoute frontend architec
     - Seat upgrade fee (e.g. ₹450 for Window seat)
     - Taxes & carrier surcharges (12% GST)
     - Promotional coupon discounts (e.g. `SKYDOM500` for ₹500 off, `FLYINTL2500` for ₹2,500 off)
-  - Simulated payment method selection (Credit/Debit Card, UPI, Net Banking).
+    - **Repeat Traveler Reward**: Automatic ₹500 discount for returning users with previous booking history.
+    - **SkyPoints Accrual Preview**: Shows estimated SkyPoints earned (10% of total payable).
+  - Simulated payment method selection (Credit/Debit Card, UPI, Net Banking, Wallets).
 - **Validation**:
-  - Validates legal terms acceptance before allowing booking creation.
+  - Validates legal terms acceptance and payment authorization before booking creation.
 - **Navigation Target**:
   - User clicks **"Back to Passenger Details"** → returns to `/passenger-details` without state loss.
-  - User clicks **"Confirm & Pay"** → compiles booking payload, generates PNR code, and navigates to `/booking-confirmation`.
+  - User clicks **"Confirm & Pay"** → compiles booking payload, generates PNR code, awards 10% SkyPoints to `skyroute_skypoints`, and navigates to `/booking-confirmation`.
 
 ---
 
@@ -135,7 +137,7 @@ This document provides a technical walkthrough of the SkyRoute frontend architec
 - **Components Involved**: [`BookingConfirmation.js`](file:///src/pages/BookingConfirmation.js).
 - **Processing & Storage**:
   - Generates unique 6-character PNR reference (`SR-` + 6 alphanumeric characters).
-  - Compiles full booking snapshot with `status: "Confirmed"`.
+  - Compiles full booking snapshot with `status: "Confirmed"`, `pointsEarned`, and `repeatDiscount`.
   - Appends booking to master `skyroute_bookings` array in `localStorage`.
   - Updates `skyroute_current_booking` in `localStorage`.
 - **Information Displayed**:
@@ -147,11 +149,12 @@ This document provides a technical walkthrough of the SkyRoute frontend architec
 
 ---
 
-### Step 7: My Trips & Manage Booking (`/my-trips`, `/manage-booking`)
-- **Components Involved**: [`MyTrips.js`](file:///src/pages/MyTrips.js), [`ManageBooking.js`](file:///src/pages/ManageBooking.js).
+### Step 7: My Trips & Manage Booking (`/my-trips`, `/manage-booking`, `/profile`)
+- **Components Involved**: [`MyTrips.js`](file:///src/pages/MyTrips.js), [`ManageBooking.js`](file:///src/pages/ManageBooking.js), [`Profile.js`](file:///src/pages/Profile.js), [`loyaltyService.js`](file:///src/services/loyaltyService.js).
 - **Processing & Retrieval**:
-  - Reads `localStorage.getItem('skyroute_bookings')`.
+  - Reads `localStorage.getItem('skyroute_bookings')` and `localStorage.getItem('skyroute_skypoints')`.
   - Displays all confirmed and historical trips.
+  - Displays live SkyPoints Balance, Tier status (Silver/Gold), and active repeat discount availability.
   - Supports live cancellation with immediate state updates synchronized to the master `skyroute_bookings` array in `localStorage`.
   - Displays interactive boarding pass when selecting any previous trip.
 
@@ -170,6 +173,6 @@ This document provides a technical walkthrough of the SkyRoute frontend architec
                                      │
 [ Confirms Booking ]   ──► localStorage['skyroute_current_booking']
                                      │
-                                     ▼
-                           localStorage['skyroute_bookings'] (Master History Array)
+                                     ├──► localStorage['skyroute_bookings'] (Master History Array)
+                                     └──► localStorage['skyroute_skypoints'] (Loyalty Points Balance)
 ```
