@@ -100,10 +100,11 @@
   }
 
   &--active {
-    background-color: #143F67 !important;
-    border-color: #143F67 !important;
-    color: #FFFFFF !important;
-    box-shadow: 0 4px 14px rgba(20, 63, 103, 0.25);
+    background-color: #E4B46C !important;
+    border-color: #E4B46C !important;
+    color: #143F67 !important;
+    font-weight: 800;
+    box-shadow: 0 4px 14px rgba(228, 180, 108, 0.35);
   }
 }
 
@@ -436,6 +437,117 @@
   }
 }
 
+// Support & Help Specific Styling
+.SkyRoute-support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.SkyRoute-support-card {
+  padding: 24px 22px;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: var(--SkyRoute-radius-md);
+  box-shadow: 0 4px 18px rgba(20, 63, 103, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: #E4B46C !important;
+    box-shadow: 0 8px 24px rgba(20, 63, 103, 0.1);
+  }
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--SkyRoute-radius-md);
+    background-color: #FBF3E4;
+    border: 1.5px solid #E4B46C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #143F67;
+  }
+
+  &__title {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 18px;
+    font-weight: 800;
+    color: #143F67 !important;
+    margin: 0;
+  }
+
+  &__text {
+    font-size: 13.5px;
+    color: #1E5282 !important;
+    line-height: 1.55;
+    margin: 0;
+    flex: 1;
+  }
+
+  &__action {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #143F67;
+    cursor: pointer;
+    text-decoration: none;
+    border-top: 1px solid #E2E8F0;
+    padding-top: 12px;
+
+    &:hover {
+      color: #E4B46C;
+    }
+  }
+}
+
+.SkyRoute-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.SkyRoute-faq-item {
+  padding: 20px 24px;
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #E2E8F0 !important;
+  border-radius: var(--SkyRoute-radius-md);
+  box-shadow: 0 2px 12px rgba(20, 63, 103, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: #E4B46C !important;
+    box-shadow: 0 4px 18px rgba(20, 63, 103, 0.08);
+  }
+
+  &__question {
+    font-family: var(--SkyRoute-font-serif);
+    font-size: 16.5px;
+    font-weight: 800;
+    color: #143F67 !important;
+    margin: 0 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__answer {
+    font-size: 14px;
+    color: #1E5282 !important;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
 // Responsive Breakpoints
 @media (max-width: 960px) {
   .SkyRoute-about-hero {
@@ -474,6 +586,10 @@
   }
 
   .SkyRoute-about-tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .SkyRoute-support-grid {
     grid-template-columns: 1fr;
   }
 

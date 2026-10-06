@@ -188,8 +188,8 @@ my-app/
 ## 6. Running Locally
 
 ### Prerequisites
-- Node.js (v14.0.0 or higher)
-- npm (v6.0.0 or higher)
+- Node.js (v22.0.0 or higher, as specified by `@skyscanner/backpack-react-scripts`)
+- npm (v8.0.0 or higher, supporting lockfileVersion 3 and dependency overrides)
 
 ### Installation & Startup
 ```bash

@@ -1,15 +1,15 @@
 {
-  "short_name": "Backpack App",
-  "name": "Welcome to React + Backpack",
+  "short_name": "SkyRoute",
+  "name": "SkyRoute Flight Booking Platform",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon.svg",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/svg+xml"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#00b2d6",
-  "background_color": "#ffffff"
+  "theme_color": "#143F67",
+  "background_color": "#FAFBFC"
 }

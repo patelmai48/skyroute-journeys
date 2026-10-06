@@ -244,6 +244,13 @@ const About = ({ onNavigate }) => {
           </button>
           <button
             type="button"
+            className={`SkyRoute-about-tab-btn ${activeTab === 'support' ? 'SkyRoute-about-tab-btn--active' : ''}`}
+            onClick={() => setActiveTab('support')}
+          >
+            <Icon name="headphones" size={16} /> Customer Support &amp; FAQ
+          </button>
+          <button
+            type="button"
             className={`SkyRoute-about-tab-btn ${activeTab === 'tech' ? 'SkyRoute-about-tab-btn--active' : ''}`}
             onClick={() => setActiveTab('tech')}
           >
@@ -432,6 +439,114 @@ const About = ({ onNavigate }) => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Tab 5: Customer Support & FAQ */}
+        {activeTab === 'support' && (
+          <section className="SkyRoute-about-section">
+            <div className="SkyRoute-about-section__header-center">
+              <span className="SkyRoute-about-section__tag">24/7 TRAVELLER ASSISTANCE</span>
+              <h2 className="SkyRoute-about-section-title">Support &amp; Help Desk</h2>
+              <p className="SkyRoute-about-section-sub">
+                Fast, dedicated customer care for flight rescheduling, baggage allowances, cancellation refunds, and check-in guidance.
+              </p>
+            </div>
+
+            {/* Support Assistance Channels Grid */}
+            <div className="SkyRoute-support-grid">
+              <div className="SkyRoute-support-card">
+                <div className="SkyRoute-support-card__icon">
+                  <Icon name="phone" size={22} color="#143F67" />
+                </div>
+                <h3 className="SkyRoute-support-card__title">24/7 Phone Support</h3>
+                <p className="SkyRoute-support-card__text">
+                  Direct hotline for flight changes, emergency travel assistance, and immediate check-in issues.
+                </p>
+                <a href="tel:+911800258741" className="SkyRoute-support-card__action">
+                  Call +91 1800-258-741 &rarr;
+                </a>
+              </div>
+
+              <div className="SkyRoute-support-card">
+                <div className="SkyRoute-support-card__icon">
+                  <Icon name="mail" size={22} color="#143F67" />
+                </div>
+                <h3 className="SkyRoute-support-card__title">Email Help Desk</h3>
+                <p className="SkyRoute-support-card__text">
+                  Send booking queries, e-ticket resends, and refund requests with responses within 2 hours.
+                </p>
+                <a href="mailto:support@skyroute-travel.com" className="SkyRoute-support-card__action">
+                  support@skyroute-travel.com &rarr;
+                </a>
+              </div>
+
+              <div className="SkyRoute-support-card">
+                <div className="SkyRoute-support-card__icon">
+                  <Icon name="ticket" size={22} color="#143F67" />
+                </div>
+                <h3 className="SkyRoute-support-card__title">Manage PNR &amp; Check-in</h3>
+                <p className="SkyRoute-support-card__text">
+                  Retrieve booking records, modify passenger details, or initiate instant self-service cancellations.
+                </p>
+                <button
+                  type="button"
+                  className="SkyRoute-btn SkyRoute-btn--subtle SkyRoute-btn--sm"
+                  style={{ width: '100%', marginTop: 'auto' }}
+                  onClick={() => onNavigate('/manage-booking')}
+                >
+                  Manage Booking &rarr;
+                </button>
+              </div>
+
+              <div className="SkyRoute-support-card">
+                <div className="SkyRoute-support-card__icon">
+                  <Icon name="shieldCheck" size={22} color="#143F67" />
+                </div>
+                <h3 className="SkyRoute-support-card__title">Travel Insurance Claims</h3>
+                <p className="SkyRoute-support-card__text">
+                  24/7 assistance for baggage loss, trip delays, medical emergency coverage, and policy benefits.
+                </p>
+                <button
+                  type="button"
+                  className="SkyRoute-btn SkyRoute-btn--subtle SkyRoute-btn--sm"
+                  style={{ width: '100%', marginTop: 'auto' }}
+                  onClick={() => onNavigate('/travel-insurance')}
+                >
+                  Insurance Portal &rarr;
+                </button>
+              </div>
+            </div>
+
+            {/* Frequently Asked Questions */}
+            <div className="SkyRoute-faq-list">
+              <div className="SkyRoute-faq-item">
+                <h4 className="SkyRoute-faq-item__question">
+                  <Icon name="helpCircle" size={18} color="#E4B46C" /> How do I complete web check-in?
+                </h4>
+                <p className="SkyRoute-faq-item__answer">
+                  Web check-in opens 48 hours prior to domestic departure and 24 hours prior to international flights. Navigate to <strong>Manage Booking</strong>, enter your 6-character PNR code and passenger last name to select seats and download your digital boarding pass.
+                </p>
+              </div>
+
+              <div className="SkyRoute-faq-item">
+                <h4 className="SkyRoute-faq-item__question">
+                  <Icon name="helpCircle" size={18} color="#E4B46C" /> What are the standard baggage allowances?
+                </h4>
+                <p className="SkyRoute-faq-item__answer">
+                  Standard domestic economy flights allow <strong>7 kg cabin baggage</strong> (1 handbag/laptop bag) and <strong>15 kg check-in baggage</strong> per passenger. Air India and international routes include 25 kg to 30 kg check-in allowance.
+                </p>
+              </div>
+
+              <div className="SkyRoute-faq-item">
+                <h4 className="SkyRoute-faq-item__question">
+                  <Icon name="helpCircle" size={18} color="#E4B46C" /> How do flight cancellations and refunds work?
+                </h4>
+                <p className="SkyRoute-faq-item__answer">
+                  Refundable tickets can be cancelled up to 2 hours prior to scheduled departure. Once cancelled via <strong>Manage Booking</strong> or <strong>My Trips</strong>, the net refund is calculated automatically according to airline tariff rules and processed to the original payment source.
+                </p>
               </div>
             </div>
           </section>

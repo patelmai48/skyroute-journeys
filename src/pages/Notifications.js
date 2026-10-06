@@ -143,11 +143,18 @@ const Notifications = ({ onNavigate }) => {
                 tabIndex={0}
               >
                 <div className="SkyRoute-notif-card__icon-box">
-                  {item.type === 'flight' && <Icon name="flight" size={18} color="var(--primary)" />}
-                  {item.type === 'price' && <Icon name="trendDown" size={18} color="#16A34A" />}
-                  {item.type === 'booking' && <Icon name="ticket" size={18} color="var(--primary)" />}
-                  {item.type === 'alert' && <Icon name="bell" size={18} color="var(--primary)" />}
-                  {!['flight', 'price', 'booking', 'alert'].includes(item.type) && <Icon name="bell" size={18} color="var(--primary)" />}
+                  {item.type === 'flight' && <Icon name="flight" size={22} color="#143F67" />}
+                  {item.type === 'price' && <Icon name="trendDown" size={22} color="#E4B46C" />}
+                  {(item.type === 'hotel' || (item.title && item.title.toLowerCase().includes('hotel'))) && (
+                    <Icon name="hotel" size={22} color="#143F67" />
+                  )}
+                  {item.type === 'booking' && !item.title?.toLowerCase().includes('hotel') && (
+                    <Icon name="ticket" size={22} color="#143F67" />
+                  )}
+                  {item.type === 'alert' && <Icon name="bell" size={22} color="#E4B46C" />}
+                  {!['flight', 'price', 'booking', 'hotel', 'alert'].includes(item.type) && (
+                    <Icon name="flight" size={22} color="#143F67" />
+                  )}
                 </div>
 
                 <div className="SkyRoute-notif-card__body">
