@@ -206,7 +206,7 @@ const Home = ({ onSearch, searchData, onNavigate, onSelectDestination }) => {
               >
                 <div className="SkyRoute-plan-card__icon-wrap">
                   <span className="SkyRoute-plan-card__icon">
-                    <Icon name={item.iconName} size={22} color="var(--primary)" />
+                    <Icon name={item.iconName} size={24} color="#143F67" />
                   </span>
                 </div>
                 <div className="SkyRoute-plan-card__content">

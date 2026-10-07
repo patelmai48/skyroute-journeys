@@ -558,6 +558,14 @@ const ICONS = {
 const Icon = ({ name, size = 18, className = '', color = 'currentColor', style = {} }) => {
   const iconSvg = ICONS[name] || ICONS.flight;
 
+  // Resolve CSS variable strings to brand colors when needed
+  let resolvedColor = color;
+  if (color === 'var(--primary)' || color === 'var(--SkyRoute-navy)' || color === 'var(--color-navy)') {
+    resolvedColor = '#143F67';
+  } else if (color === 'var(--secondary)' || color === 'var(--SkyRoute-primary)' || color === 'var(--color-gold)') {
+    resolvedColor = '#E4B46C';
+  }
+
   return (
     <span
       className={`SkyRoute-icon SkyRoute-icon--${name} ${className}`}
@@ -567,7 +575,7 @@ const Icon = ({ name, size = 18, className = '', color = 'currentColor', style =
         justifyContent: 'center',
         width: `${size}px`,
         height: `${size}px`,
-        color,
+        color: resolvedColor,
         flexShrink: 0,
         verticalAlign: 'middle',
         lineHeight: 1,
@@ -578,7 +586,7 @@ const Icon = ({ name, size = 18, className = '', color = 'currentColor', style =
       {React.cloneElement(iconSvg, {
         width: size,
         height: size,
-        stroke: color === 'currentColor' ? 'currentColor' : color,
+        stroke: resolvedColor === 'currentColor' ? 'currentColor' : resolvedColor,
       })}
     </span>
   );
