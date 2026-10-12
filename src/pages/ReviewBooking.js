@@ -29,7 +29,7 @@ const ReviewBooking = ({
 }) => {
   const { showSuccess, showInfo } = useToast();
   const [paymentMethod, setPaymentMethod] = useState('upi'); // upi | card | netbanking | wallet
-  const [upiId, setUpiId] = useState('mahipatel@okaxis');
+  const [upiId, setUpiId] = useState('demo@skyroute');
   const [isUpiVerified, setIsUpiVerified] = useState(true);
 
   // Card details
@@ -89,7 +89,7 @@ const ReviewBooking = ({
       return;
     }
     setIsUpiVerified(true);
-    if (showSuccess) showSuccess('UPI ID verified for Mahi Patel');
+    if (showSuccess) showSuccess('UPI ID verified (Demo Account)');
   };
 
   const handlePay = (e) => {
@@ -325,7 +325,7 @@ const ReviewBooking = ({
                         </div>
                         {isUpiVerified && (
                           <span className="SkyRoute-coupon-success" style={{ marginTop: '4px', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                            <Icon name="checkCircle" size={14} color="#16A34A" /> Verified VPA (Account Holder: Mahi Patel)
+                            <Icon name="checkCircle" size={14} color="#16A34A" /> Verified VPA (Demo Account)
                           </span>
                         )}
                       </div>
