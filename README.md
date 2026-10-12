@@ -100,33 +100,35 @@ The booking flow models an 8-stage transactional pipeline:
 
 ---
 
-## 4. Data & Client Storage Architecture
+## 4. Data & Backend Storage Architecture
 
-SkyRoute runs entirely on client-side architecture. There are no external databases or backend server connections.
+SkyRoute operates a hybrid production architecture:
+- **Backend API (`/backend`)**: Node.js/Express service with persistent PostgreSQL database support (configured via `DATABASE_URL` with SSL in production). Migrated from SQLite to guarantee data durability on containerized and serverless hosts (Render, Railway, Fly.io) where ephemeral disk resets wipe SQLite files.
+- **Automated Schema Provisioning**: Idempotent schema migrations (`initSchema`) run automatically at server startup to ensure `users` and `bookings` tables and indexes exist without manual SQL execution.
+- **Frontend Fallback**: In development mode, the React frontend can gracefully fall back to local mock data if the backend server is offline. In **production mode**, it presents an honest, clear "Server unavailable, please try again" status to ensure users are aware when live reservation transactions cannot be processed.
 
-### LocalStorage Schema Map
+### LocalStorage Schema Map (Client-Side State)
 
 | Key | Type | Description | Sample Structure |
 | :--- | :--- | :--- | :--- |
+| `skyroute_token` | `String` | JWT authentication bearer token | Standard signed JWT |
+| `skyroute_auth_user` | `Object` | Active authenticated user profile | `{"id":1,"email":"user@example.com","name":"Mahi Patel"}` |
 | `skyroute_search` | `Object` | Active flight search criteria | `{"origin":"Ahmedabad (AMD)","destination":"Dubai (DXB)","tripType":"round-trip","passengers":1,"cabinClass":"Economy"}` |
 | `skyroute_selected_flight` | `Object` | Flight currently selected in the booking pipeline | Full flight object (id, airline, flightNumber, times, price, etc.) |
 | `skyroute_passengers` | `Array<Object>` | Active passenger manifest with contact details | `[{"id":1,"title":"Mr","firstName":"Rahul","lastName":"Sharma","email":"...","phone":"..."}]` |
 | `skyroute_selected_seat` | `Object` | Selected seat assignment and tier | `{"id":"14A","row":14,"col":"A","type":"Window","price":450}` |
 | `skyroute_current_booking` | `Object` | Most recently confirmed booking object | Complete booking snapshot with PNR, flight, seat, passengers, and payment breakdown |
 | `skyroute_bookings` | `Array<Object>` | Master list of all historical confirmed bookings | Chronological array of confirmed and cancelled bookings |
-| `skyroute_auth_user` | `Object` | Active authenticated demo user session | `{"email":"demo@skyroute.com","name":"Rahul Sharma","role":"Traveler"}` |
 
 ### Simulated vs. Real Components Clarification
 
 | Feature | Implementation Reality | Notes |
 | :--- | :--- | :--- |
-| **Flight Search & Results** | Real Client-side Logic | Real-time filtering, sorting, and matching executed locally on in-memory mock datasets. |
-| **Form Validation** | Real Client-side Logic | Real regex evaluation and instant DOM state validation. |
-| **Date Picker Portal** | Real React Implementation | Custom lightweight calendar component rendered via React Portals directly into `document.body`. |
-| **Booking Persistence** | Real Client Storage | Full persistence using browser `localStorage`. |
-| **Payment Gateway** | **Simulated Demo** | UI-only simulation; no financial transactions or real credit card processing occurs. |
-| **Airlines Reservation / PNR** | **Simulated Demo** | Generates pseudo-random PNR codes for client display; no real airline API / GDS connection. |
-| **Authentication** | **Simulated Demo** | Client-side session management with local storage and Google OAuth mock flow. |
+| **Flight Search & Results** | Real Full-Stack API / Database | Queryable via `GET /api/flights` with real-time route, airline, and price filtering. In dev, falls back to local data if backend is offline. |
+| **Authentication & Users** | Real PostgreSQL + JWT Auth | User registration and login persisted in PostgreSQL with `bcryptjs` password hashing and signed JWT sessions. |
+| **Bookings & PNR Records** | Real PostgreSQL Persistence | Confirmed bookings and cancellations stored in PostgreSQL with unique PNR indexing and user authorization scoping. |
+| **Payment Gateway** | **Simulated Demo** | UI-only simulation; no financial transactions or real credit card processing occurs. Payment UI explicitly states simulation. |
+| **Airlines Reservation / GDS** | **Simulated Demo** | Generates pseudo-random PNR codes for SkyRoute demonstration; not connected to live Sabre/Amadeus GDS. |
 
 ---
 
@@ -139,78 +141,192 @@ my-app/
 │   ├── index.html
 │   └── manifest.json
 ├── src/
-│   ├── components/
-│   │   ├── AirportInput.js         # Autocomplete airport search
-│   │   ├── BaggageInfo.js          # Baggage allowance breakdown
-│   │   ├── DatePickerField.js      # Portaled floating calendar widget
-│   │   ├── FareSummary.js          # Itemized pricing calculator
-│   │   ├── FlightCard.js           # Interactive flight search result card
-│   │   ├── FlightFilters.js        # Multi-facet filter sidebar
-│   │   ├── FlightItinerary.js      # Segment timeline visualization
-│   │   ├── FlightSearchForm.js     # Master search query builder
-│   │   ├── Header.js               # Responsive navigation with session dropdown
-│   │   ├── Hero.js                 # Editorial hero section
-│   │   ├── PassengerFormCard.js    # Controlled passenger inputs
-│   │   ├── PassengerSelector.js    # Stepper for traveller & cabin counts
-│   │   ├── SeatSelectionModal.js   # Interactive aircraft seat picker
-│   │   └── Toast.js                # System notifications
-│   ├── data/
-│   │   ├── flights.js              # Enriched mock flight inventory
-│   │   └── travelData.js           # Destination guides and categories
-│   ├── pages/
-│   │   ├── About.js                # Technical architecture & project overview
-│   │   ├── BookingConfirmation.js  # Boarding pass & printable ticket
-│   │   ├── FlightDetails.js        # Itinerary and baggage breakdown
-│   │   ├── FlightResults.js        # Filterable flight search results
-│   │   ├── FlightStatus.js         # Flight status lookup using local mock flight data
-│   │   ├── ManageBooking.js        # Rescheduling & cancellation workflow
-│   │   ├── MyTrips.js              # Historical trips retrieved from localStorage
-│   │   ├── PassengerDetails.js     # Traveller information collection
-│   │   └── ReviewBooking.js        # Pre-checkout breakdown & simulated payment
-│   ├── styles/
-│   │   ├── global.scss             # Typography, central design tokens (3-color system), and reset
-│   │   ├── Header.scss             # Deep Navy sticky navigation & brand bar
-│   │   ├── Footer.scss             # Deep Navy footer & Clean White route cards
-│   │   ├── Hero.scss               # Editorial hero section
-│   │   ├── FlightSearch.scss       # Search widget & popover styling
-│   │   ├── FlightResults.scss      # Filter and card styling
-│   │   ├── BookingFlow.scss        # Checkout & confirmation styling
-│   │   └── ...                     # Modular SCSS page-specific stylesheets
+│   ├── components/                 # Atomic UI components
+│   ├── data/                       # Fallback datasets and travel guides
+│   ├── pages/                      # Page route controllers (FlightResults, Login, ReviewBooking, MyTrips)
+│   ├── services/
+│   │   ├── api.js                  # Frontend API client
+│   │   └── googleAuth.js           # Google Identity Services OAuth helper
+│   ├── styles/                     # Modular SCSS stylesheets & brand design tokens
 │   ├── App.js                      # Root router, state distributor, & storage sync
-│   ├── App.test.js                 # Jest/RTL unit test suite
+│   ├── App.test.js                 # Frontend unit test suite (12 tests)
+│   ├── api.js                      # Centralized resilient API client
 │   └── index.js                    # Application entry point
+├── backend/
+│   ├── scripts/
+│   │   └── smoke.js                # Full lifecycle 8-step smoke testing script
+│   ├── src/
+│   │   ├── app.js                  # Express application with Helmet, CORS, and trust-proxy
+│   │   ├── auth.js                 # JWT & bcrypt authentication
+│   │   ├── db.js                   # PostgreSQL connection pool & idempotent migrations
+│   │   ├── server.js               # Entry point (port 5000, startup sanity checks)
+│   │   ├── data/flights.js         # Flight inventory data & query helpers
+│   │   └── routes/
+│   │       ├── auth.js             # /api/auth (register, login, me)
+│   │       ├── bookings.js         # /api/bookings (create, list, cancel)
+│   │       └── flights.js          # /api/flights (search, filters, sort)
+│   ├── test/api.test.js            # Automated backend API test suite (15 tests via in-memory Postgres)
+│   ├── render.yaml                 # Render Blueprint specification
+│   ├── .env.example
+│   └── package.json
+├── render.yaml                     # Root Render Blueprint specification
+├── vercel.json                     # Vercel SPA rewrite & build configuration
 ├── package.json
 └── README.md
 ```
 
 ---
 
-## 6. Running Locally
+## 6. Environment Variables
+
+### Backend (`my-app/backend/.env`)
+| Variable | Required? | Default / Example | Purpose |
+| :--- | :--- | :--- | :--- |
+| `PORT` | Optional | `5000` | HTTP port for Express server. |
+| `NODE_ENV` | Required in prod | `production` / `development` | Enables production hardening (strict secrets check, SSL for DB, CORS restrictions). |
+| `DATABASE_URL` | **Required in prod** | `postgresql://user:pass@host:5432/skyroute?sslmode=require` | PostgreSQL connection string (Neon, Supabase, RDS, or local). |
+| `JWT_SECRET` | **Required in prod** | Random 32+ character string | Secret key for signing and verifying JWT tokens (minimum 16 characters). |
+| `CORS_ORIGIN` | Required in prod | `https://your-frontend.vercel.app` | Whitelist of allowed frontend origins (comma-separated if multiple). |
+
+### Frontend (`my-app/.env`)
+| Variable | Required? | Default / Example | Purpose |
+| :--- | :--- | :--- | :--- |
+| `REACT_APP_API_URL` | Required in prod | `https://your-backend.onrender.com` | Base URL of deployed backend Express API (**must be set before building bundle**). |
+| `REACT_APP_GOOGLE_CLIENT_ID` | Optional | `xyz.apps.googleusercontent.com` | Google OAuth 2.0 Web Client ID from Google Cloud Console. |
+| `PORT` | Optional | `3000` | Local development port. |
+| `GENERATE_SOURCEMAP` | Optional | `false` | Disables production sourcemaps for privacy and bundle size optimization. |
+
+---
+
+## 7. Running Locally
 
 ### Prerequisites
-- Node.js (v22.0.0 or higher, as specified by `@skyscanner/backpack-react-scripts`)
-- npm (v8.0.0 or higher, supporting lockfileVersion 3 and dependency overrides)
+- Node.js (v18.0.0 or higher)
+- npm (v8.0.0 or higher)
+- PostgreSQL (optional for local dev if testing against live DB; tests use in-memory `pg-mem`)
 
-### Installation & Startup
+### Setup & Startup
+
 ```bash
-# 1. Clone the repository
+# 1. Clone repository
 git clone https://github.com/patelmai48/skyroute-journeys.git
 cd skyroute-journeys/my-app
 
-# 2. Install dependencies
+# 2. Install dependencies for both frontend and backend
 npm install
+npm --prefix backend install
 
-# 3. Start development server
-npm start
+# 3. Configure local environment files
+cp .env.example .env
+cp backend/.env.example backend/.env
 
-# 4. Run test suite
-npm test -- --watchAll=false
+# 4. Run automated test suites
+npm test -- --watchAll=false       # Frontend Jest test suite (12 tests)
+npm run server:test                 # Backend Node.js test suite (15 tests via in-memory Postgres)
+
+# 5. Start development servers
+npm run server:dev                  # Terminal 1: Starts Express backend on http://localhost:5000
+npm start                           # Terminal 2: Starts React frontend on http://localhost:3000
+```
+
+### Running the End-to-End Smoke Test
+
+Run the automated smoke test script against any running SkyRoute backend:
+```bash
+# Against local server
+npm run server:smoke
+
+# Or against custom URL / staging / production
+node backend/scripts/smoke.js http://localhost:5000
+node backend/scripts/smoke.js https://skyroute-api.onrender.com
 ```
 
 ---
 
-## 7. License & Attribution
+## 8. Step-by-Step Production Deployment Guide
 
-Developed by **Mahi Patel** as a modern frontend engineering demonstration.
+Deploying SkyRoute for free requires three external platforms: **Neon** (PostgreSQL database), **Render** (Node.js backend API), and **Vercel** (React single-page application).
+
+### Step 1: Provision Managed PostgreSQL (Neon / Supabase)
+1. Go to [Neon.tech](https://neon.tech) and sign up for a free account.
+2. Click **Create Project**, choose a region close to your users, and create a database named `skyroute` (or default `neondb`).
+3. Under the project dashboard, copy the **Connection string** (Direct connection or Pooled connection). It looks like:
+   ```text
+   postgresql://alex:AbCdEf1234@ep-cool-fog-123456.us-east-2.aws.neon.tech/neondb?sslmode=require
+   ```
+4. *Note on migrations*: You do **not** need to manually run SQL scripts. When the SkyRoute backend starts, it automatically executes idempotent migrations (`initSchema`) to create `users` and `bookings` tables and indexes.
+
+### Step 2: Deploy Backend API on Render
+1. Go to [Render Dashboard](https://dashboard.render.com) and click **New +** -> **Web Service**.
+2. Connect your GitHub repository (`skyroute-journeys`).
+3. Configure the service settings:
+   - **Name**: `skyroute-api`
+   - **Root Directory**: `my-app/backend` (or leave blank if repository root is `/backend`)
+   - **Runtime**: `Node`
+   - **Build Command**: `npm install`
+   - **Start Command**: `node src/server.js`
+   - **Instance Type**: `Free`
+4. Expand **Advanced** -> **Health Check Path** and set:
+   - `/api/health`
+5. Under **Environment Variables**, add:
+   - `NODE_ENV`: `production`
+   - `DATABASE_URL`: *(Paste your Neon connection string from Step 1)*
+   - `JWT_SECRET`: *(Generate a secure random string of 32+ characters)*
+   - `CORS_ORIGIN`: `http://localhost:3000` *(Temporary placeholder; will be updated after Vercel deployment)*
+6. Click **Deploy Web Service**.
+7. Once deployed, test the health check in your browser: `https://<your-render-subdomain>.onrender.com/api/health`. It should return:
+   ```json
+   {"status":"ok","database":"connected","time":"..."}
+   ```
+8. Copy your Render service URL (e.g., `https://skyroute-api.onrender.com`).
+
+### Step 3: Deploy Frontend on Vercel
+1. Go to [Vercel Dashboard](https://vercel.com) and click **Add New** -> **Project**.
+2. Import your GitHub repository.
+3. Configure project settings:
+   - **Framework Preset**: `Create React App`
+   - **Root Directory**: Click edit and select `my-app`
+4. Expand **Environment Variables** (**CRITICAL**: Create React App embeds `REACT_APP_*` variables at compile time, so these must be set before the build runs):
+   - `REACT_APP_API_URL`: `https://<your-render-subdomain>.onrender.com`
+   - `REACT_APP_GOOGLE_CLIENT_ID`: *(Your Google OAuth client ID, if configured)*
+5. Click **Deploy**.
+6. When the build completes, Vercel will assign a production domain (e.g. `https://skyroute-journeys.vercel.app`).
+   - Client-side routes (e.g. `/results`, `/my-trips`, `/flight-details`) will not 404 on refresh thanks to `vercel.json` rewrite routing.
+
+### Step 4: Link CORS Origin in Render
+1. Return to the **Render Dashboard** -> Open your `skyroute-api` service.
+2. Go to **Environment** tab.
+3. Update `CORS_ORIGIN` to your exact live Vercel domain:
+   ```text
+   https://skyroute-journeys.vercel.app
+   ```
+   *(If you want to support both localhost and production, separate them with a comma: `https://skyroute-journeys.vercel.app,http://localhost:3000`)*
+4. Click **Save Changes**. Render will automatically redeploy the backend service.
+
+### Step 5: Configure Google OAuth (Google Cloud Console)
+If you enable Google Sign-In with `REACT_APP_GOOGLE_CLIENT_ID`:
+1. Open [Google Cloud Console](https://console.cloud.google.com/) -> **APIs & Services** -> **Credentials**.
+2. Click on your **OAuth 2.0 Client ID** (Web application).
+3. Under **Authorized JavaScript origins**, add:
+   - `http://localhost:3000` (for local development)
+   - `https://<your-actual-subdomain>.vercel.app` (for production)
+4. Under **Authorized redirect URIs**:
+   - SkyRoute uses Google Identity Services popup/token authorization (`google.accounts.oauth2.initTokenClient`), so redirect URIs are typically not required. If requested by Google Cloud Console or using redirect flow, add:
+     - `http://localhost:3000`
+     - `https://<your-actual-subdomain>.vercel.app`
+5. Save the OAuth client configuration.
+
+### Step 6: Verify Deployment with the Smoke Test
+Run the smoke test script against your live Render API:
+```bash
+node backend/scripts/smoke.js https://skyroute-api.onrender.com
+```
+All 8 steps (Health, Register, Login, Auth Verification, Flight Search, Create Booking, List Bookings, Cancel Booking) should print `[PASS]`.
+
+---
+
+## 8. License & Attribution
+
+Developed by **Mahi Patel** as a modern full-stack engineering demonstration.
 Design system tokens inspired by **Skyscanner Backpack**.
 All airline names, marks, and simulated data are used solely for educational demonstration purposes.

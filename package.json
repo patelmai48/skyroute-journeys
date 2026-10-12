@@ -17,10 +17,12 @@
     "eject": "react-scripts eject",
     "server": "npm --prefix backend start",
     "server:dev": "npm --prefix backend run dev",
-    "server:test": "npm --prefix backend test"
+    "server:test": "npm --prefix backend test",
+    "server:smoke": "npm --prefix backend run smoke"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.26.3",
+    "@neon/config": "^1.8.6",
     "sass": "^1.85.0",
     "sass-embedded": "^1.105.1"
   },

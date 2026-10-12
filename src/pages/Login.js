@@ -91,7 +91,7 @@ const Login = ({ onNavigate }) => {
       points: 2450
     };
 
-    // Attempt real backend auth
+    // Real backend auth
     try {
       if (authMode === 'signup') {
         const res = await registerUser({ name: name.trim(), email: email.trim(), password });
@@ -105,7 +105,15 @@ const Login = ({ onNavigate }) => {
         }
       }
     } catch (apiErr) {
-      console.info('Backend auth attempt noted, continuing with persistent session:', apiErr.message);
+      if (!apiErr.isNetworkError) {
+        setStatusMessage({
+          type: 'error',
+          text: apiErr.message || 'Authentication failed. Please check your details and try again.'
+        });
+        setIsSubmitting(false);
+        return;
+      }
+      console.info('Backend server is offline; operating with local session fallback:', apiErr.message);
     }
 
     try {

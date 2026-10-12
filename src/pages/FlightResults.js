@@ -5,6 +5,7 @@ import FlightCard from '../components/FlightCard';
 import FlightComparisonModal from '../components/FlightComparisonModal';
 import CheapestMonthModal from '../components/CheapestMonthModal';
 import { getMockFlights, getFlexibleDates } from '../data/flights';
+import { fetchFlights } from '../api';
 
 const FlightResults = ({ searchData, onSelectFlight, onEditSearch, onSearchChange }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -15,6 +16,8 @@ const FlightResults = ({ searchData, onSelectFlight, onEditSearch, onSearchChang
   const [baggageFilter, setBaggageFilter] = useState('all');
   const [refundableOnly, setRefundableOnly] = useState(false);
   const [sortBy, setSortBy] = useState('best');
+  const [serverFlights, setServerFlights] = useState(null);
+  const [isServerOffline, setIsServerOffline] = useState(false);
 
   // Flight Comparison State
   const [comparedFlights, setComparedFlights] = useState([]);
@@ -23,19 +26,71 @@ const FlightResults = ({ searchData, onSelectFlight, onEditSearch, onSearchChang
   // Cheapest Month Modal
   const [isMonthModalOpen, setIsMonthModalOpen] = useState(false);
 
-  // Loading state on query change
+  // Load flights from backend API
   useEffect(() => {
+    let isMounted = true;
     setIsLoading(true);
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 400);
-    return () => clearTimeout(timer);
-  }, [searchData]);
 
-  // Base flights generated for current route
+    const loadFlights = async () => {
+      try {
+        const params = {
+          origin: searchData?.origin,
+          destination: searchData?.destination,
+          cabin: searchData?.cabinClass,
+          passengers: searchData?.passengers,
+          stops: stopsFilter,
+          priceFilter,
+          airline: airlineFilter,
+          departureTime: departureTimeFilter,
+          baggage: baggageFilter,
+          refundable: refundableOnly ? 'true' : undefined,
+          sortBy,
+        };
+
+        const res = await fetchFlights(params);
+        if (isMounted) {
+          if (res?.flights && Array.isArray(res.flights)) {
+            setServerFlights(res.flights);
+            setIsServerOffline(false);
+          }
+        }
+      } catch (err) {
+        if (isMounted) {
+          setIsServerOffline(true);
+          setServerFlights(null);
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
+      }
+    };
+
+    loadFlights();
+    return () => { isMounted = false; };
+  }, [
+    searchData,
+    stopsFilter,
+    priceFilter,
+    airlineFilter,
+    departureTimeFilter,
+    baggageFilter,
+    refundableOnly,
+    sortBy,
+  ]);
+
+  const isProduction = process.env.NODE_ENV === 'production';
+
+  // Base flights generated from server or mock fallback (local development only)
   const baseFlights = useMemo(() => {
-    return getMockFlights(searchData);
-  }, [searchData]);
+    if (serverFlights && serverFlights.length > 0) {
+      return serverFlights;
+    }
+    if (!isProduction) {
+      return getMockFlights(searchData);
+    }
+    return [];
+  }, [serverFlights, searchData, isProduction]);
 
   // Flexible dates generated for current search date
   const flexibleDates = useMemo(() => {
@@ -243,6 +298,11 @@ const FlightResults = ({ searchData, onSelectFlight, onEditSearch, onSearchChang
                         filteredAndSortedFlights.length === 1 ? 'flight' : 'flights'
                       }`}
                 </span>
+                {isServerOffline && (
+                  <span className="SkyRoute-badge SkyRoute-badge--navy" title="Operating with local flights data" style={{ marginLeft: '6px' }}>
+                    Demo Inventory
+                  </span>
+                )}
               </div>
 
               {/* Sorting Tabs: Best, Cheapest, Fastest */}
@@ -282,6 +342,21 @@ const FlightResults = ({ searchData, onSelectFlight, onEditSearch, onSearchChang
                 <p className="SkyRoute-loading-text">
                   Comparing schedules, direct routes, and lowest available fares for your route.
                 </p>
+              </div>
+            ) : (isProduction && isServerOffline) ? (
+              <div className="SkyRoute-empty-state SkyRoute-card">
+                <div className="SkyRoute-empty-state__icon">⚠️</div>
+                <h3 className="SkyRoute-empty-state__title">Server Unavailable</h3>
+                <p className="SkyRoute-empty-state__subtitle">
+                  Unable to connect to the flight inventory service. Please check your network or try again in a few moments.
+                </p>
+                <button
+                  type="button"
+                  className="SkyRoute-btn SkyRoute-btn--primary SkyRoute-empty-state__reset-btn"
+                  onClick={() => window.location.reload()}
+                >
+                  Retry Connection
+                </button>
               </div>
             ) : filteredAndSortedFlights.length === 0 ? (
               <div className="SkyRoute-empty-state SkyRoute-card">

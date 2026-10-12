@@ -5,7 +5,9 @@ const { createApp } = require('../src/app');
 
 let server, base;
 before(async () => {
-  const app = createApp({ db: createDb(':memory:'), jwtSecret: 'test-secret-test-secret', bcryptRounds: 4, rateLimitEnabled: false });
+  const db = createDb({ isTest: true });
+  await db.init();
+  const app = createApp({ db, jwtSecret: 'test-secret-test-secret', bcryptRounds: 4, rateLimitEnabled: false });
   await new Promise((r) => { server = app.listen(0, r); });
   base = `http://127.0.0.1:${server.address().port}`;
 });
@@ -21,7 +23,7 @@ const call = async (method, path, body, token) => {
 };
 
 const sampleBooking = {
-  flight: { airline: 'Vistara', from: 'AMD', to: 'BOM', departure: '21:10', arrival: '22:45' },
+  flight: { airline: 'Vistara', from: 'AMD', to: 'BOM', departure: '21:10', arrival: '22:45', price: 6850 },
   passengers: [{ title: 'Mr', firstName: 'Mahi', lastName: 'Patel', email: 'mahi@example.com', phone: '9999999999' }],
   seat: '4A',
   totalAmount: 17947,
@@ -32,6 +34,35 @@ let tokenA, tokenB, pnr;
 test('health check', async () => {
   const r = await call('GET', '/api/health');
   assert.equal(r.status, 200);
+});
+
+test('flights API returns inventory with origin and destination', async () => {
+  const r = await call('GET', '/api/flights?origin=Ahmedabad%20(AMD)&destination=Mumbai%20(BOM)');
+  assert.equal(r.status, 200);
+  assert.ok(Array.isArray(r.data.flights));
+  assert.ok(r.data.flights.length > 0);
+  assert.equal(r.data.flights[0].originCode, 'AMD');
+  assert.equal(r.data.flights[0].destinationCode, 'BOM');
+});
+
+test('flights API filtering by stops, airline, price, departureTime, and sorting', async () => {
+  const nonStop = await call('GET', '/api/flights?stops=non-stop');
+  assert.equal(nonStop.status, 200);
+  assert.ok(nonStop.data.flights.every((f) => f.stops === 0));
+
+  const indigoOnly = await call('GET', '/api/flights?airline=IndiGo');
+  assert.equal(indigoOnly.status, 200);
+  assert.ok(indigoOnly.data.flights.every((f) => f.airline === 'IndiGo'));
+
+  const priceFiltered = await call('GET', '/api/flights?priceFilter=under-5000');
+  assert.equal(priceFiltered.status, 200);
+  assert.ok(priceFiltered.data.flights.every((f) => f.price < 5000));
+
+  const sortedCheapest = await call('GET', '/api/flights?sortBy=cheapest');
+  assert.equal(sortedCheapest.status, 200);
+  for (let i = 1; i < sortedCheapest.data.flights.length; i++) {
+    assert.ok(sortedCheapest.data.flights[i].price >= sortedCheapest.data.flights[i - 1].price);
+  }
 });
 
 test('register creates a user and returns a token', async () => {
@@ -70,25 +101,50 @@ test('bookings require login', async () => {
   assert.equal((await call('POST', '/api/bookings', sampleBooking)).status, 401);
 });
 
-test('create a booking and get a PNR', async () => {
-  const r = await call('POST', '/api/bookings', sampleBooking, tokenA);
+test('create a booking and recomputes server-side price ignoring client-sent total', async () => {
+  // Client attempts to tamper with totalAmount = 1
+  const tamperedBooking = {
+    ...sampleBooking,
+    totalAmount: 1,
+    coupon: 'SKYDOM500',
+    insurance: 'comprehensive'
+  };
+  const r = await call('POST', '/api/bookings', tamperedBooking, tokenA);
   assert.equal(r.status, 201);
   assert.match(r.data.booking.pnr, /^[A-Z2-9]{6}$/);
   assert.equal(r.data.booking.status, 'CONFIRMED');
   assert.equal(r.data.booking.flight.airline, 'Vistara');
+
+  // Verify server recomputed: base: 6850, tax: 822 (12%), seat: 450, ins: 449, coupon: -500
+  // Expected total: 6850 + 822 + 450 + 449 - 500 = 8071
+  assert.notEqual(r.data.booking.totalAmount, 1);
+  assert.equal(r.data.booking.totalAmount, 8071);
   pnr = r.data.booking.pnr;
+});
+
+test('subsequent booking receives repeat traveller discount on server', async () => {
+  const secondBooking = {
+    ...sampleBooking,
+    flight: { airline: 'IndiGo', from: 'AMD', to: 'BOM', price: 3450 },
+    seat: { id: '7B', price: 300 },
+    insurance: 'none',
+    coupon: 'none'
+  };
+  // Base: 3450, Tax: 414, Seat: 300, Ins: 0, Repeat discount: -500
+  // Total: 3450 + 414 + 300 - 500 = 3664
+  const r = await call('POST', '/api/bookings', secondBooking, tokenA);
+  assert.equal(r.status, 201);
+  assert.equal(r.data.booking.totalAmount, 3664);
 });
 
 test('booking validation rejects bad input', async () => {
   const noPax = await call('POST', '/api/bookings', { ...sampleBooking, passengers: [] }, tokenA);
   assert.equal(noPax.status, 400);
-  const badAmount = await call('POST', '/api/bookings', { ...sampleBooking, totalAmount: -5 }, tokenA);
-  assert.equal(badAmount.status, 400);
 });
 
 test('list and fetch own bookings', async () => {
   const list = await call('GET', '/api/bookings', null, tokenA);
-  assert.equal(list.data.bookings.length, 1);
+  assert.equal(list.data.bookings.length, 2);
   const one = await call('GET', `/api/bookings/${pnr.toLowerCase()}`, null, tokenA);
   assert.equal(one.status, 200);
   assert.equal(one.data.booking.pnr, pnr);

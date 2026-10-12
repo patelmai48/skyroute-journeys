@@ -35,17 +35,36 @@ const Header = ({ onNavigate, currentRoute }) => {
   }, [notifOpen]);
 
   useEffect(() => {
+    let isMounted = true;
     try {
       const auth = localStorage.getItem('skyroute_auth_user');
       if (auth) {
         setCurrentUser(JSON.parse(auth));
-      } else {
+      } else if (!localStorage.getItem('skyroute_token')) {
         setCurrentUser(null);
       }
       setAvatarLoadError(false);
     } catch (e) {
       setCurrentUser(null);
     }
+
+    const token = localStorage.getItem('skyroute_token');
+    if (token) {
+      import('../api').then(({ getCurrentUser }) => {
+        getCurrentUser().then((user) => {
+          if (isMounted && user) {
+            setCurrentUser((prev) => ({
+              ...(prev || {}),
+              name: user.name,
+              email: user.email,
+              id: user.id
+            }));
+          }
+        }).catch(() => {});
+      });
+    }
+
+    return () => { isMounted = false; };
   }, [currentRoute]);
 
   // Close profile menu when clicking outside
@@ -68,6 +87,7 @@ const Header = ({ onNavigate, currentRoute }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('skyroute_auth_user');
+    localStorage.removeItem('skyroute_token');
     setCurrentUser(null);
     setProfileMenuOpen(false);
     onNavigate('/login');

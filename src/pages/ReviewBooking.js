@@ -121,7 +121,8 @@ const ReviewBooking = ({
       taxes: taxesAndFees,
       seatFee,
       insuranceFee,
-      discount: discountAmount + repeatDiscount,
+      coupon: appliedCoupon,
+      insurance: selectedInsurance,
       couponDiscount: discountAmount,
       repeatDiscount,
       pointsEarned: pointsResult.earned,
@@ -136,6 +137,9 @@ const ReviewBooking = ({
       const serverBooking = await postBookingToServer(bookingRecord);
       if (serverBooking?.pnr) {
         bookingRecord.pnr = serverBooking.pnr;
+        if (serverBooking.totalAmount) {
+          bookingRecord.total = serverBooking.totalAmount;
+        }
         bookingRecord.serverBooking = serverBooking;
       }
     } catch (err) {
