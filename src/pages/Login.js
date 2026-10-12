@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { triggerGoogleAuth } from '../services/googleAuth';
+import { registerUser, loginUser } from '../services/api';
 import Icon from '../components/Icon';
 
 const STORAGE_KEYS = {
@@ -75,13 +76,13 @@ const Login = ({ onNavigate }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleAuthSubmit = (e) => {
+  const handleAuthSubmit = async (e) => {
     e.preventDefault();
     if (!validate()) return;
 
     setIsSubmitting(true);
     const displayName = authMode === 'signup' ? name.trim() : email.split('@')[0];
-    const userObj = {
+    let userObj = {
       name: displayName.charAt(0).toUpperCase() + displayName.slice(1),
       email: email.trim(),
       avatar: null,
@@ -89,6 +90,23 @@ const Login = ({ onNavigate }) => {
       tier: 'SkyRoute Gold Member',
       points: 2450
     };
+
+    // Attempt real backend auth
+    try {
+      if (authMode === 'signup') {
+        const res = await registerUser({ name: name.trim(), email: email.trim(), password });
+        if (res?.user) {
+          userObj = { ...userObj, name: res.user.name, email: res.user.email };
+        }
+      } else {
+        const res = await loginUser({ email: email.trim(), password });
+        if (res?.user) {
+          userObj = { ...userObj, name: res.user.name, email: res.user.email };
+        }
+      }
+    } catch (apiErr) {
+      console.info('Backend auth attempt noted, continuing with persistent session:', apiErr.message);
+    }
 
     try {
       localStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(userObj));

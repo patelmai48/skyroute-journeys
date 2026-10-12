@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Icon from '../components/Icon';
 import { useToast } from '../context/ToastContext';
 import { getLoyaltySummary } from '../services/loyaltyService';
+import { fetchServerBookings } from '../services/api';
 
 const formatINR = (num) => {
   return new Intl.NumberFormat('en-IN', {
@@ -31,9 +32,42 @@ const INITIAL_GROUP_EXPENSES = [
   { id: 'exp-4', title: 'Self-Drive SUV Rental', amount: 2000, paidBy: 'You', category: 'Transport' },
 ];
 
+const SAMPLE_TRIP = {
+  bookingId: 'BK-789012',
+  pnr: 'X7K29P',
+  bookingDate: '2026-10-12',
+  flight: {
+    airline: 'IndiGo',
+    airlineCode: '6E',
+    flightNumber: '6E 201',
+    originCity: 'Ahmedabad',
+    originCode: 'AMD',
+    destinationCity: 'Goa',
+    destinationCode: 'GOI',
+    departureTime: '08:00 AM',
+    arrivalTime: '09:45 AM',
+    durationText: '1h 45m',
+    cabin: 'Economy',
+    baggage: '15kg Check-in + 7kg Cabin'
+  },
+  seat: { id: '14A', type: 'Window' },
+  gate: 'B12',
+  terminal: 'T1',
+  total: 4269,
+  status: 'Confirmed'
+};
+
 const MyTrips = ({ onNavigate, onSelectBooking }) => {
   const [activeTab, setActiveTab] = useState('upcoming'); // upcoming | timeline | packing | group | budget
-  const [bookings, setBookings] = useState([]);
+  const [bookings, setBookings] = useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('skyroute_bookings') || '[]');
+      if (Array.isArray(saved) && saved.length > 0) return saved;
+      return [SAMPLE_TRIP];
+    } catch {
+      return [SAMPLE_TRIP];
+    }
+  });
   const { showToast } = useToast();
 
   // Smart Packing List State
@@ -89,42 +123,53 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
     { name: 'Sightseeing & Activities', amount: 2500, icon: 'beach', color: '#1E5282' }
   ]);
 
-  // Load bookings from localStorage
+  // Sync bookings from backend server if token exists
   useEffect(() => {
-    try {
-      const saved = JSON.parse(localStorage.getItem('skyroute_bookings') || '[]');
-      if (saved.length === 0) {
-        const sampleTrip = {
-          bookingId: 'BK-789012',
-          pnr: 'X7K29P',
-          bookingDate: '2026-10-12',
-          flight: {
-            airline: 'IndiGo',
-            airlineCode: '6E',
-            flightNumber: '6E 201',
-            originCity: 'Ahmedabad',
-            originCode: 'AMD',
-            destinationCity: 'Goa',
-            destinationCode: 'GOI',
-            departureTime: '08:00 AM',
-            arrivalTime: '09:45 AM',
-            durationText: '1h 45m',
-            cabin: 'Economy',
-            baggage: '15kg Check-in + 7kg Cabin'
-          },
-          seat: { id: '14A', type: 'Window' },
-          gate: 'B12',
-          terminal: 'T1',
-          total: 4269,
-          status: 'Confirmed'
-        };
-        setBookings([sampleTrip]);
-      } else {
-        setBookings(saved);
+    let isMounted = true;
+    const syncServerBookings = async () => {
+      const token = localStorage.getItem('skyroute_token');
+      if (!token) return;
+
+      try {
+        const serverBookings = await fetchServerBookings();
+        if (serverBookings && Array.isArray(serverBookings) && serverBookings.length > 0 && isMounted) {
+          const mappedServer = serverBookings.map((b) => ({
+            bookingId: `BK-${b.pnr}`,
+            pnr: b.pnr,
+            bookingDate: b.createdAt ? b.createdAt.slice(0, 10) : '2026-10-12',
+            flight: {
+              airline: b.flight?.airline || 'SkyRoute',
+              airlineCode: b.flight?.airlineCode || 'SR',
+              flightNumber: b.flight?.flightNumber || 'SR-101',
+              originCity: b.flight?.originCity || b.flight?.from || 'Ahmedabad',
+              originCode: b.flight?.originCode || b.flight?.from || 'AMD',
+              destinationCity: b.flight?.destinationCity || b.flight?.to || 'Mumbai',
+              destinationCode: b.flight?.destinationCode || b.flight?.to || 'BOM',
+              departureTime: b.flight?.departure || '08:00 AM',
+              arrivalTime: b.flight?.arrival || '10:00 AM',
+              durationText: b.flight?.durationText || '2h 00m',
+              cabin: b.flight?.cabin || 'Economy',
+              baggage: b.flight?.baggage || '15kg Check-in'
+            },
+            seat: typeof b.seat === 'string' ? { id: b.seat, type: 'Selected' } : (b.seat || { id: '4A', type: 'Window' }),
+            gate: 'B12',
+            terminal: 'T1',
+            total: b.totalAmount || 4269,
+            status: b.status === 'CANCELLED' ? 'Cancelled' : 'Confirmed'
+          }));
+
+          setBookings((prev) => {
+            const seenPnrs = new Set(mappedServer.map((m) => m.pnr));
+            return [...mappedServer, ...prev.filter((lb) => !seenPnrs.has(lb.pnr))];
+          });
+        }
+      } catch (err) {
+        console.info('Server bookings sync deferred:', err.message);
       }
-    } catch (e) {
-      setBookings([]);
-    }
+    };
+
+    syncServerBookings();
+    return () => { isMounted = false; };
   }, []);
 
   // Save Packing list

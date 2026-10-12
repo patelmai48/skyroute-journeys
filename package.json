@@ -14,7 +14,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "npm --prefix backend start",
+    "server:dev": "npm --prefix backend run dev",
+    "server:test": "npm --prefix backend test"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.26.3",

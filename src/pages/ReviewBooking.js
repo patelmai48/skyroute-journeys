@@ -9,6 +9,7 @@ import {
   calculateEarnedPoints,
   awardBookingSkyPoints
 } from '../services/loyaltyService';
+import { postBookingToServer } from '../services/api';
 
 const formatINR = (num) => {
   return new Intl.NumberFormat('en-IN', {
@@ -92,21 +93,21 @@ const ReviewBooking = ({
     if (showSuccess) showSuccess('UPI ID verified (Demo Account)');
   };
 
-  const handlePay = (e) => {
+  const handlePay = async (e) => {
     e.preventDefault();
     setIsProcessing(true);
 
     // Award loyalty points to localStorage
     const pointsResult = awardBookingSkyPoints(finalTotal);
 
-    // Generate random PNR
+    // Default fallback PNR
     const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
     let pnr = '';
     for (let i = 0; i < 6; i++) {
       pnr += chars.charAt(Math.floor(Math.random() * chars.length));
     }
 
-    const bookingRecord = {
+    let bookingRecord = {
       bookingId: `BK-${Date.now().toString().slice(-6)}`,
       pnr,
       bookingDate: new Date().toISOString(),
@@ -130,6 +131,17 @@ const ReviewBooking = ({
       status: 'Confirmed'
     };
 
+    // Attempt real backend booking creation
+    try {
+      const serverBooking = await postBookingToServer(bookingRecord);
+      if (serverBooking?.pnr) {
+        bookingRecord.pnr = serverBooking.pnr;
+        bookingRecord.serverBooking = serverBooking;
+      }
+    } catch (err) {
+      console.info('Backend booking sync deferred, saving locally:', err.message);
+    }
+
     // Save to localStorage bookings array
     try {
       const existing = JSON.parse(localStorage.getItem('skyroute_bookings') || '[]');
@@ -141,7 +153,7 @@ const ReviewBooking = ({
     setTimeout(() => {
       setIsProcessing(false);
       if (showSuccess) {
-        showSuccess(`Payment confirmed! +${pointsResult.earned} SkyPoints credited.`);
+        showSuccess(`Payment confirmed! PNR: ${bookingRecord.pnr} (+${pointsResult.earned} SkyPoints credited)`);
       }
       onConfirmBooking(bookingRecord);
     }, 1200);

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Icon from '../components/Icon';
+import { cancelServerBooking } from '../services/api';
 
 const formatINR = (num) => {
   return new Intl.NumberFormat('en-IN', {
@@ -74,12 +75,20 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
     }
   };
 
-  const handleConfirmCancel = () => {
+  const handleConfirmCancel = async () => {
     if (activeBooking) {
       const updated = { ...activeBooking, status: 'Cancelled (Refund Processing)' };
       setActiveBooking(updated);
       setCancelSuccess(true);
       setShowCancelModal(false);
+
+      if (activeBooking.pnr) {
+        try {
+          await cancelServerBooking(activeBooking.pnr);
+        } catch (err) {
+          console.info('Server cancellation synced locally:', err.message);
+        }
+      }
 
       try {
         const saved = JSON.parse(localStorage.getItem('skyroute_bookings') || '[]');
