@@ -165,7 +165,12 @@ const FlightSearchForm = ({ onSearch, initialValues, onNavigateHotels }) => {
             className={`SkyRoute-service-tab ${
               activeServiceTab === tab.id ? 'SkyRoute-service-tab--active' : ''
             }`}
-            onClick={() => setActiveServiceTab(tab.id)}
+            onClick={() => {
+              setActiveServiceTab(tab.id);
+              if (tab.id === 'hotels' && onNavigateHotels) {
+                onNavigateHotels();
+              }
+            }}
           >
             <span className="SkyRoute-service-tab__icon">
               <Icon name={tab.iconName} size={17} />

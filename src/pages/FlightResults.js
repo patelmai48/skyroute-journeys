@@ -79,18 +79,13 @@ const FlightResults = ({ searchData, onSelectFlight, onEditSearch, onSearchChang
     sortBy,
   ]);
 
-  const isProduction = process.env.NODE_ENV === 'production';
-
-  // Base flights generated from server or mock fallback (local development only)
+  // Base flights generated from server or mock fallback when backend is offline
   const baseFlights = useMemo(() => {
     if (serverFlights && serverFlights.length > 0) {
       return serverFlights;
     }
-    if (!isProduction) {
-      return getMockFlights(searchData);
-    }
-    return [];
-  }, [serverFlights, searchData, isProduction]);
+    return getMockFlights(searchData);
+  }, [serverFlights, searchData]);
 
   // Flexible dates generated for current search date
   const flexibleDates = useMemo(() => {
@@ -334,6 +329,44 @@ const FlightResults = ({ searchData, onSelectFlight, onEditSearch, onSearchChang
               </div>
             </div>
 
+            {/* Demo mode status notice when backend server is offline */}
+            {isServerOffline && (
+              <div
+                className="SkyRoute-demo-notice-bar"
+                style={{
+                  backgroundColor: '#FBF3E4',
+                  border: '1px solid #E4B46C',
+                  borderRadius: '10px',
+                  padding: '12px 18px',
+                  marginBottom: '16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '12px'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <span style={{ fontSize: '18px' }}>✈️</span>
+                  <div>
+                    <strong style={{ color: '#143F67', fontSize: '13px', display: 'block' }}>
+                      Demo Flight Inventory Active
+                    </strong>
+                    <span style={{ color: '#64748B', fontSize: '12px' }}>
+                      Backend server is offline or unreachable. Displaying complete interactive demo inventory with instant booking simulation.
+                    </span>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="SkyRoute-btn SkyRoute-btn--outline"
+                  style={{ padding: '6px 14px', fontSize: '12px', whiteSpace: 'nowrap' }}
+                  onClick={() => window.location.reload()}
+                >
+                  Retry Connection
+                </button>
+              </div>
+            )}
+
             {/* Flight Cards List */}
             {isLoading ? (
               <div className="SkyRoute-loading-state SkyRoute-card">
@@ -342,21 +375,6 @@ const FlightResults = ({ searchData, onSelectFlight, onEditSearch, onSearchChang
                 <p className="SkyRoute-loading-text">
                   Comparing schedules, direct routes, and lowest available fares for your route.
                 </p>
-              </div>
-            ) : (isProduction && isServerOffline) ? (
-              <div className="SkyRoute-empty-state SkyRoute-card">
-                <div className="SkyRoute-empty-state__icon">⚠️</div>
-                <h3 className="SkyRoute-empty-state__title">Server Unavailable</h3>
-                <p className="SkyRoute-empty-state__subtitle">
-                  Unable to connect to the flight inventory service. Please check your network or try again in a few moments.
-                </p>
-                <button
-                  type="button"
-                  className="SkyRoute-btn SkyRoute-btn--primary SkyRoute-empty-state__reset-btn"
-                  onClick={() => window.location.reload()}
-                >
-                  Retry Connection
-                </button>
               </div>
             ) : filteredAndSortedFlights.length === 0 ? (
               <div className="SkyRoute-empty-state SkyRoute-card">

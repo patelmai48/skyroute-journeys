@@ -1,7 +1,7 @@
 {
   "name": "skyroute-backend",
   "version": "0.1.0",
-  "description": "Express + SQLite API for SkyRoute: authentication and bookings",
+  "description": "Express + PostgreSQL API for SkyRoute: authentication and bookings",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

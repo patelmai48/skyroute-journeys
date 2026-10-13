@@ -186,6 +186,19 @@ const Hotels = ({ onNavigate }) => {
     window.print();
   };
 
+  const handleBrowseStays = () => {
+    setActiveTab('browse');
+    if (confirmedBooking) {
+      setConfirmedBooking(null);
+    }
+    setTimeout(() => {
+      const el = document.getElementById('hotels-grid');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 60);
+  };
+
   return (
     <div className="SkyRoute-hotels-page">
       <div className="SkyRoute-container">
@@ -207,8 +220,8 @@ const Hotels = ({ onNavigate }) => {
           <button
             type="button"
             className={`SkyRoute-btn ${activeTab === 'browse' ? 'SkyRoute-btn--primary' : 'SkyRoute-btn--outline'}`}
-            onClick={() => setActiveTab('browse')}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+            onClick={handleBrowseStays}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
           >
             <Icon name="hotel" size={16} color={activeTab === 'browse' ? '#FFFFFF' : 'var(--primary)'} />
             <span>Browse Stays &amp; Resorts</span>
@@ -217,7 +230,7 @@ const Hotels = ({ onNavigate }) => {
             type="button"
             className={`SkyRoute-btn ${activeTab === 'my-reservations' ? 'SkyRoute-btn--primary' : 'SkyRoute-btn--outline'}`}
             onClick={() => setActiveTab('my-reservations')}
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}
           >
             <Icon name="list" size={16} color={activeTab === 'my-reservations' ? '#FFFFFF' : 'var(--primary)'} />
             <span>My Hotel Reservations ({savedReservations.length})</span>
@@ -361,11 +374,24 @@ const Hotels = ({ onNavigate }) => {
                     <option value="4 Guests, 2 Rooms">4 Guests, 2 Rooms</option>
                   </select>
                 </div>
+
+                <div className="SkyRoute-form-group SkyRoute-hotels-filter-btn-group">
+                  <label className="SkyRoute-field-label" style={{ visibility: 'hidden' }}>Search</label>
+                  <button
+                    type="button"
+                    className="SkyRoute-btn SkyRoute-btn--primary SkyRoute-hotels-search-btn"
+                    onClick={handleBrowseStays}
+                    style={{ width: '100%', height: '42px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
+                  >
+                    <Icon name="search" size={16} />
+                    <span>Browse Stays</span>
+                  </button>
+                </div>
               </div>
             </div>
 
             {/* Hotels Grid */}
-            <div className="SkyRoute-hotels-grid">
+            <div className="SkyRoute-hotels-grid" id="hotels-grid">
               {filteredHotels.map((hotel) => (
                 <div key={hotel.id} className="SkyRoute-hotel-card SkyRoute-card">
                   <div className="SkyRoute-hotel-card__img-box">

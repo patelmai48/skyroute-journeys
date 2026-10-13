@@ -344,4 +344,58 @@ describe('SkyRoute Loyalty, SkyPoints & Repeat User Rewards System', () => {
     expect(container.textContent).toContain('3,500 SkyPoints');
     expect(container.textContent).toContain('REPEAT DISCOUNT ACTIVE');
   });
+
+  describe('FlightResults Flight Inventory & Offline Fallback', () => {
+    it('gracefully renders flights and Demo Inventory badge when backend server is offline', async () => {
+      const FlightResults = require('./pages/FlightResults').default;
+      const searchData = {
+        origin: 'Ahmedabad (AMD)',
+        destination: 'Mumbai (BOM)',
+        departureDate: new Date('2026-10-05'),
+        passengers: 1,
+        cabinClass: 'Economy',
+      };
+
+      // Explicitly simulate offline network / server down
+      const fetchSpy = jest.spyOn(global, 'fetch').mockImplementation(() =>
+        Promise.reject(new Error('Failed to fetch'))
+      );
+
+      await act(async () => {
+        ReactDOM.render(
+          <FlightResults
+            searchData={searchData}
+            onSelectFlight={() => {}}
+            onEditSearch={() => {}}
+            onSearchChange={() => {}}
+          />,
+          container
+        );
+      });
+
+      // Await next tick for promise rejection & state update
+      await act(async () => {
+        await new Promise((resolve) => setTimeout(resolve, 50));
+      });
+
+      fetchSpy.mockRestore();
+
+      // Must display available flights count and Demo Inventory
+      expect(container.textContent).toContain('20 flights');
+      expect(container.textContent).toContain('Available Flights');
+      expect(container.textContent).toContain('Demo Inventory');
+      expect(container.textContent).not.toContain('Server Unavailable');
+      expect(container.textContent).not.toContain('>0 flights<');
+
+      // Must display available flights and Demo Inventory
+      expect(container.textContent).toContain('Available Flights');
+      expect(container.textContent).toContain('Demo Inventory');
+      expect(container.textContent).toContain('IndiGo');
+      expect(container.textContent).toContain('Air India');
+
+      // Verifies flight cards are rendered in the DOM
+      const flightCards = container.querySelectorAll('.SkyRoute-flight-card');
+      expect(flightCards.length).toBeGreaterThan(0);
+    });
+  });
 });

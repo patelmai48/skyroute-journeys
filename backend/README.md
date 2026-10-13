@@ -1,14 +1,15 @@
 # SkyRoute Backend
 
-Express + SQLite API for SkyRoute: user accounts (JWT) and bookings. Phase 1 of adding a real backend to the React frontend.
+Express + PostgreSQL API for SkyRoute: user authentication (JWT) and booking management.
 
 ## Run it
 
 ```bash
 npm install
-cp .env.example .env      # then set JWT_SECRET (command is inside the file)
+cp .env.example .env      # configure JWT_SECRET and DATABASE_URL (or runs with pg-mem in dev)
 npm run dev               # http://localhost:5000
-npm test                  # 12 automated API tests
+npm test                  # 15 automated API tests
+npm run smoke             # End-to-end production smoke test suite
 ```
 
 ## API
@@ -16,67 +17,49 @@ npm test                  # 12 automated API tests
 | Method | Path | Auth | What it does |
 |---|---|---|---|
 | GET | `/api/health` | no | Health check |
+| GET | `/api/flights` | no | Flight inventory search, filter by stops/airline/price, and sort |
 | POST | `/api/auth/register` | no | `{name, email, password}` → `{user, token}` |
 | POST | `/api/auth/login` | no | `{email, password}` → `{user, token}` |
-| GET | `/api/auth/me` | yes | Current user |
-| POST | `/api/bookings` | yes | Create a booking, returns a generated 6-character PNR |
+| GET | `/api/auth/me` | yes | Current user profile |
+| POST | `/api/bookings` | yes | Create booking with server-calculated price, returns 6-char PNR |
 | GET | `/api/bookings` | yes | Your bookings, newest first (My Trips) |
-| GET | `/api/bookings/:pnr` | yes | One of your bookings |
+| GET | `/api/bookings/:pnr` | yes | Specific booking details |
 | POST | `/api/bookings/:pnr/cancel` | yes | Cancel a booking (once) |
 
-Send the token as `Authorization: Bearer <token>`.
+Send the JWT token as `Authorization: Bearer <token>`.
 
-Booking body:
+Sample Booking Body:
 
 ```json
 {
-  "flight": { "airline": "Vistara", "from": "AMD", "to": "BOM" },
-  "passengers": [{ "firstName": "Mahi", "lastName": "Patel", "email": "a@b.com" }],
+  "flight": { "airline": "Vistara", "from": "AMD", "to": "BOM", "price": 6850 },
+  "passengers": [{ "firstName": "Mahi", "lastName": "Patel", "email": "mahi@example.com" }],
   "seat": "4A",
-  "totalAmount": 17947
+  "coupon": "SKYDOM500",
+  "insurance": "none"
 }
 ```
 
 ## What is in it
 
-- Passwords hashed with bcrypt; JWT expires in 7 days
-- Input validation with zod on every write route
-- helmet security headers, CORS limited to your frontend origin, rate limit on login/register
-- Users can only read or cancel their own bookings
-- The server refuses to start without a strong `JWT_SECRET`
+- PostgreSQL with `pg` connection pool and indexed tables for users and bookings
+- In-memory PostgreSQL (`pg-mem`) for zero-dependency testing and dev fallback
+- Passwords hashed with `bcryptjs` (configurable salt rounds); JWT expires in 7 days
+- Input validation with `zod` schemas on every write route
+- Server-side price calculation enforcing fares, taxes, seat add-ons, coupons, and repeat traveler discounts
+- `helmet` security headers, `cors` limited to configured frontend origin, and `express-rate-limit`
+- Strict access control: users can only view and cancel their own bookings
+- 15 automated unit and integration tests (`node --test`) plus an 8-step smoke test script (`scripts/smoke.js`)
+- Deployed on Render with health checks and environment configuration
 
-## Connect the frontend (next step)
+## Connect the Frontend
 
-1. Add `REACT_APP_API_URL=http://localhost:5000` to the React app's `.env`.
-2. Replace the demo login (`skyroute_auth_user` in LocalStorage) with calls to `/api/auth/login` and `/register`. Keep only the token in LocalStorage.
-3. On booking confirmation, `POST /api/bookings` and show the PNR the server returns instead of a generated one.
-4. Load My Trips from `GET /api/bookings` instead of `skyroute_bookings`.
+1. Add `REACT_APP_API_URL=http://localhost:5000` (or Render API URL) to the React app's `.env`.
+2. Auth tokens stored securely and passed via `Authorization: Bearer <token>`.
+3. Flights loaded from `GET /api/flights` and bookings persisted to `POST /api/bookings`.
+4. Trips dashboard populated directly from `GET /api/bookings`.
 
-```js
-const API = process.env.REACT_APP_API_URL;
-export async function api(path, { method = 'GET', body } = {}) {
-  const token = localStorage.getItem('skyroute_token');
-  const res = await fetch(`${API}${path}`, {
-    method,
-    headers: { 'Content-Type': 'application/json', ...(token && { Authorization: `Bearer ${token}` }) },
-    body: body && JSON.stringify(body),
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error || 'Request failed');
-  return data;
-}
-```
+## Deployment
 
-## Known limits (honest list)
-
-- `totalAmount` comes from the client. Phase 2 should compute price on the server from flight data.
-- Flights are still served from the frontend. Phase 2: `GET /api/flights` with filters and sorting.
-- SQLite is for development and small deployments. For production, move to PostgreSQL.
-- Payment is still simulated.
-
-## Roadmap
-
-1. Auth + bookings (done, this repo)
-2. Flights API + server-side pricing
-3. Connect the React app, deploy API (Render) and update `CORS_ORIGIN` with the Vercel URL
-4. PostgreSQL, seat availability, email confirmation
+- **Backend**: Render web service configured via `render.yaml` with managed PostgreSQL.
+- **Frontend**: React application deployed on Vercel configured via `vercel.json`.

@@ -105,7 +105,7 @@ The booking flow models an 8-stage transactional pipeline:
 SkyRoute operates a hybrid production architecture:
 - **Backend API (`/backend`)**: Node.js/Express service with persistent PostgreSQL database support (configured via `DATABASE_URL` with SSL in production). Migrated from SQLite to guarantee data durability on containerized and serverless hosts (Render, Railway, Fly.io) where ephemeral disk resets wipe SQLite files.
 - **Automated Schema Provisioning**: Idempotent schema migrations (`initSchema`) run automatically at server startup to ensure `users` and `bookings` tables and indexes exist without manual SQL execution.
-- **Frontend Fallback**: In development mode, the React frontend can gracefully fall back to local mock data if the backend server is offline. In **production mode**, it presents an honest, clear "Server unavailable, please try again" status to ensure users are aware when live reservation transactions cannot be processed.
+- **Frontend Fallback**: The React frontend gracefully falls back to local interactive demo flight inventory if the backend server is offline or unreachable. It presents a clear "Demo Flight Inventory" status notice while keeping all flight searches, filters, comparisons, and booking simulations completely operational.
 
 ### LocalStorage Schema Map (Client-Side State)
 
