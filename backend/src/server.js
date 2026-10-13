@@ -33,7 +33,7 @@ async function startServer() {
   const app = createApp({
     db,
     jwtSecret,
-    corsOrigin: process.env.CORS_ORIGIN || 'http://localhost:3000',
+    corsOrigin: process.env.CORS_ORIGIN || 'https://skyroute-journeys-4ks3.vercel.app,http://localhost:3000',
   });
 
   const port = process.env.PORT || 5000;

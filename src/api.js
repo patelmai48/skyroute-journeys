@@ -5,24 +5,37 @@
  */
 
 const isProduction = process.env.NODE_ENV === 'production';
-const configuredApiUrl = process.env.REACT_APP_API_URL;
+const PROD_API_FALLBACK = 'https://skyroute-journeys.onrender.com';
+const configuredApiUrl = process.env.REACT_APP_API_URL || (isProduction ? PROD_API_FALLBACK : '');
 
-if (isProduction && !configuredApiUrl) {
-  console.error(
-    '[SkyRoute API Error] REACT_APP_API_URL is missing in production environment. Backend requests will fail instead of calling localhost.'
-  );
+const API_BASE = configuredApiUrl || (!isProduction ? 'http://localhost:5000' : PROD_API_FALLBACK);
+
+function getApiOrigin() {
+  try {
+    if (API_BASE) {
+      return new URL(API_BASE, typeof window !== 'undefined' ? window.location?.href : 'http://localhost').origin;
+    }
+    if (typeof window !== 'undefined' && window.location) {
+      return window.location.origin;
+    }
+  } catch {
+    // fallback
+  }
+  return API_BASE || 'unknown';
 }
 
-const API_BASE = configuredApiUrl || (!isProduction ? 'http://localhost:5000' : '');
-
 export async function api(path, { method = 'GET', body, headers = {} } = {}) {
+  const apiOrigin = getApiOrigin();
+
   if (isProduction && !configuredApiUrl) {
     console.error(
       `[SkyRoute API Error] Cannot reach server: REACT_APP_API_URL is missing in production build. Call to ${path} aborted.`
     );
-    const configError = new Error('Cannot reach server: API URL is not configured.');
+    const configError = new Error(`network or CORS error reaching ${apiOrigin}: REACT_APP_API_URL is not configured`);
     configError.isConfigurationError = true;
     configError.isNetworkError = true;
+    configError.origin = apiOrigin;
+    configError.shortReason = `network or CORS error reaching ${apiOrigin}`;
     throw configError;
   }
 
@@ -48,10 +61,31 @@ export async function api(path, { method = 'GET', body, headers = {} } = {}) {
     }
 
     if (!res.ok) {
-      const errorMsg = data?.error || (data?.details ? JSON.stringify(data.details) : `Request failed with status ${res.status}`);
-      const err = new Error(errorMsg);
+      const serverMsg = data?.error || `Request failed with status ${res.status}`;
+      let fieldDetail = '';
+      if (data?.details) {
+        if (data.details.fieldErrors && typeof data.details.fieldErrors === 'object') {
+          const fields = Object.keys(data.details.fieldErrors);
+          if (fields.length > 0) {
+            fieldDetail = `, field: ${fields.join(', ')}`;
+          }
+        } else if (typeof data.details === 'string') {
+          fieldDetail = `, details: ${data.details}`;
+        } else {
+          fieldDetail = `, details: ${JSON.stringify(data.details)}`;
+        }
+      }
+
+      const shortReason = `HTTP ${res.status}: ${serverMsg}${fieldDetail}`;
+      const fullMessage = `${shortReason} (origin: ${apiOrigin})`;
+
+      const err = new Error(fullMessage);
       err.status = res.status;
+      err.serverError = serverMsg;
+      err.details = data?.details;
       err.data = data;
+      err.origin = apiOrigin;
+      err.shortReason = shortReason;
       throw err;
     }
 
@@ -60,9 +94,13 @@ export async function api(path, { method = 'GET', body, headers = {} } = {}) {
     if (err.status) {
       throw err;
     }
-    // Network error / offline / server not running
-    const friendlyError = new Error('Server is currently unreachable. Operating with local fallback data.');
+    // Network or CORS failure
+    const networkReason = `network or CORS error reaching ${apiOrigin}`;
+    const friendlyError = new Error(networkReason);
     friendlyError.isNetworkError = true;
+    friendlyError.isNetworkOrCors = true;
+    friendlyError.origin = apiOrigin;
+    friendlyError.shortReason = networkReason;
     friendlyError.original = err;
     throw friendlyError;
   }

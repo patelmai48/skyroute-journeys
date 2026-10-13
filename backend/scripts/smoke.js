@@ -117,13 +117,29 @@ async function main() {
     }
   });
 
-  // Step 6: Create Booking
-  await runStep('POST /api/bookings', async () => {
+  // Step 6: Create Booking using exact frontend payload shape
+  await runStep('POST /api/bookings (frontend payload shape)', async () => {
     const bookingPayload = {
       flight: { airline: 'IndiGo', from: 'AMD', to: 'BOM', price: 3450 },
-      passengers: [{ title: 'Mr', firstName: 'Smoke', lastName: 'Tester' }],
+      passengers: [
+        {
+          title: 'Mr',
+          firstName: 'Smoke',
+          lastName: 'Tester',
+          email: 'smoke@example.com',
+          phone: '9999999999',
+        },
+        {
+          title: 'Ms',
+          firstName: 'Guest',
+          lastName: 'Tester',
+          // email, phone, dateOfBirth omitted when empty
+        },
+      ],
       seat: '14A',
       insurance: 'none',
+      coupon: 'SKYDOM500',
+      currency: 'INR',
     };
 
     const res = await request('/api/bookings', {
@@ -132,15 +148,17 @@ async function main() {
       body: bookingPayload,
     });
 
+    if (res.status !== 201) throw new Error(`Expected HTTP 201, got ${res.status}`);
     pnr = res.data?.booking?.pnr;
     if (!pnr || !res.data?.booking?.totalAmount) throw new Error('Invalid booking response');
   });
 
-  // Step 7: List Bookings
-  await runStep('GET /api/bookings', async () => {
+  // Step 7: List Bookings and verify created booking is listed
+  await runStep('GET /api/bookings (verify booking listed)', async () => {
     const res = await request('/api/bookings', {
       headers: { Authorization: `Bearer ${token}` },
     });
+    if (res.status !== 200) throw new Error(`Expected HTTP 200, got ${res.status}`);
     const found = res.data?.bookings?.some((b) => b.pnr === pnr);
     if (!found) throw new Error(`Created booking with PNR ${pnr} not found in user bookings`);
   });

@@ -15,19 +15,33 @@ function createApp({ db, jwtSecret, corsOrigin = '*', bcryptRounds = 10, rateLim
   app.disable('x-powered-by');
   app.use(helmet());
 
-  // Strict CORS configuration
-  const allowedOrigins = corsOrigin === '*'
-    ? true
-    : corsOrigin.split(',').map((s) => s.trim()).filter(Boolean);
+  // Strict CORS configuration: supports comma-separated list, trims spaces & trailing slashes
+  const originsList = (corsOrigin || '*')
+    .split(',')
+    .map((s) => s.trim().replace(/\/+$/, ''))
+    .filter(Boolean);
 
-  app.use(
-    cors({
-      origin: allowedOrigins,
-      credentials: true,
-      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-      allowedHeaders: ['Content-Type', 'Authorization'],
-    })
-  );
+  const isWildcard = corsOrigin === '*' || originsList.includes('*');
+
+  const corsOptions = {
+    origin: (origin, callback) => {
+      if (!origin || isWildcard) return callback(null, true);
+      const normalized = origin.trim().replace(/\/+$/, '');
+      if (
+        originsList.includes(normalized) ||
+        /^https:\/\/skyroute-journeys(?:-[a-z0-9]+)?\.vercel\.app$/.test(normalized)
+      ) {
+        return callback(null, true);
+      }
+      return callback(null, false);
+    },
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    optionsSuccessStatus: 204,
+  };
+
+  app.use(cors(corsOptions));
 
   app.use(express.json({ limit: '100kb' }));
 

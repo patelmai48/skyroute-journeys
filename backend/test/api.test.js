@@ -7,7 +7,13 @@ let server, base;
 before(async () => {
   const db = createDb({ isTest: true });
   await db.init();
-  const app = createApp({ db, jwtSecret: 'test-secret-test-secret', bcryptRounds: 4, rateLimitEnabled: false });
+  const app = createApp({
+    db,
+    jwtSecret: 'test-secret-test-secret',
+    bcryptRounds: 4,
+    rateLimitEnabled: false,
+    corsOrigin: 'https://skyroute-journeys-4ks3.vercel.app/ , http://localhost:3000/',
+  });
   await new Promise((r) => { server = app.listen(0, r); });
   base = `http://127.0.0.1:${server.address().port}`;
 });
@@ -170,3 +176,70 @@ test('unknown route returns 404 JSON', async () => {
   const r = await call('GET', '/api/nope');
   assert.equal(r.status, 404);
 });
+
+test('request with Origin https://skyroute-journeys-4ks3.vercel.app gets the right Access-Control-Allow-Origin header and preflight works', async () => {
+  // Test OPTIONS preflight for POST /api/bookings
+  const preflightRes = await fetch(`${base}/api/bookings`, {
+    method: 'OPTIONS',
+    headers: {
+      Origin: 'https://skyroute-journeys-4ks3.vercel.app',
+      'Access-Control-Request-Method': 'POST',
+      'Access-Control-Request-Headers': 'Content-Type, Authorization',
+    },
+  });
+  assert.equal(preflightRes.status, 204);
+  assert.equal(preflightRes.headers.get('access-control-allow-origin'), 'https://skyroute-journeys-4ks3.vercel.app');
+  assert.ok(preflightRes.headers.get('access-control-allow-headers').includes('Authorization'));
+  assert.ok(preflightRes.headers.get('access-control-allow-headers').includes('Content-Type'));
+
+  // Test request with Origin gets the right header
+  const getRes = await fetch(`${base}/api/health`, {
+    method: 'GET',
+    headers: {
+      Origin: 'https://skyroute-journeys-4ks3.vercel.app',
+    },
+  });
+  assert.equal(getRes.status, 200);
+  assert.equal(getRes.headers.get('access-control-allow-origin'), 'https://skyroute-journeys-4ks3.vercel.app');
+});
+
+test('POST a booking using exactly the frontend payload shape and expect 201, then GET /api/bookings and expect it to be listed', async () => {
+  const frontendPayload = {
+    flight: { airline: 'Air India', from: 'AMD', to: 'BOM', departure: '07:15', arrival: '08:45', price: 4200 },
+    passengers: [
+      {
+        title: 'Mr',
+        firstName: 'Kinjal',
+        lastName: 'Patel',
+        email: 'kinjal@example.com',
+        phone: '9876543210',
+        dateOfBirth: '1995-05-15',
+      },
+      {
+        title: 'Ms',
+        firstName: 'Priya',
+        lastName: 'Patel',
+        // email, phone, dateOfBirth omitted when empty
+      },
+    ],
+    seat: '14A',
+    insurance: 'none',
+    coupon: 'SKYDOM500',
+    currency: 'INR',
+  };
+
+  const createRes = await call('POST', '/api/bookings', frontendPayload, tokenA);
+  assert.equal(createRes.status, 201);
+  assert.ok(createRes.data.booking);
+  assert.match(createRes.data.booking.pnr, /^[A-Z2-9]{6}$/);
+  const createdPnr = createRes.data.booking.pnr;
+
+  // Verify listed in GET /api/bookings
+  const listRes = await call('GET', '/api/bookings', null, tokenA);
+  assert.equal(listRes.status, 200);
+  assert.ok(Array.isArray(listRes.data.bookings));
+  const listed = listRes.data.bookings.find((b) => b.pnr === createdPnr);
+  assert.ok(listed, `Booking with PNR ${createdPnr} should be listed in bookings`);
+  assert.equal(listed.pnr, createdPnr);
+});
+
