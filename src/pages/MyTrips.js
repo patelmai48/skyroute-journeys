@@ -32,40 +32,15 @@ const INITIAL_GROUP_EXPENSES = [
   { id: 'exp-4', title: 'Self-Drive SUV Rental', amount: 2000, paidBy: 'You', category: 'Transport' },
 ];
 
-const SAMPLE_TRIP = {
-  bookingId: 'BK-789012',
-  pnr: 'X7K29P',
-  bookingDate: '2026-10-12',
-  flight: {
-    airline: 'IndiGo',
-    airlineCode: '6E',
-    flightNumber: '6E 201',
-    originCity: 'Ahmedabad',
-    originCode: 'AMD',
-    destinationCity: 'Goa',
-    destinationCode: 'GOI',
-    departureTime: '08:00 AM',
-    arrivalTime: '09:45 AM',
-    durationText: '1h 45m',
-    cabin: 'Economy',
-    baggage: '15kg Check-in + 7kg Cabin'
-  },
-  seat: { id: '14A', type: 'Window' },
-  gate: 'B12',
-  terminal: 'T1',
-  total: 4269,
-  status: 'Confirmed'
-};
-
 const MyTrips = ({ onNavigate, onSelectBooking }) => {
   const [activeTab, setActiveTab] = useState('upcoming'); // upcoming | timeline | packing | group | budget
   const [bookings, setBookings] = useState(() => {
     try {
       const saved = JSON.parse(localStorage.getItem('skyroute_bookings') || '[]');
-      if (Array.isArray(saved) && saved.length > 0) return saved;
-      return [SAMPLE_TRIP];
+      if (Array.isArray(saved)) return saved;
+      return [];
     } catch {
-      return [SAMPLE_TRIP];
+      return [];
     }
   });
   const { showToast } = useToast();
@@ -131,8 +106,9 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
       if (!token) return;
 
       try {
-        const serverBookings = await fetchServerBookings();
-        if (serverBookings && Array.isArray(serverBookings) && serverBookings.length > 0 && isMounted) {
+        const response = await fetchServerBookings();
+        const serverBookings = Array.isArray(response) ? response : (response?.bookings || []);
+        if (serverBookings && Array.isArray(serverBookings) && isMounted) {
           const mappedServer = serverBookings.map((b) => ({
             bookingId: `BK-${b.pnr}`,
             pnr: b.pnr,
@@ -155,12 +131,18 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
             gate: 'B12',
             terminal: 'T1',
             total: b.totalAmount || 4269,
-            status: b.status === 'CANCELLED' ? 'Cancelled' : 'Confirmed'
+            status: b.status === 'CANCELLED' ? 'Cancelled' : 'Confirmed',
+            isLocalOnly: false
           }));
 
           setBookings((prev) => {
             const seenPnrs = new Set(mappedServer.map((m) => m.pnr));
-            return [...mappedServer, ...prev.filter((lb) => !seenPnrs.has(lb.pnr))];
+            const remainingLocal = prev.filter((lb) => !seenPnrs.has(lb.pnr) && lb.isLocalOnly);
+            const merged = [...mappedServer, ...remainingLocal];
+            try {
+              localStorage.setItem('skyroute_bookings', JSON.stringify(merged));
+            } catch {}
+            return merged;
           });
         }
       } catch (err) {
@@ -389,7 +371,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
                 <span className="SkyRoute-empty-state__icon">
                   <Icon name="flight" size={36} color="var(--primary)" />
                 </span>
-                <h3 className="SkyRoute-empty-state__title">No Upcoming Bookings Found</h3>
+                <h3 className="SkyRoute-empty-state__title">No trips yet</h3>
                 <p className="SkyRoute-empty-state__subtitle">
                   You don't have any confirmed flights right now. Ready to start your next adventure?
                 </p>
@@ -398,7 +380,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
                   className="SkyRoute-btn SkyRoute-btn--primary"
                   onClick={() => onNavigate('/flights')}
                 >
-                  Search Flights Now
+                  Search flights
                 </button>
               </div>
             ) : (
@@ -407,7 +389,9 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
                   <div key={booking.bookingId || booking.pnr} className="SkyRoute-trip-card SkyRoute-card">
                     <div className="SkyRoute-trip-card__header">
                       <div className="SkyRoute-trip-card__badges">
-                        <span className="SkyRoute-badge SkyRoute-badge--success">CONFIRMED</span>
+                        <span className={`SkyRoute-badge ${booking.isLocalOnly ? 'SkyRoute-badge--warning' : 'SkyRoute-badge--success'}`}>
+                          {booking.isLocalOnly ? 'DEVICE ONLY' : (booking.status || 'CONFIRMED').toUpperCase()}
+                        </span>
                         <span className="SkyRoute-badge">PNR: {booking.pnr}</span>
                       </div>
                       <span className="SkyRoute-trip-card__date">
@@ -499,14 +483,34 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
 
         {/* Tab 2: Journey Timeline (8 Milestones) */}
         {activeTab === 'timeline' && (
-          <div className="SkyRoute-timeline-block SkyRoute-card">
-            <div className="SkyRoute-timeline-header">
-              <span className="SkyRoute-badge SkyRoute-badge--teal">Flight 6E 201 &bull; PNR: X7K29P</span>
-              <h3 className="SkyRoute-timeline-title">Journey Day Vertical Timeline</h3>
-              <p className="SkyRoute-timeline-subtitle">
-                Complete travel step-by-step guidance from airport arrival to baggage claim.
+          bookings.length === 0 ? (
+            <div className="SkyRoute-empty-state SkyRoute-card">
+              <span className="SkyRoute-empty-state__icon">
+                <Icon name="clock" size={36} color="var(--primary)" />
+              </span>
+              <h3 className="SkyRoute-empty-state__title">No trips yet</h3>
+              <p className="SkyRoute-empty-state__subtitle">
+                You don't have any confirmed flights right now. Ready to start your next adventure?
               </p>
+              <button
+                type="button"
+                className="SkyRoute-btn SkyRoute-btn--primary"
+                onClick={() => onNavigate('/flights')}
+              >
+                Search flights
+              </button>
             </div>
+          ) : (
+            <div className="SkyRoute-timeline-block SkyRoute-card">
+              <div className="SkyRoute-timeline-header">
+                <span className="SkyRoute-badge SkyRoute-badge--teal">
+                  Flight {bookings[0].flight?.flightNumber || '6E 201'} &bull; PNR: {bookings[0].pnr}
+                </span>
+                <h3 className="SkyRoute-timeline-title">Journey Day Vertical Timeline</h3>
+                <p className="SkyRoute-timeline-subtitle">
+                  Complete travel step-by-step guidance from airport arrival to baggage claim.
+                </p>
+              </div>
 
             <div className="SkyRoute-journey-timeline">
               {[
@@ -541,6 +545,7 @@ const MyTrips = ({ onNavigate, onSelectBooking }) => {
               ))}
             </div>
           </div>
+          )
         )}
 
         {/* Tab 3: Smart Packing List (3-Column Responsive Checklist) */}

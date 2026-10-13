@@ -4,9 +4,28 @@
  * and resilient friendly error handling when the server is unreachable.
  */
 
-const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const isProduction = process.env.NODE_ENV === 'production';
+const configuredApiUrl = process.env.REACT_APP_API_URL;
+
+if (isProduction && !configuredApiUrl) {
+  console.error(
+    '[SkyRoute API Error] REACT_APP_API_URL is missing in production environment. Backend requests will fail instead of calling localhost.'
+  );
+}
+
+const API_BASE = configuredApiUrl || (!isProduction ? 'http://localhost:5000' : '');
 
 export async function api(path, { method = 'GET', body, headers = {} } = {}) {
+  if (isProduction && !configuredApiUrl) {
+    console.error(
+      `[SkyRoute API Error] Cannot reach server: REACT_APP_API_URL is missing in production build. Call to ${path} aborted.`
+    );
+    const configError = new Error('Cannot reach server: API URL is not configured.');
+    configError.isConfigurationError = true;
+    configError.isNetworkError = true;
+    throw configError;
+  }
+
   const token = localStorage.getItem('skyroute_token');
   const requestHeaders = {
     'Content-Type': 'application/json',
@@ -110,7 +129,8 @@ export async function createBooking(bookingPayload) {
 }
 
 export async function fetchBookings() {
-  return api('/api/bookings');
+  const data = await api('/api/bookings');
+  return data?.bookings || (Array.isArray(data) ? data : []);
 }
 
 export async function fetchBooking(pnr) {

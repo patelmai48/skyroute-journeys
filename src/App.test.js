@@ -398,4 +398,123 @@ describe('SkyRoute Loyalty, SkyPoints & Repeat User Rewards System', () => {
       expect(flightCards.length).toBeGreaterThan(0);
     });
   });
+
+  describe('SkyRoute Core Fixes: Clean Empty State, Server Fallback & Cross-Device Sync', () => {
+    it('shows "No trips yet" with a "Search flights" button when user has no bookings and never injects SAMPLE_TRIP', () => {
+      localStorage.clear();
+      const MyTrips = require('./pages/MyTrips').default;
+      act(() => {
+        ReactDOM.render(<MyTrips onNavigate={() => {}} />, container);
+      });
+
+      expect(container.textContent).toContain('No trips yet');
+      expect(container.textContent).toContain('Search flights');
+      expect(container.textContent).not.toContain('X7K29P');
+      expect(container.textContent).not.toContain('SAMPLE_TRIP');
+    });
+
+    it('cross-device check: after login, My Trips loads bookings from GET /api/bookings even when localStorage was cleared', async () => {
+      localStorage.clear();
+      localStorage.setItem('skyroute_token', 'valid-test-token-123');
+
+      const mockServerBooking = {
+        id: 1,
+        pnr: 'SR99XY',
+        flight: {
+          airline: 'Vistara',
+          flightNumber: 'UK-955',
+          originCity: 'Delhi',
+          originCode: 'DEL',
+          destinationCity: 'Mumbai',
+          destinationCode: 'BOM'
+        },
+        seat: '3F',
+        totalAmount: 5890,
+        status: 'CONFIRMED'
+      };
+
+      const fetchSpy = jest.spyOn(global, 'fetch').mockImplementation((url) => {
+        if (url.includes('/api/bookings')) {
+          return Promise.resolve({
+            ok: true,
+            status: 200,
+            json: () => Promise.resolve({ bookings: [mockServerBooking] })
+          });
+        }
+        return Promise.reject(new Error('Unknown url'));
+      });
+
+      const MyTrips = require('./pages/MyTrips').default;
+      await act(async () => {
+        ReactDOM.render(<MyTrips onNavigate={() => {}} />, container);
+      });
+
+      // Allow async effect to resolve
+      await act(async () => {
+        await new Promise((resolve) => setTimeout(resolve, 50));
+      });
+
+      fetchSpy.mockRestore();
+
+      expect(container.textContent).toContain('SR99XY');
+      expect(container.textContent).toContain('Vistara');
+      expect(container.textContent).not.toContain('X7K29P');
+
+      // Verifies server bookings were also cached to localStorage
+      const cached = JSON.parse(localStorage.getItem('skyroute_bookings') || '[]');
+      expect(cached.some((b) => b.pnr === 'SR99XY')).toBe(true);
+    });
+
+    it('ReviewBooking marks booking as local-only and shows error toast when server save fails for logged-in user', async () => {
+      localStorage.clear();
+      localStorage.setItem('skyroute_token', 'user-token');
+
+      const { ToastProvider } = require('./context/ToastContext');
+      const ReviewBooking = require('./pages/ReviewBooking').default;
+
+      // Mock server booking save rejection
+      const fetchSpy = jest.spyOn(global, 'fetch').mockImplementation(() =>
+        Promise.reject(new Error('Server unavailable'))
+      );
+
+      let confirmedBookingResult = null;
+      await act(async () => {
+        ReactDOM.render(
+          <ToastProvider>
+            <ReviewBooking
+              searchData={{ passengers: 1 }}
+              selectedFlight={{ id: 'f1', price: 4000, airline: 'IndiGo' }}
+              passengerData={[{ firstName: 'Mahi', lastName: 'Patel' }]}
+              selectedSeat={{ id: '12A', price: 300 }}
+              selectedInsurance="none"
+              onBackToPassengerDetails={() => {}}
+              onConfirmBooking={(b) => {
+                confirmedBookingResult = b;
+              }}
+            />
+          </ToastProvider>,
+          container
+        );
+      });
+
+      const payBtn = container.querySelector('.SkyRoute-pay-btn');
+      expect(payBtn).not.toBeNull();
+
+      await act(async () => {
+        payBtn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+      });
+
+      // Wait for async processing timeout
+      await act(async () => {
+        await new Promise((resolve) => setTimeout(resolve, 1400));
+      });
+
+      fetchSpy.mockRestore();
+
+      expect(confirmedBookingResult).not.toBeNull();
+      expect(confirmedBookingResult.isLocalOnly).toBe(true);
+      expect(confirmedBookingResult.serverSaveFailed).toBe(true);
+      expect(container.textContent).toContain('Could not save to the server');
+    });
+  });
 });

@@ -349,7 +349,7 @@ const FlightResults = ({ searchData, onSelectFlight, onEditSearch, onSearchChang
                   <span style={{ fontSize: '18px' }}>✈️</span>
                   <div>
                     <strong style={{ color: '#143F67', fontSize: '13px', display: 'block' }}>
-                      Demo Flight Inventory Active
+                      Cannot reach server &bull; Demo Flight Inventory Active
                     </strong>
                     <span style={{ color: '#64748B', fontSize: '12px' }}>
                       Backend server is offline or unreachable. Displaying complete interactive demo inventory with instant booking simulation.

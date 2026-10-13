@@ -828,11 +828,11 @@ export const INITIAL_NOTIFICATIONS = [
   {
     id: 'notif-3',
     type: 'booking',
-    title: 'Digital Boarding Pass Generated',
-    message: 'Your confirmed booking PNR X7K29P (Seat 14A Window) is ready for download and mobile Apple/Google Wallet sync.',
+    title: 'Digital Boarding Passes Ready',
+    message: 'Your confirmed booking e-ticket and boarding passes will be available for download whenever you book a trip.',
     time: 'Yesterday',
     unread: false,
-    link: '/booking-confirmation'
+    link: '/my-trips'
   },
   {
     id: 'notif-4',

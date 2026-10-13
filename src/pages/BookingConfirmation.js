@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import format from 'date-fns/format';
 
+import Icon from '../components/Icon';
+
 const formatINR = (num) => {
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',
@@ -28,36 +30,48 @@ const BookingConfirmation = ({
   const [downloadSuccess, setDownloadSuccess] = useState(false);
   const [shareSuccess, setShareSuccess] = useState(false);
 
-  // Fallback demo booking if none active
-  const booking = currentBooking || {
-    bookingId: 'BK-948210',
-    pnr: 'X7K29P',
-    bookingDate: new Date().toISOString(),
-    flight: {
-      airline: 'IndiGo',
-      airlineCode: '6E',
-      airlineColor: '#143F67',
-      flightNumber: '6E-214',
-      aircraft: 'Airbus A320neo',
-      originCity: 'Ahmedabad',
-      originCode: 'AMD',
-      destinationCity: 'Mumbai',
-      destinationCode: 'BOM',
-      departureTime: '06:15',
-      arrivalTime: '07:40',
-      durationText: '1h 25m',
-      cabin: 'Economy',
-      baggage: '7kg Cabin + 15kg Check-in'
-    },
-    passengers: [
-      { firstName: 'Mahi', lastName: 'Patel', gender: 'female', govtIdType: 'Aadhaar' }
-    ],
-    seat: { id: '14A', type: 'Window', category: 'Extra Legroom' },
-    gate: 'B12',
-    terminal: 'T1',
-    status: 'Confirmed',
-    total: 4269
-  };
+  // Retrieve current booking or most recent saved booking
+  const booking = currentBooking || (() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('skyroute_bookings') || '[]');
+      if (Array.isArray(saved) && saved.length > 0) return saved[0];
+    } catch {}
+    return null;
+  })();
+
+  if (!booking) {
+    return (
+      <div className="SkyRoute-confirmation-page">
+        <div className="SkyRoute-container">
+          <div className="SkyRoute-empty-state SkyRoute-card" style={{ maxWidth: '600px', margin: '4rem auto', textAlign: 'center', padding: '3rem 2rem' }}>
+            <span className="SkyRoute-empty-state__icon">
+              <Icon name="flight" size={48} color="var(--primary)" />
+            </span>
+            <h2 className="SkyRoute-empty-state__title" style={{ marginTop: '1rem' }}>No Active Booking Found</h2>
+            <p className="SkyRoute-empty-state__subtitle" style={{ color: '#64748B', marginBottom: '2rem' }}>
+              You don't have an active booking confirmation to display right now.
+            </p>
+            <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+              <button
+                type="button"
+                className="SkyRoute-btn SkyRoute-btn--primary"
+                onClick={onNavigateHome || (() => onNavigate?.('/flights'))}
+              >
+                Search Flights
+              </button>
+              <button
+                type="button"
+                className="SkyRoute-btn SkyRoute-btn--outline"
+                onClick={onNavigateMyBookings || (() => onNavigate?.('/my-trips'))}
+              >
+                Go to My Trips
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   const passengerName = booking.passengers?.[0]
     ? `${booking.passengers[0].firstName} ${booking.passengers[0].lastName}`
@@ -84,18 +98,35 @@ const BookingConfirmation = ({
   return (
     <div className="SkyRoute-confirmation-page">
       <div className="SkyRoute-container">
-        {/* Success Header */}
-        <div className="SkyRoute-confirmation-hero">
-          <div className="SkyRoute-confirmation-hero__icon">🎉</div>
-          <h1 className="SkyRoute-confirmation-hero__title">Booking Confirmed!</h1>
-          <p className="SkyRoute-confirmation-hero__subtitle">
-            Your e-ticket and boarding pass have been issued. Confirmation details sent to your registered email &amp; SMS.
-          </p>
-          <div className="SkyRoute-confirmation-pnr-pill">
-            <span>Booking PNR:</span>
-            <strong className="SkyRoute-pnr-code">{booking.pnr}</strong>
+        {/* Success or Local-Only Header */}
+        {booking.isLocalOnly ? (
+          <div className="SkyRoute-confirmation-hero SkyRoute-confirmation-hero--local-only">
+            <div className="SkyRoute-confirmation-hero__icon">⚠️</div>
+            <h1 className="SkyRoute-confirmation-hero__title" style={{ color: '#D97706' }}>
+              Booking Saved Locally (Device Only)
+            </h1>
+            <p className="SkyRoute-confirmation-hero__subtitle" style={{ maxWidth: '640px', margin: '0.5rem auto' }}>
+              Could not save to the server. Your booking is saved on this device only and will not sync across other devices.
+            </p>
+            <div className="SkyRoute-confirmation-pnr-pill" style={{ borderColor: '#F59E0B' }}>
+              <span>Temporary PNR:</span>
+              <strong className="SkyRoute-pnr-code">{booking.pnr}</strong>
+              <span className="SkyRoute-badge SkyRoute-badge--warning" style={{ marginLeft: '8px' }}>DEVICE ONLY</span>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="SkyRoute-confirmation-hero">
+            <div className="SkyRoute-confirmation-hero__icon">🎉</div>
+            <h1 className="SkyRoute-confirmation-hero__title">Booking Confirmed!</h1>
+            <p className="SkyRoute-confirmation-hero__subtitle">
+              Your e-ticket and boarding pass have been issued. Confirmation details sent to your registered email &amp; SMS.
+            </p>
+            <div className="SkyRoute-confirmation-pnr-pill">
+              <span>Booking PNR:</span>
+              <strong className="SkyRoute-pnr-code">{booking.pnr}</strong>
+            </div>
+          </div>
+        )}
 
         {/* Realistic Airline Boarding Pass Component */}
         <div className="SkyRoute-boarding-pass-card SkyRoute-card">
@@ -104,7 +135,9 @@ const BookingConfirmation = ({
               <span className="SkyRoute-boarding-pass-logo">✈</span>
               <span className="SkyRoute-boarding-pass-brand-name">SKYROUTE AIRWAYS</span>
             </div>
-            <span className="SkyRoute-badge SkyRoute-badge--success">DIGITAL BOARDING PASS</span>
+            <span className={`SkyRoute-badge ${booking.isLocalOnly ? 'SkyRoute-badge--warning' : 'SkyRoute-badge--success'}`}>
+              {booking.isLocalOnly ? 'LOCAL PASS (DEVICE ONLY)' : 'DIGITAL BOARDING PASS'}
+            </span>
           </div>
 
           <div className="SkyRoute-boarding-pass-main">

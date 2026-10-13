@@ -28,7 +28,7 @@ const ReviewBooking = ({
   onBackToPassengerDetails,
   onConfirmBooking,
 }) => {
-  const { showSuccess, showInfo } = useToast();
+  const { showSuccess, showError, showInfo } = useToast();
   const [paymentMethod, setPaymentMethod] = useState('upi'); // upi | card | netbanking | wallet
   const [upiId, setUpiId] = useState('demo@skyroute');
   const [isUpiVerified, setIsUpiVerified] = useState(true);
@@ -129,21 +129,40 @@ const ReviewBooking = ({
       total: finalTotal,
       gate: 'B12',
       terminal: 'T1',
-      status: 'Confirmed'
+      status: 'Confirmed',
+      isLocalOnly: false
     };
 
+    const token = localStorage.getItem('skyroute_token');
+    const isLoggedIn = Boolean(token || localStorage.getItem('skyroute_auth_user'));
+    let serverSaveFailed = false;
+
     // Attempt real backend booking creation
-    try {
-      const serverBooking = await postBookingToServer(bookingRecord);
-      if (serverBooking?.pnr) {
-        bookingRecord.pnr = serverBooking.pnr;
-        if (serverBooking.totalAmount) {
-          bookingRecord.total = serverBooking.totalAmount;
+    if (isLoggedIn) {
+      try {
+        const serverBooking = await postBookingToServer(bookingRecord);
+        if (serverBooking?.pnr) {
+          bookingRecord.pnr = serverBooking.pnr;
+          if (serverBooking.totalAmount) {
+            bookingRecord.total = serverBooking.totalAmount;
+          }
+          bookingRecord.serverBooking = serverBooking;
+          bookingRecord.isLocalOnly = false;
+        } else {
+          serverSaveFailed = true;
         }
-        bookingRecord.serverBooking = serverBooking;
+      } catch (err) {
+        serverSaveFailed = true;
+        console.warn('Backend booking sync failed:', err.message);
       }
-    } catch (err) {
-      console.info('Backend booking sync deferred, saving locally:', err.message);
+    } else {
+      bookingRecord.isLocalOnly = true;
+    }
+
+    if (isLoggedIn && serverSaveFailed) {
+      bookingRecord.isLocalOnly = true;
+      bookingRecord.serverSaveFailed = true;
+      bookingRecord.status = 'Confirmed (Device Only)';
     }
 
     // Save to localStorage bookings array
@@ -156,7 +175,11 @@ const ReviewBooking = ({
 
     setTimeout(() => {
       setIsProcessing(false);
-      if (showSuccess) {
+      if (isLoggedIn && serverSaveFailed) {
+        if (showError) {
+          showError('Could not save to the server. Your booking is saved on this device only.');
+        }
+      } else if (showSuccess) {
         showSuccess(`Payment confirmed! PNR: ${bookingRecord.pnr} (+${pointsResult.earned} SkyPoints credited)`);
       }
       onConfirmBooking(bookingRecord);

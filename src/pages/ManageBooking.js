@@ -11,8 +11,8 @@ const formatINR = (num) => {
 };
 
 const ManageBooking = ({ onNavigate, onSelectBooking }) => {
-  const [pnrInput, setPnrInput] = useState('X7K29P');
-  const [lastNameInput, setLastNameInput] = useState('Patel');
+  const [pnrInput, setPnrInput] = useState('');
+  const [lastNameInput, setLastNameInput] = useState('');
   const [activeBooking, setActiveBooking] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -23,12 +23,17 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
   const [newTravelDate, setNewTravelDate] = useState('2026-10-18');
   const [rescheduleSuccess, setRescheduleSuccess] = useState(false);
 
-  const handleTrackBooking = (e) => {
+  const handleTrackBooking = async (e) => {
     e.preventDefault();
     setErrorMessage('');
     const pnrClean = pnrInput.trim().toUpperCase();
 
-    // Check localStorage bookings
+    if (!pnrClean) {
+      setErrorMessage('Please enter a valid booking reference (PNR).');
+      return;
+    }
+
+    // 1. Check localStorage bookings
     try {
       const saved = JSON.parse(localStorage.getItem('skyroute_bookings') || '[]');
       const found = saved.find((b) => b.pnr?.toUpperCase() === pnrClean);
@@ -40,39 +45,33 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
       console.warn('Error fetching bookings:', err);
     }
 
-    // Default sample if PNR matches demo or any query
-    if (pnrClean === 'X7K29P' || pnrClean.length >= 4) {
-      setActiveBooking({
-        bookingId: 'BK-948210',
-        pnr: pnrClean,
-        bookingDate: '2026-10-01',
-        flight: {
-          airline: 'IndiGo',
-          airlineCode: '6E',
-          airlineColor: '#143F67',
-          flightNumber: '6E-214',
-          originCity: 'Ahmedabad',
-          originCode: 'AMD',
-          destinationCity: 'Mumbai',
-          destinationCode: 'BOM',
-          departureTime: '06:15 AM',
-          arrivalTime: '07:40 AM',
-          durationText: '1h 25m',
-          cabin: 'Economy',
-          baggage: '7kg Cabin + 15kg Check-in'
-        },
-        passengers: [
-          { firstName: 'Mahi', lastName: lastNameInput || 'Patel', gender: 'female', govtIdType: 'Aadhaar' }
-        ],
-        seat: { id: '14A', type: 'Window' },
-        gate: 'B12',
-        terminal: 'T1',
-        total: 4269,
-        status: 'Confirmed'
-      });
-    } else {
-      setErrorMessage('No booking found for this PNR. Please check and try again.');
+    // 2. Check server if logged in
+    const token = localStorage.getItem('skyroute_token');
+    if (token) {
+      try {
+        const { fetchBooking } = await import('../services/api');
+        const res = await fetchBooking(pnrClean);
+        if (res?.booking) {
+          const b = res.booking;
+          const mapped = {
+            bookingId: `BK-${b.pnr}`,
+            pnr: b.pnr,
+            bookingDate: b.createdAt ? b.createdAt.slice(0, 10) : '2026-10-12',
+            flight: b.flight || { airline: 'SkyRoute', flightNumber: 'SR-101' },
+            passengers: b.passengers || [{ firstName: 'Guest', lastName: lastNameInput || 'Traveler' }],
+            seat: typeof b.seat === 'string' ? { id: b.seat, type: 'Selected' } : (b.seat || { id: '14A', type: 'Window' }),
+            total: b.totalAmount || 4269,
+            status: b.status === 'CANCELLED' ? 'Cancelled (Refund Processing)' : 'Confirmed'
+          };
+          setActiveBooking(mapped);
+          return;
+        }
+      } catch (err) {
+        // Not found on server
+      }
     }
+
+    setErrorMessage('No booking found for this PNR. Please check and try again.');
   };
 
   const handleConfirmCancel = async () => {
@@ -196,7 +195,7 @@ const ManageBooking = ({ onNavigate, onSelectBooking }) => {
                 <input
                   type="text"
                   className="SkyRoute-text-input"
-                  placeholder="e.g. X7K29P"
+                  placeholder="e.g. SR8X2A"
                   value={pnrInput}
                   onChange={(e) => setPnrInput(e.target.value.toUpperCase())}
                   required
