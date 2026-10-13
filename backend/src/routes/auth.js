@@ -1,5 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 const { z } = require('zod');
 const { signToken, requireAuth } = require('../auth');
 
@@ -11,6 +12,10 @@ const registerSchema = z.object({
 const loginSchema = z.object({
   email: z.string().trim().toLowerCase().email(),
   password: z.string().min(1),
+});
+const googleAuthSchema = z.object({
+  email: z.string().trim().toLowerCase().email().max(120),
+  name: z.string().trim().min(1).max(80).optional(),
 });
 
 const publicUser = (u) => ({ id: u.id, name: u.name, email: u.email });
@@ -53,6 +58,31 @@ module.exports = function authRoutes({ db, jwtSecret, bcryptRounds }) {
       // Same message for unknown email and wrong password, so accounts cannot be probed
       const ok = user && (await bcrypt.compare(password, user.password_hash));
       if (!ok) return res.status(401).json({ error: 'Incorrect email or password' });
+      res.json({ user: publicUser(user), token: signToken(user, jwtSecret) });
+    } catch (err) {
+      next(err);
+    }
+  });
+
+  router.post('/google', async (req, res, next) => {
+    try {
+      const parsed = googleAuthSchema.safeParse(req.body);
+      if (!parsed.success) return res.status(400).json({ error: 'Invalid input' });
+      const { email, name = 'SkyRoute User' } = parsed.data;
+
+      const userRes = await db.query('SELECT id, name, email FROM users WHERE email = $1', [email]);
+      let user = userRes.rows[0];
+
+      if (!user) {
+        const randomPassword = crypto.randomBytes(24).toString('hex');
+        const hash = await bcrypt.hash(randomPassword, bcryptRounds);
+        const insertRes = await db.query(
+          'INSERT INTO users (name, email, password_hash) VALUES ($1, $2, $3) RETURNING id, name, email',
+          [name, email, hash]
+        );
+        user = insertRes.rows[0];
+      }
+
       res.json({ user: publicUser(user), token: signToken(user, jwtSecret) });
     } catch (err) {
       next(err);

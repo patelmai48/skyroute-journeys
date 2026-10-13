@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { triggerGoogleAuth } from '../services/googleAuth';
-import { registerUser, loginUser } from '../services/api';
+import { registerUser, loginUser, api } from '../services/api';
 import Icon from '../components/Icon';
 
 const STORAGE_KEYS = {
@@ -138,7 +138,7 @@ const Login = ({ onNavigate }) => {
     }, 800);
   };
 
-  const completeGoogleAuth = (googleUser) => {
+  const completeGoogleAuth = async (googleUser) => {
     try {
       localStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(googleUser));
       const existingProfile = localStorage.getItem(STORAGE_KEYS.PROFILE_INFO);
@@ -154,6 +154,19 @@ const Login = ({ onNavigate }) => {
           points: 12450
         })
       );
+
+      // Exchange with backend to obtain a valid JWT token
+      try {
+        const res = await api('/api/auth/google', {
+          method: 'POST',
+          body: { email: googleUser.email, name: googleUser.name },
+        });
+        if (res?.token) {
+          localStorage.setItem('skyroute_token', res.token);
+        }
+      } catch (authErr) {
+        console.warn('Backend Google auth sync warning:', authErr.message);
+      }
     } catch (e) {
       console.warn('Storage warning:', e);
     }

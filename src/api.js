@@ -24,6 +24,39 @@ function getApiOrigin() {
   return API_BASE || 'unknown';
 }
 
+export async function ensureAuthToken() {
+  let token = localStorage.getItem('skyroute_token');
+  if (token) return token;
+
+  const authUserStr = localStorage.getItem('skyroute_auth_user');
+  if (!authUserStr) return null;
+
+  try {
+    const user = JSON.parse(authUserStr);
+    if (!user?.email) return null;
+
+    const res = await fetch(`${API_BASE}/api/auth/google`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: user.email,
+        name: user.name || 'SkyRoute User',
+      }),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.token) {
+        localStorage.setItem('skyroute_token', data.token);
+        return data.token;
+      }
+    }
+  } catch (err) {
+    console.warn('[SkyRoute Auth] Auto-sync token warning:', err);
+  }
+  return null;
+}
+
 export async function api(path, { method = 'GET', body, headers = {} } = {}) {
   const apiOrigin = getApiOrigin();
 
@@ -39,7 +72,11 @@ export async function api(path, { method = 'GET', body, headers = {} } = {}) {
     throw configError;
   }
 
-  const token = localStorage.getItem('skyroute_token');
+  let token = localStorage.getItem('skyroute_token');
+  if (!token && localStorage.getItem('skyroute_auth_user') && !path.startsWith('/api/auth/')) {
+    token = await ensureAuthToken();
+  }
+
   const requestHeaders = {
     'Content-Type': 'application/json',
     ...(token ? { Authorization: `Bearer ${token}` } : {}),

@@ -94,6 +94,18 @@ test('login works and rejects a wrong password', async () => {
   assert.equal(bad.status, 401);
 });
 
+test('google auth endpoint creates or signs in user and returns token', async () => {
+  const r = await call('POST', '/api/auth/google', { email: 'googleuser@example.com', name: 'Google User' });
+  assert.equal(r.status, 200);
+  assert.equal(r.data.user.email, 'googleuser@example.com');
+  assert.ok(r.data.token);
+
+  // Subsequent call returns same user
+  const r2 = await call('POST', '/api/auth/google', { email: 'googleuser@example.com', name: 'Google User' });
+  assert.equal(r2.status, 200);
+  assert.equal(r2.data.user.id, r.data.user.id);
+});
+
 test('/me requires a valid token', async () => {
   assert.equal((await call('GET', '/api/auth/me')).status, 401);
   assert.equal((await call('GET', '/api/auth/me', null, 'garbage')).status, 401);

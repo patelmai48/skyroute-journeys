@@ -9,7 +9,7 @@ import {
   calculateEarnedPoints,
   awardBookingSkyPoints
 } from '../services/loyaltyService';
-import { postBookingToServer } from '../services/api';
+import { postBookingToServer, ensureAuthToken } from '../services/api';
 
 const formatINR = (num) => {
   return new Intl.NumberFormat('en-IN', {
@@ -133,94 +133,103 @@ const ReviewBooking = ({
       isLocalOnly: false
     };
 
-    const token = localStorage.getItem('skyroute_token');
-    const isLoggedIn = Boolean(token || localStorage.getItem('skyroute_auth_user'));
+    let token = localStorage.getItem('skyroute_token');
+    const authUser = localStorage.getItem('skyroute_auth_user');
+    if (!token && authUser) {
+      token = await ensureAuthToken();
+    }
+    const isLoggedIn = Boolean(token || authUser);
     let serverSaveFailed = false;
     let failureReason = '';
 
     // Attempt real backend booking creation
     if (isLoggedIn) {
-      // Clean payload strictly adhering to backend Zod schema
-      const cleanPassengers = (Array.isArray(passengerData) && passengerData.length > 0
-        ? passengerData
-        : [{ firstName: 'Guest', lastName: 'Passenger' }]
-      ).map((p) => {
-        let fName = (p.firstName || '').trim();
-        let lName = (p.lastName || '').trim();
-        if (!fName && p.name) {
-          const parts = p.name.trim().split(/\s+/);
-          fName = parts[0] || 'Guest';
-          lName = parts.slice(1).join(' ') || parts[0] || 'Passenger';
-        }
-        if (!fName) fName = 'Guest';
-        if (!lName) lName = 'Passenger';
-
-        const pax = {
-          title: (p.title || 'Mr').trim(),
-          firstName: fName,
-          lastName: lName,
-        };
-        if (p.email && typeof p.email === 'string' && p.email.trim()) {
-          pax.email = p.email.trim();
-        }
-        if (p.phone && typeof p.phone === 'string' && p.phone.trim()) {
-          pax.phone = p.phone.trim();
-        }
-        if (p.dateOfBirth && typeof p.dateOfBirth === 'string' && p.dateOfBirth.trim()) {
-          pax.dateOfBirth = p.dateOfBirth.trim();
-        }
-        return pax;
-      });
-
-      const flightToSend = selectedFlight && typeof selectedFlight === 'object' && Object.keys(selectedFlight).length > 0
-        ? selectedFlight
-        : { airline: 'IndiGo', from: 'AMD', to: 'BOM', price: 3800 };
-
-      let seatToSend;
-      if (typeof selectedSeat === 'string') {
-        seatToSend = selectedSeat.trim();
-      } else if (selectedSeat && typeof selectedSeat === 'object') {
-        seatToSend = selectedSeat.id ? String(selectedSeat.id) : selectedSeat;
-      } else {
-        seatToSend = '14A';
-      }
-
-      const cleanPayload = {
-        flight: flightToSend,
-        passengers: cleanPassengers,
-        seat: seatToSend,
-        insurance: typeof selectedInsurance === 'string' && selectedInsurance ? selectedInsurance : 'none',
-        currency: 'INR',
-      };
-
-      if (appliedCoupon && typeof appliedCoupon === 'string' && appliedCoupon.trim()) {
-        cleanPayload.coupon = appliedCoupon.trim();
-      }
-
-      try {
-        const serverBooking = await postBookingToServer(cleanPayload);
-        const confirmed = serverBooking?.booking || serverBooking;
-        if (confirmed?.pnr) {
-          bookingRecord.pnr = confirmed.pnr;
-          if (confirmed.totalAmount) {
-            bookingRecord.total = confirmed.totalAmount;
-          }
-          bookingRecord.serverBooking = confirmed;
-          bookingRecord.isLocalOnly = false;
-        } else {
-          serverSaveFailed = true;
-          failureReason = 'invalid response from server';
-        }
-      } catch (err) {
+      if (!token) {
         serverSaveFailed = true;
-        failureReason = err.shortReason || err.message || 'unknown error';
-        console.error('[SkyRoute] Booking sync to server failed:', {
-          message: err.message,
-          status: err.status,
-          details: err.details,
-          origin: err.origin,
-          shortReason: err.shortReason,
+        failureReason = 'Session expired. Please sign in again';
+      } else {
+        // Clean payload strictly adhering to backend Zod schema
+        const cleanPassengers = (Array.isArray(passengerData) && passengerData.length > 0
+          ? passengerData
+          : [{ firstName: 'Guest', lastName: 'Passenger' }]
+        ).map((p) => {
+          let fName = (p.firstName || '').trim();
+          let lName = (p.lastName || '').trim();
+          if (!fName && p.name) {
+            const parts = p.name.trim().split(/\s+/);
+            fName = parts[0] || 'Guest';
+            lName = parts.slice(1).join(' ') || parts[0] || 'Passenger';
+          }
+          if (!fName) fName = 'Guest';
+          if (!lName) lName = 'Passenger';
+
+          const pax = {
+            title: (p.title || 'Mr').trim(),
+            firstName: fName,
+            lastName: lName,
+          };
+          if (p.email && typeof p.email === 'string' && p.email.trim()) {
+            pax.email = p.email.trim();
+          }
+          if (p.phone && typeof p.phone === 'string' && p.phone.trim()) {
+            pax.phone = p.phone.trim();
+          }
+          if (p.dateOfBirth && typeof p.dateOfBirth === 'string' && p.dateOfBirth.trim()) {
+            pax.dateOfBirth = p.dateOfBirth.trim();
+          }
+          return pax;
         });
+
+        const flightToSend = selectedFlight && typeof selectedFlight === 'object' && Object.keys(selectedFlight).length > 0
+          ? selectedFlight
+          : { airline: 'IndiGo', from: 'AMD', to: 'BOM', price: 3800 };
+
+        let seatToSend;
+        if (typeof selectedSeat === 'string') {
+          seatToSend = selectedSeat.trim();
+        } else if (selectedSeat && typeof selectedSeat === 'object') {
+          seatToSend = selectedSeat.id ? String(selectedSeat.id) : selectedSeat;
+        } else {
+          seatToSend = '14A';
+        }
+
+        const cleanPayload = {
+          flight: flightToSend,
+          passengers: cleanPassengers,
+          seat: seatToSend,
+          insurance: typeof selectedInsurance === 'string' && selectedInsurance ? selectedInsurance : 'none',
+          currency: 'INR',
+        };
+
+        if (appliedCoupon && typeof appliedCoupon === 'string' && appliedCoupon.trim()) {
+          cleanPayload.coupon = appliedCoupon.trim();
+        }
+
+        try {
+          const serverBooking = await postBookingToServer(cleanPayload);
+          const confirmed = serverBooking?.booking || serverBooking;
+          if (confirmed?.pnr) {
+            bookingRecord.pnr = confirmed.pnr;
+            if (confirmed.totalAmount) {
+              bookingRecord.total = confirmed.totalAmount;
+            }
+            bookingRecord.serverBooking = confirmed;
+            bookingRecord.isLocalOnly = false;
+          } else {
+            serverSaveFailed = true;
+            failureReason = 'invalid response from server';
+          }
+        } catch (err) {
+          serverSaveFailed = true;
+          failureReason = err.shortReason || err.message || 'unknown error';
+          console.error('[SkyRoute] Booking sync to server failed:', {
+            message: err.message,
+            status: err.status,
+            details: err.details,
+            origin: err.origin,
+            shortReason: err.shortReason,
+          });
+        }
       }
     } else {
       bookingRecord.isLocalOnly = true;
